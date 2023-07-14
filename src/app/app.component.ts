@@ -22,7 +22,10 @@ import { NgbModal, NgbModalConfig } from '@ng-bootstrap/ng-bootstrap';
 import { TranslateService } from '@ngx-translate/core';
 import { HostWindowResizeAction } from './shared/host-window.actions';
 import { HostWindowState } from './shared/search/host-window.reducer';
-import { NativeWindowRef, NativeWindowService } from './core/services/window.service';
+import {
+  NativeWindowRef,
+  NativeWindowService,
+} from './core/services/window.service';
 import { isAuthenticationBlocking } from './core/auth/selectors';
 import { AuthService } from './core/auth/auth.service';
 import { CSSVariableService } from './shared/sass-helper/css-variable.service';
@@ -73,7 +76,7 @@ export class AppComponent implements OnInit, AfterViewInit {
     private router: Router,
     private cssService: CSSVariableService,
     private modalService: NgbModal,
-    private modalConfig: NgbModalConfig,
+    private modalConfig: NgbModalConfig
   ) {
     this.notificationOptions = environment.notifications;
 
@@ -105,12 +108,17 @@ export class AppComponent implements OnInit, AfterViewInit {
       distinctUntilChanged()
     );
 
-    this.dispatchWindowSize(this._window.nativeWindow.innerWidth, this._window.nativeWindow.innerHeight);
+    this.dispatchWindowSize(
+      this._window.nativeWindow.innerWidth,
+      this._window.nativeWindow.innerHeight
+    );
   }
 
   private storeCSSVariables() {
     this.cssService.clearCSSVariables();
-    this.cssService.addCSSVariables(this.cssService.getCSSVariablesFromStylesheets(this.document));
+    this.cssService.addCSSVariables(
+      this.cssService.getCSSVariablesFromStylesheets(this.document)
+    );
   }
 
   ngAfterViewInit() {
@@ -132,28 +140,30 @@ export class AppComponent implements OnInit, AfterViewInit {
   }
 
   private dispatchWindowSize(width, height): void {
-    this.store.dispatch(
-      new HostWindowResizeAction(width, height)
-    );
+    this.store.dispatch(new HostWindowResizeAction(width, height));
   }
 
   private trackIdleModal() {
     const isIdle$ = this.authService.isUserIdle();
     const isAuthenticated$ = this.authService.isAuthenticated();
-    isIdle$.pipe(withLatestFrom(isAuthenticated$))
+    isIdle$
+      .pipe(withLatestFrom(isAuthenticated$))
       .subscribe(([userIdle, authenticated]) => {
         if (userIdle && authenticated) {
           if (!this.idleModalOpen) {
-            const modalRef = this.modalService.open(IdleModalComponent, { ariaLabelledBy: 'idle-modal.header' });
-            this.idleModalOpen = true;
-            modalRef.componentInstance.response.pipe(take(1)).subscribe((closed: boolean) => {
-              if (closed) {
-                this.idleModalOpen = false;
-              }
+            const modalRef = this.modalService.open(IdleModalComponent, {
+              ariaLabelledBy: 'idle-modal.header',
             });
+            this.idleModalOpen = true;
+            modalRef.componentInstance.response
+              .pipe(take(1))
+              .subscribe((closed: boolean) => {
+                if (closed) {
+                  this.idleModalOpen = false;
+                }
+              });
           }
         }
       });
   }
-
 }
