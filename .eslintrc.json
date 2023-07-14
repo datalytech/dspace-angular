@@ -1,5 +1,4 @@
 {
-  "root": true,
   "plugins": [
     "@typescript-eslint",
     "@angular-eslint/eslint-plugin",
@@ -12,14 +11,9 @@
   ],
   "overrides": [
     {
-      "files": [
-        "*.ts"
-      ],
+      "files": ["*.ts"],
       "parserOptions": {
-        "project": [
-          "./tsconfig.json",
-          "./cypress/tsconfig.json"
-        ],
+        "project": ["./tsconfig.json", "./cypress/tsconfig.json"],
         "createDefaultProgram": true
       },
       "extends": [
@@ -30,18 +24,9 @@
         "plugin:@angular-eslint/template/process-inline-templates"
       ],
       "rules": {
-        "max-classes-per-file": [
-          "error",
-          1
-        ],
-        "comma-dangle": [
-          "off",
-          "always-multiline"
-        ],
-        "eol-last": [
-          "error",
-          "always"
-        ],
+        "max-classes-per-file": ["error", 1],
+        "comma-dangle": ["off", "always-multiline"],
+        "eol-last": ["error", "always"],
         "no-console": [
           "error",
           {
@@ -104,16 +89,13 @@
             "allowTernary": true
           }
         ],
-        "prefer-const": "off",            // todo: re-enable & fix errors (more strict than it used to be in TSLint)
+        "prefer-const": "off",
         "prefer-spread": "off",
         "no-underscore-dangle": "off",
-
-        // todo: disabled rules from eslint:recommended, consider re-enabling & fixing
         "no-prototype-builtins": "off",
         "no-useless-escape": "off",
         "no-case-declarations": "off",
         "no-extra-boolean-cast": "off",
-
         "@angular-eslint/directive-selector": [
           "error",
           {
@@ -133,9 +115,7 @@
         "@angular-eslint/pipe-prefix": [
           "error",
           {
-            "prefixes": [
-              "ds"
-            ]
+            "prefixes": ["ds"]
           }
         ],
         "@angular-eslint/no-attribute-decorator": "error",
@@ -143,8 +123,7 @@
         "@angular-eslint/no-output-native": "warn",
         "@angular-eslint/no-output-on-prefix": "warn",
         "@angular-eslint/no-conflicting-lifecycle": "warn",
-
-        "@typescript-eslint/no-inferrable-types":[
+        "@typescript-eslint/no-inferrable-types": [
           "error",
           {
             "ignoreParameters": true
@@ -183,7 +162,7 @@
         ],
         "@typescript-eslint/type-annotation-spacing": "error",
         "@typescript-eslint/unified-signatures": "error",
-        "@typescript-eslint/ban-types": "warn",  // todo: deal with {} type issues & re-enable
+        "@typescript-eslint/ban-types": "warn",
         "@typescript-eslint/no-floating-promises": "warn",
         "@typescript-eslint/no-misused-promises": "warn",
         "@typescript-eslint/restrict-plus-operands": "warn",
@@ -200,50 +179,30 @@
         "@typescript-eslint/no-unsafe-return": "off",
         "@typescript-eslint/restrict-template-expressions": "off",
         "@typescript-eslint/require-await": "off",
-
         "deprecation/deprecation": "warn",
-
         "import/order": "off",
         "import/no-deprecated": "warn",
         "import/no-namespace": "error",
         "unused-imports/no-unused-imports": "error",
-        "lodash/import-scope": [
-          "error",
-          "method"
-        ]
+        "lodash/import-scope": ["error", "method"]
       }
     },
     {
-      "files": [
-        "*.html"
-      ],
-      "extends": [
-        "plugin:@angular-eslint/template/recommended"
-      ],
+      "files": ["*.html"],
+      "extends": ["plugin:@angular-eslint/template/recommended"],
       "rules": {
-        // todo: re-enable & fix errors
         "@angular-eslint/template/no-negated-async": "off",
         "@angular-eslint/template/eqeqeq": "off"
       }
     },
     {
-      "files": [
-        "*.json5"
-      ],
-      "extends": [
-        "plugin:jsonc/recommended-with-jsonc"
-      ],
+      "files": ["*.json5"],
+      "extends": ["plugin:jsonc/recommended-with-jsonc"],
       "rules": {
         "no-irregular-whitespace": "error",
         "no-trailing-spaces": "error",
-        "jsonc/comma-dangle": [
-          "error",
-          "always-multiline"
-        ],
-        "jsonc/indent": [
-          "error",
-          2
-        ],
+        "jsonc/comma-dangle": ["error", "always-multiline"],
+        "jsonc/indent": ["error", 2],
         "jsonc/key-spacing": [
           "error",
           {
@@ -262,5 +221,6 @@
         ]
       }
     }
-  ]
+  ],
+  "extends": ["./.eslintrc.base.json"]
 }

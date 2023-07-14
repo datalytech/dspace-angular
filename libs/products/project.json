@@ -1,0 +1,41 @@
+{
+  "name": "products",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/products/src",
+  "prefix": "app",
+  "tags": [],
+  "projectType": "library",
+  "targets": {
+    "build": {
+      "executor": "@nrwl/angular:ng-packagr-lite",
+      "outputs": ["{workspaceRoot}/dist/{projectRoot}"],
+      "options": {
+        "project": "libs/products/ng-package.json"
+      },
+      "configurations": {
+        "production": {
+          "tsConfig": "libs/products/tsconfig.lib.prod.json"
+        },
+        "development": {
+          "tsConfig": "libs/products/tsconfig.lib.json"
+        }
+      },
+      "defaultConfiguration": "production"
+    },
+    "test": {
+      "executor": "@angular-devkit/build-angular:karma",
+      "options": {
+        "tsConfig": "libs/products/tsconfig.spec.json",
+        "karmaConfig": "libs/products/karma.conf.js",
+        "polyfills": ["zone.js", "zone.js/testing"]
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["libs/products/**/*.ts", "libs/products/**/*.html"]
+      }
+    }
+  }
+}
