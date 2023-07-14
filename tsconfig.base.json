@@ -22,7 +22,8 @@
     "skipDefaultLibCheck": true,
     "baseUrl": "./",
     "paths": {
-      "products": ["libs/products/src/index.ts"]
+      "@dspace/core": ["libs/core/src/index.ts"],
+      "@dspace/products": ["libs/products/src/index.ts"]
     }
   },
   "exclude": ["cypress.config.ts"]

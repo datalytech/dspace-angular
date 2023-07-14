@@ -37,7 +37,7 @@ import { EagerThemesModule } from '../themes/eager-themes.module';
 import { APP_CONFIG, AppConfig } from '../config/app-config.interface';
 import { StoreDevModules } from '../config/store/devtools';
 import { RootModule } from './root.module';
-import { ProductsComponent } from 'products';
+import { ProductsComponent } from '@dspace/products';
 
 export function getConfig() {
   return environment;
