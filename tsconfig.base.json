@@ -23,7 +23,8 @@
     "baseUrl": "./",
     "paths": {
       "@dspace/core": ["libs/core/src/index.ts"],
-      "@dspace/products": ["libs/products/src/index.ts"]
+      "@dspace/products": ["libs/products/src/index.ts"],
+      "@dspace/shared": ["libs/shared/src/index.ts"]
     }
   },
   "exclude": ["cypress.config.ts"]
