@@ -24,7 +24,8 @@
     "paths": {
       "@dspace/core": ["libs/core/src/index.ts"],
       "@dspace/products": ["libs/products/src/index.ts"],
-      "@dspace/shared/animations": ["libs/shared/animations/src/index.ts"]
+      "@dspace/shared/animations": ["libs/shared/animations/src/index.ts"],
+      "@dspace/shared/ui": ["libs/shared/ui/src/index.ts"]
     }
   },
   "exclude": ["cypress.config.ts"]
