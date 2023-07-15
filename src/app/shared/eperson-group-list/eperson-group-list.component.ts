@@ -15,11 +15,11 @@ import { GROUP } from '../../core/eperson/models/group.resource-type';
 import { ResourceType } from '../../core/shared/resource-type';
 import { EPersonDataService } from '../../core/eperson/eperson-data.service';
 import { GroupDataService } from '../../core/eperson/group-data.service';
-import { fadeInOut } from '../animations/fade';
 import { getFirstCompletedRemoteData } from '../../core/shared/operators';
 import { PaginationService } from '../../core/pagination/pagination.service';
 import { FindListOptions } from '../../core/data/find-list-options.model';
 import { getDataServiceFor } from '../../core/data/base/data-service.decorator';
+import { fadeInOut } from "@dspace/shared/animations";
 
 export interface SearchEvent {
   scope: string;

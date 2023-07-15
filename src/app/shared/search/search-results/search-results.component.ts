@@ -1,7 +1,6 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { RemoteData } from '../../../core/data/remote-data';
 import { DSpaceObject } from '../../../core/shared/dspace-object.model';
-import { fadeIn, fadeInOut } from '../../animations/fade';
 import { SearchResult } from '../models/search-result.model';
 import { PaginatedList } from '../../../core/data/paginated-list.model';
 import { hasNoValue, isNotEmpty } from '../../empty.util';
@@ -11,6 +10,7 @@ import { CollectionElementLinkType } from '../../object-collection/collection-el
 import { ViewMode } from '../../../core/shared/view-mode.model';
 import { Context } from '../../../core/shared/context.model';
 import { PaginatedSearchOptions } from '../models/paginated-search-options.model';
+import { fadeIn, fadeInOut } from "@dspace/shared/animations";
 
 export interface SelectionConfig {
   repeatable: boolean;

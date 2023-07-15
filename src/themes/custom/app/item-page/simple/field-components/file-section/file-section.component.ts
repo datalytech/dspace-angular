@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { slideSidebarPadding } from '../../../../../../../app/shared/animations/slide';
 import { FileSectionComponent as BaseComponent } from '../../../../../../../app/item-page/simple/field-components/file-section/file-section.component';
+import { slideSidebarPadding } from "@dspace/shared/animations";
 
 @Component({
     selector: 'ds-item-page-file-section',

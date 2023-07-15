@@ -1,8 +1,8 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { pushInOut } from '../../../../app/shared/animations/push';
 import { SEARCH_CONFIG_SERVICE } from '../../../../app/my-dspace-page/my-dspace-page.component';
 import { SearchConfigurationService } from '../../../../app/core/shared/search/search-configuration.service';
 import { ConfigurationSearchPageComponent as BaseComponent } from '../../../../app/search-page/configuration-search-page.component';
+import { pushInOut } from "@dspace/shared/animations";
 
 @Component({
   selector: 'ds-configuration-search-page',

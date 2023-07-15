@@ -3,7 +3,6 @@ import { BehaviorSubject, combineLatest as observableCombineLatest, Observable }
 import { ChangeDetectionStrategy, Component, OnInit, ViewChild } from '@angular/core';
 import { DSONameService } from '../../../core/breadcrumbs/dso-name.service';
 import { CollectionDataService } from '../../../core/data/collection-data.service';
-import { fadeIn, fadeInOut } from '../../../shared/animations/fade';
 import { RemoteData } from '../../../core/data/remote-data';
 import { PaginatedList } from '../../../core/data/paginated-list.model';
 import { Collection } from '../../../core/shared/collection.model';
@@ -28,6 +27,7 @@ import { SearchConfigurationService } from '../../../core/shared/search/search-c
 import { SearchService } from '../../../core/shared/search/search.service';
 import { NoContent } from '../../../core/shared/NoContent.model';
 import { getItemPageRoute } from '../../item-page-routing-paths';
+import { fadeIn, fadeInOut } from "@dspace/shared/animations";
 
 @Component({
   selector: 'ds-item-collection-mapper',

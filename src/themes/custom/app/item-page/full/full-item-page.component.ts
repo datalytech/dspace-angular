@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { fadeInOut } from '../../../../../app/shared/animations/fade';
 import { FullItemPageComponent as BaseComponent } from '../../../../../app/item-page/full/full-item-page.component';
+import { fadeInOut } from "@dspace/shared/animations";
 
 /**
  * This component renders a full item page.

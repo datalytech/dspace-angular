@@ -8,13 +8,13 @@ import { AuthenticateAction, ResetAuthenticationMessagesAction } from '../../../
 
 import { getAuthenticationError, getAuthenticationInfo, } from '../../../../core/auth/selectors';
 import { isNotEmpty } from '../../../empty.util';
-import { fadeOut } from '../../../animations/fade';
 import { AuthMethodType } from '../../../../core/auth/models/auth.method-type';
 import { renderAuthMethodFor } from '../log-in.methods-decorator';
 import { AuthMethod } from '../../../../core/auth/models/auth.method';
 import { AuthService } from '../../../../core/auth/auth.service';
 import { HardRedirectService } from '../../../../core/services/hard-redirect.service';
 import { CoreState } from '../../../../core/core-state.model';
+import { fadeOut } from "@dspace/shared/animations";
 
 /**
  * /users/sign-in

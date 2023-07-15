@@ -1,6 +1,5 @@
 import { ChangeDetectionStrategy, Component, ElementRef, Inject, OnInit, PLATFORM_ID } from '@angular/core';
 import { PaginatedSearchOptions } from '../../shared/search/models/paginated-search-options.model';
-import { fadeIn, fadeInOut } from '../../shared/animations/fade';
 import { RemoteData } from '../../core/data/remote-data';
 import { PaginatedList } from '../../core/data/paginated-list.model';
 import { Item } from '../../core/shared/item.model';
@@ -18,6 +17,7 @@ import { APP_CONFIG, AppConfig } from '../../../config/app-config.interface';
 import { isPlatformBrowser } from '@angular/common';
 import { setPlaceHolderAttributes } from '../../shared/utils/object-list-utils';
 import { DSpaceObjectType } from '../../core/shared/dspace-object-type.model';
+import { fadeIn, fadeInOut } from "@dspace/shared/animations";
 
 @Component({
   selector: 'ds-recent-item-list',

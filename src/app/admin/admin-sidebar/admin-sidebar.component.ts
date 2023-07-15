@@ -2,7 +2,6 @@ import { Component, HostListener, Injector, OnInit } from '@angular/core';
 import { BehaviorSubject, combineLatest, Observable } from 'rxjs';
 import { debounceTime, distinctUntilChanged, first, map, withLatestFrom } from 'rxjs/operators';
 import { AuthService } from '../../core/auth/auth.service';
-import { slideSidebar } from '../../shared/animations/slide';
 import { MenuComponent } from '../../shared/menu/menu.component';
 import { MenuService } from '../../shared/menu/menu.service';
 import { CSSVariableService } from '../../shared/sass-helper/css-variable.service';
@@ -10,6 +9,7 @@ import { AuthorizationDataService } from '../../core/data/feature-authorization/
 import { MenuID } from '../../shared/menu/menu-id.model';
 import { ActivatedRoute } from '@angular/router';
 import { ThemeService } from '../../shared/theme-support/theme.service';
+import { slideSidebar } from "@dspace/shared/animations";
 
 /**
  * Component representing the admin sidebar

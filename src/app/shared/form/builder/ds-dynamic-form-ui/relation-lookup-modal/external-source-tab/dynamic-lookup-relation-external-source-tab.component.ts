@@ -11,7 +11,6 @@ import { map, startWith, switchMap } from 'rxjs/operators';
 import { PaginatedSearchOptions } from '../../../../../search/models/paginated-search-options.model';
 import { Context } from '../../../../../../core/shared/context.model';
 import { ListableObject } from '../../../../../object-collection/shared/listable-object.model';
-import { fadeIn, fadeInOut } from '../../../../../animations/fade';
 import { PaginationComponentOptions } from '../../../../../pagination/pagination-component-options.model';
 import { RelationshipOptions } from '../../../models/relationship-options.model';
 import { NgbModal, NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
@@ -25,6 +24,7 @@ import { PaginationService } from '../../../../../../core/pagination/pagination.
 import { Observable, Subscription } from 'rxjs';
 import { ItemType } from '../../../../../../core/shared/item-relationships/item-type.model';
 import { getFirstCompletedRemoteData } from '../../../../../../core/shared/operators';
+import { fadeIn, fadeInOut } from '@dspace/shared/animations';
 
 @Component({
   selector: 'ds-dynamic-lookup-relation-external-source-tab',

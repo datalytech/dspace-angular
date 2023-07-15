@@ -18,11 +18,11 @@ import { createSuccessfulRemoteDataObject } from '../../shared/remote-data.utils
 import {
   SubmissionImportExternalPreviewComponent
 } from './import-external-preview/submission-import-external-preview.component';
-import { fadeIn } from '../../shared/animations/fade';
 import { PageInfo } from '../../core/shared/page-info.model';
 import { hasValue, isNotEmpty } from '../../shared/empty.util';
 import { getFinishedRemoteData } from '../../core/shared/operators';
 import { NONE_ENTITY_TYPE } from '../../core/shared/item-relationships/item-type.resource-type';
+import { fadeIn } from "@dspace/shared/animations";
 
 /**
  * This component allows to submit a new workspaceitem importing the data from an external source.

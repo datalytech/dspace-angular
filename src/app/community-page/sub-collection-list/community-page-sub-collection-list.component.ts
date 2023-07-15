@@ -9,7 +9,6 @@ import {
 import { RemoteData } from '../../core/data/remote-data';
 import { Collection } from '../../core/shared/collection.model';
 import { Community } from '../../core/shared/community.model';
-import { fadeIn } from '../../shared/animations/fade';
 import { PaginatedList } from '../../core/data/paginated-list.model';
 import { PaginationComponentOptions } from '../../shared/pagination/pagination-component-options.model';
 import {
@@ -20,6 +19,7 @@ import { CollectionDataService } from '../../core/data/collection-data.service';
 import { PaginationService } from '../../core/pagination/pagination.service';
 import { switchMap } from 'rxjs/operators';
 import { hasValue } from '../../shared/empty.util';
+import { fadeIn } from "@dspace/shared/animations";
 
 @Component({
   selector: 'ds-community-page-sub-collection-list',

@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { ItemPageComponent as BaseComponent } from '../../../../../app/item-page/simple/item-page.component';
-import { fadeInOut } from '../../../../../app/shared/animations/fade';
+import { fadeInOut } from "@dspace/shared/animations";
 
 /**
  * This component renders a simple item page.

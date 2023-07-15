@@ -6,13 +6,13 @@ import { BitstreamDataService } from '../../../../core/data/bitstream-data.servi
 
 import { Item } from '../../../../core/shared/item.model';
 import { getFirstSucceededRemoteListPayload } from '../../../../core/shared/operators';
-import { fadeInOut } from '../../../animations/fade';
 import { Bitstream } from '../../../../core/shared/bitstream.model';
 import { FileService } from '../../../../core/shared/file.service';
 import { HALEndpointService } from '../../../../core/shared/hal-endpoint.service';
 import { SearchResult } from '../../../search/models/search-result.model';
 import { Context } from '../../../../core/shared/context.model';
 import { DSONameService } from '../../../../core/breadcrumbs/dso-name.service';
+import { fadeInOut } from "@dspace/shared/animations";
 
 /**
  * This component show metadata for the given item object in the detail view.

@@ -16,10 +16,10 @@ import { HostWindowService } from '../shared/host-window.service';
 import { ThemeConfig } from '../../config/theme.model';
 import { Angulartics2DSpace } from '../statistics/angulartics/dspace-provider';
 import { environment } from '../../environments/environment';
-import { slideSidebarPadding } from '../shared/animations/slide';
 import { MenuID } from '../shared/menu/menu-id.model';
 import { getPageInternalServerErrorRoute } from '../app-routing-paths';
 import { hasValueOperator } from '../shared/empty.util';
+import { slideSidebarPadding } from "@dspace/shared/animations";
 
 @Component({
   selector: 'ds-root',

@@ -1,4 +1,3 @@
-import { fadeIn, fadeInOut } from '../../shared/animations/fade';
 import { ChangeDetectionStrategy, Component, Injector, OnInit } from '@angular/core';
 import { ActivatedRoute, CanActivate, Route, Router } from '@angular/router';
 import { RemoteData } from '../../core/data/remote-data';
@@ -8,6 +7,7 @@ import { map } from 'rxjs/operators';
 import { isNotEmpty } from '../../shared/empty.util';
 import { getItemPageRoute } from '../item-page-routing-paths';
 import { GenericConstructor } from '../../core/shared/generic-constructor';
+import { fadeIn, fadeInOut } from '@dspace/shared/animations';
 
 @Component({
   selector: 'ds-edit-item-page',

@@ -1,5 +1,4 @@
 import { Component, Injector } from '@angular/core';
-import { slideMobileNav } from '../shared/animations/slide';
 import { MenuComponent } from '../shared/menu/menu.component';
 import { MenuService } from '../shared/menu/menu.service';
 import { HostWindowService } from '../shared/host-window.service';
@@ -12,6 +11,7 @@ import { Observable } from 'rxjs';
 import { select, Store } from '@ngrx/store';
 import { AppState } from '../app.reducer';
 import { isAuthenticated } from '../core/auth/selectors';
+import { slideMobileNav } from "@dspace/shared/animations";
 
 /**
  * Component representing the public navbar

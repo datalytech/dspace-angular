@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { fadeIn } from '../../../../../app/shared/animations/fade';
 import { SubmissionImportExternalComponent as BaseComponent } from '../../../../../app/submission/import-external/submission-import-external.component';
+import { fadeIn } from "@dspace/shared/animations";
 
 /**
  * This component allows to submit a new workspaceitem importing the data from an external source.

@@ -1,7 +1,5 @@
 import { Component, Inject, Injector, OnInit } from '@angular/core';
-import { rotate } from '../../../shared/animations/rotate';
 import { AdminSidebarSectionComponent } from '../admin-sidebar-section/admin-sidebar-section.component';
-import { slide } from '../../../shared/animations/slide';
 import { CSSVariableService } from '../../../shared/sass-helper/css-variable.service';
 import { MenuService } from '../../../shared/menu/menu.service';
 import { combineLatest as combineLatestObservable, Observable } from 'rxjs';
@@ -9,7 +7,7 @@ import { map } from 'rxjs/operators';
 import { rendersSectionForMenu } from '../../../shared/menu/menu-section.decorator';
 import { MenuID } from '../../../shared/menu/menu-id.model';
 import { Router } from '@angular/router';
-import { bgColor } from '@dspace/shared/animations';
+import { bgColor, rotate, slide } from '@dspace/shared/animations';
 
 /**
  * Represents a expandable section in the sidebar

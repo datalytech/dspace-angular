@@ -8,7 +8,6 @@ import { map, take } from 'rxjs/operators';
 import { ItemDataService } from '../../core/data/item-data.service';
 import { RemoteData } from '../../core/data/remote-data';
 import { Item } from '../../core/shared/item.model';
-import { fadeInOut } from '../../shared/animations/fade';
 import { getAllSucceededRemoteDataPayload } from '../../core/shared/operators';
 import { ViewMode } from '../../core/shared/view-mode.model';
 import { AuthService } from '../../core/auth/auth.service';
@@ -21,6 +20,7 @@ import { SignpostingDataService } from '../../core/data/signposting-data.service
 import { SignpostingLink } from '../../core/data/signposting-links.model';
 import { isNotEmpty } from '../../shared/empty.util';
 import { LinkDefinition, LinkHeadService } from '../../core/services/link-head.service';
+import { fadeInOut } from "@dspace/shared/animations";
 
 /**
  * This component renders a simple item page.

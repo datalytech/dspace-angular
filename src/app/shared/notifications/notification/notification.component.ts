@@ -13,17 +13,35 @@ import {
 import { trigger } from '@angular/animations';
 import { DomSanitizer } from '@angular/platform-browser';
 import { NotificationsService } from '../notifications.service';
-import { scaleEnter, scaleInState, scaleLeave, scaleOutState } from '../../animations/scale';
-import { rotateEnter, rotateInState, rotateLeave, rotateOutState } from '../../animations/rotate';
-import { fromBottomEnter, fromBottomInState, fromBottomLeave, fromBottomOutState } from '../../animations/fromBottom';
-import { fromRightEnter, fromRightInState, fromRightLeave, fromRightOutState } from '../../animations/fromRight';
-import { fromLeftEnter, fromLeftInState, fromLeftLeave, fromLeftOutState } from '../../animations/fromLeft';
-import { fromTopEnter, fromTopInState, fromTopLeave, fromTopOutState } from '../../animations/fromTop';
-import { fadeInEnter, fadeInState, fadeOutLeave, fadeOutState } from '../../animations/fade';
 import { NotificationAnimationsStatus } from '../models/notification-animations-type';
 import { isNotEmpty } from '../../empty.util';
 import { INotification } from '../models/notification.model';
 import { filter, first } from 'rxjs/operators';
+import {
+  fadeInEnter,
+  fadeInState,
+  fadeOutLeave,
+  fadeOutState,
+  fromBottomEnter,
+  fromBottomInState,
+  fromBottomLeave,
+  fromBottomOutState,
+  fromLeftEnter,
+  fromLeftInState,
+  fromLeftLeave,
+  fromLeftOutState,
+  fromRightEnter,
+  fromRightInState,
+  fromRightLeave,
+  fromRightOutState,
+  fromTopEnter,
+  fromTopInState,
+  fromTopLeave,
+  fromTopOutState,
+  rotateEnter,
+  rotateInState, rotateLeave,
+  rotateOutState, scaleEnter, scaleInState, scaleLeave, scaleOutState
+} from '@dspace/shared/animations';
 
 @Component({
   selector: 'ds-notification',

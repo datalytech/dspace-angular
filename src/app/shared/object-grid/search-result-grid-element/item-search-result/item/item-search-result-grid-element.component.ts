@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { focusShadow } from '../../../../animations/focus';
 import { ViewMode } from '../../../../../core/shared/view-mode.model';
 import {
   listableObjectComponent
@@ -11,6 +10,7 @@ import { getItemPageRoute } from '../../../../../item-page/item-page-routing-pat
 import { DSONameService } from '../../../../../core/breadcrumbs/dso-name.service';
 import { TruncatableService } from '../../../../truncatable/truncatable.service';
 import { BitstreamDataService } from '../../../../../core/data/bitstream-data.service';
+import { focusShadow } from "@dspace/shared/animations";
 
 @listableObjectComponent('PublicationSearchResult', ViewMode.GridElement)
 @listableObjectComponent(ItemSearchResult, ViewMode.GridElement)

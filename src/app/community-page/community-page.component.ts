@@ -11,7 +11,6 @@ import { Community } from '../core/shared/community.model';
 
 import { MetadataService } from '../core/metadata/metadata.service';
 
-import { fadeInOut } from '../shared/animations/fade';
 import { hasValue } from '../shared/empty.util';
 import { getAllSucceededRemoteDataPayload} from '../core/shared/operators';
 import { AuthService } from '../core/auth/auth.service';
@@ -20,6 +19,7 @@ import { FeatureID } from '../core/data/feature-authorization/feature-id';
 import { getCommunityPageRoute } from './community-page-routing-paths';
 import { redirectOn4xx } from '../core/shared/authorized.operators';
 import { DSONameService } from '../core/breadcrumbs/dso-name.service';
+import { fadeInOut } from "@dspace/shared/animations";
 
 @Component({
   selector: 'ds-community-page',

@@ -7,12 +7,12 @@ import { CommunityDataService } from '../../core/data/community-data.service';
 import { PaginatedList } from '../../core/data/paginated-list.model';
 import { RemoteData } from '../../core/data/remote-data';
 import { Community } from '../../core/shared/community.model';
-import { fadeInOut } from '../../shared/animations/fade';
 import { PaginationComponentOptions } from '../../shared/pagination/pagination-component-options.model';
 import { hasValue } from '../../shared/empty.util';
 import { switchMap } from 'rxjs/operators';
 import { PaginationService } from '../../core/pagination/pagination.service';
 import { AppConfig, APP_CONFIG } from 'src/config/app-config.interface';
+import { fadeInOut } from "@dspace/shared/animations";
 
 /**
  * this component renders the Top-Level Community list

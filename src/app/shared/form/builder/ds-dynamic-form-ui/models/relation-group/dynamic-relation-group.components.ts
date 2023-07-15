@@ -21,7 +21,6 @@ import { FormService } from '../../../../form.service';
 import { FormComponent } from '../../../../form.component';
 import { Chips } from '../../../../chips/models/chips.model';
 import { hasValue, isEmpty, isNotEmpty, isNotNull } from '../../../../../empty.util';
-import { shrinkInOut } from '../../../../../animations/shrink';
 import { ChipsItem } from '../../../../chips/models/chips-item.model';
 import { hasOnlyEmptyProperties } from '../../../../../object.util';
 import { VocabularyService } from '../../../../../../core/submission/vocabularies/vocabulary.service';
@@ -30,6 +29,7 @@ import { environment } from '../../../../../../../environments/environment';
 import { PLACEHOLDER_PARENT_METADATA } from '../../ds-dynamic-form-constants';
 import { getFirstSucceededRemoteDataPayload } from '../../../../../../core/shared/operators';
 import { VocabularyEntryDetail } from '../../../../../../core/submission/vocabularies/models/vocabulary-entry-detail.model';
+import { shrinkInOut } from '@dspace/shared/animations';
 
 /**
  * Component representing a group input field

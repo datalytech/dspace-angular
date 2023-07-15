@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { slideSidebarPadding } from '../../../../app/shared/animations/slide';
 import { RootComponent as BaseComponent } from '../../../../app/root/root.component';
+import { slideSidebarPadding } from "@dspace/shared/animations";
 
 @Component({
   selector: 'ds-root',

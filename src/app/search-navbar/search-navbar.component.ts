@@ -2,7 +2,7 @@ import { Component, ElementRef, ViewChild } from '@angular/core';
 import { UntypedFormBuilder } from '@angular/forms';
 import { Router } from '@angular/router';
 import { SearchService } from '../core/shared/search/search.service';
-import { expandSearchInput } from '../shared/animations/slide';
+import { expandSearchInput } from "@dspace/shared/animations";
 
 /**
  * The search box in the header that expands on focus and collapses on focus out

@@ -5,12 +5,12 @@ import { filter, map, startWith, switchMap, take } from 'rxjs/operators';
 
 import { SearchFilterConfig } from '../../models/search-filter-config.model';
 import { SearchFilterService } from '../../../../core/shared/search/search-filter.service';
-import { slide } from '../../../animations/slide';
 import { isNotEmpty } from '../../../empty.util';
 import { SearchService } from '../../../../core/shared/search/search.service';
 import { SearchConfigurationService } from '../../../../core/shared/search/search-configuration.service';
 import { SEARCH_CONFIG_SERVICE } from '../../../../my-dspace-page/my-dspace-page.component';
 import { SequenceService } from '../../../../core/shared/sequence.service';
+import { slide } from "@dspace/shared/animations";
 
 @Component({
   selector: 'ds-search-filter',

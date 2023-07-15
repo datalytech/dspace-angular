@@ -1,5 +1,4 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
-import { fadeIn, fadeInOut } from '../../../shared/animations/fade';
 import { Item } from '../../../core/shared/item.model';
 import { ActivatedRoute } from '@angular/router';
 import { ItemOperation } from '../item-operation/itemOperation.model';
@@ -18,6 +17,7 @@ import { Identifier } from '../../../shared/object-list/identifier-data/identifi
 import { ConfigurationProperty } from '../../../core/shared/configuration-property.model';
 import { ConfigurationDataService } from '../../../core/data/configuration-data.service';
 import { IdentifierData } from '../../../shared/object-list/identifier-data/identifier-data.model';
+import { fadeIn, fadeInOut } from "@dspace/shared/animations";
 
 @Component({
   selector: 'ds-item-status',

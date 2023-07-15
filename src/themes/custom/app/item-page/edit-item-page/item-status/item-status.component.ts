@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { fadeIn, fadeInOut } from '../../../../../../app/shared/animations/fade';
 import { ItemStatusComponent as BaseComponent } from '../../../../../../app/item-page/edit-item-page/item-status/item-status.component';
+import { fadeIn, fadeInOut } from "@dspace/shared/animations";
 
 @Component({
   selector: 'ds-item-status',

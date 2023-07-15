@@ -2,8 +2,8 @@ import { Component, Input, OnInit, TemplateRef } from '@angular/core';
 import { SidebarService } from './sidebar.service';
 import { HostWindowService } from '../host-window.service';
 import { Observable } from 'rxjs';
-import { pushInOut } from '../animations/push';
 import { map } from 'rxjs/operators';
+import { pushInOut } from "@dspace/shared/animations";
 
 @Component({
   selector: 'ds-page-with-sidebar',

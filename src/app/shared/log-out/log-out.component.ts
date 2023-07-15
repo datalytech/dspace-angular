@@ -7,7 +7,7 @@ import { select, Store } from '@ngrx/store';
 import { LogOutAction } from '../../core/auth/auth.actions';
 import { getLogOutError, } from '../../core/auth/selectors';
 import { AppState } from '../../app.reducer';
-import { fadeOut } from '../animations/fade';
+import { fadeOut } from "@dspace/shared/animations";
 
 @Component({
   selector: 'ds-log-out',

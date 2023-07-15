@@ -5,7 +5,6 @@ import { BehaviorSubject, combineLatest as observableCombineLatest } from 'rxjs'
 
 import { RemoteData } from '../../core/data/remote-data';
 import { Community } from '../../core/shared/community.model';
-import { fadeIn } from '../../shared/animations/fade';
 import { PaginatedList } from '../../core/data/paginated-list.model';
 import { PaginationComponentOptions } from '../../shared/pagination/pagination-component-options.model';
 import { SortDirection, SortOptions } from '../../core/cache/models/sort-options.model';
@@ -13,6 +12,7 @@ import { CommunityDataService } from '../../core/data/community-data.service';
 import { switchMap } from 'rxjs/operators';
 import { PaginationService } from '../../core/pagination/pagination.service';
 import { hasValue } from '../../shared/empty.util';
+import { fadeIn } from "@dspace/shared/animations";
 
 @Component({
   selector: 'ds-community-page-sub-community-list',

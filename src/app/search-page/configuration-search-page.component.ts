@@ -2,12 +2,12 @@ import { HostWindowService } from '../shared/host-window.service';
 import { SidebarService } from '../shared/sidebar/sidebar.service';
 import { SearchComponent } from '../shared/search/search.component';
 import { ChangeDetectionStrategy, Component, Inject } from '@angular/core';
-import { pushInOut } from '../shared/animations/push';
 import { SEARCH_CONFIG_SERVICE } from '../my-dspace-page/my-dspace-page.component';
 import { SearchConfigurationService } from '../core/shared/search/search-configuration.service';
 import { RouteService } from '../core/services/route.service';
 import { SearchService } from '../core/shared/search/search.service';
 import { Router } from '@angular/router';
+import { pushInOut } from "@dspace/shared/animations";
 
 /**
  * This component renders a search page using a configuration as input.

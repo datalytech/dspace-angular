@@ -3,7 +3,6 @@ import { RemoteData } from '../../core/data/remote-data';
 import { PaginatedList } from '../../core/data/paginated-list.model';
 import { PaginationComponentOptions } from '../pagination/pagination-component-options.model';
 import { SortDirection, SortOptions } from '../../core/cache/models/sort-options.model';
-import { fadeIn, fadeInOut } from '../animations/fade';
 import { BehaviorSubject, combineLatest as observableCombineLatest, Observable, Subscription } from 'rxjs';
 import { ListableObject } from '../object-collection/shared/listable-object.model';
 import { getStartsWithComponent, StartsWithType } from '../starts-with/starts-with-decorator';
@@ -13,6 +12,7 @@ import { RouteService } from '../../core/services/route.service';
 import { map } from 'rxjs/operators';
 import { hasValue } from '../empty.util';
 import { TranslateService } from '@ngx-translate/core';
+import { fadeIn, fadeInOut } from "@dspace/shared/animations";
 
 @Component({
   selector: 'ds-browse-by',
