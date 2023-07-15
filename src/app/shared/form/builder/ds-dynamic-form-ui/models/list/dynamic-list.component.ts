@@ -1,5 +1,5 @@
 import { ChangeDetectorRef, Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { UntypedFormGroup, ValidatorFn, ValidationErrors, AbstractControl } from '@angular/forms';
+import { UntypedFormGroup, ValidatorFn, ValidationErrors, AbstractControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {
   DynamicCheckboxModel,
   DynamicFormControlComponent,
@@ -17,6 +17,7 @@ import { getFirstSucceededRemoteDataPayload } from '../../../../../../core/share
 import { PaginatedList } from '../../../../../../core/data/paginated-list.model';
 import { VocabularyEntry } from '../../../../../../core/submission/vocabularies/models/vocabulary-entry.model';
 import { PageInfo } from '../../../../../../core/shared/page-info.model';
+import { NgIf, NgClass, NgFor } from '@angular/common';
 
 export interface ListItem {
   id: string;
@@ -29,9 +30,11 @@ export interface ListItem {
  * Component representing a list input field
  */
 @Component({
-  selector: 'ds-dynamic-list',
-  styleUrls: ['./dynamic-list.component.scss'],
-  templateUrl: './dynamic-list.component.html'
+    selector: 'ds-dynamic-list',
+    styleUrls: ['./dynamic-list.component.scss'],
+    templateUrl: './dynamic-list.component.html',
+    standalone: true,
+    imports: [FormsModule, ReactiveFormsModule, NgIf, NgClass, NgFor]
 })
 export class DsDynamicListComponent extends DynamicFormControlComponent implements OnInit {
 

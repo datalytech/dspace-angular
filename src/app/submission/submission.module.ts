@@ -110,34 +110,34 @@ const DECLARATIONS = [
 ];
 
 @NgModule({
-  imports: [
-    CommonModule,
-    CoreModule.forRoot(),
-    SharedModule,
-    StoreModule.forFeature('submission', submissionReducers, storeModuleConfig as StoreConfig<SubmissionState, Action>),
-    EffectsModule.forFeature(submissionEffects),
-    JournalEntitiesModule.withEntryComponents(),
-    ResearchEntitiesModule.withEntryComponents(),
-    FormModule,
-    NgbModalModule,
-    NgbCollapseModule,
-    NgbAccordionModule,
-    UploadModule,
-    AlertComponent,
-  ],
-  declarations: DECLARATIONS,
-  exports: [
-    ...DECLARATIONS,
-    FormModule,
-  ],
-  providers: [
-    SectionUploadService,
-    SectionsService,
-    SubmissionUploadsConfigDataService,
-    SubmissionAccessesConfigDataService,
-    SectionAccessesService,
-    SectionFormOperationsService,
-  ]
+    imports: [
+        CommonModule,
+        CoreModule.forRoot(),
+        SharedModule,
+        StoreModule.forFeature('submission', submissionReducers, storeModuleConfig as StoreConfig<SubmissionState, Action>),
+        EffectsModule.forFeature(submissionEffects),
+        JournalEntitiesModule.withEntryComponents(),
+        ResearchEntitiesModule.withEntryComponents(),
+        FormModule,
+        NgbModalModule,
+        NgbCollapseModule,
+        NgbAccordionModule,
+        UploadModule,
+        AlertComponent,
+        ...DECLARATIONS
+    ],
+    exports: [
+        ...DECLARATIONS,
+        FormModule,
+    ],
+    providers: [
+        SectionUploadService,
+        SectionsService,
+        SubmissionUploadsConfigDataService,
+        SubmissionAccessesConfigDataService,
+        SectionAccessesService,
+        SectionFormOperationsService,
+    ]
 })
 
 /**

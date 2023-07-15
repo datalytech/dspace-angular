@@ -42,7 +42,7 @@ import { CommunityListElementComponent } from './app/shared/object-list/communit
 import { CollectionListElementComponent} from './app/shared/object-list/collection-list-element/collection-list-element.component';
 import { CollectionDropdownComponent } from './app/shared/collection-dropdown/collection-dropdown.component';
 import { SharedBrowseByModule } from '../../app/shared/browse-by/shared-browse-by.module';
-import { ResultsBackButtonModule } from '../../app/shared/results-back-button/results-back-button.module';
+
 import { DsoPageModule } from '../../app/shared/dso-page/dso-page.module';
 import { FileDownloadLinkComponent } from './app/shared/file-download-link/file-download-link.component';
 import { StartsWithDateComponent } from './app/shared/starts-with/date/starts-with-date.component';
@@ -94,21 +94,20 @@ const DECLARATIONS = [
 ];
 
 @NgModule({
-  imports: [
+    imports: [
     CommonModule,
     SharedModule,
     RootModule,
     NavbarModule,
     SharedBrowseByModule,
-    ResultsBackButtonModule,
     ItemPageModule,
     ItemSharedModule,
     DsoPageModule,
-  ],
-  declarations: DECLARATIONS,
-  providers: [
-    ...ENTRY_COMPONENTS.map((component) => ({provide: component}))
-  ],
+    ...DECLARATIONS
+],
+    providers: [
+        ...ENTRY_COMPONENTS.map((component) => ({ provide: component }))
+    ]
 })
 /**
  * This module is included in the main bundle that gets downloaded at first page load. So it should

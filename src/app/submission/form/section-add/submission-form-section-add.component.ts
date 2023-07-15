@@ -7,14 +7,19 @@ import { SectionsService } from '../../sections/sections.service';
 import { HostWindowService } from '../../../shared/host-window.service';
 import { SubmissionService } from '../../submission.service';
 import { SectionDataObject } from '../../sections/models/section-data.model';
+import { TranslateModule } from '@ngx-translate/core';
+import { NgClass, NgIf, NgFor, AsyncPipe } from '@angular/common';
+import { NgbDropdownModule } from '@ng-bootstrap/ng-bootstrap';
 
 /**
  * This component allow to add any new section to submission form
  */
 @Component({
-  selector: 'ds-submission-form-section-add',
-  styleUrls: [ './submission-form-section-add.component.scss' ],
-  templateUrl: './submission-form-section-add.component.html'
+    selector: 'ds-submission-form-section-add',
+    styleUrls: ['./submission-form-section-add.component.scss'],
+    templateUrl: './submission-form-section-add.component.html',
+    standalone: true,
+    imports: [NgbDropdownModule, NgClass, NgIf, NgFor, AsyncPipe, TranslateModule]
 })
 export class SubmissionFormSectionAddComponent implements OnInit {
 

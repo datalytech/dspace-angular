@@ -1,5 +1,5 @@
 import { SectionAccessesService } from './section-accesses.service';
-import { Component, Inject, ViewChild } from '@angular/core';
+import { Component, forwardRef, Inject, ViewChild } from '@angular/core';
 import { UntypedFormControl } from '@angular/forms';
 
 import { filter, map, mergeMap, take } from 'rxjs/operators';
@@ -58,14 +58,17 @@ import {
 import { dateToISOFormat } from '../../../shared/date.util';
 import { DynamicFormControlCondition } from '@ng-dynamic-forms/core/lib/model/misc/dynamic-form-control-relation.model';
 import { DynamicDateControlValue } from '@ng-dynamic-forms/core/lib/model/dynamic-date-control.model';
+import { NgIf } from '@angular/common';
 
 /**
  * This component represents a section for managing item's access conditions.
  */
 @Component({
-  selector: 'ds-section-accesses',
-  templateUrl: './section-accesses.component.html',
-  styleUrls: ['./section-accesses.component.scss']
+    selector: 'ds-section-accesses',
+    templateUrl: './section-accesses.component.html',
+    styleUrls: ['./section-accesses.component.scss'],
+    standalone: true,
+    imports: [NgIf, forwardRef(() => FormComponent)]
 })
 @renderSectionFor(SectionsType.AccessesCondition)
 export class SubmissionSectionAccessesComponent extends SectionModelComponent {

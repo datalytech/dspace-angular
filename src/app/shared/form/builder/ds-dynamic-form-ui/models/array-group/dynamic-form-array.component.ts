@@ -1,6 +1,6 @@
-import { CdkDragDrop } from '@angular/cdk/drag-drop';
-import { Component, EventEmitter, Input, Output, QueryList } from '@angular/core';
-import { UntypedFormGroup } from '@angular/forms';
+import { CdkDragDrop, CdkDropList, CdkDrag, CdkDragHandle } from '@angular/cdk/drag-drop';
+import { Component, EventEmitter, forwardRef, Input, Output, QueryList } from '@angular/core';
+import { UntypedFormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {
   DynamicFormArrayComponent,
   DynamicFormControlCustomEvent,
@@ -15,11 +15,17 @@ import {
 import { Relationship } from '../../../../../../core/shared/item-relationships/relationship.model';
 import { hasValue } from '../../../../../empty.util';
 import { DynamicRowArrayModel } from '../ds-dynamic-row-array-model';
+import { DsDynamicFormControlContainerComponent } from '../../ds-dynamic-form-control-container.component';
+import { NgClass, NgFor, NgTemplateOutlet } from '@angular/common';
 
 @Component({
-  selector: 'ds-dynamic-form-array',
-  templateUrl: './dynamic-form-array.component.html',
-  styleUrls: ['./dynamic-form-array.component.scss']
+    selector: 'ds-dynamic-form-array',
+    templateUrl: './dynamic-form-array.component.html',
+    styleUrls: ['./dynamic-form-array.component.scss'],
+    standalone: true,
+    imports: [FormsModule, ReactiveFormsModule, NgClass, CdkDropList, NgFor, CdkDrag, CdkDragHandle, NgTemplateOutlet,
+      forwardRef(() => DsDynamicFormControlContainerComponent),
+    ]
 })
 export class DsDynamicFormArrayComponent extends DynamicFormArrayComponent {
 

@@ -6,10 +6,15 @@ import { map } from 'rxjs/operators';
 import { getFirstSucceededRemoteData } from '../../../core/shared/operators';
 import { ActivatedRoute } from '@angular/router';
 import { AlertType } from '@dspace/shared/ui';
+import { ItemVersionsComponent } from '../../versions/item-versions.component';
+import { NgIf, AsyncPipe } from '@angular/common';
+import { VarDirective } from '../../../shared/utils/var.directive';
 
 @Component({
-  selector: 'ds-item-version-history',
-  templateUrl: './item-version-history.component.html'
+    selector: 'ds-item-version-history',
+    templateUrl: './item-version-history.component.html',
+    standalone: true,
+    imports: [VarDirective, NgIf, ItemVersionsComponent, AsyncPipe]
 })
 /**
  * Component for listing and managing an item's version history

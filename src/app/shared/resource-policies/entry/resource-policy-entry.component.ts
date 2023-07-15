@@ -20,6 +20,9 @@ import { Group } from '../../../core/eperson/models/group.model';
 import { ACCESS_CONTROL_MODULE_PATH } from '../../../app-routing-paths';
 import { GROUP_EDIT_PATH } from '../../../access-control/access-control-routing-paths';
 import { GroupDataService } from '../../../core/eperson/group-data.service';
+import { TranslateModule } from '@ngx-translate/core';
+import { NgIf, AsyncPipe } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 
 export interface ResourcePolicyCheckboxEntry {
   id: string;
@@ -28,9 +31,11 @@ export interface ResourcePolicyCheckboxEntry {
 }
 
 @Component({
-  /* eslint-disable @angular-eslint/component-selector */
-  selector: 'tr[ds-resource-policy-entry]',
-  templateUrl: './resource-policy-entry.component.html',
+    /* eslint-disable @angular-eslint/component-selector */
+    selector: 'tr[ds-resource-policy-entry]',
+    templateUrl: './resource-policy-entry.component.html',
+    standalone: true,
+    imports: [FormsModule, NgIf, AsyncPipe, TranslateModule]
 })
 export class ResourcePolicyEntryComponent implements OnInit {
   @Input()

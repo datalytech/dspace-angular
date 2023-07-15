@@ -14,14 +14,23 @@ import { followLink } from '../../shared/utils/follow-link-config.model';
 import { MediaViewerConfig } from '../../../config/media-viewer-config.interface';
 import { environment } from '../../../environments/environment';
 import { Subscription } from 'rxjs/internal/Subscription';
+import { TranslateModule } from '@ngx-translate/core';
+import { ThumbnailComponent } from '../../thumbnail/thumbnail.component';
+import { ThemedMediaViewerImageComponent } from './media-viewer-image/themed-media-viewer-image.component';
+import { ThemedMediaViewerVideoComponent } from './media-viewer-video/themed-media-viewer-video.component';
+import { ThemedLoadingComponent } from '../../shared/loading/themed-loading.component';
+import { NgIf, AsyncPipe } from '@angular/common';
+import { VarDirective } from '../../shared/utils/var.directive';
 
 /**
  * This component renders the media viewers
  */
 @Component({
-  selector: 'ds-media-viewer',
-  templateUrl: './media-viewer.component.html',
-  styleUrls: ['./media-viewer.component.scss'],
+    selector: 'ds-media-viewer',
+    templateUrl: './media-viewer.component.html',
+    styleUrls: ['./media-viewer.component.scss'],
+    standalone: true,
+    imports: [VarDirective, NgIf, ThemedLoadingComponent, ThemedMediaViewerVideoComponent, ThemedMediaViewerImageComponent, ThumbnailComponent, AsyncPipe, TranslateModule]
 })
 export class MediaViewerComponent implements OnDestroy, OnInit {
   @Input() item: Item;

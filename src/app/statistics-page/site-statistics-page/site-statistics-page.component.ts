@@ -7,14 +7,21 @@ import { Site } from '../../core/shared/site.model';
 import { DSONameService } from '../../core/breadcrumbs/dso-name.service';
 import { switchMap } from 'rxjs/operators';
 import { AuthService } from '../../core/auth/auth.service';
+import { TranslateModule } from '@ngx-translate/core';
+import { StatisticsTableComponent } from '../statistics-table/statistics-table.component';
+import { ThemedLoadingComponent } from '../../shared/loading/themed-loading.component';
+import { NgIf, NgFor, AsyncPipe } from '@angular/common';
+import { VarDirective } from '../../shared/utils/var.directive';
 
 /**
  * Component representing the site-wide statistics page.
  */
 @Component({
-  selector: 'ds-site-statistics-page',
-  templateUrl: '../statistics-page/statistics-page.component.html',
-  styleUrls: ['./site-statistics-page.component.scss']
+    selector: 'ds-site-statistics-page',
+    templateUrl: '../statistics-page/statistics-page.component.html',
+    styleUrls: ['./site-statistics-page.component.scss'],
+    standalone: true,
+    imports: [VarDirective, NgIf, ThemedLoadingComponent, NgFor, StatisticsTableComponent, AsyncPipe, TranslateModule]
 })
 export class SiteStatisticsPageComponent extends StatisticsPageComponent<Site> {
 

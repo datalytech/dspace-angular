@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, forwardRef, OnDestroy, OnInit } from '@angular/core';
 import { AbstractTrackableComponent } from '../../../shared/trackable/abstract-trackable.component';
 import {
   DynamicFormControlModel,
@@ -10,11 +10,11 @@ import {
   DynamicRadioGroupModel,
   DynamicSelectModel
 } from '@ng-dynamic-forms/core';
-import { Location } from '@angular/common';
-import { TranslateService } from '@ngx-translate/core';
+import { Location, NgIf, AsyncPipe } from '@angular/common';
+import { TranslateService, TranslateModule } from '@ngx-translate/core';
 import { ObjectUpdatesService } from '../../../core/data/object-updates/object-updates.service';
 import { NotificationsService } from '../../../shared/notifications/notifications.service';
-import { UntypedFormGroup } from '@angular/forms';
+import { UntypedFormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { hasNoValue, hasValue, isNotEmpty } from '../../../shared/empty.util';
 import { ContentSource, ContentSourceHarvestType } from '../../../core/shared/content-source.model';
 import { Observable, Subscription } from 'rxjs';
@@ -31,13 +31,18 @@ import { RequestService } from '../../../core/data/request.service';
 import { environment } from '../../../../environments/environment';
 import { FieldUpdate } from '../../../core/data/object-updates/field-update.model';
 import { FieldUpdates } from '../../../core/data/object-updates/field-updates.model';
+import { CollectionSourceControlsComponent } from './collection-source-controls/collection-source-controls.component';
+import { FormComponent } from '../../../shared/form/form.component';
+import { ThemedLoadingComponent } from '../../../shared/loading/themed-loading.component';
 
 /**
  * Component for managing the content source of the collection
  */
 @Component({
-  selector: 'ds-collection-source',
-  templateUrl: './collection-source.component.html',
+    selector: 'ds-collection-source',
+    templateUrl: './collection-source.component.html',
+    standalone: true,
+    imports: [NgIf, ThemedLoadingComponent, forwardRef(() => FormComponent), FormsModule, ReactiveFormsModule, CollectionSourceControlsComponent, AsyncPipe, TranslateModule]
 })
 export class CollectionSourceComponent extends AbstractTrackableComponent implements OnInit, OnDestroy {
   /**

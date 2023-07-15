@@ -1,11 +1,11 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, forwardRef, Input, OnInit } from '@angular/core';
 import {
   DynamicFormControlModel,
   DynamicFormValueControlModel,
   DynamicInputModel,
   DynamicSelectModel
 } from '@ng-dynamic-forms/core';
-import { UntypedFormGroup } from '@angular/forms';
+import { UntypedFormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { EPerson } from '../../core/eperson/models/eperson.model';
 import { TranslateService } from '@ngx-translate/core';
 import { hasValue, isNotEmpty } from '../../shared/empty.util';
@@ -16,10 +16,14 @@ import { getRemoteDataPayload, getFirstSucceededRemoteData } from '../../core/sh
 import { FormBuilderService } from '../../shared/form/builder/form-builder.service';
 import { NotificationsService } from '../../shared/notifications/notifications.service';
 import { environment } from '../../../environments/environment';
+import { FormComponent } from '../../shared/form/form.component';
+import { NgIf } from '@angular/common';
 
 @Component({
-  selector: 'ds-profile-page-metadata-form',
-  templateUrl: './profile-page-metadata-form.component.html'
+    selector: 'ds-profile-page-metadata-form',
+    templateUrl: './profile-page-metadata-form.component.html',
+    standalone: true,
+    imports: [NgIf, forwardRef(() => FormComponent), FormsModule, ReactiveFormsModule]
 })
 /**
  * Component for a user to edit their metadata

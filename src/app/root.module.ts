@@ -53,10 +53,7 @@ const IMPORTS = [
   NgbModule,
 ];
 
-const PROVIDERS = [
-];
-
-const DECLARATIONS = [
+const COMPONENT_IMPORTS = [
   RootComponent,
   ThemedRootComponent,
   HeaderComponent,
@@ -85,23 +82,18 @@ const DECLARATIONS = [
   ContextHelpToggleComponent,
 ];
 
-const EXPORTS = [
-];
+
 
 @NgModule({
-  imports: [
-    ...IMPORTS
-  ],
-  providers: [
-    ...PROVIDERS
-  ],
-  declarations: [
-    ...DECLARATIONS,
-  ],
-  exports: [
-    ...EXPORTS,
-    ...DECLARATIONS,
-  ]
+    imports: [
+        ...IMPORTS,
+        ...COMPONENT_IMPORTS
+    ],
+    providers: [
+    ],
+    exports: [
+        ...COMPONENT_IMPORTS,
+    ]
 })
 export class RootModule {
 

@@ -1,7 +1,7 @@
 import { Component, OnInit, Inject, OnDestroy } from '@angular/core';
 import { VocabularyOptions } from '../../core/submission/vocabularies/models/vocabulary-options.model';
 import { VocabularyEntryDetail } from '../../core/submission/vocabularies/models/vocabulary-entry-detail.model';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, RouterLink } from '@angular/router';
 import { Observable, Subscription } from 'rxjs';
 import { BrowseDefinition } from '../../core/shared/browse-definition.model';
 import { GenericConstructor } from '../../core/shared/generic-constructor';
@@ -9,11 +9,15 @@ import { BROWSE_BY_COMPONENT_FACTORY } from '../browse-by-switcher/browse-by-dec
 import { map } from 'rxjs/operators';
 import { ThemeService } from 'src/app/shared/theme-support/theme.service';
 import { HierarchicalBrowseDefinition } from '../../core/shared/hierarchical-browse-definition.model';
+import { TranslateModule } from '@ngx-translate/core';
+import { VocabularyTreeviewComponent } from '../../shared/form/vocabulary-treeview/vocabulary-treeview.component';
 
 @Component({
-  selector: 'ds-browse-by-taxonomy-page',
-  templateUrl: './browse-by-taxonomy-page.component.html',
-  styleUrls: ['./browse-by-taxonomy-page.component.scss']
+    selector: 'ds-browse-by-taxonomy-page',
+    templateUrl: './browse-by-taxonomy-page.component.html',
+    styleUrls: ['./browse-by-taxonomy-page.component.scss'],
+    standalone: true,
+    imports: [VocabularyTreeviewComponent, RouterLink, TranslateModule]
 })
 /**
  * Component for browsing items by metadata in a hierarchical controlled vocabulary

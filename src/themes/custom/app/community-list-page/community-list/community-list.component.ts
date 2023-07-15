@@ -1,5 +1,12 @@
 import { Component } from '@angular/core';
 import { CommunityListComponent as BaseComponent } from '../../../../../app/community-list-page/community-list/community-list.component';
+import { TranslateModule } from '@ngx-translate/core';
+import { TruncatablePartComponent } from '../../../../../app/shared/truncatable/truncatable-part/truncatable-part.component';
+import { TruncatableComponent } from '../../../../../app/shared/truncatable/truncatable.component';
+import { RouterLink } from '@angular/router';
+import { CdkTreeModule } from '@angular/cdk/tree';
+import { ThemedLoadingComponent } from '../../../../../app/shared/loading/themed-loading.component';
+import { NgIf, NgClass, AsyncPipe } from '@angular/common';
 
 /**
  * A tree-structured list of nodes representing the communities, their subCommunities and collections.
@@ -9,10 +16,12 @@ import { CommunityListComponent as BaseComponent } from '../../../../../app/comm
  * Which nodes were expanded is kept in the store, so this persists across pages.
  */
 @Component({
-  selector: 'ds-community-list',
-  // styleUrls: ['./community-list.component.scss'],
-  // templateUrl: './community-list.component.html'
-  templateUrl: '../../../../../app/community-list-page/community-list/community-list.component.html'
+    selector: 'ds-community-list',
+    // styleUrls: ['./community-list.component.scss'],
+    // templateUrl: './community-list.component.html'
+    templateUrl: '../../../../../app/community-list-page/community-list/community-list.component.html',
+    standalone: true,
+    imports: [NgIf, ThemedLoadingComponent, CdkTreeModule, NgClass, RouterLink, TruncatableComponent, TruncatablePartComponent, AsyncPipe, TranslateModule]
 })
 export class CommunityListComponent extends BaseComponent {}
 

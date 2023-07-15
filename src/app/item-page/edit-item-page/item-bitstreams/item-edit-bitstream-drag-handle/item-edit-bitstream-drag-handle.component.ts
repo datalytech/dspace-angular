@@ -1,9 +1,12 @@
 import { Component, OnInit, ViewChild, ViewContainerRef } from '@angular/core';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
-  selector: 'ds-item-edit-bitstream-drag-handle',
-  styleUrls: ['../item-bitstreams.component.scss'],
-  templateUrl: './item-edit-bitstream-drag-handle.component.html',
+    selector: 'ds-item-edit-bitstream-drag-handle',
+    styleUrls: ['../item-bitstreams.component.scss'],
+    templateUrl: './item-edit-bitstream-drag-handle.component.html',
+    standalone: true,
+    imports: [TranslateModule]
 })
 /**
  * Component displaying a drag handle for the item-edit-bitstream page

@@ -1,7 +1,7 @@
 import { Component, OnDestroy, OnInit, Input, OnChanges, SimpleChanges, EventEmitter, Output } from '@angular/core';
-import { UntypedFormBuilder } from '@angular/forms';
-import { Router } from '@angular/router';
-import { TranslateService } from '@ngx-translate/core';
+import { UntypedFormBuilder, FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { Router, RouterLink } from '@angular/router';
+import { TranslateService, TranslateModule } from '@ngx-translate/core';
 import { EPersonDataService } from '../../../../core/eperson/eperson-data.service';
 import { GroupDataService } from '../../../../core/eperson/group-data.service';
 import { NotificationsService } from '../../../../shared/notifications/notifications.service';
@@ -18,6 +18,9 @@ import {
   EPersonListActionConfig,
 } from '../../../../access-control/group-registry/group-form/members-list/members-list.component';
 import { DSONameService } from '../../../../core/breadcrumbs/dso-name.service';
+import { PaginationComponent } from '../../../../shared/pagination/pagination.component';
+import { NgIf, NgFor, NgClass, AsyncPipe } from '@angular/common';
+import { ContextHelpDirective } from '../../../../shared/context-help.directive';
 
 /**
  * Keys to keep track of specific subscriptions
@@ -32,9 +35,11 @@ enum SubKey {
  * A custom {@link MembersListComponent} for the advanced SelectReviewer workflow.
  */
 @Component({
-  selector: 'ds-reviewers-list',
-  // templateUrl: './reviewers-list.component.html',
-  templateUrl: '../../../../access-control/group-registry/group-form/members-list/members-list.component.html',
+    selector: 'ds-reviewers-list',
+    // templateUrl: './reviewers-list.component.html',
+    templateUrl: '../../../../access-control/group-registry/group-form/members-list/members-list.component.html',
+    standalone: true,
+    imports: [ContextHelpDirective, FormsModule, ReactiveFormsModule, NgIf, PaginationComponent, NgFor, RouterLink, NgClass, AsyncPipe, TranslateModule]
 })
 export class ReviewersListComponent extends MembersListComponent implements OnInit, OnChanges, OnDestroy {
 

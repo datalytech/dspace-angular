@@ -3,7 +3,7 @@ import { UntypedFormGroup } from '@angular/forms';
 
 import { Observable, of as observableOf } from 'rxjs';
 import { catchError, distinctUntilChanged, map, tap } from 'rxjs/operators';
-import { NgbDropdown } from '@ng-bootstrap/ng-bootstrap';
+import { NgbDropdown, NgbDropdownModule } from '@ng-bootstrap/ng-bootstrap';
 import { DynamicFormLayoutService, DynamicFormValidationService } from '@ng-dynamic-forms/core';
 
 import { VocabularyEntry } from '../../../../../../core/submission/vocabularies/models/vocabulary-entry.model';
@@ -18,14 +18,19 @@ import {
 } from '../../../../../../core/data/paginated-list.model';
 import { DsDynamicVocabularyComponent } from '../dynamic-vocabulary.component';
 import { FormFieldMetadataValueObject } from '../../../models/form-field-metadata-value.model';
+import { TranslateModule } from '@ngx-translate/core';
+import { InfiniteScrollModule } from 'ngx-infinite-scroll';
+import { NgIf, NgFor, AsyncPipe } from '@angular/common';
 
 /**
  * Component representing a dropdown input field
  */
 @Component({
-  selector: 'ds-dynamic-scrollable-dropdown',
-  styleUrls: ['./dynamic-scrollable-dropdown.component.scss'],
-  templateUrl: './dynamic-scrollable-dropdown.component.html'
+    selector: 'ds-dynamic-scrollable-dropdown',
+    styleUrls: ['./dynamic-scrollable-dropdown.component.scss'],
+    templateUrl: './dynamic-scrollable-dropdown.component.html',
+    standalone: true,
+    imports: [NgbDropdownModule, NgIf, InfiniteScrollModule, NgFor, AsyncPipe, TranslateModule]
 })
 export class DsDynamicScrollableDropdownComponent extends DsDynamicVocabularyComponent implements OnInit {
   @Input() bindId = true;

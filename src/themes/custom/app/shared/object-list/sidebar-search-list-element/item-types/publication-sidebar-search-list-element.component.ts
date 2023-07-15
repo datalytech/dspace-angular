@@ -6,15 +6,20 @@ import { ItemSearchResult } from '../../../../../../../app/shared/object-collect
 import {
   PublicationSidebarSearchListElementComponent as BaseComponent
 } from '../../../../../../../app/shared/object-list/sidebar-search-list-element/item-types/publication/publication-sidebar-search-list-element.component';
+import { TranslateModule } from '@ngx-translate/core';
+import { NgClass, NgIf, AsyncPipe } from '@angular/common';
+import { TruncatablePartComponent } from '../../../../../../../app/shared/truncatable/truncatable-part/truncatable-part.component';
 
 @listableObjectComponent('PublicationSearchResult', ViewMode.ListElement, Context.SideBarSearchModal, 'custom')
 @listableObjectComponent('PublicationSearchResult', ViewMode.ListElement, Context.SideBarSearchModalCurrent, 'custom')
 @listableObjectComponent(ItemSearchResult, ViewMode.ListElement, Context.SideBarSearchModal, 'custom')
 @listableObjectComponent(ItemSearchResult, ViewMode.ListElement, Context.SideBarSearchModalCurrent, 'custom')
 @Component({
-  selector: 'ds-publication-sidebar-search-list-element',
-  // templateUrl: './publication-sidebar-search-list-element.component.html',
-  templateUrl: '../../../../../../../app/shared/object-list/sidebar-search-list-element/sidebar-search-list-element.component.html',
+    selector: 'ds-publication-sidebar-search-list-element',
+    // templateUrl: './publication-sidebar-search-list-element.component.html',
+    templateUrl: '../../../../../../../app/shared/object-list/sidebar-search-list-element/sidebar-search-list-element.component.html',
+    standalone: true,
+    imports: [TruncatablePartComponent, NgClass, NgIf, AsyncPipe, TranslateModule]
 })
 export class PublicationSidebarSearchListElementComponent extends BaseComponent {
 }

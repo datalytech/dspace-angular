@@ -27,14 +27,22 @@ import { SubmissionJsonPatchOperationsService } from '../../../../core/submissio
 import { SubmissionSectionUploadFileEditComponent } from './edit/section-upload-file-edit.component';
 import { Bitstream } from '../../../../core/shared/bitstream.model';
 import { NgbModalOptions } from '@ng-bootstrap/ng-bootstrap/modal/modal-config';
+import { TranslateModule } from '@ngx-translate/core';
+import { FileSizePipe } from '../../../../shared/utils/file-size-pipe';
+import { SubmissionSectionUploadFileViewComponent } from './view/section-upload-file-view.component';
+import { ThemedFileDownloadLinkComponent } from '../../../../shared/file-download-link/themed-file-download-link.component';
+import { ThemedThumbnailComponent } from '../../../../thumbnail/themed-thumbnail.component';
+import { NgIf, AsyncPipe } from '@angular/common';
 
 /**
  * This component represents a single bitstream contained in the submission
  */
 @Component({
-  selector: 'ds-submission-upload-section-file',
-  styleUrls: ['./section-upload-file.component.scss'],
-  templateUrl: './section-upload-file.component.html',
+    selector: 'ds-submission-upload-section-file',
+    styleUrls: ['./section-upload-file.component.scss'],
+    templateUrl: './section-upload-file.component.html',
+    standalone: true,
+    imports: [NgIf, ThemedThumbnailComponent, ThemedFileDownloadLinkComponent, SubmissionSectionUploadFileViewComponent, AsyncPipe, FileSizePipe, TranslateModule]
 })
 export class SubmissionSectionUploadFileComponent implements OnChanges, OnInit, OnDestroy {
 

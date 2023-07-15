@@ -1,5 +1,5 @@
 import { ChangeDetectorRef, Component, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
-import { UntypedFormGroup } from '@angular/forms';
+import { UntypedFormGroup, FormsModule } from '@angular/forms';
 
 import { DynamicFormLayoutService, DynamicFormValidationService } from '@ng-dynamic-forms/core';
 import {
@@ -14,7 +14,7 @@ import {
   tap
 } from 'rxjs/operators';
 import { Observable, of as observableOf, Subject, Subscription } from 'rxjs';
-import { NgbModal, NgbModalRef, NgbTypeahead, NgbTypeaheadSelectItemEvent } from '@ng-bootstrap/ng-bootstrap';
+import { NgbModal, NgbModalRef, NgbTypeahead, NgbTypeaheadSelectItemEvent, NgbTypeaheadModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { VocabularyService } from '../../../../../../core/submission/vocabularies/vocabulary.service';
 import { DynamicOneboxModel } from './dynamic-onebox.model';
@@ -32,15 +32,21 @@ import { DsDynamicVocabularyComponent } from '../dynamic-vocabulary.component';
 import { Vocabulary } from '../../../../../../core/submission/vocabularies/models/vocabulary.model';
 import { VocabularyEntryDetail } from '../../../../../../core/submission/vocabularies/models/vocabulary-entry-detail.model';
 import { VocabularyTreeviewModalComponent } from '../../../../vocabulary-treeview-modal/vocabulary-treeview-modal.component';
+import { TranslateModule } from '@ngx-translate/core';
+import { ObjNgFor } from '../../../../../utils/object-ngfor.pipe';
+import { AuthorityConfidenceStateDirective } from '../../../../directives/authority-confidence-state.directive';
+import { NgTemplateOutlet, NgFor, NgIf, AsyncPipe } from '@angular/common';
 
 /**
  * Component representing a onebox input field.
  * If field has a Hierarchical Vocabulary configured, it's rendered with vocabulary tree
  */
 @Component({
-  selector: 'ds-dynamic-onebox',
-  styleUrls: ['./dynamic-onebox.component.scss'],
-  templateUrl: './dynamic-onebox.component.html'
+    selector: 'ds-dynamic-onebox',
+    styleUrls: ['./dynamic-onebox.component.scss'],
+    templateUrl: './dynamic-onebox.component.html',
+    standalone: true,
+    imports: [NgTemplateOutlet, NgFor, NgIf, AuthorityConfidenceStateDirective, NgbTypeaheadModule, FormsModule, AsyncPipe, ObjNgFor, TranslateModule]
 })
 export class DsDynamicOneboxComponent extends DsDynamicVocabularyComponent implements OnInit {
 

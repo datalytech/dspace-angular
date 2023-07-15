@@ -17,7 +17,7 @@ import {
   ViewChild,
   ViewContainerRef
 } from '@angular/core';
-import { UntypedFormArray, UntypedFormGroup } from '@angular/forms';
+import { UntypedFormArray, UntypedFormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import {
   DYNAMIC_FORM_CONTROL_TYPE_ARRAY,
@@ -55,8 +55,8 @@ import {
   DynamicNGBootstrapTextAreaComponent,
   DynamicNGBootstrapTimePickerComponent
 } from '@ng-dynamic-forms/ui-ng-bootstrap';
-import { TranslateService } from '@ngx-translate/core';
-import { ReorderableRelationship } from './existing-metadata-list-element/existing-metadata-list-element.component';
+import { TranslateService, TranslateModule } from '@ngx-translate/core';
+import { ReorderableRelationship, ExistingMetadataListElementComponent } from './existing-metadata-list-element/existing-metadata-list-element.component';
 
 import { DYNAMIC_FORM_CONTROL_TYPE_ONEBOX } from './models/onebox/dynamic-onebox.model';
 import { DYNAMIC_FORM_CONTROL_TYPE_SCROLLABLE_DROPDOWN } from './models/scrollable-dropdown/dynamic-scrollable-dropdown.model';
@@ -84,7 +84,7 @@ import { combineLatest as observableCombineLatest, Observable, Subscription } fr
 import { DsDynamicTypeBindRelationService } from './ds-dynamic-type-bind-relation.service';
 import { SearchResult } from '../../../search/models/search-result.model';
 import { DSpaceObject } from '../../../../core/shared/dspace-object.model';
-import { NgbModal, NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
+import { NgbModal, NgbModalRef, NgbTooltipModule } from '@ng-bootstrap/ng-bootstrap';
 import { RelationshipDataService } from '../../../../core/data/relationship-data.service';
 import { SelectableListService } from '../../../object-list/selectable-list/selectable-list.service';
 import { DsDynamicDisabledComponent } from './models/disabled/dynamic-disabled.component';
@@ -120,78 +120,17 @@ import { DYNAMIC_FORM_CONTROL_TYPE_RELATION_GROUP } from './ds-dynamic-form-cons
 import { FormFieldMetadataValueObject } from '../models/form-field-metadata-value.model';
 import { APP_CONFIG, AppConfig } from '../../../../../config/app-config.interface';
 import { itemLinksToFollow } from '../../../utils/relation-query.utils';
+import { ExistingRelationListElementComponent } from './existing-relation-list-element/existing-relation-list-element.component';
+import { NgClass, NgIf, NgTemplateOutlet, NgFor, AsyncPipe } from '@angular/common';
 
-export function dsDynamicFormControlMapFn(model: DynamicFormControlModel): Type<DynamicFormControl> | null {
-  switch (model.type) {
-    case DYNAMIC_FORM_CONTROL_TYPE_ARRAY:
-      return DsDynamicFormArrayComponent;
-
-    case DYNAMIC_FORM_CONTROL_TYPE_CHECKBOX:
-      return DynamicNGBootstrapCheckboxComponent;
-
-    case DYNAMIC_FORM_CONTROL_TYPE_CHECKBOX_GROUP:
-      return (model instanceof DynamicListCheckboxGroupModel) ? DsDynamicListComponent : DynamicNGBootstrapCheckboxGroupComponent;
-
-    case DYNAMIC_FORM_CONTROL_TYPE_DATEPICKER:
-      const datepickerModel = model as DynamicDatePickerModel;
-
-      return datepickerModel.inline ? DynamicNGBootstrapCalendarComponent : DsDatePickerInlineComponent;
-
-    case DYNAMIC_FORM_CONTROL_TYPE_GROUP:
-      return DsDynamicFormGroupComponent;
-
-    case DYNAMIC_FORM_CONTROL_TYPE_INPUT:
-      return DynamicNGBootstrapInputComponent;
-
-    case DYNAMIC_FORM_CONTROL_TYPE_RADIO_GROUP:
-      return (model instanceof DynamicListRadioGroupModel) ? DsDynamicListComponent : DynamicNGBootstrapRadioGroupComponent;
-
-    case DYNAMIC_FORM_CONTROL_TYPE_SELECT:
-      return DynamicNGBootstrapSelectComponent;
-
-    case DYNAMIC_FORM_CONTROL_TYPE_TEXTAREA:
-      return DynamicNGBootstrapTextAreaComponent;
-
-    case DYNAMIC_FORM_CONTROL_TYPE_TIMEPICKER:
-      return DynamicNGBootstrapTimePickerComponent;
-
-    case DYNAMIC_FORM_CONTROL_TYPE_ONEBOX:
-      return DsDynamicOneboxComponent;
-
-    case DYNAMIC_FORM_CONTROL_TYPE_SCROLLABLE_DROPDOWN:
-      return DsDynamicScrollableDropdownComponent;
-
-    case DYNAMIC_FORM_CONTROL_TYPE_TAG:
-      return DsDynamicTagComponent;
-
-    case DYNAMIC_FORM_CONTROL_TYPE_RELATION_GROUP:
-      return DsDynamicRelationGroupComponent;
-
-    case DYNAMIC_FORM_CONTROL_TYPE_DSDATEPICKER:
-      return DsDatePickerComponent;
-
-    case DYNAMIC_FORM_CONTROL_TYPE_LOOKUP:
-      return DsDynamicLookupComponent;
-
-    case DYNAMIC_FORM_CONTROL_TYPE_LOOKUP_NAME:
-      return DsDynamicLookupComponent;
-
-    case DYNAMIC_FORM_CONTROL_TYPE_DISABLED:
-      return DsDynamicDisabledComponent;
-
-    case DYNAMIC_FORM_CONTROL_TYPE_CUSTOM_SWITCH:
-      return CustomSwitchComponent;
-
-    default:
-      return null;
-  }
-}
 
 @Component({
-  selector: 'ds-dynamic-form-control-container',
-  styleUrls: ['./ds-dynamic-form-control-container.component.scss'],
-  templateUrl: './ds-dynamic-form-control-container.component.html',
-  changeDetection: ChangeDetectionStrategy.Default
+    selector: 'ds-dynamic-form-control-container',
+    styleUrls: ['./ds-dynamic-form-control-container.component.scss'],
+    templateUrl: './ds-dynamic-form-control-container.component.html',
+    changeDetection: ChangeDetectionStrategy.Default,
+    standalone: true,
+    imports: [FormsModule, ReactiveFormsModule, NgClass, NgIf, NgTemplateOutlet, NgFor, NgbTooltipModule, ExistingMetadataListElementComponent, ExistingRelationListElementComponent, AsyncPipe, TranslateModule]
 })
 export class DsDynamicFormControlContainerComponent extends DynamicFormControlContainerComponent implements OnInit, OnChanges, OnDestroy {
   @ContentChildren(DynamicTemplateDirective) contentTemplateList: QueryList<DynamicTemplateDirective>;
@@ -511,5 +450,71 @@ export class DsDynamicFormControlContainerComponent extends DynamicFormControlCo
     this.subs.push(this.item$.subscribe((item) => this.item = item));
     this.subs.push(collection$.subscribe((collection) => this.collection = collection));
 
+  }
+}
+
+export function dsDynamicFormControlMapFn(model: DynamicFormControlModel): Type<DynamicFormControl> | null {
+  switch (model.type) {
+    case DYNAMIC_FORM_CONTROL_TYPE_ARRAY:
+      return DsDynamicFormArrayComponent;
+
+    case DYNAMIC_FORM_CONTROL_TYPE_CHECKBOX:
+      return DynamicNGBootstrapCheckboxComponent;
+
+    case DYNAMIC_FORM_CONTROL_TYPE_CHECKBOX_GROUP:
+      return (model instanceof DynamicListCheckboxGroupModel) ? DsDynamicListComponent : DynamicNGBootstrapCheckboxGroupComponent;
+
+    case DYNAMIC_FORM_CONTROL_TYPE_DATEPICKER:
+      const datepickerModel = model as DynamicDatePickerModel;
+
+      return datepickerModel.inline ? DynamicNGBootstrapCalendarComponent : DsDatePickerInlineComponent;
+
+    case DYNAMIC_FORM_CONTROL_TYPE_GROUP:
+      return DsDynamicFormGroupComponent;
+
+    case DYNAMIC_FORM_CONTROL_TYPE_INPUT:
+      return DynamicNGBootstrapInputComponent;
+
+    case DYNAMIC_FORM_CONTROL_TYPE_RADIO_GROUP:
+      return (model instanceof DynamicListRadioGroupModel) ? DsDynamicListComponent : DynamicNGBootstrapRadioGroupComponent;
+
+    case DYNAMIC_FORM_CONTROL_TYPE_SELECT:
+      return DynamicNGBootstrapSelectComponent;
+
+    case DYNAMIC_FORM_CONTROL_TYPE_TEXTAREA:
+      return DynamicNGBootstrapTextAreaComponent;
+
+    case DYNAMIC_FORM_CONTROL_TYPE_TIMEPICKER:
+      return DynamicNGBootstrapTimePickerComponent;
+
+    case DYNAMIC_FORM_CONTROL_TYPE_ONEBOX:
+      return DsDynamicOneboxComponent;
+
+    case DYNAMIC_FORM_CONTROL_TYPE_SCROLLABLE_DROPDOWN:
+      return DsDynamicScrollableDropdownComponent;
+
+    case DYNAMIC_FORM_CONTROL_TYPE_TAG:
+      return DsDynamicTagComponent;
+
+    case DYNAMIC_FORM_CONTROL_TYPE_RELATION_GROUP:
+      return DsDynamicRelationGroupComponent;
+
+    case DYNAMIC_FORM_CONTROL_TYPE_DSDATEPICKER:
+      return DsDatePickerComponent;
+
+    case DYNAMIC_FORM_CONTROL_TYPE_LOOKUP:
+      return DsDynamicLookupComponent;
+
+    case DYNAMIC_FORM_CONTROL_TYPE_LOOKUP_NAME:
+      return DsDynamicLookupComponent;
+
+    case DYNAMIC_FORM_CONTROL_TYPE_DISABLED:
+      return DsDynamicDisabledComponent;
+
+    case DYNAMIC_FORM_CONTROL_TYPE_CUSTOM_SWITCH:
+      return CustomSwitchComponent;
+
+    default:
+      return null;
   }
 }

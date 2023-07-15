@@ -1,15 +1,22 @@
 import { Component } from '@angular/core';
 import { BreadcrumbsComponent as BaseComponent } from '../../../../app/breadcrumbs/breadcrumbs.component';
+import { TranslateModule } from '@ngx-translate/core';
+import { NgbTooltipModule } from '@ng-bootstrap/ng-bootstrap';
+import { RouterLink } from '@angular/router';
+import { NgIf, NgTemplateOutlet, NgFor, AsyncPipe } from '@angular/common';
+import { VarDirective } from '../../../../app/shared/utils/var.directive';
 
 /**
  * Component representing the breadcrumbs of a page
  */
 @Component({
-  selector: 'ds-breadcrumbs',
-  // templateUrl: './breadcrumbs.component.html',
-  templateUrl: '../../../../app/breadcrumbs/breadcrumbs.component.html',
-  // styleUrls: ['./breadcrumbs.component.scss']
-  styleUrls: ['../../../../app/breadcrumbs/breadcrumbs.component.scss']
+    selector: 'ds-breadcrumbs',
+    // templateUrl: './breadcrumbs.component.html',
+    templateUrl: '../../../../app/breadcrumbs/breadcrumbs.component.html',
+    // styleUrls: ['./breadcrumbs.component.scss']
+    styleUrls: ['../../../../app/breadcrumbs/breadcrumbs.component.scss'],
+    standalone: true,
+    imports: [VarDirective, NgIf, NgTemplateOutlet, NgFor, RouterLink, NgbTooltipModule, AsyncPipe, TranslateModule]
 })
 export class BreadcrumbsComponent extends BaseComponent {
 }

@@ -6,10 +6,14 @@ import { first, map } from 'rxjs/operators';
 
 import { RemoteData } from '../../../core/data/remote-data';
 import { DSpaceObject } from '../../../core/shared/dspace-object.model';
+import { AsyncPipe } from '@angular/common';
+import { ResourcePoliciesComponent } from '../../../shared/resource-policies/resource-policies.component';
 
 @Component({
-  selector: 'ds-collection-authorizations',
-  templateUrl: './collection-authorizations.component.html',
+    selector: 'ds-collection-authorizations',
+    templateUrl: './collection-authorizations.component.html',
+    standalone: true,
+    imports: [ResourcePoliciesComponent, AsyncPipe]
 })
 /**
  * Component that handles the Collection Authorizations

@@ -1,14 +1,20 @@
 import { Component, EventEmitter, Output } from '@angular/core';
 import { CollectionListEntry } from '../../../shared/collection-dropdown/collection-dropdown.component';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
+import { TranslateModule } from '@ngx-translate/core';
+import { ThemedCollectionDropdownComponent } from '../../../shared/collection-dropdown/themed-collection-dropdown.component';
+import { ThemedLoadingComponent } from '../../../shared/loading/themed-loading.component';
+import { NgIf, NgClass } from '@angular/common';
 
 /**
  * Wrap component for 'ds-collection-dropdown'.
  */
 @Component({
-  selector: 'ds-submission-import-external-collection',
-  styleUrls: ['./submission-import-external-collection.component.scss'],
-  templateUrl: './submission-import-external-collection.component.html'
+    selector: 'ds-submission-import-external-collection',
+    styleUrls: ['./submission-import-external-collection.component.scss'],
+    templateUrl: './submission-import-external-collection.component.html',
+    standalone: true,
+    imports: [NgIf, ThemedLoadingComponent, ThemedCollectionDropdownComponent, NgClass, TranslateModule]
 })
 export class SubmissionImportExternalCollectionComponent {
   /**

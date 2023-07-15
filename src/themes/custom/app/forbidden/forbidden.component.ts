@@ -1,13 +1,17 @@
 import { Component } from '@angular/core';
 import { ForbiddenComponent as BaseComponent } from '../../../../app/forbidden/forbidden.component';
+import { TranslateModule } from '@ngx-translate/core';
+import { RouterLink } from '@angular/router';
 
 
 @Component({
-  selector: 'ds-forbidden',
-  // templateUrl: './forbidden.component.html',
-  templateUrl: '../../../../app/forbidden/forbidden.component.html',
-  // styleUrls: ['./forbidden.component.scss']
-  styleUrls: ['../../../../app/forbidden/forbidden.component.scss']
+    selector: 'ds-forbidden',
+    // templateUrl: './forbidden.component.html',
+    templateUrl: '../../../../app/forbidden/forbidden.component.html',
+    // styleUrls: ['./forbidden.component.scss']
+    styleUrls: ['../../../../app/forbidden/forbidden.component.scss'],
+    standalone: true,
+    imports: [RouterLink, TranslateModule]
 })
 /**
  * This component representing the `Forbidden` DSpace page.

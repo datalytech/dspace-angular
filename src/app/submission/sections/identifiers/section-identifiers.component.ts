@@ -1,7 +1,7 @@
 import {ChangeDetectionStrategy, Component, Inject } from '@angular/core';
 
 import { Observable, of as observableOf, Subscription } from 'rxjs';
-import { TranslateService } from '@ngx-translate/core';
+import { TranslateService, TranslateModule } from '@ngx-translate/core';
 import { SectionsType } from '../sections-type';
 import { SectionModelComponent } from '../models/section.model';
 import { renderSectionFor } from '../sections-decorator';
@@ -10,6 +10,8 @@ import { SubmissionService } from '../../submission.service';
 import { SectionsService } from '../sections.service';
 import { WorkspaceitemSectionIdentifiersObject } from '../../../core/submission/models/workspaceitem-section-identifiers.model';
 import { AlertType } from "@dspace/shared/ui";
+import { NgIf, NgFor, AsyncPipe } from '@angular/common';
+import { VarDirective } from '../../../shared/utils/var.directive';
 
 /**
  * This simple component displays DOI, handle and other identifiers that are already minted for the item in
@@ -19,9 +21,11 @@ import { AlertType } from "@dspace/shared/ui";
  * @author Kim Shepherd
  */
 @Component({
-  selector: 'ds-submission-section-identifiers',
-  templateUrl: './section-identifiers.component.html',
-  changeDetection: ChangeDetectionStrategy.Default
+    selector: 'ds-submission-section-identifiers',
+    templateUrl: './section-identifiers.component.html',
+    changeDetection: ChangeDetectionStrategy.Default,
+    standalone: true,
+    imports: [VarDirective, NgIf, NgFor, AsyncPipe, TranslateModule]
 })
 
 @renderSectionFor(SectionsType.Identifiers)

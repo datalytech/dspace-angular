@@ -7,11 +7,15 @@ import { BulkAccessSettingsComponent } from './settings/bulk-access-settings.com
 import { BulkAccessControlService } from '../../shared/access-control-form-container/bulk-access-control.service';
 import { SelectableListState } from '../../shared/object-list/selectable-list/selectable-list.reducer';
 import { SelectableListService } from '../../shared/object-list/selectable-list/selectable-list.service';
+import { TranslateModule } from '@ngx-translate/core';
+import { BulkAccessBrowseComponent } from './browse/bulk-access-browse.component';
 
 @Component({
-  selector: 'ds-bulk-access',
-  templateUrl: './bulk-access.component.html',
-  styleUrls: ['./bulk-access.component.scss']
+    selector: 'ds-bulk-access',
+    templateUrl: './bulk-access.component.html',
+    styleUrls: ['./bulk-access.component.scss'],
+    standalone: true,
+    imports: [BulkAccessBrowseComponent, BulkAccessSettingsComponent, TranslateModule]
 })
 export class BulkAccessComponent implements OnInit {
 

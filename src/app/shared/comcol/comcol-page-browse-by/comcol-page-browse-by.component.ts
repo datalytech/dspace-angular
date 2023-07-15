@@ -1,7 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
-import { ActivatedRoute, Params, Router } from '@angular/router';
+import { ActivatedRoute, Params, Router, RouterLinkActive, RouterLink } from '@angular/router';
 import { getCommunityPageRoute } from '../../../community-page/community-page-routing-paths';
 import { getCollectionPageRoute } from '../../../collection-page/collection-page-routing-paths';
 import { getFirstCompletedRemoteData } from '../../../core/shared/operators';
@@ -9,6 +9,9 @@ import { PaginatedList } from '../../../core/data/paginated-list.model';
 import { BrowseDefinition } from '../../../core/shared/browse-definition.model';
 import { RemoteData } from '../../../core/data/remote-data';
 import { BrowseService } from '../../../core/browse/browse.service';
+import { TranslateModule } from '@ngx-translate/core';
+import { FormsModule } from '@angular/forms';
+import { NgFor, AsyncPipe } from '@angular/common';
 
 export interface ComColPageNavOption {
   id: string;
@@ -22,9 +25,11 @@ export interface ComColPageNavOption {
  * It expects the ID of the Community or Collection as input to be passed on as a scope
  */
 @Component({
-  selector: 'ds-comcol-page-browse-by',
-  styleUrls: ['./comcol-page-browse-by.component.scss'],
-  templateUrl: './comcol-page-browse-by.component.html'
+    selector: 'ds-comcol-page-browse-by',
+    styleUrls: ['./comcol-page-browse-by.component.scss'],
+    templateUrl: './comcol-page-browse-by.component.html',
+    standalone: true,
+    imports: [NgFor, RouterLinkActive, RouterLink, FormsModule, AsyncPipe, TranslateModule]
 })
 export class ComcolPageBrowseByComponent implements OnInit {
   /**

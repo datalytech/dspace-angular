@@ -18,7 +18,7 @@ import {
 import { ActivatedRoute, Router } from '@angular/router';
 import { filter, map, startWith, switchMap, take } from 'rxjs/operators';
 import { ItemDataService } from '../../../core/data/item-data.service';
-import { TranslateService } from '@ngx-translate/core';
+import { TranslateService, TranslateModule } from '@ngx-translate/core';
 import { NotificationsService } from '../../../shared/notifications/notifications.service';
 import { DSpaceObjectType } from '../../../core/shared/dspace-object-type.model';
 import { hasValue, isNotEmpty } from '../../../shared/empty.util';
@@ -28,16 +28,22 @@ import { SearchService } from '../../../core/shared/search/search.service';
 import { NoContent } from '../../../core/shared/NoContent.model';
 import { getItemPageRoute } from '../../item-page-routing-paths';
 import { fadeIn, fadeInOut } from "@dspace/shared/animations";
+import { NgIf, AsyncPipe } from '@angular/common';
+import { ThemedSearchFormComponent } from '../../../shared/search-form/themed-search-form.component';
+import { CollectionSelectComponent } from '../../../shared/object-select/collection-select/collection-select.component';
+import { NgbNavModule } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
-  selector: 'ds-item-collection-mapper',
-  styleUrls: ['./item-collection-mapper.component.scss'],
-  templateUrl: './item-collection-mapper.component.html',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  animations: [
-    fadeIn,
-    fadeInOut
-  ]
+    selector: 'ds-item-collection-mapper',
+    styleUrls: ['./item-collection-mapper.component.scss'],
+    templateUrl: './item-collection-mapper.component.html',
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    animations: [
+        fadeIn,
+        fadeInOut
+    ],
+    standalone: true,
+    imports: [NgbNavModule, CollectionSelectComponent, ThemedSearchFormComponent, NgIf, AsyncPipe, TranslateModule]
 })
 /**
  * Component for mapping collections to an item

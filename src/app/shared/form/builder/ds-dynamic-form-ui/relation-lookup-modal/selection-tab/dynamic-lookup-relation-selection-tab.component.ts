@@ -13,17 +13,23 @@ import { PageInfo } from '../../../../../../core/shared/page-info.model';
 import { Context } from '../../../../../../core/shared/context.model';
 import { createSuccessfulRemoteDataObject } from '../../../../../remote-data.utils';
 import { PaginationService } from '../../../../../../core/pagination/pagination.service';
+import { TranslateModule } from '@ngx-translate/core';
+import { ObjectCollectionComponent } from '../../../../../object-collection/object-collection.component';
+import { NgIf, AsyncPipe } from '@angular/common';
+import { PageSizeSelectorComponent } from '../../../../../page-size-selector/page-size-selector.component';
 
 @Component({
-  selector: 'ds-dynamic-lookup-relation-selection-tab',
-  styleUrls: ['./dynamic-lookup-relation-selection-tab.component.scss'],
-  templateUrl: './dynamic-lookup-relation-selection-tab.component.html',
-  providers: [
-    {
-      provide: SEARCH_CONFIG_SERVICE,
-      useClass: SearchConfigurationService
-    }
-  ]
+    selector: 'ds-dynamic-lookup-relation-selection-tab',
+    styleUrls: ['./dynamic-lookup-relation-selection-tab.component.scss'],
+    templateUrl: './dynamic-lookup-relation-selection-tab.component.html',
+    providers: [
+        {
+            provide: SEARCH_CONFIG_SERVICE,
+            useClass: SearchConfigurationService
+        }
+    ],
+    standalone: true,
+    imports: [PageSizeSelectorComponent, NgIf, ObjectCollectionComponent, AsyncPipe, TranslateModule]
 })
 
 /**

@@ -13,16 +13,23 @@ import { getGroupEditRoute } from '../../../../../access-control/access-control-
 import { hasNoValue, hasValue } from '../../../../empty.util';
 import { NoContent } from '../../../../../core/shared/NoContent.model';
 import { NotificationsService } from '../../../../notifications/notifications.service';
-import { TranslateService } from '@ngx-translate/core';
+import { TranslateService, TranslateModule } from '@ngx-translate/core';
 import { DSONameService } from '../../../../../core/breadcrumbs/dso-name.service';
+import { RouterLink } from '@angular/router';
+import { ThemedLoadingComponent } from '../../../../loading/themed-loading.component';
+import { NgIf, AsyncPipe } from '@angular/common';
+import { AlertComponent } from '../../../../../../../libs/shared/ui/src/lib/alert/alert.component';
+import { VarDirective } from '../../../../utils/var.directive';
 
 /**
  * Component for managing a community or collection role.
  */
 @Component({
-  selector: 'ds-comcol-role',
-  styleUrls: ['./comcol-role.component.scss'],
-  templateUrl: './comcol-role.component.html'
+    selector: 'ds-comcol-role',
+    styleUrls: ['./comcol-role.component.scss'],
+    templateUrl: './comcol-role.component.html',
+    standalone: true,
+    imports: [VarDirective, AlertComponent, NgIf, ThemedLoadingComponent, RouterLink, AsyncPipe, TranslateModule]
 })
 export class ComcolRoleComponent implements OnInit {
 

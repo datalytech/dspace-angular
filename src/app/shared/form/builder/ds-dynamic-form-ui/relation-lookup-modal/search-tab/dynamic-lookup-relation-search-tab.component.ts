@@ -23,18 +23,25 @@ import { RelationshipType } from '../../../../../../core/shared/item-relationshi
 import { Relationship } from '../../../../../../core/shared/item-relationships/relationship.model';
 import { SearchObjects } from '../../../../../search/models/search-objects.model';
 import { DSpaceObject } from '../../../../../../core/shared/dspace-object.model';
+import { TranslateModule } from '@ngx-translate/core';
+import { VarDirective } from '../../../../../utils/var.directive';
+import { NgbDropdownModule } from '@ng-bootstrap/ng-bootstrap';
+import { ThemedSearchComponent } from '../../../../../search/themed-search.component';
+import { NgIf, AsyncPipe } from '@angular/common';
 
 
 @Component({
-  selector: 'ds-dynamic-lookup-relation-search-tab',
-  styleUrls: ['./dynamic-lookup-relation-search-tab.component.scss'],
-  templateUrl: './dynamic-lookup-relation-search-tab.component.html',
-  providers: [
-    {
-      provide: SEARCH_CONFIG_SERVICE,
-      useClass: SearchConfigurationService
-    }
-  ]
+    selector: 'ds-dynamic-lookup-relation-search-tab',
+    styleUrls: ['./dynamic-lookup-relation-search-tab.component.scss'],
+    templateUrl: './dynamic-lookup-relation-search-tab.component.html',
+    providers: [
+        {
+            provide: SEARCH_CONFIG_SERVICE,
+            useClass: SearchConfigurationService
+        }
+    ],
+    standalone: true,
+    imports: [NgIf, ThemedSearchComponent, NgbDropdownModule, VarDirective, AsyncPipe, TranslateModule]
 })
 
 /**

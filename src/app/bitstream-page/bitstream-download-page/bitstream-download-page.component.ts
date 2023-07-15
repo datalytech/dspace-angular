@@ -13,15 +13,18 @@ import { HardRedirectService } from '../../core/services/hard-redirect.service';
 import { getForbiddenRoute } from '../../app-routing-paths';
 import { RemoteData } from '../../core/data/remote-data';
 import { redirectOn4xx } from '../../core/shared/authorized.operators';
-import { isPlatformServer, Location } from '@angular/common';
+import { isPlatformServer, Location, AsyncPipe } from '@angular/common';
 import { DSONameService } from '../../core/breadcrumbs/dso-name.service';
 import { SignpostingDataService } from '../../core/data/signposting-data.service';
 import { ServerResponseService } from '../../core/services/server-response.service';
 import { SignpostingLink } from '../../core/data/signposting-links.model';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
-  selector: 'ds-bitstream-download-page',
-  templateUrl: './bitstream-download-page.component.html'
+    selector: 'ds-bitstream-download-page',
+    templateUrl: './bitstream-download-page.component.html',
+    standalone: true,
+    imports: [AsyncPipe, TranslateModule]
 })
 /**
  * Page component for downloading a bitstream

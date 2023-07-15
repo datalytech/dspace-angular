@@ -5,17 +5,20 @@ import { environment } from '../../../environments/environment';
 import { BitstreamDataService } from '../../core/data/bitstream-data.service';
 import { Observable, of } from 'rxjs';
 import { map, take } from 'rxjs/operators';
-import { isPlatformBrowser } from '@angular/common';
+import { isPlatformBrowser, NgIf, AsyncPipe } from '@angular/common';
 import { MiradorViewerService } from './mirador-viewer.service';
 import { HostWindowService, WidthCategory } from '../../shared/host-window.service';
 import { BundleDataService } from '../../core/data/bundle-data.service';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
-  selector: 'ds-mirador-viewer',
-  styleUrls: ['./mirador-viewer.component.scss'],
-  templateUrl: './mirador-viewer.component.html',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  providers: [ MiradorViewerService ]
+    selector: 'ds-mirador-viewer',
+    styleUrls: ['./mirador-viewer.component.scss'],
+    templateUrl: './mirador-viewer.component.html',
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    providers: [MiradorViewerService],
+    standalone: true,
+    imports: [NgIf, AsyncPipe, TranslateModule]
 })
 export class MiradorViewerComponent implements OnInit {
 

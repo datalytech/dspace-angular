@@ -1,13 +1,17 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { ObjectNotFoundComponent as BaseComponent } from '../../../../../app/lookup-by-id/objectnotfound/objectnotfound.component';
+import { TranslateModule } from '@ngx-translate/core';
+import { RouterLink } from '@angular/router';
 
 @Component({
-  selector: 'ds-objnotfound',
-  // styleUrls: ['./objectnotfound.component.scss'],
-  styleUrls: ['../../../../../app/lookup-by-id/objectnotfound/objectnotfound.component.scss'],
-  // templateUrl: './objectnotfound.component.html',
-  templateUrl: '../../../../../app/lookup-by-id/objectnotfound/objectnotfound.component.html',
-  changeDetection: ChangeDetectionStrategy.Default
+    selector: 'ds-objnotfound',
+    // styleUrls: ['./objectnotfound.component.scss'],
+    styleUrls: ['../../../../../app/lookup-by-id/objectnotfound/objectnotfound.component.scss'],
+    // templateUrl: './objectnotfound.component.html',
+    templateUrl: '../../../../../app/lookup-by-id/objectnotfound/objectnotfound.component.html',
+    changeDetection: ChangeDetectionStrategy.Default,
+    standalone: true,
+    imports: [RouterLink, TranslateModule]
 })
 
 /**

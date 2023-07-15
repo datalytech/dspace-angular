@@ -5,6 +5,7 @@ import { By } from '@angular/platform-browser';
 import { Community } from '../../../core/shared/community.model';
 import { LinkService } from '../../../core/cache/builders/link.service';
 import { TranslateModule } from '@ngx-translate/core';
+import { RouterTestingModule } from "@angular/router/testing";
 
 let communityGridElementComponent: CommunityGridElementComponent;
 let fixture: ComponentFixture<CommunityGridElementComponent>;
@@ -38,17 +39,17 @@ const linkService = jasmine.createSpyObj('linkService', {
 describe('CommunityGridElementComponent', () => {
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      imports: [
-        TranslateModule.forRoot()
-      ],
-      declarations: [CommunityGridElementComponent],
-      providers: [
+    imports: [
+        TranslateModule.forRoot(),
+        RouterTestingModule,
+        CommunityGridElementComponent
+    ],
+    providers: [
         { provide: 'objectElementProvider', useValue: (mockCommunityWithAbstract) },
         { provide: LinkService, useValue: linkService }
-      ],
-
-      schemas: [NO_ERRORS_SCHEMA]
-    }).overrideComponent(CommunityGridElementComponent, {
+    ],
+    schemas: [NO_ERRORS_SCHEMA]
+}).overrideComponent(CommunityGridElementComponent, {
       set: { changeDetection: ChangeDetectionStrategy.Default }
     }).compileComponents();
   }));

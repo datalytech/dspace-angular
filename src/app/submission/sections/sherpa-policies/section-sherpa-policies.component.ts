@@ -15,14 +15,24 @@ import { SectionModelComponent } from '../models/section.model';
 import { SubmissionService } from '../../submission.service';
 import { hasValue, isEmpty } from '../../../shared/empty.util';
 import { AlertType } from "@dspace/shared/ui";
+import { TranslateModule } from '@ngx-translate/core';
+import { MetadataInformationComponent } from './metadata-information/metadata-information.component';
+import { PublisherPolicyComponent } from './publisher-policy/publisher-policy.component';
+import { PublicationInformationComponent } from './publication-information/publication-information.component';
+import { NgbCollapseModule } from '@ng-bootstrap/ng-bootstrap';
+import { VarDirective } from '../../../shared/utils/var.directive';
+import { AlertComponent } from '../../../../../libs/shared/ui/src/lib/alert/alert.component';
+import { NgIf, NgFor, AsyncPipe } from '@angular/common';
 
 /**
  * This component represents a section for the sherpa policy informations structure.
  */
 @Component({
-  selector: 'ds-section-sherpa-policies',
-  templateUrl: './section-sherpa-policies.component.html',
-  styleUrls: ['./section-sherpa-policies.component.scss']
+    selector: 'ds-section-sherpa-policies',
+    templateUrl: './section-sherpa-policies.component.html',
+    styleUrls: ['./section-sherpa-policies.component.scss'],
+    standalone: true,
+    imports: [NgIf, AlertComponent, VarDirective, NgFor, NgbCollapseModule, PublicationInformationComponent, PublisherPolicyComponent, MetadataInformationComponent, AsyncPipe, TranslateModule]
 })
 @renderSectionFor(SectionsType.SherpaPolicies)
 export class SubmissionSectionSherpaPoliciesComponent extends SectionModelComponent {

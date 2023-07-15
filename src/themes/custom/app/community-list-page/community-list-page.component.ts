@@ -1,11 +1,15 @@
 import { Component } from '@angular/core';
 import { CommunityListPageComponent as BaseComponent } from '../../../../app/community-list-page/community-list-page.component';
+import { TranslateModule } from '@ngx-translate/core';
+import { ThemedCommunityListComponent } from '../../../../app/community-list-page/community-list/themed-community-list.component';
 
 @Component({
-  selector: 'ds-community-list-page',
-  // styleUrls: ['./community-list-page.component.scss'],
-  // templateUrl: './community-list-page.component.html'
-  templateUrl: '../../../../app/community-list-page/community-list-page.component.html'
+    selector: 'ds-community-list-page',
+    // styleUrls: ['./community-list-page.component.scss'],
+    // templateUrl: './community-list-page.component.html'
+    templateUrl: '../../../../app/community-list-page/community-list-page.component.html',
+    standalone: true,
+    imports: [ThemedCommunityListComponent, TranslateModule]
 })
 
 /**

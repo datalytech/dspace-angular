@@ -19,12 +19,19 @@ import {
   createAccessControlInitialFormState
 } from './access-control-form-container-intial-state';
 import { AlertType } from '@dspace/shared/ui';
+import { TranslateModule } from '@ngx-translate/core';
+import { FormsModule } from '@angular/forms';
+import { UiSwitchModule } from 'ngx-ui-switch';
+import { AlertComponent } from '../../../../libs/shared/ui/src/lib/alert/alert.component';
+import { NgIf, AsyncPipe } from '@angular/common';
 
 @Component({
-  selector: 'ds-access-control-form-container',
-  templateUrl: './access-control-form-container.component.html',
-  styleUrls: [ './access-control-form-container.component.scss' ],
-  exportAs: 'dsAccessControlForm'
+    selector: 'ds-access-control-form-container',
+    templateUrl: './access-control-form-container.component.html',
+    styleUrls: ['./access-control-form-container.component.scss'],
+    exportAs: 'dsAccessControlForm',
+    standalone: true,
+    imports: [NgIf, AlertComponent, UiSwitchModule, FormsModule, AccessControlArrayFormComponent, AsyncPipe, TranslateModule]
 })
 export class AccessControlFormContainerComponent<T extends DSpaceObject> implements OnDestroy {
 

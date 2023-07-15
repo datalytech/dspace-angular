@@ -6,10 +6,13 @@ import { BROWSE_BY_COMPONENT_FACTORY } from './browse-by-decorator';
 import { GenericConstructor } from '../../core/shared/generic-constructor';
 import { BrowseDefinition } from '../../core/shared/browse-definition.model';
 import { ThemeService } from '../../shared/theme-support/theme.service';
+import { NgComponentOutlet, AsyncPipe } from '@angular/common';
 
 @Component({
-  selector: 'ds-browse-by-switcher',
-  templateUrl: './browse-by-switcher.component.html'
+    selector: 'ds-browse-by-switcher',
+    templateUrl: './browse-by-switcher.component.html',
+    standalone: true,
+    imports: [NgComponentOutlet, AsyncPipe]
 })
 /**
  * Component for determining what Browse-By component to use depending on the metadata (browse ID) provided

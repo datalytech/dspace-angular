@@ -5,11 +5,15 @@ import { Community } from '../../../core/shared/community.model';
 import { ActivatedRoute } from '@angular/router';
 import { map } from 'rxjs/operators';
 import { getFirstSucceededRemoteData } from '../../../core/shared/operators';
+import { AccessControlFormContainerComponent } from '../../../shared/access-control-form-container/access-control-form-container.component';
+import { NgIf, AsyncPipe } from '@angular/common';
 
 @Component({
-  selector: 'ds-collection-access-control',
-  templateUrl: './collection-access-control.component.html',
-  styleUrls: ['./collection-access-control.component.scss'],
+    selector: 'ds-collection-access-control',
+    templateUrl: './collection-access-control.component.html',
+    styleUrls: ['./collection-access-control.component.scss'],
+    standalone: true,
+    imports: [NgIf, AccessControlFormContainerComponent, AsyncPipe]
 })
 export class CollectionAccessControlComponent  implements OnInit {
   itemRD$: Observable<RemoteData<Community>>;

@@ -22,16 +22,14 @@ import { AlertComponent } from "@dspace/shared/ui";
         NgbModule,
         SharedModule,
         TranslateModule,
-        AlertComponent
-    ],
-  declarations: [
-    HealthPageComponent,
-    HealthPanelComponent,
-    HealthStatusComponent,
-    HealthComponentComponent,
-    HealthInfoComponent,
-    HealthInfoComponentComponent,
-  ]
+        AlertComponent,
+        HealthPageComponent,
+        HealthPanelComponent,
+        HealthStatusComponent,
+        HealthComponentComponent,
+        HealthInfoComponent,
+        HealthInfoComponentComponent
+    ]
 })
 export class HealthPageModule {
 }

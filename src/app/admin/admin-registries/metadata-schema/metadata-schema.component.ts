@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { RegistryService } from '../../../core/registry/registry.service';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import {
   BehaviorSubject,
   combineLatest as observableCombineLatest,
@@ -15,18 +15,24 @@ import { PaginationComponentOptions } from '../../../shared/pagination/paginatio
 import { map, switchMap, take } from 'rxjs/operators';
 import { hasValue } from '../../../shared/empty.util';
 import { NotificationsService } from '../../../shared/notifications/notifications.service';
-import { TranslateService } from '@ngx-translate/core';
+import { TranslateService, TranslateModule } from '@ngx-translate/core';
 import { MetadataField } from '../../../core/metadata/metadata-field.model';
 import { MetadataSchema } from '../../../core/metadata/metadata-schema.model';
 import { getFirstCompletedRemoteData, getFirstSucceededRemoteDataPayload } from '../../../core/shared/operators';
 import { toFindListOptions } from '../../../shared/pagination/pagination.utils';
 import { NoContent } from '../../../core/shared/NoContent.model';
 import { PaginationService } from '../../../core/pagination/pagination.service';
+import { PaginationComponent } from '../../../shared/pagination/pagination.component';
+import { NgIf, NgFor, NgClass, AsyncPipe } from '@angular/common';
+import { MetadataFieldFormComponent } from './metadata-field-form/metadata-field-form.component';
+import { VarDirective } from '../../../shared/utils/var.directive';
 
 @Component({
-  selector: 'ds-metadata-schema',
-  templateUrl: './metadata-schema.component.html',
-  styleUrls: ['./metadata-schema.component.scss']
+    selector: 'ds-metadata-schema',
+    templateUrl: './metadata-schema.component.html',
+    styleUrls: ['./metadata-schema.component.scss'],
+    standalone: true,
+    imports: [VarDirective, MetadataFieldFormComponent, NgIf, PaginationComponent, NgFor, NgClass, RouterLink, AsyncPipe, TranslateModule]
 })
 /**
  * A component used for managing all existing metadata fields within the current metadata schema.

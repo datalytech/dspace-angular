@@ -1,15 +1,9 @@
 import { distinctUntilChanged, filter, map } from 'rxjs/operators';
 import { ChangeDetectorRef, Component, EventEmitter, Input, OnDestroy, OnInit, Output } from '@angular/core';
-import { AbstractControl, UntypedFormArray, UntypedFormControl, UntypedFormGroup } from '@angular/forms';
+import { AbstractControl, UntypedFormArray, UntypedFormControl, UntypedFormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { Observable, Subscription } from 'rxjs';
-import {
-  DynamicFormArrayModel,
-  DynamicFormControlEvent,
-  DynamicFormControlModel,
-  DynamicFormGroupModel,
-  DynamicFormLayout,
-} from '@ng-dynamic-forms/core';
+import { DynamicFormArrayModel, DynamicFormControlEvent, DynamicFormControlModel, DynamicFormGroupModel, DynamicFormLayout, DynamicFormsCoreModule } from '@ng-dynamic-forms/core';
 import { NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
 import findIndex from 'lodash/findIndex';
 
@@ -18,15 +12,20 @@ import { hasValue, isNotEmpty, isNotNull, isNull } from '../empty.util';
 import { FormService } from './form.service';
 import { FormEntry, FormError } from './form.reducer';
 import { FormFieldMetadataValueObject } from './builder/models/form-field-metadata-value.model';
+import { TranslateModule } from '@ngx-translate/core';
+import { NgIf, AsyncPipe } from '@angular/common';
+import { DsDynamicFormComponent } from './builder/ds-dynamic-form-ui/ds-dynamic-form.component';
 
 /**
  * The default form component.
  */
 @Component({
-  exportAs: 'formComponent',
-  selector: 'ds-form',
-  styleUrls: ['form.component.scss'],
-  templateUrl: 'form.component.html'
+    exportAs: 'formComponent',
+    selector: 'ds-form',
+    styleUrls: ['form.component.scss'],
+    templateUrl: 'form.component.html',
+    standalone: true,
+    imports: [FormsModule, ReactiveFormsModule, DsDynamicFormComponent, DynamicFormsCoreModule, NgIf, AsyncPipe, TranslateModule]
 })
 export class FormComponent implements OnDestroy, OnInit {
 

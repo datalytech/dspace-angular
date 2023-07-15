@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, forwardRef, Input, OnInit, Output } from '@angular/core';
 import { BitstreamFormat } from '../../../../core/shared/bitstream-format.model';
 import { BitstreamFormatSupportLevel } from '../../../../core/shared/bitstream-format-support-level';
 import {
@@ -16,13 +16,17 @@ import { hasValue, isEmpty } from '../../../../shared/empty.util';
 import { TranslateService } from '@ngx-translate/core';
 import { getBitstreamFormatsModuleRoute } from '../../admin-registries-routing-paths';
 import { environment } from '../../../../../environments/environment';
+import { FormComponent } from '../../../../shared/form/form.component';
+import { NgIf } from '@angular/common';
 
 /**
  * The component responsible for rendering the form to create/edit a bitstream format
  */
 @Component({
-  selector: 'ds-bitstream-format-form',
-  templateUrl: './format-form.component.html'
+    selector: 'ds-bitstream-format-form',
+    templateUrl: './format-form.component.html',
+    standalone: true,
+    imports: [NgIf, forwardRef(() => FormComponent)]
 })
 export class FormatFormComponent implements OnInit {
 

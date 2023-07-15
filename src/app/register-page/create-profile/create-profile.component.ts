@@ -3,8 +3,8 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { map } from 'rxjs/operators';
 import { Registration } from '../../core/shared/registration.model';
 import { Observable } from 'rxjs';
-import { UntypedFormBuilder, UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms';
-import { TranslateService } from '@ngx-translate/core';
+import { UntypedFormBuilder, UntypedFormControl, UntypedFormGroup, Validators, FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { TranslateService, TranslateModule } from '@ngx-translate/core';
 import { EPersonDataService } from '../../core/eperson/eperson-data.service';
 import { EPerson } from '../../core/eperson/models/eperson.model';
 import { LangConfig } from '../../../config/lang-config.interface';
@@ -20,14 +20,18 @@ import {
 } from '../../core/end-user-agreement/end-user-agreement.service';
 import { getFirstCompletedRemoteData, getFirstSucceededRemoteDataPayload } from '../../core/shared/operators';
 import { CoreState } from '../../core/core-state.model';
+import { ProfilePageSecurityFormComponent } from '../../profile-page/profile-page-security-form/profile-page-security-form.component';
+import { NgIf, NgFor, AsyncPipe } from '@angular/common';
 
 /**
  * Component that renders the create profile page to be used by a user registering through a token
  */
 @Component({
-  selector: 'ds-create-profile',
-  styleUrls: ['./create-profile.component.scss'],
-  templateUrl: './create-profile.component.html'
+    selector: 'ds-create-profile',
+    styleUrls: ['./create-profile.component.scss'],
+    templateUrl: './create-profile.component.html',
+    standalone: true,
+    imports: [NgIf, FormsModule, ReactiveFormsModule, NgFor, ProfilePageSecurityFormComponent, AsyncPipe, TranslateModule]
 })
 export class CreateProfileComponent implements OnInit {
   registration$: Observable<Registration>;

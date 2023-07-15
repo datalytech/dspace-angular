@@ -14,10 +14,15 @@ import { map, startWith, switchMap } from 'rxjs/operators';
 import { VersionHistoryDataService } from '../../../core/data/version-history-data.service';
 import { getItemPageRoute } from '../../item-page-routing-paths';
 import { AlertType } from "@dspace/shared/ui";
+import { TranslateModule } from '@ngx-translate/core';
+import { AlertComponent } from '../../../../../libs/shared/ui/src/lib/alert/alert.component';
+import { NgIf, AsyncPipe } from '@angular/common';
 
 @Component({
-  selector: 'ds-item-versions-notice',
-  templateUrl: './item-versions-notice.component.html'
+    selector: 'ds-item-versions-notice',
+    templateUrl: './item-versions-notice.component.html',
+    standalone: true,
+    imports: [NgIf, AlertComponent, AsyncPipe, TranslateModule]
 })
 /**
  * Component for displaying a warning notice when the item is not the latest version within its version history

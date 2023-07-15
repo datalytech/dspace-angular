@@ -1,6 +1,6 @@
 import { Component, Input, OnDestroy, OnInit, SimpleChanges } from '@angular/core';
 
-import { TranslateService } from '@ngx-translate/core';
+import { TranslateService, TranslateModule } from '@ngx-translate/core';
 import { BehaviorSubject, combineLatest, Observable, Subscription } from 'rxjs';
 import { debounceTime, distinctUntilChanged, switchMap, tap } from 'rxjs/operators';
 
@@ -18,11 +18,18 @@ import { PaginationComponentOptions } from '../../../shared/pagination/paginatio
 import { Item } from '../../../core/shared/item.model';
 import { OrcidAuthService } from '../../../core/orcid/orcid-auth.service';
 import { AlertType } from "@dspace/shared/ui";
+import { NgbTooltipModule } from '@ng-bootstrap/ng-bootstrap';
+import { PaginationComponent } from '../../../shared/pagination/pagination.component';
+import { AlertComponent } from '../../../../../libs/shared/ui/src/lib/alert/alert.component';
+import { LoadingComponent } from '../../../shared/loading/loading.component';
+import { NgIf, NgFor, NgClass, AsyncPipe } from '@angular/common';
 
 @Component({
-  selector: 'ds-orcid-queue',
-  templateUrl: './orcid-queue.component.html',
-  styleUrls: ['./orcid-queue.component.scss']
+    selector: 'ds-orcid-queue',
+    templateUrl: './orcid-queue.component.html',
+    styleUrls: ['./orcid-queue.component.scss'],
+    standalone: true,
+    imports: [NgIf, LoadingComponent, AlertComponent, PaginationComponent, NgFor, NgClass, NgbTooltipModule, AsyncPipe, TranslateModule]
 })
 export class OrcidQueueComponent implements OnInit, OnDestroy {
 

@@ -106,7 +106,7 @@ import {
   ExternalSourceEntryImportModalComponent
 } from './app/shared/form/builder/ds-dynamic-form-ui/relation-lookup-modal/external-source-tab/external-source-entry-import-modal/external-source-entry-import-modal.component';
 import { SharedBrowseByModule } from '../../app/shared/browse-by/shared-browse-by.module';
-import { ResultsBackButtonModule } from '../../app/shared/results-back-button/results-back-button.module';
+
 import { ItemVersionsModule } from '../../app/item-page/versions/item-versions.module';
 import { ItemSharedModule } from '../../app/item-page/item-shared.module';
 import { SearchFiltersComponent } from './app/shared/search/search-filters/search-filters.component';
@@ -243,7 +243,7 @@ const DECLARATIONS = [
 ];
 
 @NgModule({
-  imports: [
+    imports: [
     AdminRegistriesModule,
     AdminSearchModule,
     AdminWorkflowModuleModule,
@@ -282,7 +282,6 @@ const DECLARATIONS = [
     SearchPageModule,
     SharedModule,
     SharedBrowseByModule,
-    ResultsBackButtonModule,
     StatisticsModule,
     StatisticsPageModule,
     StoreModule,
@@ -300,12 +299,12 @@ const DECLARATIONS = [
     NgxGalleryModule,
     FormModule,
     RequestCopyModule,
-    AlertComponent
-  ],
-  declarations: DECLARATIONS,
-  exports: [
-    CommunityPageSubCollectionListComponent
-  ]
+    AlertComponent,
+    ...DECLARATIONS
+],
+    exports: [
+        CommunityPageSubCollectionListComponent
+    ]
 })
 
   /**

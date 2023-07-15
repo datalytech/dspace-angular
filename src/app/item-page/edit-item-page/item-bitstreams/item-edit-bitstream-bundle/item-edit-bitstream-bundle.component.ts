@@ -5,11 +5,17 @@ import { ResponsiveColumnSizes } from '../../../../shared/responsive-table-sizes
 import { ResponsiveTableSizes } from '../../../../shared/responsive-table-sizes/responsive-table-sizes';
 import { getItemPageRoute } from '../../../item-page-routing-paths';
 import { DSONameService } from '../../../../core/breadcrumbs/dso-name.service';
+import { TranslateModule } from '@ngx-translate/core';
+import { PaginatedDragAndDropBitstreamListComponent } from './paginated-drag-and-drop-bitstream-list/paginated-drag-and-drop-bitstream-list.component';
+import { RouterLink } from '@angular/router';
+import { ItemEditBitstreamDragHandleComponent } from '../item-edit-bitstream-drag-handle/item-edit-bitstream-drag-handle.component';
 
 @Component({
-  selector: 'ds-item-edit-bitstream-bundle',
-  styleUrls: ['../item-bitstreams.component.scss'],
-  templateUrl: './item-edit-bitstream-bundle.component.html',
+    selector: 'ds-item-edit-bitstream-bundle',
+    styleUrls: ['../item-bitstreams.component.scss'],
+    templateUrl: './item-edit-bitstream-bundle.component.html',
+    standalone: true,
+    imports: [ItemEditBitstreamDragHandleComponent, RouterLink, PaginatedDragAndDropBitstreamListComponent, TranslateModule]
 })
 /**
  * Component that displays a single bundle of an item on the item bitstreams edit page

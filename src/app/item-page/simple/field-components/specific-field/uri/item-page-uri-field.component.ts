@@ -2,10 +2,13 @@ import { Component, Input } from '@angular/core';
 
 import { Item } from '../../../../../core/shared/item.model';
 import { ItemPageFieldComponent } from '../item-page-field.component';
+import { MetadataUriValuesComponent } from '../../../../field-components/metadata-uri-values/metadata-uri-values.component';
 
 @Component({
-  selector: 'ds-item-page-uri-field',
-  templateUrl: './item-page-uri-field.component.html'
+    selector: 'ds-item-page-uri-field',
+    templateUrl: './item-page-uri-field.component.html',
+    standalone: true,
+    imports: [MetadataUriValuesComponent]
 })
 /**
  * This component can be used to represent any uri on a simple item page.

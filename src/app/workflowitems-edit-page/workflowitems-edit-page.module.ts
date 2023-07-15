@@ -34,29 +34,27 @@ import { FormModule } from '../shared/form/form.module';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
-  imports: [
-    WorkflowItemsEditPageRoutingModule,
-    CommonModule,
-    SharedModule,
-    SubmissionModule,
-    StatisticsModule,
-    ItemPageModule,
-    AccessControlModule,
-    FormModule,
-    NgbModule,
-  ],
-  declarations: [
-    WorkflowItemDeleteComponent,
-    ThemedWorkflowItemDeleteComponent,
-    WorkflowItemSendBackComponent,
-    ThemedWorkflowItemSendBackComponent,
-    AdvancedWorkflowActionsLoaderComponent,
-    AdvancedWorkflowActionRatingComponent,
-    AdvancedWorkflowActionSelectReviewerComponent,
-    AdvancedWorkflowActionPageComponent,
-    AdvancedWorkflowActionsDirective,
-    ReviewersListComponent,
-  ]
+    imports: [
+        WorkflowItemsEditPageRoutingModule,
+        CommonModule,
+        SharedModule,
+        SubmissionModule,
+        StatisticsModule,
+        ItemPageModule,
+        AccessControlModule,
+        FormModule,
+        NgbModule,
+        WorkflowItemDeleteComponent,
+        ThemedWorkflowItemDeleteComponent,
+        WorkflowItemSendBackComponent,
+        ThemedWorkflowItemSendBackComponent,
+        AdvancedWorkflowActionsLoaderComponent,
+        AdvancedWorkflowActionRatingComponent,
+        AdvancedWorkflowActionSelectReviewerComponent,
+        AdvancedWorkflowActionPageComponent,
+        AdvancedWorkflowActionsDirective,
+        ReviewersListComponent
+    ]
 })
 /**
  * This module handles all modules that need to access the workflowitems edit page.

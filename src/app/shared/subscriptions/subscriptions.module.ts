@@ -16,9 +16,6 @@ const COMPONENTS = [
 ];
 
 @NgModule({
-  declarations: [
-    ...COMPONENTS
-  ],
     imports: [
         CommonModule,
         NgbModalModule,
@@ -26,11 +23,12 @@ const COMPONENTS = [
         TranslateModule,
         RouterModule,
         SharedModule,
-        AlertComponent
+        AlertComponent,
+        ...COMPONENTS
     ],
-  exports: [
-    ...COMPONENTS
-  ]
+    exports: [
+        ...COMPONENTS
+    ]
 })
 export class SubscriptionsModule {
 }

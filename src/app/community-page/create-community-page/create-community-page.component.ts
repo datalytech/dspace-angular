@@ -5,17 +5,22 @@ import { RouteService } from '../../core/services/route.service';
 import { Router } from '@angular/router';
 import { CreateComColPageComponent } from '../../shared/comcol/comcol-forms/create-comcol-page/create-comcol-page.component';
 import { NotificationsService } from '../../shared/notifications/notifications.service';
-import { TranslateService } from '@ngx-translate/core';
+import { TranslateService, TranslateModule } from '@ngx-translate/core';
 import { RequestService } from '../../core/data/request.service';
 import { DSONameService } from '../../core/breadcrumbs/dso-name.service';
+import { CommunityFormComponent } from '../community-form/community-form.component';
+import { NgIf, AsyncPipe } from '@angular/common';
+import { VarDirective } from '../../shared/utils/var.directive';
 
 /**
  * Component that represents the page where a user can create a new Community
  */
 @Component({
-  selector: 'ds-create-community',
-  styleUrls: ['./create-community-page.component.scss'],
-  templateUrl: './create-community-page.component.html'
+    selector: 'ds-create-community',
+    styleUrls: ['./create-community-page.component.scss'],
+    templateUrl: './create-community-page.component.html',
+    standalone: true,
+    imports: [VarDirective, NgIf, CommunityFormComponent, AsyncPipe, TranslateModule]
 })
 export class CreateCommunityPageComponent extends CreateComColPageComponent<Community> {
   protected frontendURL = '/communities/';

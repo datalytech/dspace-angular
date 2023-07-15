@@ -10,11 +10,18 @@ import { DSONameService } from '../../../../core/breadcrumbs/dso-name.service';
 import { FieldUpdate } from '../../../../core/data/object-updates/field-update.model';
 import { FieldChangeType } from '../../../../core/data/object-updates/field-change-type.model';
 import { getBitstreamDownloadRoute } from '../../../../app-routing-paths';
+import { TranslateModule } from '@ngx-translate/core';
+import { BrowserOnlyPipe } from '../../../../shared/utils/browser-only.pipe';
+import { RouterLink } from '@angular/router';
+import { NgIf, AsyncPipe } from '@angular/common';
+import { NgbTooltipModule } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
-  selector: 'ds-item-edit-bitstream',
-  styleUrls: ['../item-bitstreams.component.scss'],
-  templateUrl: './item-edit-bitstream.component.html',
+    selector: 'ds-item-edit-bitstream',
+    styleUrls: ['../item-bitstreams.component.scss'],
+    templateUrl: './item-edit-bitstream.component.html',
+    standalone: true,
+    imports: [NgbTooltipModule, NgIf, RouterLink, AsyncPipe, BrowserOnlyPipe, TranslateModule]
 })
 /**
  * Component that displays a single bitstream of an item on the edit page

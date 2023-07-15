@@ -21,14 +21,12 @@ import { AlertComponent } from "@dspace/shared/ui";
         TranslateModule,
         UiSwitchModule,
         NgbDatepickerModule,
-        AlertComponent
+        AlertComponent,
+        AccessControlFormContainerComponent,
+        AccessControlArrayFormComponent,
+        ItemAccessControlSelectBitstreamsModalComponent,
+        ToDatePipe
     ],
-  declarations: [
-    AccessControlFormContainerComponent,
-    AccessControlArrayFormComponent,
-    ItemAccessControlSelectBitstreamsModalComponent,
-    ToDatePipe
-  ],
-  exports: [ AccessControlFormContainerComponent, AccessControlArrayFormComponent ],
+    exports: [AccessControlFormContainerComponent, AccessControlArrayFormComponent]
 })
 export class AccessControlFormModule {}

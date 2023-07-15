@@ -30,25 +30,23 @@ describe('LogInContainerComponent', () => {
     });
     // refine the test module by declaring the test component
     TestBed.configureTestingModule({
-      imports: [
+    imports: [
         FormsModule,
         ReactiveFormsModule,
         StoreModule.forRoot(authReducer),
         SharedModule,
-        TranslateModule.forRoot()
-      ],
-      declarations: [
+        TranslateModule.forRoot(),
         TestComponent
-      ],
-      providers: [
+    ],
+    providers: [
         { provide: AuthService, useClass: AuthServiceStub },
         { provide: HardRedirectService, useValue: hardRedirectService },
         LogInContainerComponent
-      ],
-      schemas: [
+    ],
+    schemas: [
         CUSTOM_ELEMENTS_SCHEMA
-      ]
-    })
+    ]
+})
       .compileComponents();
 
   }));
@@ -107,8 +105,12 @@ describe('LogInContainerComponent', () => {
 
 // declare a test component
 @Component({
-  selector: 'ds-test-cmp',
-  template: ``
+    selector: 'ds-test-cmp',
+    template: ``,
+    standalone: true,
+    imports: [FormsModule,
+        ReactiveFormsModule,
+        SharedModule]
 })
 class TestComponent {
 

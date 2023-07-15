@@ -6,13 +6,17 @@ import { Community } from '../../../core/shared/community.model';
 import { getRemoteDataPayload, getFirstSucceededRemoteData } from '../../../core/shared/operators';
 import { RemoteData } from '../../../core/data/remote-data';
 import { HALLink } from '../../../core/shared/hal-link.model';
+import { ComcolRoleComponent } from '../../../shared/comcol/comcol-forms/edit-comcol-page/comcol-role/comcol-role.component';
+import { NgFor, AsyncPipe } from '@angular/common';
 
 /**
  * Component for managing a community's roles
  */
 @Component({
-  selector: 'ds-community-roles',
-  templateUrl: './community-roles.component.html',
+    selector: 'ds-community-roles',
+    templateUrl: './community-roles.component.html',
+    standalone: true,
+    imports: [NgFor, ComcolRoleComponent, AsyncPipe]
 })
 export class CommunityRolesComponent implements OnInit {
 

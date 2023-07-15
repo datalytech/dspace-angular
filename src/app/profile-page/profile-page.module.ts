@@ -22,23 +22,21 @@ import { AlertComponent } from "@dspace/shared/ui";
         SharedModule,
         FormModule,
         UiSwitchModule,
-        AlertComponent
+        AlertComponent,
+        ProfilePageComponent,
+        ThemedProfilePageComponent,
+        ProfileClaimItemModalComponent,
+        ProfilePageMetadataFormComponent,
+        ProfilePageSecurityFormComponent,
+        ProfilePageResearcherFormComponent
     ],
-  exports: [
-    ProfilePageComponent,
-    ThemedProfilePageComponent,
-    ProfilePageMetadataFormComponent,
-    ProfilePageSecurityFormComponent,
-    ProfilePageResearcherFormComponent
-  ],
-  declarations: [
-    ProfilePageComponent,
-    ThemedProfilePageComponent,
-    ProfileClaimItemModalComponent,
-    ProfilePageMetadataFormComponent,
-    ProfilePageSecurityFormComponent,
-    ProfilePageResearcherFormComponent
-  ]
+    exports: [
+        ProfilePageComponent,
+        ThemedProfilePageComponent,
+        ProfilePageMetadataFormComponent,
+        ProfilePageSecurityFormComponent,
+        ProfilePageResearcherFormComponent
+    ]
 })
 export class ProfilePageModule {
 

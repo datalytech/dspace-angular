@@ -5,13 +5,17 @@ import { Community } from '../../../core/shared/community.model';
 import { CommunityDataService } from '../../../core/data/community-data.service';
 import { NotificationsService } from '../../../shared/notifications/notifications.service';
 import { TranslateService } from '@ngx-translate/core';
+import { AsyncPipe } from '@angular/common';
+import { CommunityFormComponent } from '../../community-form/community-form.component';
 
 /**
  * Component for editing a community's metadata
  */
 @Component({
-  selector: 'ds-community-metadata',
-  templateUrl: './community-metadata.component.html',
+    selector: 'ds-community-metadata',
+    templateUrl: './community-metadata.component.html',
+    standalone: true,
+    imports: [CommunityFormComponent, AsyncPipe]
 })
 export class CommunityMetadataComponent extends ComcolMetadataComponent<Community> {
   protected frontendURL = '/communities/';

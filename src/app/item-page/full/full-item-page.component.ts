@@ -1,6 +1,6 @@
 import { filter, map } from 'rxjs/operators';
 import { ChangeDetectionStrategy, Component, Inject, OnDestroy, OnInit, PLATFORM_ID } from '@angular/core';
-import { ActivatedRoute, Data, Router } from '@angular/router';
+import { ActivatedRoute, Data, Router, RouterLink } from '@angular/router';
 
 import { BehaviorSubject, Observable } from 'rxjs';
 
@@ -13,12 +13,24 @@ import { Item } from '../../core/shared/item.model';
 
 import { hasValue } from '../../shared/empty.util';
 import { AuthService } from '../../core/auth/auth.service';
-import { Location } from '@angular/common';
+import { Location, NgIf, NgFor, AsyncPipe, KeyValuePipe } from '@angular/common';
 import { AuthorizationDataService } from '../../core/data/feature-authorization/authorization-data.service';
 import { ServerResponseService } from '../../core/services/server-response.service';
 import { SignpostingDataService } from '../../core/data/signposting-data.service';
 import { LinkHeadService } from '../../core/services/link-head.service';
 import { fadeInOut } from "@dspace/shared/animations";
+import { TranslateModule } from '@ngx-translate/core';
+import { ThemedLoadingComponent } from '../../shared/loading/themed-loading.component';
+import { ErrorComponent } from '../../shared/error/error.component';
+import { ItemVersionsComponent } from '../versions/item-versions.component';
+import { CollectionsComponent } from '../field-components/collections/collections.component';
+import { ThemedFullFileSectionComponent } from './field-components/file-section/themed-full-file-section.component';
+import { DsoEditMenuComponent } from '../../shared/dso-page/dso-edit-menu/dso-edit-menu.component';
+import { ThemedItemPageTitleFieldComponent } from '../simple/field-components/specific-field/title/themed-item-page-field.component';
+import { ViewTrackerComponent } from '../../statistics/angulartics/dspace/view-tracker.component';
+import { ItemVersionsNoticeComponent } from '../versions/notice/item-versions-notice.component';
+import { ThemedItemAlertsComponent } from '../alerts/themed-item-alerts.component';
+import { VarDirective } from '../../shared/utils/var.directive';
 
 /**
  * This component renders a full item page.
@@ -26,11 +38,13 @@ import { fadeInOut } from "@dspace/shared/animations";
  */
 
 @Component({
-  selector: 'ds-full-item-page',
-  styleUrls: ['./full-item-page.component.scss'],
-  templateUrl: './full-item-page.component.html',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  animations: [fadeInOut]
+    selector: 'ds-full-item-page',
+    styleUrls: ['./full-item-page.component.scss'],
+    templateUrl: './full-item-page.component.html',
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    animations: [fadeInOut],
+    standalone: true,
+    imports: [VarDirective, NgIf, ThemedItemAlertsComponent, ItemVersionsNoticeComponent, ViewTrackerComponent, ThemedItemPageTitleFieldComponent, DsoEditMenuComponent, RouterLink, NgFor, ThemedFullFileSectionComponent, CollectionsComponent, ItemVersionsComponent, ErrorComponent, ThemedLoadingComponent, AsyncPipe, KeyValuePipe, TranslateModule]
 })
 export class FullItemPageComponent extends ItemPageComponent implements OnInit, OnDestroy {
 

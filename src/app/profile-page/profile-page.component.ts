@@ -3,7 +3,7 @@ import { BehaviorSubject, Observable } from 'rxjs';
 import { EPerson } from '../core/eperson/models/eperson.model';
 import { ProfilePageMetadataFormComponent } from './profile-page-metadata-form/profile-page-metadata-form.component';
 import { NotificationsService } from '../shared/notifications/notifications.service';
-import { TranslateService } from '@ngx-translate/core';
+import { TranslateService, TranslateModule } from '@ngx-translate/core';
 import { Group } from '../core/eperson/models/group.model';
 import { RemoteData } from '../core/data/remote-data';
 import { PaginatedList } from '../core/data/paginated-list.model';
@@ -19,11 +19,17 @@ import { FeatureID } from '../core/data/feature-authorization/feature-id';
 import { ConfigurationDataService } from '../core/data/configuration-data.service';
 import { ConfigurationProperty } from '../core/shared/configuration-property.model';
 import { DSONameService } from '../core/breadcrumbs/dso-name.service';
+import { ProfilePageSecurityFormComponent } from './profile-page-security-form/profile-page-security-form.component';
+import { ProfilePageResearcherFormComponent } from './profile-page-researcher-form/profile-page-researcher-form.component';
+import { NgIf, NgFor, AsyncPipe } from '@angular/common';
+import { VarDirective } from '../shared/utils/var.directive';
 
 @Component({
-  selector: 'ds-profile-page',
-  styleUrls: ['./profile-page.component.scss'],
-  templateUrl: './profile-page.component.html'
+    selector: 'ds-profile-page',
+    styleUrls: ['./profile-page.component.scss'],
+    templateUrl: './profile-page.component.html',
+    standalone: true,
+    imports: [VarDirective, NgIf, ProfilePageResearcherFormComponent, ProfilePageMetadataFormComponent, ProfilePageSecurityFormComponent, NgFor, AsyncPipe, TranslateModule]
 })
 /**
  * Component for a user to edit their profile information

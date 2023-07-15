@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Inject, Input, OnChanges, OnInit, Output, SimpleChanges } from '@angular/core';
 
-import { TranslateService } from '@ngx-translate/core';
+import { TranslateService, TranslateModule } from '@ngx-translate/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { NativeWindowRef, NativeWindowService } from '../../../core/services/window.service';
@@ -10,11 +10,15 @@ import { RemoteData } from '../../../core/data/remote-data';
 import { ResearcherProfile } from '../../../core/profile/model/researcher-profile.model';
 import { getFirstCompletedRemoteData } from '../../../core/shared/operators';
 import { OrcidAuthService } from '../../../core/orcid/orcid-auth.service';
+import { AlertComponent } from '../../../../../libs/shared/ui/src/lib/alert/alert.component';
+import { NgIf, NgFor, AsyncPipe } from '@angular/common';
 
 @Component({
-  selector: 'ds-orcid-auth',
-  templateUrl: './orcid-auth.component.html',
-  styleUrls: ['./orcid-auth.component.scss']
+    selector: 'ds-orcid-auth',
+    templateUrl: './orcid-auth.component.html',
+    styleUrls: ['./orcid-auth.component.scss'],
+    standalone: true,
+    imports: [NgIf, NgFor, AlertComponent, AsyncPipe, TranslateModule]
 })
 export class OrcidAuthComponent implements OnInit, OnChanges {
 

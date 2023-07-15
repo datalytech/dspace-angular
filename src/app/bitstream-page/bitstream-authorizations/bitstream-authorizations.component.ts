@@ -1,15 +1,20 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, RouterLink } from '@angular/router';
 
 import { Observable } from 'rxjs';
 import { first, map } from 'rxjs/operators';
 
 import { RemoteData } from '../../core/data/remote-data';
 import { DSpaceObject } from '../../core/shared/dspace-object.model';
+import { TranslateModule } from '@ngx-translate/core';
+import { AsyncPipe } from '@angular/common';
+import { ResourcePoliciesComponent } from '../../shared/resource-policies/resource-policies.component';
 
 @Component({
-  selector: 'ds-collection-authorizations',
-  templateUrl: './bitstream-authorizations.component.html',
+    selector: 'ds-collection-authorizations',
+    templateUrl: './bitstream-authorizations.component.html',
+    standalone: true,
+    imports: [ResourcePoliciesComponent, RouterLink, AsyncPipe, TranslateModule]
 })
 /**
  * Component that handles the Collection Authorizations

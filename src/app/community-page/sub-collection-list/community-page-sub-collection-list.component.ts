@@ -20,12 +20,20 @@ import { PaginationService } from '../../core/pagination/pagination.service';
 import { switchMap } from 'rxjs/operators';
 import { hasValue } from '../../shared/empty.util';
 import { fadeIn } from "@dspace/shared/animations";
+import { TranslateModule } from '@ngx-translate/core';
+import { ThemedLoadingComponent } from '../../shared/loading/themed-loading.component';
+import { ErrorComponent } from '../../shared/error/error.component';
+import { ObjectCollectionComponent } from '../../shared/object-collection/object-collection.component';
+import { NgIf, AsyncPipe } from '@angular/common';
+import { VarDirective } from '../../shared/utils/var.directive';
 
 @Component({
-  selector: 'ds-community-page-sub-collection-list',
-  styleUrls: ['./community-page-sub-collection-list.component.scss'],
-  templateUrl: './community-page-sub-collection-list.component.html',
-  animations: [fadeIn],
+    selector: 'ds-community-page-sub-collection-list',
+    styleUrls: ['./community-page-sub-collection-list.component.scss'],
+    templateUrl: './community-page-sub-collection-list.component.html',
+    animations: [fadeIn],
+    standalone: true,
+    imports: [VarDirective, NgIf, ObjectCollectionComponent, ErrorComponent, ThemedLoadingComponent, AsyncPipe, TranslateModule]
 })
 export class CommunityPageSubCollectionListComponent
   implements OnInit, OnDestroy

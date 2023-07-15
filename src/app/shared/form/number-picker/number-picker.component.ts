@@ -1,14 +1,17 @@
 import { ChangeDetectorRef, Component, EventEmitter, Input, OnInit, Output, SimpleChanges, } from '@angular/core';
-import { ControlValueAccessor, UntypedFormBuilder, NG_VALUE_ACCESSOR } from '@angular/forms';
+import { ControlValueAccessor, UntypedFormBuilder, NG_VALUE_ACCESSOR, FormsModule } from '@angular/forms';
 import { isEmpty } from '../../empty.util';
+import { NgClass } from '@angular/common';
 
 @Component({
-  selector: 'ds-number-picker',
-  styleUrls: ['./number-picker.component.scss'],
-  templateUrl: './number-picker.component.html',
-  providers: [
-    {provide: NG_VALUE_ACCESSOR, useExisting: NumberPickerComponent, multi: true}
-  ],
+    selector: 'ds-number-picker',
+    styleUrls: ['./number-picker.component.scss'],
+    templateUrl: './number-picker.component.html',
+    providers: [
+        { provide: NG_VALUE_ACCESSOR, useExisting: NumberPickerComponent, multi: true }
+    ],
+    standalone: true,
+    imports: [FormsModule, NgClass]
 })
 
 export class NumberPickerComponent implements OnInit, ControlValueAccessor {

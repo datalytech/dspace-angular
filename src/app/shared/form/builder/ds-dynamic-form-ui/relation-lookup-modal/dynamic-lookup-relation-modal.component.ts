@@ -1,6 +1,6 @@
 import { Component, EventEmitter, NgZone, OnDestroy, OnInit, Output } from '@angular/core';
 import { combineLatest as observableCombineLatest, Observable, Subscription, BehaviorSubject } from 'rxjs';
-import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
+import { NgbActiveModal, NgbNavModule } from '@ng-bootstrap/ng-bootstrap';
 import { hasValue, isNotEmpty } from '../../../../empty.util';
 import { map, skip, switchMap, take } from 'rxjs/operators';
 import { SEARCH_CONFIG_SERVICE } from '../../../../../my-dspace-page/my-dspace-page.component';
@@ -29,17 +29,25 @@ import { RemoteDataBuildService } from '../../../../../core/cache/builders/remot
 import { getAllSucceededRemoteDataPayload } from '../../../../../core/shared/operators';
 import { followLink } from '../../../../utils/follow-link-config.model';
 import { RelationshipType } from '../../../../../core/shared/item-relationships/relationship-type.model';
+import { TranslateModule } from '@ngx-translate/core';
+import { DsDynamicLookupRelationSelectionTabComponent } from './selection-tab/dynamic-lookup-relation-selection-tab.component';
+import { ThemedDynamicLookupRelationExternalSourceTabComponent } from './external-source-tab/themed-dynamic-lookup-relation-external-source-tab.component';
+import { ThemedDynamicLookupRelationSearchTabComponent } from './search-tab/themed-dynamic-lookup-relation-search-tab.component';
+import { ThemedLoadingComponent } from '../../../../loading/themed-loading.component';
+import { NgIf, NgFor, AsyncPipe } from '@angular/common';
 
 @Component({
-  selector: 'ds-dynamic-lookup-relation-modal',
-  styleUrls: ['./dynamic-lookup-relation-modal.component.scss'],
-  templateUrl: './dynamic-lookup-relation-modal.component.html',
-  providers: [
-    {
-      provide: SEARCH_CONFIG_SERVICE,
-      useClass: SearchConfigurationService
-    }
-  ]
+    selector: 'ds-dynamic-lookup-relation-modal',
+    styleUrls: ['./dynamic-lookup-relation-modal.component.scss'],
+    templateUrl: './dynamic-lookup-relation-modal.component.html',
+    providers: [
+        {
+            provide: SEARCH_CONFIG_SERVICE,
+            useClass: SearchConfigurationService
+        }
+    ],
+    standalone: true,
+    imports: [NgIf, ThemedLoadingComponent, NgbNavModule, ThemedDynamicLookupRelationSearchTabComponent, NgFor, ThemedDynamicLookupRelationExternalSourceTabComponent, DsDynamicLookupRelationSelectionTabComponent, AsyncPipe, TranslateModule]
 })
 
 /**

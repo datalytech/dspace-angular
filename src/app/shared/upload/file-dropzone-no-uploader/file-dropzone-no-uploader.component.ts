@@ -1,8 +1,13 @@
 import { Component, EventEmitter, HostListener, Input, OnInit, Output } from '@angular/core';
 import uniqueId from 'lodash/uniqueId';
-import { FileUploader } from 'ng2-file-upload';
+import { FileUploader, FileUploadModule } from 'ng2-file-upload';
 import { Observable, of as observableOf } from 'rxjs';
 import { UploaderOptions } from '../uploader/uploader-options.model';
+import { TranslateModule } from '@ngx-translate/core';
+import { FileValidator } from '../../utils/require-file.validator';
+import { FormsModule } from '@angular/forms';
+import { FileValueAccessorDirective } from '../../utils/file-value-accessor.directive';
+import { NgIf, AsyncPipe } from '@angular/common';
 
 /**
  * Component to have a file dropzone without that dropping/choosing a file in browse automatically triggers
@@ -12,9 +17,11 @@ import { UploaderOptions } from '../uploader/uploader-options.model';
  * replace message.
  */
 @Component({
-  selector: 'ds-file-dropzone-no-uploader',
-  templateUrl: './file-dropzone-no-uploader.component.html',
-  styleUrls: ['./file-dropzone-no-uploader.scss']
+    selector: 'ds-file-dropzone-no-uploader',
+    templateUrl: './file-dropzone-no-uploader.component.html',
+    styleUrls: ['./file-dropzone-no-uploader.scss'],
+    standalone: true,
+    imports: [FileUploadModule, NgIf, FileValueAccessorDirective, FormsModule, FileValidator, AsyncPipe, TranslateModule]
 })
 export class FileDropzoneNoUploaderComponent implements OnInit {
 

@@ -32,19 +32,17 @@ import { AlertComponent } from "@dspace/shared/ui";
         DsoSharedModule,
         DsoPageModule,
         AlertComponent,
+        CollectionPageComponent,
+        ThemedCollectionPageComponent,
+        CreateCollectionPageComponent,
+        DeleteCollectionPageComponent,
+        EditItemTemplatePageComponent,
+        ThemedEditItemTemplatePageComponent,
+        CollectionItemMapperComponent
     ],
-  declarations: [
-    CollectionPageComponent,
-    ThemedCollectionPageComponent,
-    CreateCollectionPageComponent,
-    DeleteCollectionPageComponent,
-    EditItemTemplatePageComponent,
-    ThemedEditItemTemplatePageComponent,
-    CollectionItemMapperComponent
-  ],
-  providers: [
-    SearchService,
-  ],
+    providers: [
+        SearchService,
+    ]
 })
 export class CollectionPageModule {
 

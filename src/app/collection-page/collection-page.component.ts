@@ -54,13 +54,29 @@ import {
   AppConfig,
 } from '../../../src/config/app-config.interface';
 import { fadeIn, fadeInOut } from '@dspace/shared/animations';
+import { TranslateModule } from '@ngx-translate/core';
+import { ThemedLoadingComponent } from '../shared/loading/themed-loading.component';
+import { ErrorComponent } from '../shared/error/error.component';
+import { ObjectCollectionComponent } from '../shared/object-collection/object-collection.component';
+import { ThemedComcolPageBrowseByComponent } from '../shared/comcol/comcol-page-browse-by/themed-comcol-page-browse-by.component';
+import { DsoPageSubscriptionButtonComponent } from '../shared/dso-page/dso-page-subscription-button/dso-page-subscription-button.component';
+import { DsoEditMenuComponent } from '../shared/dso-page/dso-edit-menu/dso-edit-menu.component';
+import { ComcolPageContentComponent } from '../shared/comcol/comcol-page-content/comcol-page-content.component';
+import { ThemedComcolPageHandleComponent } from '../shared/comcol/comcol-page-handle/themed-comcol-page-handle.component';
+import { ComcolPageLogoComponent } from '../shared/comcol/comcol-page-logo/comcol-page-logo.component';
+import { ComcolPageHeaderComponent } from '../shared/comcol/comcol-page-header/comcol-page-header.component';
+import { ViewTrackerComponent } from '../statistics/angulartics/dspace/view-tracker.component';
+import { NgIf, AsyncPipe } from '@angular/common';
+import { VarDirective } from '../shared/utils/var.directive';
 
 @Component({
-  selector: 'ds-collection-page',
-  styleUrls: ['./collection-page.component.scss'],
-  templateUrl: './collection-page.component.html',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  animations: [fadeIn, fadeInOut],
+    selector: 'ds-collection-page',
+    styleUrls: ['./collection-page.component.scss'],
+    templateUrl: './collection-page.component.html',
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    animations: [fadeIn, fadeInOut],
+    standalone: true,
+    imports: [VarDirective, NgIf, ViewTrackerComponent, ComcolPageHeaderComponent, ComcolPageLogoComponent, ThemedComcolPageHandleComponent, ComcolPageContentComponent, DsoEditMenuComponent, DsoPageSubscriptionButtonComponent, ThemedComcolPageBrowseByComponent, ObjectCollectionComponent, ErrorComponent, ThemedLoadingComponent, AsyncPipe, TranslateModule]
 })
 export class CollectionPageComponent implements OnInit {
   collectionRD$: Observable<RemoteData<Collection>>;

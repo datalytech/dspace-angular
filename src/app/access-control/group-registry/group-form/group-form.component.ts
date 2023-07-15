@@ -1,5 +1,14 @@
-import { Component, EventEmitter, HostListener, OnDestroy, OnInit, Output, ChangeDetectorRef } from '@angular/core';
-import { UntypedFormGroup } from '@angular/forms';
+import {
+  Component,
+  EventEmitter,
+  HostListener,
+  OnDestroy,
+  OnInit,
+  Output,
+  ChangeDetectorRef,
+  forwardRef
+} from '@angular/core';
+import { UntypedFormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import {
@@ -8,7 +17,7 @@ import {
   DynamicInputModel,
   DynamicTextAreaModel
 } from '@ng-dynamic-forms/core';
-import { TranslateService } from '@ngx-translate/core';
+import { TranslateService, TranslateModule } from '@ngx-translate/core';
 import {
   ObservedValueOf,
   combineLatest as observableCombineLatest,
@@ -48,10 +57,18 @@ import { ValidateGroupExists } from './validators/group-exists.validator';
 import { DSONameService } from '../../../core/breadcrumbs/dso-name.service';
 import { environment } from '../../../../environments/environment';
 import { AlertType } from "@dspace/shared/ui";
+import { SubgroupsListComponent } from './subgroup-list/subgroups-list.component';
+import { MembersListComponent } from './members-list/members-list.component';
+import { FormComponent } from '../../../shared/form/form.component';
+import { AlertComponent } from '../../../../../libs/shared/ui/src/lib/alert/alert.component';
+import { ContextHelpDirective } from '../../../shared/context-help.directive';
+import { NgIf, AsyncPipe } from '@angular/common';
 
 @Component({
-  selector: 'ds-group-form',
-  templateUrl: './group-form.component.html'
+    selector: 'ds-group-form',
+    templateUrl: './group-form.component.html',
+    standalone: true,
+    imports: [NgIf, ContextHelpDirective, AlertComponent, forwardRef(() => FormComponent), FormsModule, ReactiveFormsModule, MembersListComponent, SubgroupsListComponent, AsyncPipe, TranslateModule]
 })
 /**
  * A form used for creating and editing groups

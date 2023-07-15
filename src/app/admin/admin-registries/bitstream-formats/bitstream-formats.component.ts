@@ -7,19 +7,23 @@ import { BitstreamFormat } from '../../../core/shared/bitstream-format.model';
 import { BitstreamFormatDataService } from '../../../core/data/bitstream-format-data.service';
 import { map, mergeMap, switchMap, take, toArray } from 'rxjs/operators';
 import { NotificationsService } from '../../../shared/notifications/notifications.service';
-import { Router } from '@angular/router';
-import { TranslateService } from '@ngx-translate/core';
+import { Router, RouterLink } from '@angular/router';
+import { TranslateService, TranslateModule } from '@ngx-translate/core';
 import { NoContent } from '../../../core/shared/NoContent.model';
 import { PaginationService } from '../../../core/pagination/pagination.service';
 import { FindListOptions } from '../../../core/data/find-list-options.model';
 import { getFirstCompletedRemoteData } from '../../../core/shared/operators';
+import { PaginationComponent } from '../../../shared/pagination/pagination.component';
+import { NgIf, NgFor, AsyncPipe } from '@angular/common';
 
 /**
  * This component renders a list of bitstream formats
  */
 @Component({
-  selector: 'ds-bitstream-formats',
-  templateUrl: './bitstream-formats.component.html'
+    selector: 'ds-bitstream-formats',
+    templateUrl: './bitstream-formats.component.html',
+    standalone: true,
+    imports: [RouterLink, NgIf, PaginationComponent, NgFor, AsyncPipe, TranslateModule]
 })
 export class BitstreamFormatsComponent implements OnInit, OnDestroy {
 

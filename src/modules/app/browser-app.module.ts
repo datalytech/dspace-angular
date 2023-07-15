@@ -33,6 +33,8 @@ import { BrowserAuthRequestService } from '../../app/core/auth/browser-auth-requ
 import { BrowserInitService } from './browser-init.service';
 import { ReferrerService } from '../../app/core/services/referrer.service';
 import { BrowserReferrerService } from '../../app/core/services/browser.referrer.service';
+import { ProductsComponent } from "@dspace/products";
+import { ThemedRootComponent } from "../../app/root/themed-root.component";
 
 export const REQ_KEY = makeStateKey<string>('req');
 
@@ -50,6 +52,7 @@ export function getRequest(transferState: TransferState): any {
     BrowserModule.withServerTransition({
       appId: 'dspace-angular'
     }),
+    ProductsComponent, ThemedRootComponent,
     HttpClientModule,
     // forRoot ensures the providers are only created once
     IdlePreloadModule.forRoot(),

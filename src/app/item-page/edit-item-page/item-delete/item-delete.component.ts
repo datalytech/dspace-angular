@@ -24,10 +24,10 @@ import { hasValue, isNotEmpty } from '../../../shared/empty.util';
 import { Item } from '../../../core/shared/item.model';
 import { MetadataValue } from '../../../core/shared/metadata.models';
 import { ViewMode } from '../../../core/shared/view-mode.model';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { NotificationsService } from '../../../shared/notifications/notifications.service';
 import { ItemDataService } from '../../../core/data/item-data.service';
-import { TranslateService } from '@ngx-translate/core';
+import { TranslateService, TranslateModule } from '@ngx-translate/core';
 import { ObjectUpdatesService } from '../../../core/data/object-updates/object-updates.service';
 import { RelationshipDataService } from '../../../core/data/relationship-data.service';
 import { EntityTypeDataService } from '../../../core/data/entity-type-data.service';
@@ -36,10 +36,16 @@ import { followLink } from '../../../shared/utils/follow-link-config.model';
 import { getItemEditRoute } from '../../item-page-routing-paths';
 import { RemoteData } from '../../../core/data/remote-data';
 import { NoContent } from '../../../core/shared/NoContent.model';
+import { ListableObjectComponentLoaderComponent } from '../../../shared/object-collection/shared/listable-object/listable-object-component-loader.component';
+import { NgIf, NgFor, AsyncPipe } from '@angular/common';
+import { VarDirective } from '../../../shared/utils/var.directive';
+import { ModifyItemOverviewComponent } from '../modify-item-overview/modify-item-overview.component';
 
 @Component({
-  selector: 'ds-item-delete',
-  templateUrl: '../item-delete/item-delete.component.html'
+    selector: 'ds-item-delete',
+    templateUrl: '../item-delete/item-delete.component.html',
+    standalone: true,
+    imports: [ModifyItemOverviewComponent, VarDirective, NgIf, NgFor, ListableObjectComponentLoaderComponent, RouterLink, AsyncPipe, TranslateModule]
 })
 /**
  * Component responsible for rendering the item delete page

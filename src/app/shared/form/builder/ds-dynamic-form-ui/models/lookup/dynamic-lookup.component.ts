@@ -1,9 +1,9 @@
 import { ChangeDetectorRef, Component, EventEmitter, Input, OnDestroy, OnInit, Output } from '@angular/core';
-import { UntypedFormGroup } from '@angular/forms';
+import { UntypedFormGroup, FormsModule } from '@angular/forms';
 
 import { of as observableOf, Subscription } from 'rxjs';
 import { catchError, distinctUntilChanged } from 'rxjs/operators';
-import { NgbDropdown } from '@ng-bootstrap/ng-bootstrap';
+import { NgbDropdown, NgbDropdownModule, NgbTooltipModule } from '@ng-bootstrap/ng-bootstrap';
 import { DynamicFormLayoutService, DynamicFormValidationService } from '@ng-dynamic-forms/core';
 
 import { VocabularyService } from '../../../../../../core/submission/vocabularies/vocabulary.service';
@@ -19,14 +19,21 @@ import {
 } from '../../../../../../core/data/paginated-list.model';
 import { getFirstSucceededRemoteDataPayload } from '../../../../../../core/shared/operators';
 import { DsDynamicVocabularyComponent } from '../dynamic-vocabulary.component';
+import { TranslateModule } from '@ngx-translate/core';
+import { ObjNgFor } from '../../../../../utils/object-ngfor.pipe';
+import { InfiniteScrollModule } from 'ngx-infinite-scroll';
+import { NgIf, NgClass, NgFor, NgTemplateOutlet } from '@angular/common';
+import { AuthorityConfidenceStateDirective } from '../../../../directives/authority-confidence-state.directive';
 
 /**
  * Component representing a lookup or lookup-name input field
  */
 @Component({
-  selector: 'ds-dynamic-lookup',
-  styleUrls: ['./dynamic-lookup.component.scss'],
-  templateUrl: './dynamic-lookup.component.html'
+    selector: 'ds-dynamic-lookup',
+    styleUrls: ['./dynamic-lookup.component.scss'],
+    templateUrl: './dynamic-lookup.component.html',
+    standalone: true,
+    imports: [NgbDropdownModule, AuthorityConfidenceStateDirective, FormsModule, NgIf, NgClass, NgbTooltipModule, InfiniteScrollModule, NgFor, NgTemplateOutlet, ObjNgFor, TranslateModule]
 })
 export class DsDynamicLookupComponent extends DsDynamicVocabularyComponent implements OnDestroy, OnInit {
 

@@ -10,14 +10,18 @@ import { SubmissionService } from '../../submission.service';
 import { SubmissionObject } from '../../../core/submission/models/submission-object.model';
 import { NotificationsService } from '../../../shared/notifications/notifications.service';
 import { SubmissionImportExternalCollectionComponent } from '../import-external-collection/submission-import-external-collection.component';
+import { TranslateModule } from '@ngx-translate/core';
+import { NgFor } from '@angular/common';
 
 /**
  * This component display a preview of an external source item.
  */
 @Component({
-  selector: 'ds-submission-import-external-preview',
-  styleUrls: ['./submission-import-external-preview.component.scss'],
-  templateUrl: './submission-import-external-preview.component.html'
+    selector: 'ds-submission-import-external-preview',
+    styleUrls: ['./submission-import-external-preview.component.scss'],
+    templateUrl: './submission-import-external-preview.component.html',
+    standalone: true,
+    imports: [NgFor, TranslateModule]
 })
 export class SubmissionImportExternalPreviewComponent implements OnInit {
   /**

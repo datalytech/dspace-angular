@@ -6,13 +6,18 @@ import { RemoteData } from '../../../core/data/remote-data';
 import { Observable } from 'rxjs';
 import { DSONameService } from '../../../core/breadcrumbs/dso-name.service';
 import { hasValue } from '../../../shared/empty.util';
+import { TranslateModule } from '@ngx-translate/core';
+import { AsyncPipe } from '@angular/common';
+import { CurationFormComponent } from '../../../curation-form/curation-form.component';
 
 /**
  * Component for managing a community's curation tasks
  */
 @Component({
-  selector: 'ds-community-curate',
-  templateUrl: './community-curate.component.html',
+    selector: 'ds-community-curate',
+    templateUrl: './community-curate.component.html',
+    standalone: true,
+    imports: [CurationFormComponent, AsyncPipe, TranslateModule]
 })
 export class CommunityCurateComponent implements OnInit {
 

@@ -4,16 +4,20 @@ import { DeleteComColPageComponent } from '../../shared/comcol/comcol-forms/dele
 import { NotificationsService } from '../../shared/notifications/notifications.service';
 import { CollectionDataService } from '../../core/data/collection-data.service';
 import { Collection } from '../../core/shared/collection.model';
-import { TranslateService } from '@ngx-translate/core';
+import { TranslateService, TranslateModule } from '@ngx-translate/core';
 import { DSONameService } from '../../core/breadcrumbs/dso-name.service';
+import { NgIf, AsyncPipe } from '@angular/common';
+import { VarDirective } from '../../shared/utils/var.directive';
 
 /**
  * Component that represents the page where a user can delete an existing Collection
  */
 @Component({
-  selector: 'ds-delete-collection',
-  styleUrls: ['./delete-collection-page.component.scss'],
-  templateUrl: './delete-collection-page.component.html'
+    selector: 'ds-delete-collection',
+    styleUrls: ['./delete-collection-page.component.scss'],
+    templateUrl: './delete-collection-page.component.html',
+    standalone: true,
+    imports: [VarDirective, NgIf, AsyncPipe, TranslateModule]
 })
 export class DeleteCollectionPageComponent extends DeleteComColPageComponent<Collection> {
   protected frontendURL = '/collections/';

@@ -42,24 +42,27 @@ import {
   rotateInState, rotateLeave,
   rotateOutState, scaleEnter, scaleInState, scaleLeave, scaleOutState
 } from '@dspace/shared/animations';
+import { NgIf, NgStyle, NgClass, NgTemplateOutlet, AsyncPipe } from '@angular/common';
 
 @Component({
-  selector: 'ds-notification',
-  encapsulation: ViewEncapsulation.None,
-  animations: [
-    trigger('enterLeave', [
-      fadeInEnter, fadeInState, fadeOutLeave, fadeOutState,
-      fromBottomEnter, fromBottomInState, fromBottomLeave, fromBottomOutState,
-      fromRightEnter, fromRightInState, fromRightLeave, fromRightOutState,
-      fromLeftEnter, fromLeftInState, fromLeftLeave, fromLeftOutState,
-      fromTopEnter, fromTopInState, fromTopLeave, fromTopOutState,
-      rotateInState, rotateEnter, rotateOutState, rotateLeave,
-      scaleInState, scaleEnter, scaleOutState, scaleLeave
-    ])
-  ],
-  templateUrl: './notification.component.html',
-  styleUrls: ['./notification.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+    selector: 'ds-notification',
+    encapsulation: ViewEncapsulation.None,
+    animations: [
+        trigger('enterLeave', [
+            fadeInEnter, fadeInState, fadeOutLeave, fadeOutState,
+            fromBottomEnter, fromBottomInState, fromBottomLeave, fromBottomOutState,
+            fromRightEnter, fromRightInState, fromRightLeave, fromRightOutState,
+            fromLeftEnter, fromLeftInState, fromLeftLeave, fromLeftOutState,
+            fromTopEnter, fromTopInState, fromTopLeave, fromTopOutState,
+            rotateInState, rotateEnter, rotateOutState, rotateLeave,
+            scaleInState, scaleEnter, scaleOutState, scaleLeave
+        ])
+    ],
+    templateUrl: './notification.component.html',
+    styleUrls: ['./notification.component.scss'],
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: true,
+    imports: [NgIf, NgStyle, NgClass, NgTemplateOutlet, AsyncPipe]
 })
 
 export class NotificationComponent implements OnInit, OnDestroy {

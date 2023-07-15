@@ -1,4 +1,4 @@
-import { Component, Input, OnChanges, SimpleChange, SimpleChanges } from '@angular/core';
+import { Component, forwardRef, Input, OnChanges, SimpleChange, SimpleChanges } from '@angular/core';
 import {
   DynamicFormControlModel,
   DynamicFormService,
@@ -7,21 +7,28 @@ import {
 } from '@ng-dynamic-forms/core';
 import { Community } from '../../core/shared/community.model';
 import { ComColFormComponent } from '../../shared/comcol/comcol-forms/comcol-form/comcol-form.component';
-import { TranslateService } from '@ngx-translate/core';
+import { TranslateService, TranslateModule } from '@ngx-translate/core';
 import { NotificationsService } from '../../shared/notifications/notifications.service';
 import { CommunityDataService } from '../../core/data/community-data.service';
 import { AuthService } from '../../core/auth/auth.service';
 import { RequestService } from '../../core/data/request.service';
 import { ObjectCacheService } from '../../core/cache/object-cache.service';
 import { environment } from '../../../environments/environment';
+import { FormComponent } from '../../shared/form/form.component';
+import { UploaderComponent } from '../../shared/upload/uploader/uploader.component';
+import { ComcolPageLogoComponent } from '../../shared/comcol/comcol-page-logo/comcol-page-logo.component';
+import { NgIf, NgClass, AsyncPipe } from '@angular/common';
+import { VarDirective } from '../../shared/utils/var.directive';
 
 /**
  * Form used for creating and editing communities
  */
 @Component({
-  selector: 'ds-community-form',
-  styleUrls: ['../../shared/comcol/comcol-forms/comcol-form/comcol-form.component.scss'],
-  templateUrl: '../../shared/comcol/comcol-forms/comcol-form/comcol-form.component.html'
+    selector: 'ds-community-form',
+    styleUrls: ['../../shared/comcol/comcol-forms/comcol-form/comcol-form.component.scss'],
+    templateUrl: '../../shared/comcol/comcol-forms/comcol-form/comcol-form.component.html',
+    standalone: true,
+    imports: [VarDirective, NgIf, NgClass, ComcolPageLogoComponent, UploaderComponent, forwardRef(() => FormComponent), AsyncPipe, TranslateModule]
 })
 export class CommunityFormComponent extends ComColFormComponent<Community> implements OnChanges {
   /**

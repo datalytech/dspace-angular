@@ -12,11 +12,21 @@ import { ObjectValuesPipe } from '../../../../../shared/utils/object-values-pipe
 import { RequestService } from '../../../../../core/data/request.service';
 import { PaginationService } from '../../../../../core/pagination/pagination.service';
 import { PaginationComponentOptions } from '../../../../../shared/pagination/pagination-component-options.model';
+import { TranslateModule } from '@ngx-translate/core';
+import { ThemedLoadingComponent } from '../../../../../shared/loading/themed-loading.component';
+import { ItemEditBitstreamDragHandleComponent } from '../../item-edit-bitstream-drag-handle/item-edit-bitstream-drag-handle.component';
+import { ItemEditBitstreamComponent } from '../../item-edit-bitstream/item-edit-bitstream.component';
+import { CdkDropList, CdkDrag, CdkDragHandle } from '@angular/cdk/drag-drop';
+import { VarDirective } from '../../../../../shared/utils/var.directive';
+import { PaginationComponent } from '../../../../../shared/pagination/pagination.component';
+import { NgIf, NgClass, NgFor, AsyncPipe } from '@angular/common';
 
 @Component({
-  selector: 'ds-paginated-drag-and-drop-bitstream-list',
-  styleUrls: ['../../item-bitstreams.component.scss'],
-  templateUrl: './paginated-drag-and-drop-bitstream-list.component.html',
+    selector: 'ds-paginated-drag-and-drop-bitstream-list',
+    styleUrls: ['../../item-bitstreams.component.scss'],
+    templateUrl: './paginated-drag-and-drop-bitstream-list.component.html',
+    standalone: true,
+    imports: [NgIf, PaginationComponent, VarDirective, CdkDropList, NgClass, NgFor, CdkDrag, ItemEditBitstreamComponent, CdkDragHandle, ItemEditBitstreamDragHandleComponent, ThemedLoadingComponent, AsyncPipe, TranslateModule]
 })
 /**
  * A component listing edit-bitstream rows for each bitstream within the given bundle.

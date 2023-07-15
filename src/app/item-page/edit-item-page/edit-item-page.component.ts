@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, Injector, OnInit } from '@angular/core';
-import { ActivatedRoute, CanActivate, Route, Router } from '@angular/router';
+import { ActivatedRoute, CanActivate, Route, Router, RouterLink, RouterOutlet } from '@angular/router';
 import { RemoteData } from '../../core/data/remote-data';
 import { Item } from '../../core/shared/item.model';
 import { combineLatest as observableCombineLatest, Observable, of as observableOf } from 'rxjs';
@@ -8,15 +8,20 @@ import { isNotEmpty } from '../../shared/empty.util';
 import { getItemPageRoute } from '../item-page-routing-paths';
 import { GenericConstructor } from '../../core/shared/generic-constructor';
 import { fadeIn, fadeInOut } from '@dspace/shared/animations';
+import { TranslateModule } from '@ngx-translate/core';
+import { NgbTooltipModule } from '@ng-bootstrap/ng-bootstrap';
+import { NgFor, NgIf, NgClass, AsyncPipe } from '@angular/common';
 
 @Component({
-  selector: 'ds-edit-item-page',
-  templateUrl: './edit-item-page.component.html',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  animations: [
-    fadeIn,
-    fadeInOut
-  ]
+    selector: 'ds-edit-item-page',
+    templateUrl: './edit-item-page.component.html',
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    animations: [
+        fadeIn,
+        fadeInOut
+    ],
+    standalone: true,
+    imports: [NgFor, NgIf, NgClass, RouterLink, NgbTooltipModule, RouterOutlet, AsyncPipe, TranslateModule]
 })
 /**
  * Page component for editing an item

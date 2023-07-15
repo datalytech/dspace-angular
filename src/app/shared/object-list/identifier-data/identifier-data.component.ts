@@ -5,10 +5,14 @@ import { hasValue } from '../../empty.util';
 import { Item } from 'src/app/core/shared/item.model';
 import { IdentifierData } from './identifier-data.model';
 import { IdentifierDataService } from '../../../core/data/identifier-data.service';
+import { TranslateModule } from '@ngx-translate/core';
+import { NgIf, AsyncPipe } from '@angular/common';
 
 @Component({
-  selector: 'ds-identifier-data',
-  templateUrl: './identifier-data.component.html'
+    selector: 'ds-identifier-data',
+    templateUrl: './identifier-data.component.html',
+    standalone: true,
+    imports: [NgIf, AsyncPipe, TranslateModule]
 })
 /**
  * Component rendering an identifier, eg. DOI or handle

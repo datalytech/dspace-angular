@@ -20,14 +20,21 @@ import { isNotEmpty } from '../../../shared/empty.util';
 import { JsonPatchOperationsBuilder } from '../../../core/json-patch/builder/json-patch-operations-builder';
 import { SubmissionCcLicenseUrlDataService } from '../../../core/submission/submission-cc-license-url-data.service';
 import {ConfigurationDataService} from '../../../core/data/configuration-data.service';
+import { TranslateModule } from '@ngx-translate/core';
+import { VarDirective } from '../../../shared/utils/var.directive';
+import { ThemedLoadingComponent } from '../../../shared/loading/themed-loading.component';
+import { NgIf, NgFor, AsyncPipe } from '@angular/common';
+import { DsSelectComponent } from '../../../shared/ds-select/ds-select.component';
 
 /**
  * This component represents the submission section to select the Creative Commons license.
  */
 @Component({
-  selector: 'ds-submission-section-cc-licenses',
-  templateUrl: './submission-section-cc-licenses.component.html',
-  styleUrls: ['./submission-section-cc-licenses.component.scss']
+    selector: 'ds-submission-section-cc-licenses',
+    templateUrl: './submission-section-cc-licenses.component.html',
+    styleUrls: ['./submission-section-cc-licenses.component.scss'],
+    standalone: true,
+    imports: [DsSelectComponent, NgIf, ThemedLoadingComponent, NgFor, VarDirective, AsyncPipe, TranslateModule]
 })
 @renderSectionFor(SectionsType.CcLicense)
 export class SubmissionSectionCcLicensesComponent extends SectionModelComponent {

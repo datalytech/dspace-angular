@@ -1,4 +1,4 @@
-import { ChangeDetectorRef, Component, Inject, ViewChild } from '@angular/core';
+import { ChangeDetectorRef, Component, forwardRef, Inject, ViewChild } from '@angular/core';
 import { DynamicFormControlEvent, DynamicFormControlModel } from '@ng-dynamic-forms/core';
 
 import { combineLatest as observableCombineLatest, Observable, Subscription } from 'rxjs';
@@ -40,14 +40,18 @@ import { SubmissionObject } from '../../../core/submission/models/submission-obj
 import { SubmissionSectionObject } from '../../objects/submission-section-object.model';
 import { SubmissionSectionError } from '../../objects/submission-section-error.model';
 import { FormRowModel } from '../../../core/config/models/config-submission-form.model';
+import { ThemedLoadingComponent } from '../../../shared/loading/themed-loading.component';
+import { NgIf } from '@angular/common';
 
 /**
  * This component represents a section that contains a Form.
  */
 @Component({
-  selector: 'ds-submission-section-form',
-  styleUrls: ['./section-form.component.scss'],
-  templateUrl: './section-form.component.html',
+    selector: 'ds-submission-section-form',
+    styleUrls: ['./section-form.component.scss'],
+    templateUrl: './section-form.component.html',
+    standalone: true,
+    imports: [NgIf, ThemedLoadingComponent, forwardRef(() => FormComponent)]
 })
 @renderSectionFor(SectionsType.SubmissionForm)
 export class SubmissionSectionFormComponent extends SectionModelComponent {

@@ -1,4 +1,14 @@
-import { Component, ElementRef, EventEmitter, Input, OnDestroy, OnInit, Output, ViewChild } from '@angular/core';
+import {
+  Component,
+  ElementRef,
+  EventEmitter,
+  forwardRef,
+  Input,
+  OnDestroy,
+  OnInit,
+  Output,
+  ViewChild
+} from '@angular/core';
 
 import {
   Observable,
@@ -41,7 +51,11 @@ import { EPersonDataService } from '../../../core/eperson/eperson-data.service';
 import { GroupDataService } from '../../../core/eperson/group-data.service';
 import { getFirstSucceededRemoteData } from '../../../core/shared/operators';
 import { RequestService } from '../../../core/data/request.service';
-import { NgbModal, NgbNavChangeEvent } from '@ng-bootstrap/ng-bootstrap';
+import { NgbModal, NgbNavChangeEvent, NgbNavModule } from '@ng-bootstrap/ng-bootstrap';
+import { TranslateModule } from '@ngx-translate/core';
+import { EpersonGroupListComponent } from '../../eperson-group-list/eperson-group-list.component';
+import { FormComponent } from '../../form/form.component';
+import { NgIf, AsyncPipe } from '@angular/common';
 
 export interface ResourcePolicyEvent {
   object: ResourcePolicy;
@@ -53,8 +67,10 @@ export interface ResourcePolicyEvent {
 }
 
 @Component({
-  selector: 'ds-resource-policy-form',
-  templateUrl: './resource-policy-form.component.html',
+    selector: 'ds-resource-policy-form',
+    templateUrl: './resource-policy-form.component.html',
+    standalone: true,
+    imports: [NgIf, forwardRef(() => FormComponent), NgbNavModule, EpersonGroupListComponent, AsyncPipe, TranslateModule]
 })
 /**
  * Component that show form for adding/editing a resource policy

@@ -21,13 +21,11 @@ const DECLARATIONS = [
     imports: [
         SharedModule,
         AlertComponent,
+        ...DECLARATIONS
     ],
-  declarations: [
-    ...DECLARATIONS,
-  ],
-  exports: [
-    ...DECLARATIONS,
-  ],
+    exports: [
+        ...DECLARATIONS,
+    ]
 })
 export class ItemVersionsModule {
 

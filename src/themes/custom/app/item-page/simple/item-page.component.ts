@@ -1,6 +1,16 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { ItemPageComponent as BaseComponent } from '../../../../../app/item-page/simple/item-page.component';
 import { fadeInOut } from "@dspace/shared/animations";
+import { TranslateModule } from '@ngx-translate/core';
+import { ThemedLoadingComponent } from '../../../../../app/shared/loading/themed-loading.component';
+import { ErrorComponent } from '../../../../../app/shared/error/error.component';
+import { ItemVersionsComponent } from '../../../../../app/item-page/versions/item-versions.component';
+import { ListableObjectComponentLoaderComponent } from '../../../../../app/shared/object-collection/shared/listable-object/listable-object-component-loader.component';
+import { ViewTrackerComponent } from '../../../../../app/statistics/angulartics/dspace/view-tracker.component';
+import { ItemVersionsNoticeComponent } from '../../../../../app/item-page/versions/notice/item-versions-notice.component';
+import { ThemedItemAlertsComponent } from '../../../../../app/item-page/alerts/themed-item-alerts.component';
+import { NgIf, AsyncPipe } from '@angular/common';
+import { VarDirective } from '../../../../../app/shared/utils/var.directive';
 
 /**
  * This component renders a simple item page.
@@ -8,13 +18,15 @@ import { fadeInOut } from "@dspace/shared/animations";
  * All fields of the item that should be displayed, are defined in its template.
  */
 @Component({
-  selector: 'ds-item-page',
-  // styleUrls: ['./item-page.component.scss'],
-  styleUrls: ['../../../../../app/item-page/simple/item-page.component.scss'],
-  // templateUrl: './item-page.component.html',
-  templateUrl: '../../../../../app/item-page/simple/item-page.component.html',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  animations: [fadeInOut]
+    selector: 'ds-item-page',
+    // styleUrls: ['./item-page.component.scss'],
+    styleUrls: ['../../../../../app/item-page/simple/item-page.component.scss'],
+    // templateUrl: './item-page.component.html',
+    templateUrl: '../../../../../app/item-page/simple/item-page.component.html',
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    animations: [fadeInOut],
+    standalone: true,
+    imports: [VarDirective, NgIf, ThemedItemAlertsComponent, ItemVersionsNoticeComponent, ViewTrackerComponent, ListableObjectComponentLoaderComponent, ItemVersionsComponent, ErrorComponent, ThemedLoadingComponent, AsyncPipe, TranslateModule]
 })
 export class ItemPageComponent extends BaseComponent {
 

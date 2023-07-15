@@ -11,6 +11,10 @@ import { ViewMode } from '../core/shared/view-mode.model';
 import { MyDSpaceRequest } from '../core/data/request.models';
 import { Context } from '../core/shared/context.model';
 import { RoleType } from '../core/roles/role-types';
+import { ThemedSearchComponent } from '../shared/search/themed-search.component';
+import { NgIf, AsyncPipe } from '@angular/common';
+import { MyDSpaceNewSubmissionComponent } from './my-dspace-new-submission/my-dspace-new-submission.component';
+import { RoleDirective } from '../shared/roles/role.directive';
 
 export const MYDSPACE_ROUTE = '/mydspace';
 export const SEARCH_CONFIG_SERVICE: InjectionToken<SearchConfigurationService> = new InjectionToken<SearchConfigurationService>('searchConfigurationService');
@@ -19,16 +23,18 @@ export const SEARCH_CONFIG_SERVICE: InjectionToken<SearchConfigurationService> =
  * This component represents the whole mydspace page
  */
 @Component({
-  selector: 'ds-my-dspace-page',
-  styleUrls: ['./my-dspace-page.component.scss'],
-  templateUrl: './my-dspace-page.component.html',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  providers: [
-    {
-      provide: SEARCH_CONFIG_SERVICE,
-      useClass: MyDSpaceConfigurationService
-    }
-  ]
+    selector: 'ds-my-dspace-page',
+    styleUrls: ['./my-dspace-page.component.scss'],
+    templateUrl: './my-dspace-page.component.html',
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    providers: [
+        {
+            provide: SEARCH_CONFIG_SERVICE,
+            useClass: MyDSpaceConfigurationService
+        }
+    ],
+    standalone: true,
+    imports: [RoleDirective, MyDSpaceNewSubmissionComponent, NgIf, ThemedSearchComponent, AsyncPipe]
 })
 export class MyDSpacePageComponent implements OnInit {
 

@@ -15,15 +15,23 @@ import { AuthorizationDataService } from '../../core/data/feature-authorization/
 import { FeatureID } from '../../core/data/feature-authorization/feature-id';
 import { CoreState } from '../../core/core-state.model';
 import { AuthMethodType } from '../../core/auth/models/auth.method-type';
+import { BrowserOnlyPipe } from '../utils/browser-only.pipe';
+import { TranslateModule } from '@ngx-translate/core';
+import { RouterLink } from '@angular/router';
+import { LogInContainerComponent } from './container/log-in-container.component';
+import { ThemedLoadingComponent } from '../loading/themed-loading.component';
+import { NgIf, NgFor, AsyncPipe } from '@angular/common';
 
 /**
  * /users/sign-in
  * @class LogInComponent
  */
 @Component({
-  selector: 'ds-log-in',
-  templateUrl: './log-in.component.html',
-  styleUrls: ['./log-in.component.scss']
+    selector: 'ds-log-in',
+    templateUrl: './log-in.component.html',
+    styleUrls: ['./log-in.component.scss'],
+    standalone: true,
+    imports: [NgIf, ThemedLoadingComponent, NgFor, LogInContainerComponent, RouterLink, AsyncPipe, TranslateModule, BrowserOnlyPipe]
 })
 export class LogInComponent implements OnInit {
 

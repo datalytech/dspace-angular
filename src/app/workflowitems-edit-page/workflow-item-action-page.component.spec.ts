@@ -43,14 +43,13 @@ describe('WorkflowItemActionPageComponent', () => {
   beforeEach(waitForAsync(() => {
     init();
     TestBed.configureTestingModule({
-      imports: [TranslateModule.forRoot({
-        loader: {
-          provide: TranslateLoader,
-          useClass: TranslateLoaderMock
-        }
-      })],
-      declarations: [TestComponent, VarDirective],
-      providers: [
+    imports: [TranslateModule.forRoot({
+            loader: {
+                provide: TranslateLoader,
+                useClass: TranslateLoaderMock
+            }
+        }), TestComponent, VarDirective],
+    providers: [
         { provide: ActivatedRoute, useValue: new ActivatedRouteStub({}, { wfi: createSuccessfulRemoteDataObject(wfi) }) },
         { provide: Router, useClass: RouterStub },
         { provide: RouteService, useValue: {} },
@@ -58,9 +57,9 @@ describe('WorkflowItemActionPageComponent', () => {
         { provide: NotificationsService, useClass: NotificationsServiceStub },
         { provide: WorkflowItemDataService, useValue: wfiService },
         { provide: RequestService, useClass: RequestServiceStub },
-      ],
-      schemas: [NO_ERRORS_SCHEMA]
-    })
+    ],
+    schemas: [NO_ERRORS_SCHEMA]
+})
       .compileComponents();
   }));
 
@@ -107,9 +106,9 @@ describe('WorkflowItemActionPageComponent', () => {
 
 @Component({
     selector: 'ds-workflow-item-test-action-page',
-    templateUrl: 'workflow-item-action-page.component.html'
-  }
-)
+    templateUrl: 'workflow-item-action-page.component.html',
+    standalone: true
+})
 class TestComponent extends WorkflowItemActionPageComponent {
   constructor(protected route: ActivatedRoute,
               protected workflowItemService: WorkflowItemDataService,

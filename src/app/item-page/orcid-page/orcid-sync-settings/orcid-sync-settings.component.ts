@@ -1,7 +1,7 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { UntypedFormGroup } from '@angular/forms';
+import { UntypedFormGroup, FormsModule } from '@angular/forms';
 
-import { TranslateService } from '@ngx-translate/core';
+import { TranslateService, TranslateModule } from '@ngx-translate/core';
 import { Operation } from 'fast-json-patch';
 import { of } from 'rxjs';
 import { switchMap } from 'rxjs/operators';
@@ -12,11 +12,15 @@ import { Item } from '../../../core/shared/item.model';
 import { getFirstCompletedRemoteData } from '../../../core/shared/operators';
 import { NotificationsService } from '../../../shared/notifications/notifications.service';
 import { ResearcherProfile } from '../../../core/profile/model/researcher-profile.model';
+import { NgFor } from '@angular/common';
+import { AlertComponent } from '../../../../../libs/shared/ui/src/lib/alert/alert.component';
 
 @Component({
-  selector: 'ds-orcid-sync-setting',
-  templateUrl: './orcid-sync-settings.component.html',
-  styleUrls: ['./orcid-sync-settings.component.scss']
+    selector: 'ds-orcid-sync-setting',
+    templateUrl: './orcid-sync-settings.component.html',
+    styleUrls: ['./orcid-sync-settings.component.scss'],
+    standalone: true,
+    imports: [FormsModule, AlertComponent, NgFor, TranslateModule]
 })
 export class OrcidSyncSettingsComponent implements OnInit {
 

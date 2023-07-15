@@ -3,9 +3,9 @@ import { map, switchMap } from 'rxjs/operators';
 import { DSpaceObjectType } from '../../../core/shared/dspace-object-type.model';
 import { RemoteData } from '../../../core/data/remote-data';
 import { Item } from '../../../core/shared/item.model';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { NotificationsService } from '../../../shared/notifications/notifications.service';
-import { TranslateService } from '@ngx-translate/core';
+import { TranslateService, TranslateModule } from '@ngx-translate/core';
 import {
   getAllSucceededRemoteDataPayload, getFirstCompletedRemoteData, getFirstSucceededRemoteData, getRemoteDataPayload,
 } from '../../../core/shared/operators';
@@ -17,10 +17,15 @@ import { getItemEditRoute, getItemPageRoute } from '../../item-page-routing-path
 import { followLink } from '../../../shared/utils/follow-link-config.model';
 import { RequestService } from '../../../core/data/request.service';
 import { DSONameService } from '../../../core/breadcrumbs/dso-name.service';
+import { NgIf, AsyncPipe } from '@angular/common';
+import { FormsModule } from '@angular/forms';
+import { AuthorizedCollectionSelectorComponent } from '../../../shared/dso-selector/dso-selector/authorized-collection-selector/authorized-collection-selector.component';
 
 @Component({
-  selector: 'ds-item-move',
-  templateUrl: './item-move.component.html'
+    selector: 'ds-item-move',
+    templateUrl: './item-move.component.html',
+    standalone: true,
+    imports: [AuthorizedCollectionSelectorComponent, FormsModule, RouterLink, NgIf, AsyncPipe, TranslateModule]
 })
 /**
  * Component that handles the moving of an item to a different collection

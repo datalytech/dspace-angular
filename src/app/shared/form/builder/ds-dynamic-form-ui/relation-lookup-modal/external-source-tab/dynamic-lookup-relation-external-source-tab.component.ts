@@ -25,21 +25,31 @@ import { Observable, Subscription } from 'rxjs';
 import { ItemType } from '../../../../../../core/shared/item-relationships/item-type.model';
 import { getFirstCompletedRemoteData } from '../../../../../../core/shared/operators';
 import { fadeIn, fadeInOut } from '@dspace/shared/animations';
+import { TranslateModule } from '@ngx-translate/core';
+import { ErrorComponent } from '../../../../../error/error.component';
+import { ThemedLoadingComponent } from '../../../../../loading/themed-loading.component';
+import { ObjectCollectionComponent } from '../../../../../object-collection/object-collection.component';
+import { NgIf, AsyncPipe } from '@angular/common';
+import { VarDirective } from '../../../../../utils/var.directive';
+import { ThemedSearchFormComponent } from '../../../../../search-form/themed-search-form.component';
+import { PageSizeSelectorComponent } from '../../../../../page-size-selector/page-size-selector.component';
 
 @Component({
-  selector: 'ds-dynamic-lookup-relation-external-source-tab',
-  styleUrls: ['./dynamic-lookup-relation-external-source-tab.component.scss'],
-  templateUrl: './dynamic-lookup-relation-external-source-tab.component.html',
-  providers: [
-    {
-      provide: SEARCH_CONFIG_SERVICE,
-      useClass: SearchConfigurationService
-    }
-  ],
-  animations: [
-    fadeIn,
-    fadeInOut
-  ]
+    selector: 'ds-dynamic-lookup-relation-external-source-tab',
+    styleUrls: ['./dynamic-lookup-relation-external-source-tab.component.scss'],
+    templateUrl: './dynamic-lookup-relation-external-source-tab.component.html',
+    providers: [
+        {
+            provide: SEARCH_CONFIG_SERVICE,
+            useClass: SearchConfigurationService
+        }
+    ],
+    animations: [
+        fadeIn,
+        fadeInOut
+    ],
+    standalone: true,
+    imports: [PageSizeSelectorComponent, ThemedSearchFormComponent, VarDirective, NgIf, ObjectCollectionComponent, ThemedLoadingComponent, ErrorComponent, AsyncPipe, TranslateModule]
 })
 /**
  * Component rendering the tab content of an external source during submission lookup

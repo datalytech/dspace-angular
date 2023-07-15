@@ -3,15 +3,19 @@ import { Component } from '@angular/core';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 
 import { CollectionListEntry } from '../../shared/collection-dropdown/collection-dropdown.component';
+import { TranslateModule } from '@ngx-translate/core';
+import { ThemedCollectionDropdownComponent } from '../../shared/collection-dropdown/themed-collection-dropdown.component';
 
 /**
  * This component displays the dialog that shows the list of selectable collections
  * on the MyDSpace page
  */
 @Component({
-  selector: 'ds-collection-selector',
-  templateUrl: './collection-selector.component.html',
-  styleUrls: ['./collection-selector.component.scss']
+    selector: 'ds-collection-selector',
+    templateUrl: './collection-selector.component.html',
+    styleUrls: ['./collection-selector.component.scss'],
+    standalone: true,
+    imports: [ThemedCollectionDropdownComponent, TranslateModule]
 })
 export class CollectionSelectorComponent {
 

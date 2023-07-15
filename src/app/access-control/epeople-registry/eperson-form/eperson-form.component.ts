@@ -1,12 +1,12 @@
-import { ChangeDetectorRef, Component, EventEmitter, OnDestroy, OnInit, Output } from '@angular/core';
-import { UntypedFormGroup } from '@angular/forms';
+import { ChangeDetectorRef, Component, EventEmitter, forwardRef, OnDestroy, OnInit, Output } from '@angular/core';
+import { UntypedFormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {
   DynamicCheckboxModel,
   DynamicFormControlModel,
   DynamicFormLayout,
   DynamicInputModel
 } from '@ng-dynamic-forms/core';
-import { TranslateService } from '@ngx-translate/core';
+import { TranslateService, TranslateModule } from '@ngx-translate/core';
 import { combineLatest as observableCombineLatest, Observable, of as observableOf, Subscription } from 'rxjs';
 import { debounceTime, finalize, map, switchMap, take } from 'rxjs/operators';
 import { PaginatedList } from '../../../core/data/paginated-list.model';
@@ -38,10 +38,17 @@ import { Registration } from '../../../core/shared/registration.model';
 import { EpersonRegistrationService } from '../../../core/data/eperson-registration.service';
 import { TYPE_REQUEST_FORGOT } from '../../../register-email-form/register-email-form.component';
 import { DSONameService } from '../../../core/breadcrumbs/dso-name.service';
+import { RouterLink } from '@angular/router';
+import { PaginationComponent } from '../../../shared/pagination/pagination.component';
+import { ThemedLoadingComponent } from '../../../shared/loading/themed-loading.component';
+import { FormComponent } from '../../../shared/form/form.component';
+import { NgIf, NgClass, NgFor, AsyncPipe } from '@angular/common';
 
 @Component({
-  selector: 'ds-eperson-form',
-  templateUrl: './eperson-form.component.html',
+    selector: 'ds-eperson-form',
+    templateUrl: './eperson-form.component.html',
+    standalone: true,
+    imports: [NgIf, forwardRef(() => FormComponent), FormsModule, ReactiveFormsModule, NgClass, ThemedLoadingComponent, PaginationComponent, NgFor, RouterLink, AsyncPipe, TranslateModule]
 })
 /**
  * A form used for creating and editing EPeople

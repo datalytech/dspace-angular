@@ -42,7 +42,7 @@ import { ItemCurateComponent } from './item-curate/item-curate.component';
 import { ThemedItemStatusComponent } from './item-status/themed-item-status.component';
 
 import { ItemAccessControlComponent } from './item-access-control/item-access-control.component';
-import { ResultsBackButtonModule } from '../../shared/results-back-button/results-back-button.module';
+
 import {
   AccessControlFormModule
 } from '../../shared/access-control-form-container/access-control-form.module';
@@ -53,21 +53,18 @@ import { AlertComponent } from "@dspace/shared/ui";
  */
 @NgModule({
     imports: [
-        CommonModule,
-        SharedModule,
-        NgbTooltipModule,
-        EditItemPageRoutingModule,
-        SearchPageModule,
-        DragDropModule,
-        ResourcePoliciesModule,
-        NgbModule,
-        ItemVersionsModule,
-        DsoSharedModule,
-        ResultsBackButtonModule,
-        AccessControlFormModule,
-        AlertComponent,
-    ],
-  declarations: [
+    CommonModule,
+    SharedModule,
+    NgbTooltipModule,
+    EditItemPageRoutingModule,
+    SearchPageModule,
+    DragDropModule,
+    ResourcePoliciesModule,
+    NgbModule,
+    ItemVersionsModule,
+    DsoSharedModule,
+    AccessControlFormModule,
+    AlertComponent,
     EditItemPageComponent,
     ItemOperationComponent,
     AbstractSimpleItemActionComponent,
@@ -95,16 +92,16 @@ import { AlertComponent } from "@dspace/shared/ui";
     IdentifierDataComponent,
     ItemRegisterDoiComponent,
     ItemCurateComponent,
-    ItemAccessControlComponent,
-  ],
-  providers: [
-    BundleDataService,
-    IdentifierDataService,
-    ObjectValuesPipe
-  ],
-  exports: [
-    ItemOperationComponent,
-  ]
+    ItemAccessControlComponent
+],
+    providers: [
+        BundleDataService,
+        IdentifierDataService,
+        ObjectValuesPipe
+    ],
+    exports: [
+        ItemOperationComponent,
+    ]
 })
 export class EditItemPageModule {
 

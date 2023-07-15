@@ -1,6 +1,6 @@
 import { Component, Inject, OnInit, PLATFORM_ID } from '@angular/core';
-import { ActivatedRoute, ParamMap, Router } from '@angular/router';
-import { isPlatformBrowser } from '@angular/common';
+import { ActivatedRoute, ParamMap, Router, RouterLink } from '@angular/router';
+import { isPlatformBrowser, NgIf, AsyncPipe } from '@angular/common';
 
 import { BehaviorSubject, combineLatest } from 'rxjs';
 import { map, take } from 'rxjs/operators';
@@ -15,14 +15,22 @@ import { redirectOn4xx } from '../../core/shared/authorized.operators';
 import { ItemDataService } from '../../core/data/item-data.service';
 import { isNotEmpty } from '../../shared/empty.util';
 import { ResearcherProfile } from '../../core/profile/model/researcher-profile.model';
+import { TranslateModule } from '@ngx-translate/core';
+import { OrcidQueueComponent } from './orcid-queue/orcid-queue.component';
+import { OrcidSyncSettingsComponent } from './orcid-sync-settings/orcid-sync-settings.component';
+import { OrcidAuthComponent } from './orcid-auth/orcid-auth.component';
+import { AlertComponent } from '../../../../libs/shared/ui/src/lib/alert/alert.component';
+import { LoadingComponent } from '../../shared/loading/loading.component';
 
 /**
  * A component that represents the orcid settings page
  */
 @Component({
-  selector: 'ds-orcid-page',
-  templateUrl: './orcid-page.component.html',
-  styleUrls: ['./orcid-page.component.scss']
+    selector: 'ds-orcid-page',
+    templateUrl: './orcid-page.component.html',
+    styleUrls: ['./orcid-page.component.scss'],
+    standalone: true,
+    imports: [NgIf, RouterLink, LoadingComponent, AlertComponent, OrcidAuthComponent, OrcidSyncSettingsComponent, OrcidQueueComponent, AsyncPipe, TranslateModule]
 })
 export class OrcidPageComponent implements OnInit {
 

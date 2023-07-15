@@ -51,27 +51,25 @@ describe('LogInPasswordComponent', () => {
   beforeEach(waitForAsync(() => {
     // refine the test module by declaring the test component
     TestBed.configureTestingModule({
-      imports: [
+    imports: [
         FormsModule,
         ReactiveFormsModule,
         StoreModule.forRoot({ auth: authReducer }, storeModuleConfig),
-        TranslateModule.forRoot()
-      ],
-      declarations: [
-        LogInPasswordComponent,
-        BrowserOnlyMockPipe,
-      ],
-      providers: [
+        TranslateModule.forRoot(),
+        LogInPasswordComponent
+    ],
+    declarations: [BrowserOnlyMockPipe],
+    providers: [
         { provide: AuthService, useClass: AuthServiceStub },
         { provide: 'authMethodProvider', useValue: new AuthMethod(AuthMethodType.Password) },
         { provide: 'isStandalonePage', useValue: true },
         { provide: HardRedirectService, useValue: hardRedirectService },
         provideMockStore({ initialState }),
-      ],
-      schemas: [
+    ],
+    schemas: [
         CUSTOM_ELEMENTS_SCHEMA
-      ]
-    })
+    ]
+})
       .compileComponents();
 
   }));

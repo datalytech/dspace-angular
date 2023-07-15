@@ -22,14 +22,23 @@ import { SubmissionSectionVisibility } from './../../core/config/models/config-s
 import { SubmissionSectionModel } from './../../core/config/models/config-submission-section.model';
 import { VisibilityType } from '../sections/visibility-type';
 import isEqual from 'lodash/isEqual';
+import { SubmissionFormFooterComponent } from './footer/submission-form-footer.component';
+import { SubmissionSectionContainerComponent } from '../sections/container/section-container.component';
+import { ThemedLoadingComponent } from '../../shared/loading/themed-loading.component';
+import { SubmissionFormSectionAddComponent } from './section-add/submission-form-section-add.component';
+import { SubmissionFormCollectionComponent } from './collection/submission-form-collection.component';
+import { SubmissionUploadFilesComponent } from './submission-upload-files/submission-upload-files.component';
+import { NgIf, NgFor, AsyncPipe } from '@angular/common';
 
 /**
  * This component represents the submission form.
  */
 @Component({
-  selector: 'ds-submission-form',
-  styleUrls: ['./submission-form.component.scss'],
-  templateUrl: './submission-form.component.html',
+    selector: 'ds-submission-form',
+    styleUrls: ['./submission-form.component.scss'],
+    templateUrl: './submission-form.component.html',
+    standalone: true,
+    imports: [NgIf, SubmissionUploadFilesComponent, SubmissionFormCollectionComponent, SubmissionFormSectionAddComponent, ThemedLoadingComponent, NgFor, SubmissionSectionContainerComponent, SubmissionFormFooterComponent, AsyncPipe]
 })
 export class SubmissionFormComponent implements OnChanges, OnDestroy {
 

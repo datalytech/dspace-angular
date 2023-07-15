@@ -19,11 +19,24 @@ import { APP_CONFIG, AppConfig } from '../../../config/app-config.interface';
 import { RemoteData } from '../../core/data/remote-data';
 import { Item } from '../../core/shared/item.model';
 import { DSONameService } from '../../core/breadcrumbs/dso-name.service';
+import { TranslateModule } from '@ngx-translate/core';
+import { ThemedLoadingComponent } from '../../shared/loading/themed-loading.component';
+import { BrowseByComponent } from '../../shared/browse-by/browse-by.component';
+import { ThemedComcolPageBrowseByComponent } from '../../shared/comcol/comcol-page-browse-by/themed-comcol-page-browse-by.component';
+import { DsoEditMenuComponent } from '../../shared/dso-page/dso-edit-menu/dso-edit-menu.component';
+import { ComcolPageContentComponent } from '../../shared/comcol/comcol-page-content/comcol-page-content.component';
+import { ThemedComcolPageHandleComponent } from '../../shared/comcol/comcol-page-handle/themed-comcol-page-handle.component';
+import { ComcolPageLogoComponent } from '../../shared/comcol/comcol-page-logo/comcol-page-logo.component';
+import { ComcolPageHeaderComponent } from '../../shared/comcol/comcol-page-header/comcol-page-header.component';
+import { NgIf, AsyncPipe } from '@angular/common';
+import { VarDirective } from '../../shared/utils/var.directive';
 
 @Component({
-  selector: 'ds-browse-by-date-page',
-  styleUrls: ['../browse-by-metadata-page/browse-by-metadata-page.component.scss'],
-  templateUrl: '../browse-by-metadata-page/browse-by-metadata-page.component.html'
+    selector: 'ds-browse-by-date-page',
+    styleUrls: ['../browse-by-metadata-page/browse-by-metadata-page.component.scss'],
+    templateUrl: '../browse-by-metadata-page/browse-by-metadata-page.component.html',
+    standalone: true,
+    imports: [VarDirective, NgIf, ComcolPageHeaderComponent, ComcolPageLogoComponent, ThemedComcolPageHandleComponent, ComcolPageContentComponent, DsoEditMenuComponent, ThemedComcolPageBrowseByComponent, BrowseByComponent, ThemedLoadingComponent, AsyncPipe, TranslateModule]
 })
 /**
  * Component for browsing items by metadata definition of type 'date'

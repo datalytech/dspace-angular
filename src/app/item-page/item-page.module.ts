@@ -49,7 +49,7 @@ import { NgbAccordionModule } from '@ng-bootstrap/ng-bootstrap';
 import { OrcidSyncSettingsComponent } from './orcid-page/orcid-sync-settings/orcid-sync-settings.component';
 import { OrcidQueueComponent } from './orcid-page/orcid-queue/orcid-queue.component';
 import { UploadModule } from '../shared/upload/upload.module';
-import { ResultsBackButtonModule } from '../shared/results-back-button/results-back-button.module';
+
 import { ItemAlertsComponent } from './alerts/item-alerts.component';
 import { ItemVersionsModule } from './versions/item-versions.module';
 import { BitstreamRequestACopyPageComponent } from './bitstreams/request-a-copy/bitstream-request-a-copy-page.component';
@@ -108,29 +108,25 @@ const DECLARATIONS = [
 
 @NgModule({
     imports: [
-        CommonModule,
-        SharedModule.withEntryComponents(),
-        ItemPageRoutingModule,
-        EditItemPageModule,
-        ItemVersionsModule,
-        ItemSharedModule,
-        StatisticsModule.forRoot(),
-        JournalEntitiesModule.withEntryComponents(),
-        ResearchEntitiesModule.withEntryComponents(),
-        NgxGalleryModule,
-        NgbAccordionModule,
-        ResultsBackButtonModule,
-        UploadModule,
-        DsoPageModule,
-        AlertComponent,
-    ],
-  declarations: [
-    ...DECLARATIONS,
-
-  ],
-  exports: [
-    ...DECLARATIONS,
-  ]
+    CommonModule,
+    SharedModule.withEntryComponents(),
+    ItemPageRoutingModule,
+    EditItemPageModule,
+    ItemVersionsModule,
+    ItemSharedModule,
+    StatisticsModule.forRoot(),
+    JournalEntitiesModule.withEntryComponents(),
+    ResearchEntitiesModule.withEntryComponents(),
+    NgxGalleryModule,
+    NgbAccordionModule,
+    UploadModule,
+    DsoPageModule,
+    AlertComponent,
+    ...DECLARATIONS
+],
+    exports: [
+        ...DECLARATIONS,
+    ]
 })
 export class ItemPageModule {
   /**

@@ -37,6 +37,8 @@ import { XhrFactory } from '@angular/common';
 import { ServerXhrService } from '../../app/core/services/server-xhr.service';
 import { ReferrerService } from '../../app/core/services/referrer.service';
 import { ServerReferrerService } from '../../app/core/services/server.referrer.service';
+import { ProductsComponent } from "@dspace/products";
+import { ThemedRootComponent } from "../../app/root/themed-root.component";
 
 export function createTranslateLoader(transferState: TransferState) {
   return new TranslateServerLoader(transferState, 'dist/server/assets/i18n/', '.json');
@@ -48,6 +50,7 @@ export function createTranslateLoader(transferState: TransferState) {
     BrowserModule.withServerTransition({
       appId: 'dspace-angular'
     }),
+    ProductsComponent, ThemedRootComponent,
     NoopAnimationsModule,
     ServerTransferStateModule,
     TranslateModule.forRoot({

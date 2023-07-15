@@ -1,7 +1,16 @@
-import { ChangeDetectorRef, Component, Input, OnChanges, OnInit, SimpleChange, SimpleChanges } from '@angular/core';
+import {
+  ChangeDetectorRef,
+  Component,
+  forwardRef,
+  Input,
+  OnChanges,
+  OnInit,
+  SimpleChange,
+  SimpleChanges
+} from '@angular/core';
 
 import { Observable } from 'rxjs';
-import { TranslateService } from '@ngx-translate/core';
+import { TranslateService, TranslateModule } from '@ngx-translate/core';
 import {
   DynamicFormControlModel,
   DynamicFormOptionConfig,
@@ -23,15 +32,22 @@ import { getFirstSucceededRemoteListPayload } from '../../core/shared/operators'
 import { collectionFormEntityTypeSelectionConfig, collectionFormModels, } from './collection-form.models';
 import { NONE_ENTITY_TYPE } from '../../core/shared/item-relationships/item-type.resource-type';
 import { hasNoValue, isNotNull } from 'src/app/shared/empty.util';
+import { FormComponent } from '../../shared/form/form.component';
+import { UploaderComponent } from '../../shared/upload/uploader/uploader.component';
+import { ComcolPageLogoComponent } from '../../shared/comcol/comcol-page-logo/comcol-page-logo.component';
+import { NgIf, NgClass, AsyncPipe } from '@angular/common';
+import { VarDirective } from '../../shared/utils/var.directive';
 
 
 /**
  * Form used for creating and editing collections
  */
 @Component({
-  selector: 'ds-collection-form',
-  styleUrls: ['../../shared/comcol/comcol-forms/comcol-form/comcol-form.component.scss'],
-  templateUrl: '../../shared/comcol/comcol-forms/comcol-form/comcol-form.component.html'
+    selector: 'ds-collection-form',
+    styleUrls: ['../../shared/comcol/comcol-forms/comcol-form/comcol-form.component.scss'],
+    templateUrl: '../../shared/comcol/comcol-forms/comcol-form/comcol-form.component.html',
+    standalone: true,
+    imports: [VarDirective, NgIf, NgClass, ComcolPageLogoComponent, UploaderComponent, forwardRef(() => FormComponent), AsyncPipe, TranslateModule]
 })
 export class CollectionFormComponent extends ComColFormComponent<Collection> implements OnInit, OnChanges {
   /**

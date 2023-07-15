@@ -31,6 +31,11 @@ import { followLink } from '../../../shared/utils/follow-link-config.model';
 import { getFirstSucceededRemoteData } from '../../../core/shared/operators';
 import { DSONameService } from '../../../core/breadcrumbs/dso-name.service';
 import { AlertType } from "@dspace/shared/ui";
+import { TranslateModule } from '@ngx-translate/core';
+import { ThemedSubmissionSectionUploadFileComponent } from './file/themed-section-upload-file.component';
+import { SubmissionSectionUploadAccessConditionsComponent } from './accessConditions/submission-section-upload-access-conditions.component';
+import { NgIf, NgFor, AsyncPipe } from '@angular/common';
+import { AlertComponent } from '../../../../../libs/shared/ui/src/lib/alert/alert.component';
 
 export const POLICY_DEFAULT_NO_LIST = 1; // Banner1
 export const POLICY_DEFAULT_WITH_LIST = 2; // Banner2
@@ -44,9 +49,11 @@ export interface AccessConditionGroupsMapEntry {
  * This component represents a section that contains submission's bitstreams
  */
 @Component({
-  selector: 'ds-submission-section-upload',
-  styleUrls: ['./section-upload.component.scss'],
-  templateUrl: './section-upload.component.html',
+    selector: 'ds-submission-section-upload',
+    styleUrls: ['./section-upload.component.scss'],
+    templateUrl: './section-upload.component.html',
+    standalone: true,
+    imports: [AlertComponent, NgIf, SubmissionSectionUploadAccessConditionsComponent, NgFor, ThemedSubmissionSectionUploadFileComponent, AsyncPipe, TranslateModule]
 })
 @renderSectionFor(SectionsType.Upload)
 export class SubmissionSectionUploadComponent extends SectionModelComponent {

@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { Item } from '../../../core/shared/item.model';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, RouterLink } from '@angular/router';
 import { ItemOperation } from '../item-operation/itemOperation.model';
 import { distinctUntilChanged, map, mergeMap, switchMap, toArray } from 'rxjs/operators';
 import { BehaviorSubject, Observable, Subscription } from 'rxjs';
@@ -18,15 +18,20 @@ import { ConfigurationProperty } from '../../../core/shared/configuration-proper
 import { ConfigurationDataService } from '../../../core/data/configuration-data.service';
 import { IdentifierData } from '../../../shared/object-list/identifier-data/identifier-data.model';
 import { fadeIn, fadeInOut } from "@dspace/shared/animations";
+import { TranslateModule } from '@ngx-translate/core';
+import { ItemOperationComponent } from '../item-operation/item-operation.component';
+import { NgFor, NgIf, NgClass, AsyncPipe } from '@angular/common';
 
 @Component({
-  selector: 'ds-item-status',
-  templateUrl: './item-status.component.html',
-  changeDetection: ChangeDetectionStrategy.Default,
-  animations: [
-    fadeIn,
-    fadeInOut
-  ]
+    selector: 'ds-item-status',
+    templateUrl: './item-status.component.html',
+    changeDetection: ChangeDetectionStrategy.Default,
+    animations: [
+        fadeIn,
+        fadeInOut
+    ],
+    standalone: true,
+    imports: [NgFor, NgIf, RouterLink, NgClass, ItemOperationComponent, AsyncPipe, TranslateModule]
 })
 /**
  * Component for displaying an item's status

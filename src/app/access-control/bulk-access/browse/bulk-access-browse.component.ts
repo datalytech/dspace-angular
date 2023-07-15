@@ -14,17 +14,28 @@ import { createSuccessfulRemoteDataObject } from '../../../shared/remote-data.ut
 import { PageInfo } from '../../../core/shared/page-info.model';
 import { PaginationComponentOptions } from '../../../shared/pagination/pagination-component-options.model';
 import { hasValue } from '../../../shared/empty.util';
+import { TranslateModule } from '@ngx-translate/core';
+import { BrowserOnlyPipe } from '../../../shared/utils/browser-only.pipe';
+import { NgxPaginationModule } from 'ngx-pagination';
+import { ListableObjectComponentLoaderComponent } from '../../../shared/object-collection/shared/listable-object/listable-object-component-loader.component';
+import { SelectableListItemControlComponent } from '../../../shared/object-collection/shared/selectable-list-item-control/selectable-list-item-control.component';
+import { PaginationComponent } from '../../../shared/pagination/pagination.component';
+import { ThemedSearchComponent } from '../../../shared/search/themed-search.component';
+import { NgIf, NgFor, AsyncPipe } from '@angular/common';
+import { NgbAccordionModule, NgbNavModule } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
-  selector: 'ds-bulk-access-browse',
-  templateUrl: 'bulk-access-browse.component.html',
-  styleUrls: ['./bulk-access-browse.component.scss'],
-  providers: [
-    {
-      provide: SEARCH_CONFIG_SERVICE,
-      useClass: SearchConfigurationService
-    }
-  ]
+    selector: 'ds-bulk-access-browse',
+    templateUrl: 'bulk-access-browse.component.html',
+    styleUrls: ['./bulk-access-browse.component.scss'],
+    providers: [
+        {
+            provide: SEARCH_CONFIG_SERVICE,
+            useClass: SearchConfigurationService
+        }
+    ],
+    standalone: true,
+    imports: [NgbAccordionModule, NgIf, NgbNavModule, ThemedSearchComponent, PaginationComponent, NgFor, SelectableListItemControlComponent, ListableObjectComponentLoaderComponent, AsyncPipe, NgxPaginationModule, BrowserOnlyPipe, TranslateModule]
 })
 export class BulkAccessBrowseComponent implements OnInit, OnDestroy {
 

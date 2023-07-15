@@ -6,12 +6,12 @@ import { SubscriptionsModule } from '../shared/subscriptions/subscriptions.modul
 import { AlertComponent } from "@dspace/shared/ui";
 
 @NgModule({
-  declarations: [SubscriptionsPageComponent],
     imports: [
         CommonModule,
         SharedModule,
         SubscriptionsModule,
         AlertComponent,
+        SubscriptionsPageComponent
     ]
 })
 export class SubscriptionsPageModule { }

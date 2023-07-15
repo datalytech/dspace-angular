@@ -1,22 +1,28 @@
-import { Component, EventEmitter, Input, OnDestroy, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, forwardRef, Input, OnDestroy, OnInit, Output } from '@angular/core';
 import {
   DynamicFormControlModel,
   DynamicFormGroupModel,
   DynamicFormLayout,
   DynamicInputModel
 } from '@ng-dynamic-forms/core';
-import { UntypedFormGroup } from '@angular/forms';
+import { UntypedFormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RegistryService } from '../../../../core/registry/registry.service';
 import { FormBuilderService } from '../../../../shared/form/builder/form-builder.service';
 import { take } from 'rxjs/operators';
-import { TranslateService } from '@ngx-translate/core';
+import { TranslateService, TranslateModule } from '@ngx-translate/core';
 import { combineLatest } from 'rxjs';
 import { MetadataSchema } from '../../../../core/metadata/metadata-schema.model';
 import { MetadataField } from '../../../../core/metadata/metadata-field.model';
+import { FormComponent } from '../../../../shared/form/form.component';
+import { NgIf, AsyncPipe } from '@angular/common';
 
 @Component({
-  selector: 'ds-metadata-field-form',
-  templateUrl: './metadata-field-form.component.html'
+    selector: 'ds-metadata-field-form',
+    templateUrl: './metadata-field-form.component.html',
+    standalone: true,
+    imports: [NgIf,
+      forwardRef(() => FormComponent),
+      FormsModule, ReactiveFormsModule, AsyncPipe, TranslateModule]
 })
 /**
  * A form used for creating and editing metadata fields

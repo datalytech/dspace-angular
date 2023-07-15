@@ -17,6 +17,12 @@ import { LinkService } from '../../../core/cache/builders/link.service';
 import { Bundle } from '../../../core/shared/bundle.model';
 import { hasValue, isNotEmpty } from '../../../shared/empty.util';
 import { Bitstream } from '../../../core/shared/bitstream.model';
+import { TranslateModule } from '@ngx-translate/core';
+import { NgbCollapseModule } from '@ng-bootstrap/ng-bootstrap';
+import { NgForTrackByIdDirective } from '../../../shared/ng-for-track-by-id.directive';
+import { NgFor, NgIf, AsyncPipe } from '@angular/common';
+import { ResourcePoliciesComponent } from '../../../shared/resource-policies/resource-policies.component';
+import { AlertComponent } from '../../../../../libs/shared/ui/src/lib/alert/alert.component';
 
 /**
  * Interface for a bundle's bitstream map entry
@@ -27,9 +33,11 @@ interface BundleBitstreamsMapEntry {
 }
 
 @Component({
-  selector: 'ds-item-authorizations',
-  templateUrl: './item-authorizations.component.html',
-  styleUrls:['./item-authorizations.component.scss']
+    selector: 'ds-item-authorizations',
+    templateUrl: './item-authorizations.component.html',
+    styleUrls: ['./item-authorizations.component.scss'],
+    standalone: true,
+    imports: [AlertComponent, ResourcePoliciesComponent, NgFor, NgForTrackByIdDirective, NgIf, NgbCollapseModule, AsyncPipe, TranslateModule]
 })
 /**
  * Component that handles the item Authorizations

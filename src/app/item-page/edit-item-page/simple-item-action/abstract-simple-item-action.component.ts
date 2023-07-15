@@ -1,8 +1,8 @@
 import { Component, OnInit, Predicate } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { NotificationsService } from '../../../shared/notifications/notifications.service';
 import { ItemDataService } from '../../../core/data/item-data.service';
-import { TranslateService } from '@ngx-translate/core';
+import { TranslateService, TranslateModule } from '@ngx-translate/core';
 import { Item } from '../../../core/shared/item.model';
 import { RemoteData } from '../../../core/data/remote-data';
 import { Observable } from 'rxjs';
@@ -10,14 +10,17 @@ import { getFirstSucceededRemoteData } from '../../../core/shared/operators';
 import { first, map } from 'rxjs/operators';
 import { findSuccessfulAccordingTo } from '../edit-item-operators';
 import { getItemEditRoute, getItemPageRoute } from '../../item-page-routing-paths';
+import { ModifyItemOverviewComponent } from '../modify-item-overview/modify-item-overview.component';
 
 /**
  * Component to render and handle simple item edit actions such as withdrawal and reinstatement.
  * This component is not meant to be used itself but to be extended.
  */
 @Component({
-  selector: 'ds-simple-action',
-  templateUrl: './abstract-simple-item-action.component.html'
+    selector: 'ds-simple-action',
+    templateUrl: './abstract-simple-item-action.component.html',
+    standalone: true,
+    imports: [ModifyItemOverviewComponent, RouterLink, TranslateModule]
 })
 export class AbstractSimpleItemActionComponent implements OnInit {
 

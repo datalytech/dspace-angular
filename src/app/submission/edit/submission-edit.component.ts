@@ -19,14 +19,17 @@ import { ItemDataService } from '../../core/data/item-data.service';
 import { SubmissionJsonPatchOperationsService } from '../../core/submission/submission-json-patch-operations.service';
 import parseSectionErrors from '../utils/parseSectionErrors';
 import { SubmissionError } from '../objects/submission-error.model';
+import { SubmissionFormComponent } from '../form/submission-form.component';
 
 /**
  * This component allows to edit an existing workspaceitem/workflowitem.
  */
 @Component({
-  selector: 'ds-submission-edit',
-  styleUrls: ['./submission-edit.component.scss'],
-  templateUrl: './submission-edit.component.html'
+    selector: 'ds-submission-edit',
+    styleUrls: ['./submission-edit.component.scss'],
+    templateUrl: './submission-edit.component.html',
+    standalone: true,
+    imports: [SubmissionFormComponent]
 })
 export class SubmissionEditComponent implements OnDestroy, OnInit {
 

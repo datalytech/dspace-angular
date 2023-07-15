@@ -32,25 +32,24 @@ describe('DSOSelectorModalWrapperComponent', () => {
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      imports: [TranslateModule.forRoot()],
-      declarations: [TestComponent, MockComponent(DSOSelectorComponent)],
-      providers: [
+    imports: [TranslateModule.forRoot(), TestComponent, MockComponent(DSOSelectorComponent)],
+    providers: [
         { provide: NgbActiveModal, useValue: modalStub },
         {
-          provide: ActivatedRoute,
-          useValue: {
-            root: {
-              snapshot: {
-                data: {
-                  dso: itemRD,
-                },
-              },
+            provide: ActivatedRoute,
+            useValue: {
+                root: {
+                    snapshot: {
+                        data: {
+                            dso: itemRD,
+                        },
+                    },
+                }
             }
-          }
         },
-      ],
-      schemas: [NO_ERRORS_SCHEMA]
-    }).compileComponents();
+    ],
+    schemas: [NO_ERRORS_SCHEMA]
+}).compileComponents();
 
   }));
 
@@ -116,8 +115,9 @@ describe('DSOSelectorModalWrapperComponent', () => {
 });
 
 @Component({
-  selector: 'ds-test-cmp',
-  templateUrl: './dso-selector-modal-wrapper.component.html'
+    selector: 'ds-test-cmp',
+    templateUrl: './dso-selector-modal-wrapper.component.html',
+    standalone: true
 })
 class TestComponent extends DSOSelectorModalWrapperComponent implements OnInit {
   objectType = DSpaceObjectType.ITEM;

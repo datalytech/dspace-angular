@@ -15,6 +15,10 @@ import {
 } from '../../../core/shared/operators';
 import { FindListOptions } from '../../../core/data/find-list-options.model';
 import { DSONameService } from '../../../core/breadcrumbs/dso-name.service';
+import { TranslateModule } from '@ngx-translate/core';
+import { RouterLink } from '@angular/router';
+import { NgFor, NgIf, AsyncPipe } from '@angular/common';
+import { MetadataFieldWrapperComponent } from '../../../shared/metadata-field-wrapper/metadata-field-wrapper.component';
 
 /**
  * This component renders the parent collections section of the item
@@ -22,8 +26,10 @@ import { DSONameService } from '../../../core/breadcrumbs/dso-name.service';
  */
 
 @Component({
-  selector: 'ds-item-page-collections',
-  templateUrl: './collections.component.html'
+    selector: 'ds-item-page-collections',
+    templateUrl: './collections.component.html',
+    standalone: true,
+    imports: [MetadataFieldWrapperComponent, NgFor, RouterLink, NgIf, AsyncPipe, TranslateModule]
 })
 export class CollectionsComponent implements OnInit {
 

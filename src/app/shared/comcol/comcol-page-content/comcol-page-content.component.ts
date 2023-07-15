@@ -1,4 +1,6 @@
 import { Component, Input } from '@angular/core';
+import { TranslateModule } from '@ngx-translate/core';
+import { NgIf } from '@angular/common';
 
 /**
  * This component renders any content inside of this component.
@@ -7,9 +9,11 @@ import { Component, Input } from '@angular/core';
  * To see how it is used see collection-page or community-page.
  */
 @Component({
-  selector: 'ds-comcol-page-content',
-  styleUrls: ['./comcol-page-content.component.scss'],
-  templateUrl: './comcol-page-content.component.html'
+    selector: 'ds-comcol-page-content',
+    styleUrls: ['./comcol-page-content.component.scss'],
+    templateUrl: './comcol-page-content.component.html',
+    standalone: true,
+    imports: [NgIf, TranslateModule]
 })
 export class ComcolPageContentComponent {
 

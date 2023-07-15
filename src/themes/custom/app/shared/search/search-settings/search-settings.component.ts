@@ -11,21 +11,27 @@ import {
 } from '../../../../../../app/shared/search/search-settings/search-settings.component';
 import { SEARCH_CONFIG_SERVICE } from '../../../../../../app/my-dspace-page/my-dspace-page.component';
 import { SearchConfigurationService } from '../../../../../../app/core/shared/search/search-configuration.service';
+import { TranslateModule } from '@ngx-translate/core';
+import { PageSizeSelectorComponent } from '../../../../../../app/shared/page-size-selector/page-size-selector.component';
+import { FormsModule } from '@angular/forms';
+import { SidebarDropdownComponent } from '../../../../../../app/shared/sidebar/sidebar-dropdown.component';
+import { NgIf, NgFor } from '@angular/common';
 
 
 @Component({
-  selector: 'ds-search-settings',
-  // styleUrls: ['./search-settings.component.scss'],
-  styleUrls: ['../../../../../../app/shared/search/search-settings/search-settings.component.scss'],
-  // templateUrl: './search-settings.component.html',
-  templateUrl: '../../../../../../app/shared/search/search-settings/search-settings.component.html',
-  providers: [
-    {
-      provide: SEARCH_CONFIG_SERVICE,
-      useClass: SearchConfigurationService
-    }
-  ]
-
+    selector: 'ds-search-settings',
+    // styleUrls: ['./search-settings.component.scss'],
+    styleUrls: ['../../../../../../app/shared/search/search-settings/search-settings.component.scss'],
+    // templateUrl: './search-settings.component.html',
+    templateUrl: '../../../../../../app/shared/search/search-settings/search-settings.component.html',
+    providers: [
+        {
+            provide: SEARCH_CONFIG_SERVICE,
+            useClass: SearchConfigurationService
+        }
+    ],
+    standalone: true,
+    imports: [NgIf, SidebarDropdownComponent, NgFor, FormsModule, PageSizeSelectorComponent, TranslateModule]
 })
 
 export class SearchSettingsComponent extends BaseComponent {}

@@ -32,7 +32,7 @@ import {
 } from '../../core/cache/models/sort-options.model';
 import { NotificationsService } from '../../shared/notifications/notifications.service';
 import { ItemDataService } from '../../core/data/item-data.service';
-import { TranslateService } from '@ngx-translate/core';
+import { TranslateService, TranslateModule } from '@ngx-translate/core';
 import { CollectionDataService } from '../../core/data/collection-data.service';
 import { isNotEmpty } from '../../shared/empty.util';
 import { SEARCH_CONFIG_SERVICE } from '../../my-dspace-page/my-dspace-page.component';
@@ -43,19 +43,25 @@ import { followLink } from '../../shared/utils/follow-link-config.model';
 import { NoContent } from '../../core/shared/NoContent.model';
 import { FeatureID } from '../../core/data/feature-authorization/feature-id';
 import { fadeIn, fadeInOut } from '@dspace/shared/animations';
+import { NgIf, AsyncPipe } from '@angular/common';
+import { ThemedSearchFormComponent } from '../../shared/search-form/themed-search-form.component';
+import { ItemSelectComponent } from '../../shared/object-select/item-select/item-select.component';
+import { NgbNavModule } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
-  selector: 'ds-collection-item-mapper',
-  styleUrls: ['./collection-item-mapper.component.scss'],
-  templateUrl: './collection-item-mapper.component.html',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  animations: [fadeIn, fadeInOut],
-  providers: [
-    {
-      provide: SEARCH_CONFIG_SERVICE,
-      useClass: SearchConfigurationService,
-    },
-  ],
+    selector: 'ds-collection-item-mapper',
+    styleUrls: ['./collection-item-mapper.component.scss'],
+    templateUrl: './collection-item-mapper.component.html',
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    animations: [fadeIn, fadeInOut],
+    providers: [
+        {
+            provide: SEARCH_CONFIG_SERVICE,
+            useClass: SearchConfigurationService,
+        },
+    ],
+    standalone: true,
+    imports: [NgbNavModule, ItemSelectComponent, ThemedSearchFormComponent, NgIf, AsyncPipe, TranslateModule]
 })
 /**
  * Component used to map items to a collection

@@ -1,4 +1,4 @@
-import { ChangeDetectorRef, Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
+import { ChangeDetectorRef, Component, forwardRef, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { UntypedFormControl } from '@angular/forms';
 
 import {
@@ -57,14 +57,18 @@ import { SectionUploadService } from '../../section-upload.service';
 import { Subscription } from 'rxjs';
 import { DynamicFormControlCondition } from '@ng-dynamic-forms/core/lib/model/misc/dynamic-form-control-relation.model';
 import { DynamicDateControlValue } from '@ng-dynamic-forms/core/lib/model/dynamic-date-control.model';
+import { TranslateModule } from '@ngx-translate/core';
+import { NgIf } from '@angular/common';
 
 /**
  * This component represents the edit form for bitstream
  */
 @Component({
-  selector: 'ds-submission-section-upload-file-edit',
-  styleUrls: ['./section-upload-file-edit.component.scss'],
-  templateUrl: './section-upload-file-edit.component.html',
+    selector: 'ds-submission-section-upload-file-edit',
+    styleUrls: ['./section-upload-file-edit.component.scss'],
+    templateUrl: './section-upload-file-edit.component.html',
+    standalone: true,
+    imports: [NgIf, forwardRef(() => FormComponent), TranslateModule]
 })
 export class SubmissionSectionUploadFileEditComponent
     implements OnInit, OnDestroy {

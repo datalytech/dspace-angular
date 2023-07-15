@@ -13,25 +13,23 @@ import { AlertComponent } from "@dspace/shared/ui";
     imports: [
         SharedModule,
         AlertComponent,
+        DsoEditMetadataComponent,
+        ThemedDsoEditMetadataComponent,
+        MetadataFieldSelectorComponent,
+        DsoEditMetadataFieldValuesComponent,
+        DsoEditMetadataValueComponent,
+        DsoEditMetadataHeadersComponent,
+        DsoEditMetadataValueHeadersComponent
     ],
-  declarations: [
-    DsoEditMetadataComponent,
-    ThemedDsoEditMetadataComponent,
-    MetadataFieldSelectorComponent,
-    DsoEditMetadataFieldValuesComponent,
-    DsoEditMetadataValueComponent,
-    DsoEditMetadataHeadersComponent,
-    DsoEditMetadataValueHeadersComponent,
-  ],
-  exports: [
-    DsoEditMetadataComponent,
-    ThemedDsoEditMetadataComponent,
-    MetadataFieldSelectorComponent,
-    DsoEditMetadataFieldValuesComponent,
-    DsoEditMetadataValueComponent,
-    DsoEditMetadataHeadersComponent,
-    DsoEditMetadataValueHeadersComponent,
-  ],
+    exports: [
+        DsoEditMetadataComponent,
+        ThemedDsoEditMetadataComponent,
+        MetadataFieldSelectorComponent,
+        DsoEditMetadataFieldValuesComponent,
+        DsoEditMetadataValueComponent,
+        DsoEditMetadataHeadersComponent,
+        DsoEditMetadataValueHeadersComponent,
+    ]
 })
 export class DsoSharedModule {
 

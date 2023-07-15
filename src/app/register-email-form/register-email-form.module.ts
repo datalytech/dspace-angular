@@ -8,15 +8,13 @@ import { AlertComponent } from "@dspace/shared/ui";
     imports: [
         CommonModule,
         SharedModule,
-        AlertComponent
+        AlertComponent,
+        RegisterEmailFormComponent
     ],
-  declarations: [
-    RegisterEmailFormComponent,
-  ],
-  providers: [],
-  exports: [
-    RegisterEmailFormComponent,
-  ]
+    providers: [],
+    exports: [
+        RegisterEmailFormComponent,
+    ]
 })
 
 /**

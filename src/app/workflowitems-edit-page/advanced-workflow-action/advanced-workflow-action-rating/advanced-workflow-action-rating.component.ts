@@ -3,9 +3,14 @@ import {
   rendersAdvancedWorkflowTaskOption
 } from '../../../shared/mydspace-actions/claimed-task/switcher/claimed-task-actions-decorator';
 import { AdvancedWorkflowActionComponent } from '../advanced-workflow-action/advanced-workflow-action.component';
-import { UntypedFormGroup, UntypedFormControl, Validators } from '@angular/forms';
+import { UntypedFormGroup, UntypedFormControl, Validators, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { WorkflowAction } from '../../../core/tasks/models/workflow-action-object.model';
 import { RatingAdvancedWorkflowInfo } from '../../../core/tasks/models/rating-advanced-workflow-info.model';
+import { TranslateModule } from '@ngx-translate/core';
+import { ModifyItemOverviewComponent } from '../../../item-page/edit-item-page/modify-item-overview/modify-item-overview.component';
+import { NgbRatingModule } from '@ng-bootstrap/ng-bootstrap';
+import { NgIf, NgClass, AsyncPipe } from '@angular/common';
+import { VarDirective } from '../../../shared/utils/var.directive';
 
 export const ADVANCED_WORKFLOW_TASK_OPTION_RATING = 'submit_score';
 export const ADVANCED_WORKFLOW_ACTION_RATING = 'scorereviewaction';
@@ -15,10 +20,12 @@ export const ADVANCED_WORKFLOW_ACTION_RATING = 'scorereviewaction';
  */
 @rendersAdvancedWorkflowTaskOption(ADVANCED_WORKFLOW_ACTION_RATING)
 @Component({
-  selector: 'ds-advanced-workflow-action-rating-reviewer',
-  templateUrl: './advanced-workflow-action-rating.component.html',
-  styleUrls: ['./advanced-workflow-action-rating.component.scss'],
-  preserveWhitespaces: false,
+    selector: 'ds-advanced-workflow-action-rating-reviewer',
+    templateUrl: './advanced-workflow-action-rating.component.html',
+    styleUrls: ['./advanced-workflow-action-rating.component.scss'],
+    preserveWhitespaces: false,
+    standalone: true,
+    imports: [VarDirective, NgIf, FormsModule, ReactiveFormsModule, NgClass, NgbRatingModule, ModifyItemOverviewComponent, AsyncPipe, TranslateModule]
 })
 export class AdvancedWorkflowActionRatingComponent extends AdvancedWorkflowActionComponent implements OnInit {
 

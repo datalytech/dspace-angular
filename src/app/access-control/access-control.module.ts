@@ -39,27 +39,25 @@ export const ValidateEmailErrorStateMatcher: DynamicErrorMessagesMatcher =
         SearchModule,
         AccessControlFormModule,
         AlertComponent,
+        EPeopleRegistryComponent,
+        EPersonFormComponent,
+        GroupsRegistryComponent,
+        GroupFormComponent,
+        SubgroupsListComponent,
+        MembersListComponent,
+        BulkAccessComponent,
+        BulkAccessBrowseComponent,
+        BulkAccessSettingsComponent
     ],
-  exports: [
-    MembersListComponent,
-  ],
-  declarations: [
-    EPeopleRegistryComponent,
-    EPersonFormComponent,
-    GroupsRegistryComponent,
-    GroupFormComponent,
-    SubgroupsListComponent,
-    MembersListComponent,
-    BulkAccessComponent,
-    BulkAccessBrowseComponent,
-    BulkAccessSettingsComponent,
-  ],
-  providers: [
-    {
-      provide: DYNAMIC_ERROR_MESSAGES_MATCHER,
-      useValue: ValidateEmailErrorStateMatcher
-    },
-  ]
+    exports: [
+        MembersListComponent,
+    ],
+    providers: [
+        {
+            provide: DYNAMIC_ERROR_MESSAGES_MATCHER,
+            useValue: ValidateEmailErrorStateMatcher
+        },
+    ]
 })
 /**
  * This module handles all components related to the access control pages

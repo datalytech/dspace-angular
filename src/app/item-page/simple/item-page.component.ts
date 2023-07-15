@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, Inject, OnDestroy, OnInit, PLATFORM_ID } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { isPlatformServer } from '@angular/common';
+import { isPlatformServer, NgIf, AsyncPipe } from '@angular/common';
 
 import { Observable } from 'rxjs';
 import { map, take } from 'rxjs/operators';
@@ -21,6 +21,15 @@ import { SignpostingLink } from '../../core/data/signposting-links.model';
 import { isNotEmpty } from '../../shared/empty.util';
 import { LinkDefinition, LinkHeadService } from '../../core/services/link-head.service';
 import { fadeInOut } from "@dspace/shared/animations";
+import { TranslateModule } from '@ngx-translate/core';
+import { ThemedLoadingComponent } from '../../shared/loading/themed-loading.component';
+import { ErrorComponent } from '../../shared/error/error.component';
+import { ItemVersionsComponent } from '../versions/item-versions.component';
+import { ListableObjectComponentLoaderComponent } from '../../shared/object-collection/shared/listable-object/listable-object-component-loader.component';
+import { ViewTrackerComponent } from '../../statistics/angulartics/dspace/view-tracker.component';
+import { ItemVersionsNoticeComponent } from '../versions/notice/item-versions-notice.component';
+import { ThemedItemAlertsComponent } from '../alerts/themed-item-alerts.component';
+import { VarDirective } from '../../shared/utils/var.directive';
 
 /**
  * This component renders a simple item page.
@@ -28,11 +37,13 @@ import { fadeInOut } from "@dspace/shared/animations";
  * All fields of the item that should be displayed, are defined in its template.
  */
 @Component({
-  selector: 'ds-item-page',
-  styleUrls: ['./item-page.component.scss'],
-  templateUrl: './item-page.component.html',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  animations: [fadeInOut]
+    selector: 'ds-item-page',
+    styleUrls: ['./item-page.component.scss'],
+    templateUrl: './item-page.component.html',
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    animations: [fadeInOut],
+    standalone: true,
+    imports: [VarDirective, NgIf, ThemedItemAlertsComponent, ItemVersionsNoticeComponent, ViewTrackerComponent, ListableObjectComponentLoaderComponent, ItemVersionsComponent, ErrorComponent, ThemedLoadingComponent, AsyncPipe, TranslateModule]
 })
 export class ItemPageComponent implements OnInit, OnDestroy {
 

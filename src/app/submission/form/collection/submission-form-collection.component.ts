@@ -30,14 +30,20 @@ import { SectionsService } from '../../sections/sections.service';
 import { getFirstSucceededRemoteDataPayload } from '../../../core/shared/operators';
 import { SectionsType } from '../../sections/sections-type';
 import { DSONameService } from '../../../core/breadcrumbs/dso-name.service';
+import { TranslateModule } from '@ngx-translate/core';
+import { ThemedCollectionDropdownComponent } from '../../../shared/collection-dropdown/themed-collection-dropdown.component';
+import { NgbDropdownModule } from '@ng-bootstrap/ng-bootstrap';
+import { NgIf, AsyncPipe } from '@angular/common';
 
 /**
  * This component allows to show the current collection the submission belonging to and to change it.
  */
 @Component({
-  selector: 'ds-submission-form-collection',
-  styleUrls: ['./submission-form-collection.component.scss'],
-  templateUrl: './submission-form-collection.component.html'
+    selector: 'ds-submission-form-collection',
+    styleUrls: ['./submission-form-collection.component.scss'],
+    templateUrl: './submission-form-collection.component.html',
+    standalone: true,
+    imports: [NgIf, NgbDropdownModule, ThemedCollectionDropdownComponent, AsyncPipe, TranslateModule]
 })
 export class SubmissionFormCollectionComponent implements OnChanges, OnInit {
 

@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, EventEmitter, HostListener, Input, Output, ViewEncapsulation, } from '@angular/core';
 
 import { of as observableOf } from 'rxjs';
-import { FileUploader } from 'ng2-file-upload';
+import { FileUploader, FileUploadModule } from 'ng2-file-upload';
 import uniqueId from 'lodash/uniqueId';
 import { ScrollToService } from '@nicky-lenaers/ngx-scroll-to';
 
@@ -12,13 +12,18 @@ import { HttpXsrfTokenExtractor } from '@angular/common/http';
 import { XSRF_COOKIE, XSRF_REQUEST_HEADER, XSRF_RESPONSE_HEADER } from '../../../core/xsrf/xsrf.constants';
 import { CookieService } from '../../../core/services/cookie.service';
 import { DragService } from '../../../core/drag.service';
+import { TranslateModule } from '@ngx-translate/core';
+import { FileValueAccessorDirective } from '../../utils/file-value-accessor.directive';
+import { NgIf, NgClass, NgStyle, AsyncPipe } from '@angular/common';
 
 @Component({
-  selector: 'ds-uploader',
-  templateUrl: 'uploader.component.html',
-  styleUrls: ['uploader.component.scss'],
-  changeDetection: ChangeDetectionStrategy.Default,
-  encapsulation: ViewEncapsulation.Emulated
+    selector: 'ds-uploader',
+    templateUrl: 'uploader.component.html',
+    styleUrls: ['uploader.component.scss'],
+    changeDetection: ChangeDetectionStrategy.Default,
+    encapsulation: ViewEncapsulation.Emulated,
+    standalone: true,
+    imports: [NgIf, FileUploadModule, NgClass, FileValueAccessorDirective, NgStyle, AsyncPipe, TranslateModule]
 })
 
 export class UploaderComponent {

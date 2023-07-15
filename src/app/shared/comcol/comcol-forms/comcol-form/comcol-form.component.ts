@@ -1,7 +1,7 @@
-import { Component, EventEmitter, Input, OnDestroy, OnInit, Output, ViewChild } from '@angular/core';
+import { Component, EventEmitter, forwardRef, Input, OnDestroy, OnInit, Output, ViewChild } from '@angular/core';
 import { UntypedFormGroup } from '@angular/forms';
 import { DynamicFormControlModel, DynamicFormService, DynamicInputModel } from '@ng-dynamic-forms/core';
-import { TranslateService } from '@ngx-translate/core';
+import { TranslateService, TranslateModule } from '@ngx-translate/core';
 import { FileUploader } from 'ng2-file-upload';
 import { BehaviorSubject, combineLatest as observableCombineLatest, Subscription } from 'rxjs';
 import { AuthService } from '../../../../core/auth/auth.service';
@@ -22,14 +22,20 @@ import { UploaderComponent } from '../../../upload/uploader/uploader.component';
 import { Operation } from 'fast-json-patch';
 import { NoContent } from '../../../../core/shared/NoContent.model';
 import { getFirstCompletedRemoteData } from '../../../../core/shared/operators';
+import { FormComponent } from '../../../form/form.component';
+import { ComcolPageLogoComponent } from '../../comcol-page-logo/comcol-page-logo.component';
+import { NgIf, NgClass, AsyncPipe } from '@angular/common';
+import { VarDirective } from '../../../utils/var.directive';
 
 /**
  * A form for creating and editing Communities or Collections
  */
 @Component({
-  selector: 'ds-comcol-form',
-  styleUrls: ['./comcol-form.component.scss'],
-  templateUrl: './comcol-form.component.html'
+    selector: 'ds-comcol-form',
+    styleUrls: ['./comcol-form.component.scss'],
+    templateUrl: './comcol-form.component.html',
+    standalone: true,
+    imports: [VarDirective, NgIf, NgClass, ComcolPageLogoComponent, UploaderComponent, forwardRef(() => FormComponent), AsyncPipe, TranslateModule]
 })
 export class ComColFormComponent<T extends Collection | Community> implements OnInit, OnDestroy {
 
