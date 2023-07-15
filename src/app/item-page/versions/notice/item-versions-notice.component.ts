@@ -12,8 +12,8 @@ import {
 } from '../../../core/shared/operators';
 import { map, startWith, switchMap } from 'rxjs/operators';
 import { VersionHistoryDataService } from '../../../core/data/version-history-data.service';
-import { AlertType } from '../../../shared/alert/aletr-type';
 import { getItemPageRoute } from '../../item-page-routing-paths';
+import { AlertType } from "@dspace/shared/ui";
 
 @Component({
   selector: 'ds-item-versions-notice',

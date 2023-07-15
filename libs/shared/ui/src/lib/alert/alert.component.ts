@@ -2,7 +2,9 @@ import { ChangeDetectorRef, Component, EventEmitter, Input, Output, ViewEncapsul
 import { trigger } from '@angular/animations';
 
 import { AlertType } from './aletr-type';
-import { fadeOutLeave, fadeOutState } from '../animations/fade';
+import { fadeOutLeave, fadeOutState } from "@dspace/shared/animations";
+import { CommonModule } from "@angular/common";
+import { TranslateModule } from "@ngx-translate/core";
 
 /**
  * This component allow to create div that uses the Bootstrap's Alerts component.
@@ -11,12 +13,12 @@ import { fadeOutLeave, fadeOutState } from '../animations/fade';
   selector: 'ds-alert',
   encapsulation: ViewEncapsulation.None,
   animations: [
-    trigger('enterLeave', [
-      fadeOutLeave, fadeOutState,
-    ])
+    trigger('enterLeave', [fadeOutLeave, fadeOutState,])
   ],
   templateUrl: './alert.component.html',
-  styleUrls: ['./alert.component.scss']
+  styleUrls: ['./alert.component.scss'],
+  standalone: true,
+  imports: [CommonModule, TranslateModule]
 })
 export class AlertComponent {
 
@@ -33,12 +35,13 @@ export class AlertComponent {
   /**
    * The alert type
    */
-  @Input() type: AlertType;
+  @Input() type: AlertType | string;
 
   /**
    * An event fired when alert is dismissed.
    */
-  @Output() close: EventEmitter<any> = new EventEmitter<any>();
+    // eslint-disable-next-line @angular-eslint/no-output-native
+  @Output() close = new EventEmitter<unknown>();
 
   /**
    * The initial animation name

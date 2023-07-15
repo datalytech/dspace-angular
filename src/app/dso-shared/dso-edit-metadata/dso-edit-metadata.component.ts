@@ -1,5 +1,4 @@
 import { Component, Inject, Injector, Input, OnDestroy, OnInit, ViewChild } from '@angular/core';
-import { AlertType } from '../../shared/alert/aletr-type';
 import { DSpaceObject } from '../../core/shared/dspace-object.model';
 import { DsoEditMetadataForm } from './dso-edit-metadata-form';
 import { map } from 'rxjs/operators';
@@ -22,6 +21,7 @@ import { ArrayMoveChangeAnalyzer } from '../../core/data/array-move-change-analy
 import { DATA_SERVICE_FACTORY } from '../../core/data/base/data-service.decorator';
 import { GenericConstructor } from '../../core/shared/generic-constructor';
 import { HALDataService } from '../../core/data/base/hal-data-service.interface';
+import { AlertType } from "@dspace/shared/ui";
 
 @Component({
   selector: 'ds-dso-edit-metadata',

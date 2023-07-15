@@ -60,6 +60,7 @@ import { ThemedItemAlertsComponent } from './alerts/themed-item-alerts.component
 import {
   ThemedFullFileSectionComponent
 } from './full/field-components/file-section/themed-full-file-section.component';
+import { AlertComponent } from "@dspace/shared/ui";
 
 const ENTRY_COMPONENTS = [
   // put only entry components that use custom decorator
@@ -106,22 +107,23 @@ const DECLARATIONS = [
 ];
 
 @NgModule({
-  imports: [
-    CommonModule,
-    SharedModule.withEntryComponents(),
-    ItemPageRoutingModule,
-    EditItemPageModule,
-    ItemVersionsModule,
-    ItemSharedModule,
-    StatisticsModule.forRoot(),
-    JournalEntitiesModule.withEntryComponents(),
-    ResearchEntitiesModule.withEntryComponents(),
-    NgxGalleryModule,
-    NgbAccordionModule,
-    ResultsBackButtonModule,
-    UploadModule,
-    DsoPageModule,
-  ],
+    imports: [
+        CommonModule,
+        SharedModule.withEntryComponents(),
+        ItemPageRoutingModule,
+        EditItemPageModule,
+        ItemVersionsModule,
+        ItemSharedModule,
+        StatisticsModule.forRoot(),
+        JournalEntitiesModule.withEntryComponents(),
+        ResearchEntitiesModule.withEntryComponents(),
+        NgxGalleryModule,
+        NgbAccordionModule,
+        ResultsBackButtonModule,
+        UploadModule,
+        DsoPageModule,
+        AlertComponent,
+    ],
   declarations: [
     ...DECLARATIONS,
 

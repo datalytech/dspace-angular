@@ -156,6 +156,7 @@ import { ItemStatusComponent } from './app/item-page/edit-item-page/item-status/
 import { EditBitstreamPageComponent } from './app/bitstream-page/edit-bitstream-page/edit-bitstream-page.component';
 import { FormModule } from '../../app/shared/form/form.module';
 import { RequestCopyModule } from 'src/app/request-copy/request-copy.module';
+import { AlertComponent } from "@dspace/shared/ui";
 
 const DECLARATIONS = [
   FileSectionComponent,
@@ -299,6 +300,7 @@ const DECLARATIONS = [
     NgxGalleryModule,
     FormModule,
     RequestCopyModule,
+    AlertComponent
   ],
   declarations: DECLARATIONS,
   exports: [

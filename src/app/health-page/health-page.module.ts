@@ -12,16 +12,18 @@ import { HealthPageComponent } from './health-page.component';
 import { HealthComponentComponent } from './health-panel/health-component/health-component.component';
 import { HealthInfoComponent } from './health-info/health-info.component';
 import { HealthInfoComponentComponent } from './health-info/health-info-component/health-info-component.component';
+import { AlertComponent } from "@dspace/shared/ui";
 
 
 @NgModule({
-  imports: [
-    CommonModule,
-    HealthPageRoutingModule,
-    NgbModule,
-    SharedModule,
-    TranslateModule
-  ],
+    imports: [
+        CommonModule,
+        HealthPageRoutingModule,
+        NgbModule,
+        SharedModule,
+        TranslateModule,
+        AlertComponent
+    ],
   declarations: [
     HealthPageComponent,
     HealthPanelComponent,

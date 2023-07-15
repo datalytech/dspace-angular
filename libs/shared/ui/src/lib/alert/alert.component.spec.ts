@@ -7,13 +7,13 @@ import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { TranslateModule } from '@ngx-translate/core';
 
 import { AlertComponent } from './alert.component';
-import { createTestComponent } from '../testing/utils.test';
 import { AlertType } from './aletr-type';
+// eslint-disable-next-line @nrwl/nx/enforce-module-boundaries
+import { createTestComponent } from "../../../../../../src/app/shared/testing/utils.test";
 
 describe('AlertComponent test suite', () => {
 
   let comp: AlertComponent;
-  let compAsAny: any;
   let fixture: ComponentFixture<AlertComponent>;
 
   beforeEach(waitForAsync(() => {
@@ -22,10 +22,10 @@ describe('AlertComponent test suite', () => {
         BrowserModule,
         CommonModule,
         NoopAnimationsModule,
-        TranslateModule.forRoot()
+        TranslateModule.forRoot(),
+        AlertComponent,
       ],
       declarations: [
-        AlertComponent,
         TestComponent
       ],
       providers: [
@@ -37,7 +37,6 @@ describe('AlertComponent test suite', () => {
   }));
 
   describe('', () => {
-    let testComp: TestComponent;
     let testFixture: ComponentFixture<TestComponent>;
 
     // synchronous beforeEach
@@ -46,7 +45,6 @@ describe('AlertComponent test suite', () => {
         <ds-alert [content]="content" [dismissible]="dismissible" [type]="type"></ds-alert>`;
 
       testFixture = createTestComponent(html, TestComponent) as ComponentFixture<TestComponent>;
-      testComp = testFixture.componentInstance;
     });
 
     afterEach(() => {
@@ -63,7 +61,6 @@ describe('AlertComponent test suite', () => {
     beforeEach(() => {
       fixture = TestBed.createComponent(AlertComponent);
       comp = fixture.componentInstance;
-      compAsAny = comp;
       comp.content = 'test alert';
       comp.dismissible = true;
       comp.type = AlertType.Info;
@@ -95,8 +92,6 @@ describe('AlertComponent test suite', () => {
 
     afterEach(() => {
       fixture.destroy();
-      comp = null;
-      compAsAny = null;
     });
   });
 });

@@ -21,7 +21,6 @@ import { SectionsType } from '../sections-type';
 import { renderSectionFor } from '../sections-decorator';
 import { SectionDataObject } from '../models/section-data.model';
 import { SubmissionObjectEntry } from '../../objects/submission-objects.reducer';
-import { AlertType } from '../../../shared/alert/aletr-type';
 import { RemoteData } from '../../../core/data/remote-data';
 import { Group } from '../../../core/eperson/models/group.model';
 import { SectionsService } from '../sections.service';
@@ -31,6 +30,7 @@ import { AccessConditionOption } from '../../../core/config/models/config-access
 import { followLink } from '../../../shared/utils/follow-link-config.model';
 import { getFirstSucceededRemoteData } from '../../../core/shared/operators';
 import { DSONameService } from '../../../core/breadcrumbs/dso-name.service';
+import { AlertType } from "@dspace/shared/ui";
 
 export const POLICY_DEFAULT_NO_LIST = 1; // Banner1
 export const POLICY_DEFAULT_WITH_LIST = 2; // Banner2

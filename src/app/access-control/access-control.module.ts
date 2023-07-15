@@ -18,6 +18,7 @@ import { BulkAccessBrowseComponent } from './bulk-access/browse/bulk-access-brow
 import { BulkAccessSettingsComponent } from './bulk-access/settings/bulk-access-settings.component';
 import { SearchModule } from '../shared/search/search.module';
 import { AccessControlFormModule } from '../shared/access-control-form-container/access-control-form.module';
+import { AlertComponent } from "@dspace/shared/ui";
 
 /**
  * Condition for displaying error messages on email form field
@@ -28,16 +29,17 @@ export const ValidateEmailErrorStateMatcher: DynamicErrorMessagesMatcher =
   };
 
 @NgModule({
-  imports: [
-    CommonModule,
-    SharedModule,
-    RouterModule,
-    AccessControlRoutingModule,
-    FormModule,
-    NgbAccordionModule,
-    SearchModule,
-    AccessControlFormModule,
-  ],
+    imports: [
+        CommonModule,
+        SharedModule,
+        RouterModule,
+        AccessControlRoutingModule,
+        FormModule,
+        NgbAccordionModule,
+        SearchModule,
+        AccessControlFormModule,
+        AlertComponent,
+    ],
   exports: [
     MembersListComponent,
   ],

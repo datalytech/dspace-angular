@@ -7,9 +7,9 @@ import { SectionModelComponent } from '../models/section.model';
 import { renderSectionFor } from '../sections-decorator';
 import { SectionDataObject } from '../models/section-data.model';
 import { SubmissionService } from '../../submission.service';
-import { AlertType } from '../../../shared/alert/aletr-type';
 import { SectionsService } from '../sections.service';
 import { WorkspaceitemSectionIdentifiersObject } from '../../../core/submission/models/workspaceitem-section-identifiers.model';
+import { AlertType } from "@dspace/shared/ui";
 
 /**
  * This simple component displays DOI, handle and other identifiers that are already minted for the item in

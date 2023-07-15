@@ -1,4 +1,3 @@
-import { AlertType } from '../../../shared/alert/aletr-type';
 import { Component, Inject } from '@angular/core';
 
 import { BehaviorSubject, Observable, of, Subscription } from 'rxjs';
@@ -15,6 +14,7 @@ import { SectionsService } from '../sections.service';
 import { SectionModelComponent } from '../models/section.model';
 import { SubmissionService } from '../../submission.service';
 import { hasValue, isEmpty } from '../../../shared/empty.util';
+import { AlertType } from "@dspace/shared/ui";
 
 /**
  * This component represents a section for the sherpa policy informations structure.

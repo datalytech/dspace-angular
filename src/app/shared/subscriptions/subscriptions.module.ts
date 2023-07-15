@@ -8,6 +8,7 @@ import { TranslateModule } from '@ngx-translate/core';
 import { RouterModule } from '@angular/router';
 import { SharedModule } from '../shared.module';
 import { NgbModalModule } from '@ng-bootstrap/ng-bootstrap';
+import { AlertComponent } from "@dspace/shared/ui";
 
 const COMPONENTS = [
   SubscriptionViewComponent,
@@ -18,14 +19,15 @@ const COMPONENTS = [
   declarations: [
     ...COMPONENTS
   ],
-  imports: [
-    CommonModule,
-    NgbModalModule,
-    ReactiveFormsModule,
-    TranslateModule,
-    RouterModule,
-    SharedModule
-  ],
+    imports: [
+        CommonModule,
+        NgbModalModule,
+        ReactiveFormsModule,
+        TranslateModule,
+        RouterModule,
+        SharedModule,
+        AlertComponent
+    ],
   exports: [
     ...COMPONENTS
   ]

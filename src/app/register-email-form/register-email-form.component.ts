@@ -13,10 +13,10 @@ import {isNotEmpty} from '../shared/empty.util';
 import {BehaviorSubject, combineLatest, Observable, of, switchMap} from 'rxjs';
 import {map, startWith, take} from 'rxjs/operators';
 import {CAPTCHA_NAME, GoogleRecaptchaService} from '../core/google-recaptcha/google-recaptcha.service';
-import {AlertType} from '../shared/alert/aletr-type';
 import {KlaroService} from '../shared/cookies/klaro.service';
 import {CookieService} from '../core/services/cookie.service';
 import { Subscription } from 'rxjs';
+import { AlertType } from "@dspace/shared/ui";
 
 export const TYPE_REQUEST_FORGOT = 'forgot';
 export const TYPE_REQUEST_REGISTER = 'register';

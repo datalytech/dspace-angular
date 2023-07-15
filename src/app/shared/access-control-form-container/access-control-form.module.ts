@@ -12,15 +12,17 @@ import {
 import {AccessControlFormContainerComponent} from './access-control-form-container.component';
 import {NgbDatepickerModule} from '@ng-bootstrap/ng-bootstrap';
 import {ToDatePipe} from './access-control-array-form/to-date.pipe';
+import { AlertComponent } from "@dspace/shared/ui";
 
 @NgModule({
-  imports: [
-    CommonModule,
-    SharedModule,
-    TranslateModule,
-    UiSwitchModule,
-    NgbDatepickerModule
-  ],
+    imports: [
+        CommonModule,
+        SharedModule,
+        TranslateModule,
+        UiSwitchModule,
+        NgbDatepickerModule,
+        AlertComponent
+    ],
   declarations: [
     AccessControlFormContainerComponent,
     AccessControlArrayFormComponent,

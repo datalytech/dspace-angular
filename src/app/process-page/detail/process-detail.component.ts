@@ -17,7 +17,6 @@ import {
   getFirstSucceededRemoteDataPayload
 } from '../../core/shared/operators';
 import { URLCombiner } from '../../core/url-combiner/url-combiner';
-import { AlertType } from '../../shared/alert/aletr-type';
 import { hasValue } from '../../shared/empty.util';
 import { ProcessStatus } from '../processes/process-status.model';
 import { Process } from '../processes/process.model';
@@ -28,6 +27,7 @@ import { NotificationsService } from '../../shared/notifications/notifications.s
 import { TranslateService } from '@ngx-translate/core';
 import { followLink } from '../../shared/utils/follow-link-config.model';
 import { isPlatformBrowser } from '@angular/common';
+import { AlertType } from "@dspace/shared/ui";
 
 @Component({
   selector: 'ds-process-detail',

@@ -23,7 +23,6 @@ import { PaginatedList } from '../../core/data/paginated-list.model';
 import { PaginationComponentOptions } from '../../shared/pagination/pagination-component-options.model';
 import { VersionHistoryDataService } from '../../core/data/version-history-data.service';
 import { PaginatedSearchOptions } from '../../shared/search/models/paginated-search-options.model';
-import { AlertType } from '../../shared/alert/aletr-type';
 import { followLink } from '../../shared/utils/follow-link-config.model';
 import { hasValue, hasValueOperator } from '../../shared/empty.util';
 import { PaginationService } from '../../core/pagination/pagination.service';
@@ -48,6 +47,7 @@ import { WorkspaceItem } from '../../core/submission/models/workspaceitem.model'
 import { WorkspaceitemDataService } from '../../core/submission/workspaceitem-data.service';
 import { WorkflowItemDataService } from '../../core/submission/workflowitem-data.service';
 import { ConfigurationDataService } from '../../core/data/configuration-data.service';
+import { AlertType } from "@dspace/shared/ui";
 
 @Component({
   selector: 'ds-item-versions',

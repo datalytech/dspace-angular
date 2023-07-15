@@ -67,7 +67,6 @@ import { TruncatableComponent } from './truncatable/truncatable.component';
 import { TruncatableService } from './truncatable/truncatable.service';
 import { TruncatablePartComponent } from './truncatable/truncatable-part/truncatable-part.component';
 import { MockAdminGuard } from './mocks/admin-guard.service.mock';
-import { AlertComponent } from './alert/alert.component';
 import {
   SearchResultDetailElementComponent
 } from './object-detail/my-dspace-result-detail-element/search-result-detail-element.component';
@@ -284,6 +283,7 @@ import {
 } from '../item-page/simple/field-components/specific-field/title/themed-item-page-field.component';
 import { BitstreamListItemComponent } from './object-list/bitstream-list-item/bitstream-list-item.component';
 import { NgxPaginationModule } from 'ngx-pagination';
+import { AlertComponent } from "@dspace/shared/ui";
 
 const MODULES = [
   CommonModule,
@@ -328,7 +328,6 @@ const PIPES = [
 
 const COMPONENTS = [
   // put shared components here
-  AlertComponent,
   AuthNavMenuComponent,
   ThemedAuthNavMenuComponent,
   UserMenuComponent,
@@ -496,7 +495,8 @@ const DIRECTIVES = [
 @NgModule({
   imports: [
     ...MODULES,
-    ...ROOT_MODULES
+    ...ROOT_MODULES,
+    AlertComponent
   ],
   declarations: [
     ...PIPES,

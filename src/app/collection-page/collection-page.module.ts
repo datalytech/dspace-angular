@@ -18,19 +18,21 @@ import { ThemedCollectionPageComponent } from './themed-collection-page.componen
 import { ComcolModule } from '../shared/comcol/comcol.module';
 import { DsoSharedModule } from '../dso-shared/dso-shared.module';
 import { DsoPageModule } from '../shared/dso-page/dso-page.module';
+import { AlertComponent } from "@dspace/shared/ui";
 
 @NgModule({
-  imports: [
-    CommonModule,
-    SharedModule,
-    CollectionPageRoutingModule,
-    StatisticsModule.forRoot(),
-    EditItemPageModule,
-    CollectionFormModule,
-    ComcolModule,
-    DsoSharedModule,
-    DsoPageModule,
-  ],
+    imports: [
+        CommonModule,
+        SharedModule,
+        CollectionPageRoutingModule,
+        StatisticsModule.forRoot(),
+        EditItemPageModule,
+        CollectionFormModule,
+        ComcolModule,
+        DsoSharedModule,
+        DsoPageModule,
+        AlertComponent,
+    ],
   declarations: [
     CollectionPageComponent,
     ThemedCollectionPageComponent,

@@ -37,7 +37,6 @@ import {
   getFirstCompletedRemoteData,
   getFirstSucceededRemoteDataPayload
 } from '../../../core/shared/operators';
-import { AlertType } from '../../../shared/alert/aletr-type';
 import { ConfirmationModalComponent } from '../../../shared/confirmation-modal/confirmation-modal.component';
 import { hasValue, isNotEmpty, hasValueOperator } from '../../../shared/empty.util';
 import { FormBuilderService } from '../../../shared/form/builder/form-builder.service';
@@ -48,6 +47,7 @@ import { Operation } from 'fast-json-patch';
 import { ValidateGroupExists } from './validators/group-exists.validator';
 import { DSONameService } from '../../../core/breadcrumbs/dso-name.service';
 import { environment } from '../../../../environments/environment';
+import { AlertType } from "@dspace/shared/ui";
 
 @Component({
   selector: 'ds-group-form',

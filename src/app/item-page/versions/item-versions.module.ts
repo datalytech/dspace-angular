@@ -10,6 +10,7 @@ import { NgModule } from '@angular/core';
 import { SharedModule } from '../../shared/shared.module';
 import { ItemVersionsComponent } from './item-versions.component';
 import { ItemVersionsNoticeComponent } from './notice/item-versions-notice.component';
+import { AlertComponent } from "@dspace/shared/ui";
 
 const DECLARATIONS = [
   ItemVersionsComponent,
@@ -17,9 +18,10 @@ const DECLARATIONS = [
 ];
 
 @NgModule({
-  imports: [
-    SharedModule,
-  ],
+    imports: [
+        SharedModule,
+        AlertComponent,
+    ],
   declarations: [
     ...DECLARATIONS,
   ],

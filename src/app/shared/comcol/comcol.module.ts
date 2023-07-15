@@ -16,6 +16,7 @@ import { ComcolRoleComponent } from './comcol-forms/edit-comcol-page/comcol-role
 import { SharedModule } from '../shared.module';
 import { FormModule } from '../form/form.module';
 import { UploadModule } from '../upload/upload.module';
+import { AlertComponent } from "@dspace/shared/ui";
 
 const COMPONENTS = [
   ComcolPageContentComponent,
@@ -36,12 +37,13 @@ const COMPONENTS = [
   declarations: [
     ...COMPONENTS
   ],
-  imports: [
-    CommonModule,
-    FormModule,
-    SharedModule,
-    UploadModule,
-  ],
+    imports: [
+        CommonModule,
+        FormModule,
+        SharedModule,
+        UploadModule,
+        AlertComponent,
+    ],
   exports: [
     ...COMPONENTS,
     UploadModule,

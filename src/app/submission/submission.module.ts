@@ -67,6 +67,7 @@ import {
 } from './sections/sherpa-policies/metadata-information/metadata-information.component';
 import { SectionFormOperationsService } from './sections/form/section-form-operations.service';
 import {SubmissionSectionIdentifiersComponent} from './sections/identifiers/section-identifiers.component';
+import { AlertComponent } from "@dspace/shared/ui";
 
 const ENTRY_COMPONENTS = [
   // put only entry components that use custom decorator
@@ -122,6 +123,7 @@ const DECLARATIONS = [
     NgbCollapseModule,
     NgbAccordionModule,
     UploadModule,
+    AlertComponent,
   ],
   declarations: DECLARATIONS,
   exports: [

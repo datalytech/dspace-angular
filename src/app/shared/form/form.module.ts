@@ -42,6 +42,7 @@ import { NgbDatepickerModule, NgbTimepickerModule } from '@ng-bootstrap/ng-boots
 import { CdkTreeModule } from '@angular/cdk/tree';
 import { ThemedDynamicLookupRelationSearchTabComponent } from './builder/ds-dynamic-form-ui/relation-lookup-modal/search-tab/themed-dynamic-lookup-relation-search-tab.component';
 import { ThemedDynamicLookupRelationExternalSourceTabComponent } from './builder/ds-dynamic-form-ui/relation-lookup-modal/external-source-tab/themed-dynamic-lookup-relation-external-source-tab.component';
+import { AlertComponent } from "@dspace/shared/ui";
 
 const COMPONENTS = [
   CustomSwitchComponent,
@@ -84,19 +85,20 @@ const DIRECTIVES = [
     ...COMPONENTS,
     ...DIRECTIVES,
   ],
-  imports: [
-    CommonModule,
-    DynamicFormsCoreModule,
-    DynamicFormsNGBootstrapUIModule,
-    SearchModule,
-    SharedModule,
-    TranslateModule,
-    SortablejsModule,
-    NgxMaskModule.forRoot(),
-    NgbDatepickerModule,
-    NgbTimepickerModule,
-    CdkTreeModule,
-  ],
+    imports: [
+        CommonModule,
+        DynamicFormsCoreModule,
+        DynamicFormsNGBootstrapUIModule,
+        SearchModule,
+        SharedModule,
+        TranslateModule,
+        SortablejsModule,
+        NgxMaskModule.forRoot(),
+        NgbDatepickerModule,
+        NgbTimepickerModule,
+        CdkTreeModule,
+        AlertComponent,
+    ],
   exports: [
     ...COMPONENTS,
     ...DIRECTIVES,

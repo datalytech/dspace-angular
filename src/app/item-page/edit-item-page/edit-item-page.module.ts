@@ -46,25 +46,27 @@ import { ResultsBackButtonModule } from '../../shared/results-back-button/result
 import {
   AccessControlFormModule
 } from '../../shared/access-control-form-container/access-control-form.module';
+import { AlertComponent } from "@dspace/shared/ui";
 
 /**
  * Module that contains all components related to the Edit Item page administrator functionality
  */
 @NgModule({
-  imports: [
-    CommonModule,
-    SharedModule,
-    NgbTooltipModule,
-    EditItemPageRoutingModule,
-    SearchPageModule,
-    DragDropModule,
-    ResourcePoliciesModule,
-    NgbModule,
-    ItemVersionsModule,
-    DsoSharedModule,
-    ResultsBackButtonModule,
-    AccessControlFormModule,
-  ],
+    imports: [
+        CommonModule,
+        SharedModule,
+        NgbTooltipModule,
+        EditItemPageRoutingModule,
+        SearchPageModule,
+        DragDropModule,
+        ResourcePoliciesModule,
+        NgbModule,
+        ItemVersionsModule,
+        DsoSharedModule,
+        ResultsBackButtonModule,
+        AccessControlFormModule,
+        AlertComponent,
+    ],
   declarations: [
     EditItemPageComponent,
     ItemOperationComponent,

@@ -15,10 +15,10 @@ import {
 import { BulkAccessConfigDataService } from '../../core/config/bulk-access-config-data.service';
 import { getFirstCompletedRemoteData } from '../../core/shared/operators';
 import { BulkAccessConditionOptions } from '../../core/config/models/bulk-access-condition-options.model';
-import { AlertType } from '../alert/aletr-type';
 import {
   createAccessControlInitialFormState
 } from './access-control-form-container-intial-state';
+import { AlertType } from '@dspace/shared/ui';
 
 @Component({
   selector: 'ds-access-control-form-container',
