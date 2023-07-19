@@ -1,11 +1,6 @@
 import { ChangeDetectorRef, Component, Inject } from '@angular/core';
 
-import {
-  BehaviorSubject,
-  combineLatest as observableCombineLatest,
-  Observable,
-  Subscription
-} from 'rxjs';
+import { BehaviorSubject, combineLatest as observableCombineLatest, Observable, Subscription } from 'rxjs';
 import { distinctUntilChanged, filter, map, mergeMap, switchMap, tap } from 'rxjs/operators';
 
 import { SectionModelComponent } from '../models/section.model';
@@ -30,12 +25,13 @@ import { AccessConditionOption } from '../../../core/config/models/config-access
 import { followLink } from '../../../shared/utils/follow-link-config.model';
 import { getFirstSucceededRemoteData } from '../../../core/shared/operators';
 import { DSONameService } from '../../../core/breadcrumbs/dso-name.service';
-import { AlertType } from "@dspace/shared/ui";
+import { AlertComponent, AlertType } from "@dspace/shared/ui";
 import { TranslateModule } from '@ngx-translate/core';
 import { ThemedSubmissionSectionUploadFileComponent } from './file/themed-section-upload-file.component';
-import { SubmissionSectionUploadAccessConditionsComponent } from './accessConditions/submission-section-upload-access-conditions.component';
-import { NgIf, NgFor, AsyncPipe } from '@angular/common';
-import { AlertComponent } from '../../../../../libs/shared/ui/src/lib/alert/alert.component';
+import {
+  SubmissionSectionUploadAccessConditionsComponent
+} from './accessConditions/submission-section-upload-access-conditions.component';
+import { AsyncPipe, NgFor, NgIf } from '@angular/common';
 
 export const POLICY_DEFAULT_NO_LIST = 1; // Banner1
 export const POLICY_DEFAULT_WITH_LIST = 2; // Banner2
