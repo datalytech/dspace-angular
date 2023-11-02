@@ -342,7 +342,10 @@ export class DefaultAppConfig implements AppConfig {
     //   // This theme will use the default bootstrap styling for DSpace components
     //   name: BASE_THEME_NAME
     // },
-
+    {
+      name: 'vtu',
+      extends: 'dspace'
+    },
     {
       // The default dspace theme
       name: 'dspace',
