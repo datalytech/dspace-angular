@@ -4222,6 +4222,8 @@
 
   "submission.general.discard.submit": "Discard",
 
+  "submission.general.back.submit": "Back",
+
   "submission.general.info.saved": "Saved",
 
   "submission.general.info.pending-changes": "Unsaved changes",
@@ -5643,9 +5645,9 @@
   "ldn-new-service.form.error.ipRange": "Please enter a valid IP range",
   "ldn-new-service.form.hint.ipRange": "Please enter a valid IpV4 in both range bounds (note: for single IP, please enter the same value in both fields)",
   "ldn-new-service.form.error.ldnurl": "LDN URL is required",
+  "ldn-new-service.form.error.ldnurl.ldnUrlAlreadyAssociated": "LDN URL already in use on a different service",
   "ldn-new-service.form.error.patterns": "At least a pattern is required",
   "ldn-new-service.form.error.score": "Please enter a valid score (between 0 and 1). Use the “.” as decimal separator",
-
   "ldn-new-service.form.label.inboundPattern": "Inbound Pattern",
   "ldn-new-service.form.label.addPattern": "+ Add more",
   "ldn-new-service.form.label.removeItemFilter": "Remove",
