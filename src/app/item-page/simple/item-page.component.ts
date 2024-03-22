@@ -22,6 +22,7 @@ import { SignpostingLink } from '../../core/data/signposting-links.model';
 import { isNotEmpty } from '../../shared/empty.util';
 import { LinkDefinition, LinkHeadService } from '../../core/services/link-head.service';
 import { NotifyInfoService } from 'src/app/core/coar-notify/notify-info/notify-info.service';
+import { of } from 'rxjs/internal/observable/of';
 
 /**
  * This component renders a simple item page.
@@ -155,6 +156,8 @@ export class ItemPageComponent implements OnInit, OnDestroy {
       switchMap((coarLdnEnabled: boolean) => {
         if (coarLdnEnabled) {
           return this.notifyInfoService.getCoarLdnLocalInboxUrls();
+        } else {
+          return of([]);
         }
       })
     );
