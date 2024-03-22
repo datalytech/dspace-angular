@@ -292,9 +292,6 @@ import { StartsWithLoaderComponent } from './starts-with/starts-with-loader.comp
 import { IpV4Validator } from './utils/ipV4.validator';
 import { ObjectTableComponent } from './object-table/object-table.component';
 import {
-  AbstractTabulatableElementComponent
-} from './object-collection/shared/objects-collection-tabulatable/objects-collection-tabulatable.component';
-import {
   TabulatableObjectsLoaderComponent
 } from './object-collection/shared/tabulatable-objects/tabulatable-objects-loader.component';
 import {
