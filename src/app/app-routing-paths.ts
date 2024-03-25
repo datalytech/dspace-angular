@@ -134,4 +134,9 @@ export function getSubscriptionsModuleRoute() {
   return `/${SUBSCRIPTIONS_MODULE_PATH}`;
 }
 
+export const EDIT_ITEM_PATH = 'edit-items';
+export function getEditItemPageRoute() {
+  return `/${EDIT_ITEM_PATH}`;
+}
 export const CORRECTION_TYPE_PATH = 'corrections';
+
