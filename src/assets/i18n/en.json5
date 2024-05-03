@@ -6171,4 +6171,10 @@
   "search.filters.filter.notifyEndorsement.placeholder": "Notify Endorsement",
 
   "search.filters.filter.notifyEndorsement.label": "Search Notify Endorsement",
+
+  "item.page.endorsed-by": "Endorsement",
+
+  "item.page.is-reviewed-by": "Review",
+
+  "item.page.is-referenced-by": "Dataset"
 }
