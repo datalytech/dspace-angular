@@ -28,8 +28,6 @@ import {
   BITSTREAM_FORM_ACCESS_CONDITION_START_DATE_LAYOUT,
   BITSTREAM_FORM_ACCESS_CONDITION_TYPE_CONFIG,
   BITSTREAM_FORM_ACCESS_CONDITION_TYPE_LAYOUT,
-  BITSTREAM_FORM_PRIMARY,
-  BITSTREAM_FORM_PRIMARY_LAYOUT,
   BITSTREAM_METADATA_FORM_GROUP_CONFIG,
   BITSTREAM_METADATA_FORM_GROUP_LAYOUT
 } from './section-upload-file-edit.model';
@@ -57,7 +55,6 @@ import { SectionUploadService } from '../../section-upload.service';
 import { Subscription } from 'rxjs';
 import { DynamicFormControlCondition } from '@ng-dynamic-forms/core/lib/model/misc/dynamic-form-control-relation.model';
 import { DynamicDateControlValue } from '@ng-dynamic-forms/core/lib/model/dynamic-date-control.model';
-import { DynamicCustomSwitchModel } from 'src/app/shared/form/builder/ds-dynamic-form-ui/models/custom-switch/custom-switch.model';
 import { SubmissionObject } from 'src/app/core/submission/models/submission-object.model';
 import { WorkspaceitemSectionUploadObject } from 'src/app/core/submission/models/workspaceitem-section-upload.model';
 
@@ -202,8 +199,8 @@ export class SubmissionSectionUploadFileEditComponent
    */
   public initModelData(formModel: DynamicFormControlModel[]) {
 
-    const primaryBitstreamModel: any = this.formBuilderService.findById('primary', formModel, this.fileIndex);
-    primaryBitstreamModel.value = this.isPrimary || false;
+    // const primaryBitstreamModel: any = this.formBuilderService.findById('primary', formModel, this.fileIndex);
+    // primaryBitstreamModel.value = this.isPrimary || false;
 
     this.fileData.accessConditions.forEach((accessCondition, index) => {
       Array.of('name', 'startDate', 'endDate')
@@ -306,7 +303,7 @@ export class SubmissionSectionUploadFileEditComponent
     });
     const formModel: DynamicFormControlModel[] = [];
 
-    formModel.push(new DynamicCustomSwitchModel(BITSTREAM_FORM_PRIMARY, BITSTREAM_FORM_PRIMARY_LAYOUT));
+    //formModel.push(new DynamicCustomSwitchModel(BITSTREAM_FORM_PRIMARY, BITSTREAM_FORM_PRIMARY_LAYOUT));
 
     const metadataGroupModelConfig = Object.assign({}, BITSTREAM_METADATA_FORM_GROUP_CONFIG);
     metadataGroupModelConfig.group = this.formBuilderService.modelFromConfiguration(
@@ -419,7 +416,7 @@ export class SubmissionSectionUploadFileEditComponent
       mergeMap(() => this.formService.getFormData(this.formId)),
       take(1),
       mergeMap((formData: any) => {
-        this.uploadService.updatePrimaryBitstreamOperation(this.pathCombiner.getPath('primary'), this.isPrimary, formData.primary[0], this.fileId);
+        //this.uploadService.updatePrimaryBitstreamOperation(this.pathCombiner.getPath('primary'), this.isPrimary, formData.primary[0], this.fileId);
 
         // collect bitstream metadata
         Object.keys((formData.metadata))
@@ -508,7 +505,7 @@ export class SubmissionSectionUploadFileEditComponent
       }
       const uploadSection = (section as WorkspaceitemSectionUploadObject);
 
-      this.uploadService.updateFilePrimaryBitstream(this.submissionId, this.sectionId, uploadSection.primary);
+      //this.uploadService.updateFilePrimaryBitstream(this.submissionId, this.sectionId, uploadSection.primary);
 
       Object.keys(uploadSection.files)
         .filter((key) => uploadSection.files[key].uuid === this.fileId)

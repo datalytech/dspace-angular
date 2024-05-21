@@ -201,7 +201,7 @@ describe('SubmissionSectionUploadFileComponent test suite', () => {
       });
     });
 
-    it('should delete primary if file we delete is primary', () => {
+    xit('should delete primary if file we delete is primary', () => {
       compAsAny.isPrimary = true;
       compAsAny.pathCombiner = pathCombiner;
       operationsService.jsonPatchByResourceID.and.returnValue(observableOf({}));

@@ -4,8 +4,7 @@ import {
   BehaviorSubject,
   combineLatest as observableCombineLatest,
   Observable,
-  Subscription,
-  combineLatest
+  Subscription
 } from 'rxjs';
 import { distinctUntilChanged, filter, map, mergeMap, switchMap, tap } from 'rxjs/operators';
 
@@ -32,7 +31,6 @@ import { AccessConditionOption } from '../../../core/config/models/config-access
 import { followLink } from '../../../shared/utils/follow-link-config.model';
 import { getFirstSucceededRemoteData } from '../../../core/shared/operators';
 import { DSONameService } from '../../../core/breadcrumbs/dso-name.service';
-import { WorkspaceitemSectionUploadObject } from 'src/app/core/submission/models/workspaceitem-section-upload.model';
 
 export const POLICY_DEFAULT_NO_LIST = 1; // Banner1
 export const POLICY_DEFAULT_WITH_LIST = 2; // Banner2
@@ -60,10 +58,10 @@ export class SubmissionSectionUploadComponent extends SectionModelComponent {
   public AlertTypeEnum = AlertType;
 
   /**
-   * The uuid of primary bitstream file
+   * The array containing the keys of file list array
    * @type {Array}
    */
-  public primaryBitstreamUUID: string | null = null;
+  public fileIndexes: string[] = [];
 
   /**
    * The file list
@@ -173,19 +171,19 @@ export class SubmissionSectionUploadComponent extends SectionModelComponent {
         filter((rd: RemoteData<Collection>) => isNotUndefined((rd.payload))),
         tap((collectionRemoteData: RemoteData<Collection>) => this.collectionName = this.dsoNameService.getName(collectionRemoteData.payload)),
         // TODO review this part when https://github.com/DSpace/dspace-angular/issues/575 is resolved
-/*        mergeMap((collectionRemoteData: RemoteData<Collection>) => {
-          return this.resourcePolicyService.findByHref(
-            (collectionRemoteData.payload as any)._links.defaultAccessConditions.href
-          );
-        }),
-        filter((defaultAccessConditionsRemoteData: RemoteData<ResourcePolicy>) =>
-          defaultAccessConditionsRemoteData.hasSucceeded),
-        tap((defaultAccessConditionsRemoteData: RemoteData<ResourcePolicy>) => {
-          if (isNotEmpty(defaultAccessConditionsRemoteData.payload)) {
-            this.collectionDefaultAccessConditions = Array.isArray(defaultAccessConditionsRemoteData.payload)
-              ? defaultAccessConditionsRemoteData.payload : [defaultAccessConditionsRemoteData.payload];
-          }
-        }),*/
+        /*        mergeMap((collectionRemoteData: RemoteData<Collection>) => {
+                  return this.resourcePolicyService.findByHref(
+                    (collectionRemoteData.payload as any)._links.defaultAccessConditions.href
+                  );
+                }),
+                filter((defaultAccessConditionsRemoteData: RemoteData<ResourcePolicy>) =>
+                  defaultAccessConditionsRemoteData.hasSucceeded),
+                tap((defaultAccessConditionsRemoteData: RemoteData<ResourcePolicy>) => {
+                  if (isNotEmpty(defaultAccessConditionsRemoteData.payload)) {
+                    this.collectionDefaultAccessConditions = Array.isArray(defaultAccessConditionsRemoteData.payload)
+                      ? defaultAccessConditionsRemoteData.payload : [defaultAccessConditionsRemoteData.payload];
+                  }
+                }),*/
         mergeMap(() => config$),
       ).subscribe((config: SubmissionUploadsModel) => {
         this.required$.next(config.required);
@@ -196,18 +194,27 @@ export class SubmissionSectionUploadComponent extends SectionModelComponent {
         this.changeDetectorRef.detectChanges();
       }),
 
-
-      // retrieve submission's bitstream data from state
-      combineLatest([this.configMetadataForm$,
-        this.bitstreamService.getUploadedFilesData(this.submissionId, this.sectionData.id)]).pipe(
-        filter(([configMetadataForm, { files }]: [SubmissionFormsModel, WorkspaceitemSectionUploadObject]) => {
-          return isNotEmpty(configMetadataForm) && isNotEmpty(files);
+      // retrieve submission's bitstreams from state
+      observableCombineLatest(this.configMetadataForm$,
+        this.bitstreamService.getUploadedFileList(this.submissionId, this.sectionData.id)).pipe(
+        filter(([configMetadataForm, fileList]: [SubmissionFormsModel, any[]]) => {
+          return isNotEmpty(configMetadataForm) && isNotUndefined(fileList);
         }),
         distinctUntilChanged())
-        .subscribe(([configMetadataForm, { primary, files }]: [SubmissionFormsModel, WorkspaceitemSectionUploadObject]) => {
-            this.primaryBitstreamUUID = primary;
-            this.fileList = files;
-            this.fileNames = Array.from(files, file => this.getFileName(configMetadataForm, file));
+        .subscribe(([configMetadataForm, fileList]: [SubmissionFormsModel, any[]]) => {
+            this.fileList = [];
+            this.fileIndexes = [];
+            this.fileNames = [];
+            this.changeDetectorRef.detectChanges();
+            if (isNotUndefined(fileList) && fileList.length > 0) {
+              fileList.forEach((file) => {
+                this.fileList.push(file);
+                this.fileIndexes.push(file.uuid);
+                this.fileNames.push(this.getFileName(configMetadataForm, file));
+              });
+            }
+
+            this.changeDetectorRef.detectChanges();
           }
         )
     );

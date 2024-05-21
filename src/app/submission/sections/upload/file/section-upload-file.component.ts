@@ -261,7 +261,7 @@ export class SubmissionSectionUploadFileComponent implements OnChanges, OnInit, 
     activeModal.componentInstance.formMetadata = this.formMetadata;
     activeModal.componentInstance.pathCombiner = this.pathCombiner;
     activeModal.componentInstance.submissionId = this.submissionId;
-    activeModal.componentInstance.isPrimary = this.isPrimary;
+    //activeModal.componentInstance.isPrimary = this.isPrimary;
   }
 
   togglePrimaryBitstream(event) {
@@ -303,9 +303,9 @@ export class SubmissionSectionUploadFileComponent implements OnChanges, OnInit, 
       this.pathCombiner.rootElement,
       this.pathCombiner.subRootElement)
       .subscribe(() => {
-        if (this.isPrimary) {
+        /* if (this.isPrimary) {
           this.uploadService.updateFilePrimaryBitstream(this.submissionId, this.sectionId, null);
-        }
+        } */
         this.uploadService.removeUploadedFile(this.submissionId, this.sectionId, this.fileId);
         this.processingDelete$.next(false);
       }));

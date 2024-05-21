@@ -47,7 +47,6 @@ import {
 } from '../../../../../core/json-patch/builder/json-patch-operation-path-combiner';
 import { dateToISOFormat } from '../../../../../shared/date.util';
 import { of } from 'rxjs';
-import { DynamicCustomSwitchModel } from '../../../../../shared/form/builder/ds-dynamic-form-ui/models/custom-switch/custom-switch.model';
 
 const jsonPatchOpBuilder: any = jasmine.createSpyObj('jsonPatchOpBuilder', {
   add: jasmine.createSpy('add'),
@@ -187,7 +186,7 @@ describe('SubmissionSectionUploadFileEditComponent test suite', () => {
 
       comp.ngOnInit();
 
-      const models = [DynamicCustomSwitchModel, DynamicFormGroupModel, DynamicFormArrayModel];
+      const models = [ DynamicFormGroupModel, DynamicFormArrayModel];
 
       expect(comp.formModel).toBeDefined();
       expect(comp.formModel.length).toBe(models.length);
@@ -195,7 +194,7 @@ describe('SubmissionSectionUploadFileEditComponent test suite', () => {
         expect(comp.formModel[i] instanceof model).toBeTruthy();
       });
 
-      expect((comp.formModel[2] as DynamicFormArrayModel).groups.length).toBe(2);
+      expect((comp.formModel[1] as DynamicFormArrayModel).groups.length).toBe(2);
       const startDateModel = formbuilderService.findById('startDate', comp.formModel);
       expect(startDateModel.max).toEqual(maxStartDate);
       const endDateModel = formbuilderService.findById('endDate', comp.formModel);
@@ -285,7 +284,7 @@ describe('SubmissionSectionUploadFileEditComponent test suite', () => {
       tick();
 
       let path = 'primary';
-      expect(uploadService.updatePrimaryBitstreamOperation).toHaveBeenCalledWith(pathCombiner.getPath(path),  compAsAny.isPrimary,  mockFileFormData.primary[0], compAsAny.fileId);
+      //expect(uploadService.updatePrimaryBitstreamOperation).toHaveBeenCalledWith(pathCombiner.getPath(path),  compAsAny.isPrimary,  mockFileFormData.primary[0], compAsAny.fileId);
 
       const pathFragment = ['files', fileIndex];
 
