@@ -6342,6 +6342,8 @@
 
   "submission.section.section-coar-notify.info.no-pattern": "No configurable patterns found.",
 
+  "error.validation.cclicense.required": "You must grant this cclicense to complete your submission. If you are unable to grant the cclicense at this time, you may save your work and return later or remove the submission.",
+
   "error.validation.coarnotify.invalidfilter": "Invalid filter, try to select another service or none.",
 
   "request-status-alert-box.accepted": "The requested {{ offerType }} for <a href='{{serviceUrl}}' target='_blank'> {{ serviceName }}  </a> has been taken in charge.",
