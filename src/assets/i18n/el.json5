@@ -6157,6 +6157,7 @@
 
   // "menu.header.image.logo": "Repository logo",
   "menu.header.image.logo": "Λογότυπο αποθετηρίου",
+  "menu.header.image.logo.url":"assets/images/dspace-cris-logo_el.png",
 
   // "menu.header.admin.description": "Management menu",
   "menu.header.admin.description": "Μενού διαχείρισης",
@@ -11969,6 +11970,10 @@
   // "menu.section.system-wide-alert": "System-wide Alert",
   // TODO New key - Add a translation
   "menu.section.system-wide-alert": "System-wide Alert",
+
+    "menu.section.bibliometris": "Bibliometris",
+
+  "bibliometris.form.header": "Bibliometris",
 
   // "system-wide-alert.form.header": "System-wide Alert",
   // TODO New key - Add a translation
