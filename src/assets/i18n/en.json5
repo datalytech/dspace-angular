@@ -3818,7 +3818,8 @@
   "menu.header.admin": "Management",
 
   "menu.header.image.logo": "Repository logo",
-
+  "menu.header.image.logo.url":"assets/images/dspace-cris-logo_en.png",
+  
   "menu.header.admin.description": "Management menu",
 
 
@@ -7253,6 +7254,10 @@
   "system-wide-alert-banner.countdown.minutes": "{{minutes}} minute(s):",
 
   "menu.section.system-wide-alert": "System-wide Alert",
+
+  "menu.section.bibliometris": "Bibliometris",
+
+  "bibliometris.form.header": "Bibliometris",
 
   "system-wide-alert.form.header": "System-wide Alert",
 
