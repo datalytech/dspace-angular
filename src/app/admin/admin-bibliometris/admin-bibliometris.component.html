@@ -1,0 +1,27 @@
+<div class="container">
+  <div>
+      <h2>
+          Βιβλιομέτρης
+      </h2>
+      <div style="margin-bottom: 10px;">
+          Καλώς ήλθατε στο διαχειριστικό περιβάλλον του Βιβλιομέτρη. Εδώ μπορείτε να εκκινείσετε τη διαδικασία εισαγωγής από το Βιβλιομέτρη και να παρακολουθήσετε την εξέλιξή της.
+      </div>
+  </div>
+  <form (ngSubmit)="onSubmit()" [formGroup]="myForm" >
+      <div>
+        <label style="width: 170px;" for="exportApi">Export URL:</label>
+        <input type="text" id="exportApi" formControlName="exportApi"  >
+      </div>
+      
+      <div>
+        <label style="width: 170px;" for="publish">Publish after import:</label>
+        <input type="checkbox" id="publish" formControlName="publish"  >
+      </div>
+    
+      <button type="submit" class="btn-success">Επιστροφή</button>
+      <button type="submit" class="btn-success" style="margin-left: 10px;">Μαζική εισαγωγή</button>
+    </form>  
+
+</div>
+
+

@@ -7,6 +7,8 @@ import { AdminWorkflowPageComponent } from './admin-workflow-page/admin-workflow
 import { I18nBreadcrumbsService } from '../core/breadcrumbs/i18n-breadcrumbs.service';
 import { AdminCurationTasksComponent } from './admin-curation-tasks/admin-curation-tasks.component';
 import { AdminEditUserAgreementComponent } from './admin-edit-user-agreement/admin-edit-user-agreement.component';
+import { AdminBibliometrisComponent } from './admin-bibliometris/admin-bibliometris.component';
+
 import { NOTIFICATIONS_MODULE_PATH, REGISTRIES_MODULE_PATH } from './admin-routing-paths';
 import { EditCmsMetadataComponent } from './edit-cms-metadata/edit-cms-metadata.component';
 import { BatchImportPageComponent } from './admin-import-batch-page/batch-import-page.component';
@@ -53,6 +55,12 @@ import { BatchImportPageComponent } from './admin-import-batch-page/batch-import
         resolve: { breadcrumb: I18nBreadcrumbResolver },
         component: AdminEditUserAgreementComponent,
         data: { title: 'admin.edit-user-agreement.title', breadcrumbKey: 'admin.edit-user-agreement' }
+      },
+      {
+        path: 'admin-bibliometris',
+        resolve: { breadcrumb: I18nBreadcrumbResolver },
+        component: AdminBibliometrisComponent,
+        data: { title: 'admin.bibliometris', breadcrumbKey: 'admin.bibliometris' }
       },
       {
         path: 'edit-cms-metadata',

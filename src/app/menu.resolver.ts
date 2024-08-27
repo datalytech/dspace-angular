@@ -832,6 +832,18 @@ export class MenuResolver implements Resolve<boolean> {
           icon: 'edit',
           index: 14
         },
+        {
+          id: 'bibliometris',
+          active: false,
+          visible: authorized,
+          model: {
+            type: MenuItemType.LINK,
+            text: 'menu.section.bibliometris',
+            link: '/admin/admin-bibliometris'
+          } as LinkMenuItemModel,
+          icon: 'exclamation-circle',
+          index: 15
+        }
       ];
 
       menuList.forEach((menuSection) => this.menuService.addSection(MenuID.ADMIN, Object.assign(menuSection, {
