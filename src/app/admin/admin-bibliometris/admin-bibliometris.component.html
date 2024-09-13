@@ -1,27 +1,72 @@
 <div class="container">
   <div>
-      <h2>
-          Βιβλιομέτρης
-      </h2>
-      <div style="margin-bottom: 10px;">
-          Καλώς ήλθατε στο διαχειριστικό περιβάλλον του Βιβλιομέτρη. Εδώ μπορείτε να εκκινείσετε τη διαδικασία εισαγωγής από το Βιβλιομέτρη και να παρακολουθήσετε την εξέλιξή της.
-      </div>
+    <h2>
+      Βιβλιομέτρης
+    </h2>
+    <div style="margin-bottom: 10px;">
+      Καλώς ήλθατε στο διαχειριστικό περιβάλλον του Βιβλιομέτρη. Εδώ μπορείτε να εκκινείσετε τη διαδικασία εισαγωγής από
+      το Βιβλιομέτρη και να παρακολουθήσετε την εξέλιξή της.
+    </div>
   </div>
-  <form (ngSubmit)="onSubmit()" [formGroup]="myForm" >
-      <div>
-        <label style="width: 170px;" for="exportApi">Export URL:</label>
-        <input type="text" id="exportApi" formControlName="exportApi"  >
-      </div>
-      
-      <div>
-        <label style="width: 170px;" for="publish">Publish after import:</label>
-        <input type="checkbox" id="publish" formControlName="publish"  >
-      </div>
-    
-      <button type="submit" class="btn-success">Επιστροφή</button>
-      <button type="submit" class="btn-success" style="margin-left: 10px;">Μαζική εισαγωγή</button>
-    </form>  
 
+  <section>
+    <form (ngSubmit)="onSubmit()" [formGroup]="myForm">
+      <section>
+        <div class="input-group mb-3">
+          <div class="input-group-prepend">
+            <span class="input-group-text" id="researcher-url">Researcher URL</span>
+          </div>
+          <input formControlName="exportApi" type="text" class="form-control" aria-label="Researcher URL"
+            aria-describedby="researcher-url">
+        </div>
+  
+        <div class="input-group mb-3">
+          <div class="input-group-prepend">
+            <span class="input-group-text" id="submitter-email">Submitter email</span>
+          </div>
+          <input formControlName="email" type="text" class="form-control" aria-label="Submitter email"
+            aria-describedby="submitter-email">
+        </div>
+        <div style="cursor: pointer">
+          <input type="checkbox" id="publish-after-import" formControlName="publish" style="width: 16px; height: 16px; cursor: pointer" />
+          <label style="margin-left: 8px; cursor: pointer" for="publish-after-import">Publish after import</label>
+        </div>
+      </section>
+  
+      <section class="btn-group">
+        <button type="submit" class="btn btn-outline-secondary" routerLink="/">Επιστροφή</button>
+        <button type="submit" class="btn btn-outline-primary">Μαζική εισαγωγή</button>
+      </section>
+    </form>
+  </section>
+  
+  <br>
+  <br>
+
+  <section>
+    <ng-container *ngIf="(importProgress$ | async) as importProgress">
+      <p>
+        In progress: {{ importProgress.progressPercentage }}% <ngb-progressbar [value]="importProgress.progressPercentage"></ngb-progressbar>
+      </p>
+
+      <table class="table table-striped">
+        <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Status</th>
+          <th scope="col">Bibliometris ID</th>
+          <th scope="col">Message</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let log of parseLogs(importProgress.logs)">
+          <td>{{ log.number }}</td>
+          <td>{{ log.status }}</td>
+          <td>{{ log.id }}</td>
+          <td>{{ log.message }}</td>
+        </tr>
+        </tbody>
+      </table>
+    </ng-container>
+  </section>
 </div>
-
-

@@ -13,7 +13,10 @@ export const environment: Partial<BuildConfig> = {
     preboot: false,
     async: true,
     time: false
-  }
+  },
+
+  bibliometrisImportUrl: 'http://localhost:8080/server/api/core/bibliometris',
+  pollingProgressUrl: 'http://localhost:8080/server/api/core/bibliometris-properties'
 };
 
 /*
