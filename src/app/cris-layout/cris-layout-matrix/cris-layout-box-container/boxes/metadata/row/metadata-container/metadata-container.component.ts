@@ -114,8 +114,12 @@ export class MetadataContainerComponent implements OnInit {
    */
   get labelStyle(): string {
     const defaultCol = environment.crisLayout.metadataBox.defaultMetadataLabelColStyle;
-    return (isNotEmpty(this.field.styleLabel) && this.field.styleLabel.includes('col'))
-      ? this.field.styleLabel : `${defaultCol} ${this.field.styleLabel}`;
+
+    if (isEmpty(this.field.styleLabel) || !this.field.styleLabel.includes('col')) {
+      return `${defaultCol} ${this.field.styleLabel}`;
+    }
+
+    return this.field.styleLabel.replace('col-3', 'col-2');
   }
 
   ngOnInit() {
