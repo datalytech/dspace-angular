@@ -1,191 +1,275 @@
-  import {
-    ChangeDetectorRef,
-    Component,
-    EventEmitter,
-    Inject,
-    Input,
-    OnChanges,
-    Output, PLATFORM_ID,
-    SimpleChanges,
-  } from '@angular/core';
-  import { isPlatformBrowser } from '@angular/common';
-
-  import { NgbTooltip } from '@ng-bootstrap/ng-bootstrap';
-  import isObject from 'lodash/isObject';
+  // Load the implementations that should be tested
+  import { ChangeDetectorRef, Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+  import { ComponentFixture, fakeAsync, inject, TestBed, tick, waitForAsync, } from '@angular/core/testing';
 
   import { Chips } from './models/chips.model';
-  import { ChipsItem } from './models/chips-item.model';
-  import { TranslateService } from '@ngx-translate/core';
-  import { BehaviorSubject, forkJoin } from 'rxjs';
-  import { map, take } from 'rxjs/operators';
-  import { isNotEmpty } from '../../empty.util';
-  import { CdkDragDrop, moveItemInArray} from '@angular/cdk/drag-drop';
+  import { ChipsComponent } from './chips.component';
+  import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+  import { By } from '@angular/platform-browser';
+  import { FormFieldMetadataValueObject } from '../builder/models/form-field-metadata-value.model';
+  import { createTestComponent } from '../../testing/utils.test';
+  import { AuthorityConfidenceStateDirective } from '../directives/authority-confidence-state.directive';
+  import { TranslateModule } from '@ngx-translate/core';
+  import { ConfidenceType } from '../../../core/shared/confidence-type';
+  import { environment } from '../../../../environments/environment';
 
+  describe('ChipsComponent test suite', () => {
 
-  const TOOLTIP_TEXT_LIMIT = 21;
+    let testComp: TestComponent;
+    let chipsComp: ChipsComponent;
+    let testFixture: ComponentFixture<TestComponent>;
+    let chipsFixture: ComponentFixture<ChipsComponent>;
+    let html;
+    let chips: Chips;
+
+    // waitForAsync beforeEach
+    beforeEach(waitForAsync(() => {
+
+      TestBed.configureTestingModule({
+        imports: [
+          NgbModule,
+          TranslateModule.forRoot()
+        ],
+        declarations: [
+          ChipsComponent,
+          TestComponent,
+          AuthorityConfidenceStateDirective
+        ], // declare the test component
+        providers: [
+          ChangeDetectorRef,
+          ChipsComponent,
+        ],
+        schemas: [CUSTOM_ELEMENTS_SCHEMA]
+      });
+
+    }));
+
+    describe('', () => {
+      // synchronous beforeEach
+      beforeEach(() => {
+        html = `
+        <ds-chips
+          *ngIf="chips.hasItems()"
+          [chips]="chips"
+          [editable]="editable"
+          (selected)="onChipSelected($event)"></ds-chips>`;
+
+        testFixture = createTestComponent(html, TestComponent) as ComponentFixture<TestComponent>;
+        testComp = testFixture.componentInstance;
+      });
+
+      it('should create Chips Component', inject([ChipsComponent], (app: ChipsComponent) => {
+        expect(app).toBeDefined();
+      }));
+    });
+
+    describe('when has items as string', () => {
+      beforeEach(() => {
+        chips = new Chips(['a', 'b', 'c']);
+        chipsFixture = TestBed.createComponent(ChipsComponent);
+        chipsComp = chipsFixture.componentInstance; // TruncatableComponent test instance
+        chipsComp.editable = true;
+        chipsComp.chips = chips;
+        chipsFixture.detectChanges();
+      });
+
+      afterEach(() => {
+        chipsFixture.destroy();
+        chipsComp = null;
+      });
+
+      it('should emit when a chip item is removed and editable is true', fakeAsync(() => {
+
+        spyOn(chipsComp.chips, 'remove');
+
+        const item = chipsComp.chips.getChipByIndex(1);
+
+        chipsComp.removeChips(new Event('click'), 1);
+        chipsFixture.detectChanges();
+        tick();
+
+        expect(chipsComp.chips.remove).toHaveBeenCalledWith(item);
+      }));
+
+      it('should save chips item index when drag and drop start', fakeAsync(() => {
+        const de = chipsFixture.debugElement.query(By.css('a'));
+
+        de.triggerEventHandler('cdkDragStarted', null);
+
+        expect(chipsComp.dragged).toBe(0);
+      }));
+
+      it('should update chips item order when drag and drop end', fakeAsync(() => {
+        spyOn(chipsComp.chips, 'updateOrder');
+        const de = chipsFixture.debugElement.query(By.css('div[role="list"]'));
+
+        de.triggerEventHandler('cdkDropListDropped', { previousIndex: 0, currentIndex: 1 });
+
+        expect(chipsComp.dragged).toBe(-1);
+        expect(chipsComp.chips.updateOrder).toHaveBeenCalled();
+      }));
+    });
+
+    describe('when has items as object', () => {
+      beforeEach(() => {
+        const item = {
+          mainField: new FormFieldMetadataValueObject('main test', null, null,'test001', 'main test with long text and tooltip', 0, ConfidenceType.CF_ACCEPTED),
+          relatedField: new FormFieldMetadataValueObject('related test', null, null,'test002', 'related test', 0, ConfidenceType.CF_ACCEPTED),
+          otherRelatedField: new FormFieldMetadataValueObject('other related test')
+        };
+
+        chips = new Chips([item], 'display', 'mainField', environment.submission.icons.metadata);
+        chipsFixture = TestBed.createComponent(ChipsComponent);
+        chipsComp = chipsFixture.componentInstance; // TruncatableComponent test instance
+        chipsComp.editable = true;
+        chipsComp.showIcons = true;
+        chipsComp.chips = chips;
+        chipsFixture.detectChanges();
+      });
+
+      it('should show icon for every field that has a configured icon', () => {
+        const de = chipsFixture.debugElement.query(By.css('div.nav-item'));
+        const icons = de.queryAll(By.css('i.fas'));
+
+        expect(icons.length).toBe(4);
+
+      });
+
+      it('should show tooltip on mouse over an icon', () => {
+        const de = chipsFixture.debugElement.query(By.css('div.nav-item'));
+        const icons = de.queryAll(By.css('i.fas'));
+
+        icons[0].triggerEventHandler('mouseover', null);
+        expect(chipsComp.tipText$.value).toEqual(['main test with long text and tooltip']);
+        icons[0].triggerEventHandler('mouseout', null);
+
+        icons[1].triggerEventHandler('mouseover', null);
+        expect(chipsComp.tipText$.value).toEqual(['related test']);
+        icons[1].triggerEventHandler('mouseout', null);
+      });
+    });
+
+    describe('when has a chip with short text to display', () => {
+      beforeEach(() => {
+        const item = {
+          mainField: new FormFieldMetadataValueObject('main test', null, null, 'test001', 'main test', 0, ConfidenceType.CF_ACCEPTED)
+        };
+
+        chips = new Chips([item], 'display', 'mainField', environment.submission.icons.metadata);
+        chipsFixture = TestBed.createComponent(ChipsComponent);
+        chipsComp = chipsFixture.componentInstance; // TruncatableComponent test instance
+        chipsComp.showIcons = false;
+        chipsComp.chips = chips;
+        chipsFixture.detectChanges();
+      });
+
+      it('should not show tooltip on mouse over list item when display text is short', () => {
+        const de = chipsFixture.debugElement.query(By.css('div.nav-item'));
+        de.triggerEventHandler('mouseover', null);
+        expect(chipsComp.tipText$.value).toEqual([]);
+        de.triggerEventHandler('mouseout', null);
+      });
+    });
+
+    describe('when has a chip with long text to display', () => {
+      beforeEach(() => {
+        const item = {
+          mainField: new FormFieldMetadataValueObject('main test', null, null, 'test001', 'long text to display is truncated but not in tooltip', 0, ConfidenceType.CF_ACCEPTED)
+        };
+
+        chips = new Chips([item], 'display', 'mainField');
+        chipsFixture = TestBed.createComponent(ChipsComponent);
+        chipsComp = chipsFixture.componentInstance; // TruncatableComponent test instance
+        chipsComp.showIcons = false;
+        chipsComp.chips = chips;
+        chipsFixture.detectChanges();
+      });
+
+      it('should show tooltip on mouse over list item when display text is long', () => {
+        const de = chipsFixture.debugElement.query(By.css('div.nav-item'));
+        de.triggerEventHandler('mouseover', null);
+        expect(chipsComp.tipText$.value).toEqual(['long text to display is truncated but not in tooltip']);
+        de.triggerEventHandler('mouseout', null);
+      });
+
+      it('should show truncated text on list item when display text is long', () => {
+        const de = chipsFixture.debugElement.query(By.css('div.nav-item p.d-table-cell'));
+        expect(de.nativeElement.innerText).toEqual(chipsComp.textTruncate('long text to display is truncated but not in tooltip'));
+      });
+    });
+
+    describe('hasWillBeGenerated', () => {
+      beforeEach(() => {
+        chips = new Chips([]);
+        chipsFixture = TestBed.createComponent(ChipsComponent);
+        chipsComp = chipsFixture.componentInstance; // TruncatableComponent test instance
+        chipsComp.chips = chips;
+        chipsFixture.detectChanges();
+      });
+
+      it('should return true if authority starts with will be generated and false otherwise', () => {
+        const metadata = 'dc.title';
+        let chip;
+        chip = { item: { 'dc.title': { authority: 'will be generated::'}}} as any;
+        expect(chipsComp.hasWillBeGenerated(chip, metadata)).toEqual(true);
+
+        chip = { item: { 'dc.title': { authority: ''}}} as any;
+        expect(chipsComp.hasWillBeGenerated(chip, metadata)).toEqual(false);
+      });
+
+    });
+
+    describe('hasWillBeReferenced', () => {
+      beforeEach(() => {
+        chips = new Chips([]);
+        chipsFixture = TestBed.createComponent(ChipsComponent);
+        chipsComp = chipsFixture.componentInstance; // TruncatableComponent test instance
+        chipsComp.chips = chips;
+        chipsFixture.detectChanges();
+      });
+
+      it('should return true if authority starts with will be referenced and false otherwise', () => {
+        const metadata = 'dc.title';
+        let chip;
+        chip = { item: { 'dc.title': { authority: 'will be referenced::'}}} as any;
+        expect(chipsComp.hasWillBeReferenced(chip, metadata)).toEqual(true);
+
+        chip = { item: { 'dc.title': { authority: ''}}} as any;
+        expect(chipsComp.hasWillBeReferenced(chip, metadata)).toEqual(false);
+      });
+
+    });
+
+    describe('getWillBeReferencedContent', () => {
+      beforeEach(() => {
+        chips = new Chips([]);
+        chipsFixture = TestBed.createComponent(ChipsComponent);
+        chipsComp = chipsFixture.componentInstance; // TruncatableComponent test instance
+        chipsComp.chips = chips;
+        chipsFixture.detectChanges();
+      });
+
+      it('should return the value of the reference if present, null otherwise', () => {
+        const metadata = 'dc.title';
+        let chip;
+        chip = { item: { 'dc.title': { authority: 'will be referenced::ORCID::0000'}}} as any;
+        expect(chipsComp.getWillBeReferencedContent(chip, metadata)).toEqual('ORCID::0000');
+
+        chip = { item: { 'dc.title': { authority: ''}}} as any;
+        expect(chipsComp.getWillBeReferencedContent(chip, metadata)).toEqual(null);
+      });
+
+    });
+
+  });
+
+  // declare a test component
   @Component({
-    selector: 'ds-chips',
-    styleUrls: ['./chips.component.scss'],
-    templateUrl: './chips.component.html',
+    selector: 'ds-test-cmp',
+    template: ``
   })
-  export class ChipsComponent implements OnChanges {
-    @Input() chips: Chips;
-    @Input() wrapperClass: string;
-    @Input() editable = false;
-    @Input() showIcons = false;
-    @Input() clickable = true;
+  class TestComponent {
 
-    @Output() selected: EventEmitter<number> = new EventEmitter<number>();
-    @Output() remove: EventEmitter<number> = new EventEmitter<number>();
-    @Output() change: EventEmitter<any> = new EventEmitter<any>();
-
-    isDragging: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
-    dragged = -1;
-    tipText$: BehaviorSubject<string[]> = new BehaviorSubject<string[]>([]);
-
-    /**
-     * Whether a platform id represents a browser platform.
-     */
-    isPlatformBrowser: boolean;
-
-    constructor(
-      @Inject(PLATFORM_ID) protected platformId: string,
-      private cdr: ChangeDetectorRef,
-      private translate: TranslateService) {
-    }
-
-    ngOnChanges(changes: SimpleChanges) {
-      if (changes.chips && !changes.chips.isFirstChange()) {
-        this.chips = changes.chips.currentValue;
-      }
-    }
-
-    ngOnInit(): void {
-      this.isPlatformBrowser = isPlatformBrowser(this.platformId);
-    }
-
-    chipsSelected(event: Event, index: number) {
-      event.preventDefault();
-      this.selected.emit(index);
-    }
-
-    removeChips(event: Event, index: number) {
-      event.preventDefault();
-      event.stopPropagation();
-      // Can't remove if this element is in editMode
-      if (!this.chips.getChipByIndex(index).editMode) {
-        this.chips.remove(this.chips.getChipByIndex(index));
-      }
-    }
-
-    onDrag(index) {
-      this.isDragging.next(true);
-      this.dragged = index;
-    }
-
-    onDrop(event: CdkDragDrop<ChipsItem[]>) {
-      moveItemInArray(this.chips.chipsItems.getValue(), event.previousIndex, event.currentIndex);
-      this.dragged = -1;
-      this.chips.updateOrder();
-      this.isDragging.next(false);
-    }
-
-    showTooltip(tooltip: NgbTooltip, index, field?) {
-      tooltip.close();
-      let canShowToolTip = true;
-      if (this.isDragging.value) {
-        return;
-      }
-      const chipsItem = this.chips.getChipByIndex(index);
-      const textToDisplay: string[] = [];
-      if (!chipsItem.editMode && this.dragged === -1) {
-        if (field) {
-          if (isObject(chipsItem.item[field])) {
-            textToDisplay.push(chipsItem.item[field].display);
-            let otherInformationKeys: string[] = null;
-            if (
-              chipsItem.item[field].hasOtherInformation() &&
-              isNotEmpty(otherInformationKeys = this.getDisplayableOtherInformationKeys(chipsItem, field))
-            ) {
-              forkJoin(
-                otherInformationKeys
-                  .map((otherField) =>
-                    this.translate.get('form.other-information.' + otherField)
-                      .pipe(
-                        map((label) => `${label}: ${chipsItem.item[field].otherInformation[otherField].split('::')[0]}`),
-                        take(1)
-                      )
-                  )
-              ).subscribe(entries => textToDisplay.push(...entries));
-            }
-            if (this.hasWillBeReferenced(chipsItem, field)) {
-              textToDisplay.push(this.getWillBeReferencedContent(chipsItem, field));
-            }
-          } else {
-            textToDisplay.push(chipsItem.item[field]);
-          }
-        } else {
-          textToDisplay.push(chipsItem.display);
-          canShowToolTip = this.toolTipVisibleCheck(chipsItem.display);
-        }
-        if ((!chipsItem.hasIcons() || !chipsItem.hasVisibleIcons() || field) && canShowToolTip) {
-          this.tipText$.next(textToDisplay);
-          tooltip.open();
-        }
-      }
-    }
-
-    private getDisplayableOtherInformationKeys(chipsItem: ChipsItem, field: string): string[] {
-      return Object.keys(chipsItem.item[field]?.otherInformation)
-        .filter((otherInformationKey: string) =>
-          !otherInformationKey.startsWith('data-') &&
-          this.checkOtherInformationValue(chipsItem, field, otherInformationKey)
-        );
-    }
-
-    private checkOtherInformationValue(chipsItem: ChipsItem, itemField: string, otherInformationKey: string) {
-      const otherInformationMetadataFieldKey = otherInformationKey.replace(/\_/g, '.');
-      const otherInformation = chipsItem.item[itemField]?.otherInformation;
-      const [otherInformationValue, otherInformationAuthority] = otherInformation[otherInformationKey].split('::');
-      return !chipsItem.item[otherInformationMetadataFieldKey]?.hasPlaceholder() &&
-        chipsItem.item[otherInformationMetadataFieldKey]?.value === otherInformationValue &&
-        chipsItem.item[otherInformationMetadataFieldKey]?.authority === otherInformationAuthority;
-    }
-
-    hasWillBeGenerated(chip: ChipsItem, metadata: string) {
-      const metadataValue = chip.item[metadata];
-      return metadataValue?.authority?.startsWith('will be generated::');
-    }
-
-    hasWillBeReferenced(chip: ChipsItem, metadata: string) {
-      const metadataValue = chip.item[metadata];
-      return metadataValue?.authority?.startsWith('will be referenced::');
-    }
-
-    getWillBeReferencedContent(chip: ChipsItem, metadata: string) {
-      if (!this.hasWillBeReferenced(chip, metadata)) {
-        return null;
-      }
-      const metadataValue = chip.item[metadata];
-      return metadataValue?.authority?.substring(metadataValue?.authority.indexOf('::') + 2);
-    }
-
-    toolTipVisibleCheck(text: string): boolean {
-      return text.length > TOOLTIP_TEXT_LIMIT;
-    }
-
-    textTruncate(text: string): string {
-      if (text && text.length >= TOOLTIP_TEXT_LIMIT) {
-        return `${text.substring(0, TOOLTIP_TEXT_LIMIT)}...`;
-      }
-      return text;
-    }
-
-    getQueryParams(param) {
-      return {
-        configuration: 'researchoutputs',
-        page: '1',
-        "f.subject": `${encodeURIComponent(param.trim())},equals`
-      }
-    }
+    public chips = new Chips(['a', 'b', 'c']);
+    public editable = true;
   }
