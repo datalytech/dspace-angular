@@ -9,6 +9,9 @@ import { Site } from '../../core/shared/site.model';
 import { NotificationsService } from '../../shared/notifications/notifications.service';
 import { environment } from '../../../environments/environment';
 import { getFirstCompletedRemoteData } from '../../core/shared/operators';
+import {NgbDatepickerModule} from '@ng-bootstrap/ng-bootstrap';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
+import { saveAs } from 'file-saver';
 
 /**
  * Component that represents the user agreement edit page for administrators.
@@ -16,6 +19,7 @@ import { getFirstCompletedRemoteData } from '../../core/shared/operators';
 @Component({
   selector: 'ds-admin-report',
   templateUrl: './admin-report.component.html',
+
 })
 export class AdminReportComponent implements OnInit, OnDestroy {
 
@@ -28,11 +32,46 @@ export class AdminReportComponent implements OnInit, OnDestroy {
 
   USER_AGREEMENT_METADATA = 'dspace.agreements.end-user';
 
+
+        startDate: string | null = null;
+        endDate: string | null = null;
+
+  submitForm() {
+    console.log('Start Date:', this.startDate);
+    console.log('End Date:', this.endDate);
+
+const params = new HttpParams()
+        .set('startDate', this.startDate)
+        .set('endDate', this.endDate);
+
+      // Make the GET request
+      //this.http.get('http://dspace:8080/server/api/core/usage-statistics', { params })
+      //  .subscribe(response => {
+      //    console.log('Response:', response);
+      //  }, error => {
+      //    console.error('Error:', error);
+      //  });
+
+       this.http.get('https://ucy.dataly.gr/server/api/core/usage-statistics', {
+        params: params,
+        responseType: 'blob'  // Tell Angular this request returns a Blob (binary data)
+      }).subscribe(blob => {
+        // Create a new Blob object (the downloaded Excel file)
+        const excelBlob = new Blob([blob], { type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' });
+
+        // Use FileSaver to trigger the download
+        saveAs(excelBlob, `report_usage.xlsx`);
+      }, error => {
+        console.error('Error downloading the file:', error);
+      });
+  }
+
   constructor(private siteService: SiteDataService,
               private modalService: NgbModal,
               private translateService: TranslateService,
               private notificationsService: NotificationsService,
-              private scriptDataService: ScriptDataService ) {
+              private scriptDataService: ScriptDataService,
+             private http: HttpClient ) {
 
   }
 
@@ -130,3 +169,8 @@ interface UserAgreementText {
   languageLabel: string;
   text: string;
 }
+
+
+
+
+

@@ -14,6 +14,8 @@ import { TranslateLoaderMock } from '../../shared/mocks/translate-loader.mock';
 import { NotificationsService } from '../../shared/notifications/notifications.service';
 import { NotificationsServiceStub } from '../../shared/testing/notifications-service.stub';
 import { AdminReportComponent } from './admin-report.component';
+import {NgbDatepickerModule, NgbModal, NgbModalRef} from '@ng-bootstrap/ng-bootstrap';
+
 
 describe('AdminReportComponent', () => {
 
@@ -81,3 +83,6 @@ describe('AdminReportComponent', () => {
   }));
 
 });
+
+
+

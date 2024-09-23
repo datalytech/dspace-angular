@@ -1,13 +1,37 @@
 <div class="container">
   <h4>Track Report</h4>
 
-  <div style="    height: 40px;
-    border: 1px solid black;
-    width: 167px;
-    text-align: center;
-    vertical-align: middle;
-    padding-top: 7px; ">
-  <a href="https://ucy.dataly.gr/server/api/core/usage-statistics"> Download Report </a>
-  </div>
+<form (ngSubmit)="submitForm()" #dateRangeForm="ngForm">
+  <label for="startDate">Start Date:</label>
+        <div class="input-group">
+            <input
+              id="startDate"
+              class="form-control"
+              placeholder="yyyy-mm-dd"
+              [(ngModel)]="startDate"
+              name="startDate"
+              ngbDatepicker
+              placement="top-start top-end bottom-start bottom-end"
+              #d="ngbDatepicker"
+            >
+        </div>
+
+<label for="endDate">End Date:</label>
+        <div class="input-group">
+            <input
+              id="endDate"
+              class="form-control"
+              placeholder="yyyy-mm-dd"
+              [(ngModel)]="endDate"
+              name="endDate"
+              ngbDatepicker
+              placement="top-start top-end bottom-start bottom-end"
+              #d="ngbDatepicker"
+            >
+        </div>
+
+  <button type="submit">Submit</button>
+
+</form>
 </div>
 
