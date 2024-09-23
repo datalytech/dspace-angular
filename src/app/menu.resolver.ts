@@ -843,6 +843,18 @@ export class MenuResolver implements Resolve<boolean> {
           } as LinkMenuItemModel,
           icon: 'exclamation-circle',
           index: 15
+        },
+        {
+          id: 'report',
+          active: false,
+          visible: authorized,
+          model: {
+            type: MenuItemType.LINK,
+            text: 'Track Report',
+            link: '/admin/admin-report'
+          } as LinkMenuItemModel,
+          icon: 'user-check',
+          index: 16
         }
       ];
 

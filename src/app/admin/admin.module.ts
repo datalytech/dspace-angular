@@ -13,6 +13,8 @@ import { AdminEditUserAgreementComponent } from './admin-edit-user-agreement/adm
 import { EditCmsMetadataComponent } from './edit-cms-metadata/edit-cms-metadata.component';
 import { BatchImportPageComponent } from './admin-import-batch-page/batch-import-page.component';
 import { AdminBibliometrisComponent } from './admin-bibliometris/admin-bibliometris.component';
+import { AdminReportComponent } from './admin-report/admin-report.component';
+
 
 import { UiSwitchModule } from 'ngx-ui-switch';
 import { UploadModule } from '../shared/upload/upload.module';
@@ -42,6 +44,7 @@ const ENTRY_COMPONENTS = [
     EditCmsMetadataComponent,
     BatchImportPageComponent,
     AdminBibliometrisComponent,
+    AdminReportComponent,
   ]
 })
 export class AdminModule {
