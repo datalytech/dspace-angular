@@ -54,9 +54,9 @@
 
   "admin.curation-tasks.header": "System curation tasks",
 
-
-
   "admin.edit-user-agreement.breadcrumbs": "Edit User Agreement",
+
+  "admin.report.breadcrumbs": "Report",
 
   "admin.edit-user-agreement.confirm.title": "Force acceptance",
 
