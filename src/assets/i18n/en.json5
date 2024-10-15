@@ -374,6 +374,8 @@
 
   "admin.access-control.epeople.no-items": "No EPeople to show.",
 
+
+
   "admin.access-control.epeople.form.create": "Create EPerson",
 
   "admin.access-control.epeople.form.edit": "Edit EPerson",
@@ -1769,9 +1771,9 @@
 
   "cookies.consent.content-notice.title": "Cookie Consent",
 
-  "cookies.consent.content-notice.description": "We collect and process your personal information for the following purposes: <strong>Authentication, Preferences, Acknowledgement and Statistics</strong>. <br/> To learn more, please read our {privacyPolicy}.",
+  "cookies.consent.content-notice.description": "This site uses cookies to offer a rich user experience. By continuing to use the site, you accept the use of cookies.",
 
-  "cookies.consent.content-notice.description.no-privacy": "We collect and process your personal information for the following purposes: <strong>Authentication, Preferences, Acknowledgement and Statistics</strong>.",
+  "cookies.consent.content-notice.description.no-privacy": "This site uses cookies to offer a rich user experience. By continuing to use the site, you accept the use of cookies.",
 
   "cookies.consent.content-notice.learnMore": "Customize",
 
@@ -2610,6 +2612,9 @@
   "health-page.section.no-issues": "No issues detected",
 
   "home.description": "",
+  "home.text1":"The University of Cyprus pursues the continuous advancement of science and the wide dissemination of knowledge for the benefit of society through the adoption of good practices of open, reproducible and responsible research. In the context of supporting the National and Institutional Open Science policy, the University of Cyprus simultaneously encourages and supports the implementation of Open Science and open access to the research results of the affiliated researchers and supports the implementation of the necessary infrastructure for the implementation of Open Science practices.",
+  "home.text2": "The Institutional Repository GNOSIS is the digital infrastructure of the University of Cyprus that aspires to gather the intellectual output of the Institution. Through the Institutional repository, research results, scientific publications of the academic and researcher community of the University of Cyprus, doctoral and postgraduate theses, as well as other material from the collection of the Library of the University of Cyprus, which is also responsible for the repository, are presented.",
+  "home.text3": "The Institutional repository GNOSIS operates according to international standards of Institutional repositories and is compatible with European infrastructures (e.g. OPENAIRE).",
 
   "home.breadcrumbs": "Home",
 
@@ -3819,6 +3824,8 @@
 
   "menu.header.image.logo": "Repository logo",
   "menu.header.image.logo.url":"assets/images/dspace-cris-logo_en.png",
+    "footer.image.cert":"assets/images/cert.png",
+
   
   "menu.header.admin.description": "Management menu",
 

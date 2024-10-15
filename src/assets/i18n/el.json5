@@ -2970,9 +2970,9 @@
   // TODO New key - Add a translation
   "cookies.consent.content-notice.title": "Cookie Consent",
 
-  // "cookies.consent.content-notice.description": "We collect and process your personal information for the following purposes: <strong>Authentication, Preferences, Acknowledgement and Statistics</strong>. <br/> To learn more, please read our {privacyPolicy}.",
+  // "cookies.consent.content-notice.description": "Ο ιστοχώρος χρησιμοποιεί cookies για να σας προσφέρει πιο πλούσια εμπειρία χρήσης. Εφόσον συνεχίσετε να τον χρησιμοποιείτε, αποδέχεστε και τη χρήση των cookies.",
   // TODO New key - Add a translation
-  "cookies.consent.content-notice.description": "We collect and process your personal information for the following purposes: <strong>Authentication, Preferences, Acknowledgement and Statistics</strong>. <br/> To learn more, please read our {privacyPolicy}.",
+  "cookies.consent.content-notice.description": "Ο ιστοχώρος χρησιμοποιεί cookies για να σας προσφέρει πιο πλούσια εμπειρία χρήσης. Εφόσον συνεχίσετε να τον χρησιμοποιείτε, αποδέχεστε και τη χρήση των cookies.",
 
   // "cookies.consent.content-notice.description.no-privacy": "We collect and process your personal information for the following purposes: <strong>Authentication, Preferences, Acknowledgement and Statistics</strong>.",
   // TODO New key - Add a translation
@@ -4473,6 +4473,11 @@
 
   // "home.description": "",
   "home.description": "",
+
+  "home.text1":"Το Ιδρυματικό αποθετήριο ΓΝΩΣΙΣ  είναι η ψηφιακή υποδομή του Πανεπιστημίου Κύπρου που φιλοδοξεί να συγκεντρώσει την πνευματική παραγωγή του Ιδρύματος. Μέσω του Ιδρυματικού αποθετηρίου παρουσιάζονται ερευνητικά αποτελέσματα, επιστημονικές δημοσιεύσεις διδασκόντων και ερευνητών του Πανεπιστημίου Κύπρου, διδακτορικές και μεταπτυχιακές διατριβές, καθώς και άλλο υλικό της συλλογής της Βιβλιοθήκης του Πανεπιστημίου Κύπρου, η οποία έχει και την ευθύνη λειτουργίας του. ",
+  "home.text2":"Το Πανεπιστήμιο Κύπρου επιδιώκει τη συνεχή πρόοδο της επιστήμης και την ευρεία διάδοση της γνώσης προς όφελος της κοινωνίας μέσω υιοθέτησης καλών πρακτικών ανοικτής, αναπαραγώγιμης και υπεύθυνης έρευνας. Στο πλαίσιο υποστήριξης της Εθνικής και Ιδρυματικής πολιτικής Ανοικτής Επιστήμης, το Πανεπιστήμιο Κύπρου ενθαρρύνει και υποστηρίζει παράλληλα την εφαρμογή της ανοικτής πρόσβασης στα ερευνητικά αποτελέσματα των ερευνητών του Ιδρύματος και στηρίζει την εφαρμογή της απαραίτητης υποδομής προς κάλυψη των γενικότερων αναγκών της Ανοικτής Επιστήμης.  ",
+  "home.text3":"Το Ιδρυματικό αποθετήριο ΓΝΩΣΙΣ λειτουργεί σύμφωνα με διεθνή πρότυπα Ιδρυματικών αποθετηρίων και είναι συμβατή με Ευρωπαϊκές υποδομές (π.χ. OPENAIRE).",
+  
 
   // "home.breadcrumbs": "Home",
   "home.breadcrumbs": "Αρχική",
@@ -6535,6 +6540,7 @@
   // "menu.header.image.logo": "Repository logo",
   "menu.header.image.logo": "Λογότυπο αποθετηρίου",
   "menu.header.image.logo.url":"assets/images/dspace-cris-logo_el.png",
+  "footer.image.cert":"assets/images/cert.png",
 
   // "menu.header.admin.description": "Management menu",
   "menu.header.admin.description": "Μενού διαχείρισης",

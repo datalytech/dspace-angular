@@ -31,8 +31,10 @@ export class FooterComponent implements OnInit {
    */
   site: Observable<Site>;
   /**
+   * 
    * The section data to be rendered as footer
    */
+  
   section: TextRowSection;
 
   showPrivacyPolicy = environment.info.enablePrivacyStatement;

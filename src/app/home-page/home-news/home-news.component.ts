@@ -9,6 +9,7 @@ import { LocaleService } from '../../core/locale/locale.service';
 import { map, take } from 'rxjs/operators';
 import { isEmpty } from '../../shared/empty.util';
 
+
 @Component({
   selector: 'ds-home-news',
   styleUrls: ['./home-news.component.scss'],

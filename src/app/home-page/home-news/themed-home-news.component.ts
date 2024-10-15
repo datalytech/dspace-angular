@@ -8,9 +8,6 @@ import { HomeNewsComponent } from './home-news.component';
   templateUrl: '../../shared/theme-support/themed.component.html',
 })
 
-/**
- * Component to render the news section on the home page
- */
 export class ThemedHomeNewsComponent extends ThemedComponent<HomeNewsComponent> {
   protected getComponentName(): string {
     return 'HomeNewsComponent';

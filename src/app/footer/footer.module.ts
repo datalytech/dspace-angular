@@ -23,4 +23,5 @@ const COMPONENTS = [
     ...COMPONENTS
   ]
 })
+
 export class FooterModule { }

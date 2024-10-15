@@ -20,6 +20,7 @@ import { Site } from '../core/shared/site.model';
 import { SiteDataService } from '../core/data/site-data.service';
 import { LocaleService } from '../core/locale/locale.service';
 
+
 let comp: FooterComponent;
 let fixture: ComponentFixture<FooterComponent>;
 let de: DebugElement;
@@ -38,6 +39,7 @@ const site: Site = Object.assign(new Site(), {
     ],
   }
 });
+
 const siteService = jasmine.createSpyObj('siteService', {
   find: observableOf(site)
 });
