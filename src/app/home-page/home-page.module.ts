@@ -26,6 +26,7 @@ const DECLARATIONS = [
   RecentItemListComponent
 ];
 
+
 @NgModule({
   imports: [
     CommonModule,

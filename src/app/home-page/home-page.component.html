@@ -10,7 +10,6 @@
 <ng-template #dsHomeNews>
   <ds-themed-home-news></ds-themed-home-news>
 </ng-template>
-
 <ng-container *ngIf="site$.value">
   <div *ngFor="let sectionComponentRow of ( sectionComponents | async )">
     <div class="container">

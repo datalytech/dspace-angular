@@ -16,6 +16,7 @@ import { LocaleService } from '../core/locale/locale.service';
   styleUrls: ['./home-page.component.scss'],
   templateUrl: './home-page.component.html'
 })
+
 export class HomePageComponent implements OnInit {
 
   site$: BehaviorSubject<Site> = new BehaviorSubject<Site>(null);

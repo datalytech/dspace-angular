@@ -13,6 +13,7 @@ export class HomePageResolver implements Resolve<Site> {
   constructor(private siteService: SiteDataService) {
   }
 
+  
   /**
    * Method for resolving a site object
    * @param {ActivatedRouteSnapshot} route The current ActivatedRouteSnapshot

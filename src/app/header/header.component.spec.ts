@@ -19,6 +19,7 @@ let fixture: ComponentFixture<HeaderComponent>;
 describe('HeaderComponent', () => {
   const menuService = new MenuServiceStub();
 
+  
   // waitForAsync beforeEach
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({

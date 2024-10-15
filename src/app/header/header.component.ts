@@ -4,9 +4,6 @@ import { MenuService } from '../shared/menu/menu.service';
 import { MenuID } from '../shared/menu/menu-id.model';
 import { HostWindowService } from '../shared/host-window.service';
 
-/**
- * Represents the header with the logo and simple navigation
- */
 @Component({
   selector: 'ds-header',
   styleUrls: ['header.component.scss'],

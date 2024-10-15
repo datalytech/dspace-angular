@@ -9,7 +9,6 @@ const COMPONENTS = [
   FooterComponent,
   ThemedFooterComponent,
 ];
-
 @NgModule({
   declarations: [
     ...COMPONENTS

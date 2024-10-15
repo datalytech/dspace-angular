@@ -15,7 +15,6 @@ import { isEmpty } from '../../shared/empty.util';
   styleUrls: ['./home-news.component.scss'],
   templateUrl: './home-news.component.html'
 })
-
 /**
  * Component to render the news section on the home page
  */

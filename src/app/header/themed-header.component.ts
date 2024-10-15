@@ -9,7 +9,7 @@ import { HeaderComponent } from './header.component';
   selector: 'ds-themed-header',
   styleUrls: [],
   templateUrl: '../shared/theme-support/themed.component.html',
-})
+}) 
 export class ThemedHeaderComponent extends ThemedComponent<HeaderComponent> {
   protected getComponentName(): string {
     return 'HeaderComponent';
