@@ -299,7 +299,7 @@ export class DefaultAppConfig implements AppConfig {
   // When set to active, users will be able to switch to the use of this language in the user interface.
   languages: LangConfig[] = [
     { code: 'en', label: 'English', active: true },
-    { code: 'el', label: 'Ελληνικά', active: false },
+    { code: 'el', label: 'Ελληνικά', active: true },
     { code: 'fr', label: 'Français', active: true }
       ];
 
