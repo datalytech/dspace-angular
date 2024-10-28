@@ -167,4 +167,11 @@ export class MetadataLinkViewComponent implements OnInit {
     return metadata ?? this.crisRefMetadata?.default;
   }
 
+  getOrcidValue(item: Item): string | null {
+    const orcid = item.metadata['person.identifier.orcid'];
+    if (orcid && orcid[0]) {
+      return orcid[0].value;
+    }
+    return null;
+  }
 }

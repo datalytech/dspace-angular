@@ -25,6 +25,11 @@ export class TagComponent extends RenderingTypeStructuredModelComponent implemen
   */
   public chips: Chips;
 
+ /**
+  * Determines if the current item has the property "dc.subject"
+  */
+  isDcSubject = false;
+
   constructor(
     @Inject('fieldProvider') public fieldProvider: LayoutField,
     @Inject('itemProvider') public itemProvider: Item,
@@ -45,6 +50,7 @@ export class TagComponent extends RenderingTypeStructuredModelComponent implemen
     } else {
       this.initChips(this.metadataValues);
     }
+    this.isDcSubject = this.itemHasDcSubject();
   }
 
  /**
@@ -53,5 +59,14 @@ export class TagComponent extends RenderingTypeStructuredModelComponent implemen
   */
   private initChips(initChipsValues: string[]): void {
     this.chips = new Chips(initChipsValues,'value');
+  }
+
+  /**
+  * Checks whether or not the item has the property "dc.subject" in its metadata property, i.e. metadata.["dc.subject"]
+  * @returns {boolean}
+  */
+  private itemHasDcSubject(): boolean {
+    const dcSubject = this.item?.metadata?.["dc.subject"];
+    return dcSubject && Array.isArray(dcSubject) && dcSubject.length > 0;
   }
 }

@@ -1,0 +1,21 @@
+.tags-container {
+    display: flex;
+    flex-direction: row-reverse;
+}
+
+.pill {
+    align-self: self-end;
+    margin-right: 10px;
+    padding: 10px 10px;
+    border-radius: 26px;
+}
+
+.open-access {
+    @extend .pill;
+    background: #ffcda3;
+}
+
+.article {
+    @extend .pill;
+    background: #d0d2dc;
+}
