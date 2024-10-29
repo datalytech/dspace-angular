@@ -1,6 +1,7 @@
 import { AfterViewChecked, Component, ElementRef, Input, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { TruncatableService } from '../truncatable.service';
 import { hasValue } from '../../empty.util';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'ds-truncatable-part',
@@ -69,7 +70,7 @@ export class TruncatablePartComponent implements AfterViewChecked, OnInit, OnDes
    */
   expandable = false;
 
-  public constructor(private service: TruncatableService) {}
+  public constructor(private service: TruncatableService, private router: Router) {}
 
   /**
    * Initialize lines variable
@@ -82,6 +83,10 @@ export class TruncatablePartComponent implements AfterViewChecked, OnInit, OnDes
    * After the view is ready, search for strings that match an anchor tag pattern and replace with actual links
    */
   ngAfterViewInit() {
+    const shouldConvertAnchorTags = this.router.url.includes('/entities/person/');
+    
+    if (!shouldConvertAnchorTags) return;
+    
     const anchorTagPatternToMatch = new RegExp(/&lt;a href="(.*?)"&gt;(.*?)&lt;\/a&gt;/g);
     const contentElement = this.content.nativeElement;
     contentElement.innerHTML = contentElement.innerHTML.replace(
