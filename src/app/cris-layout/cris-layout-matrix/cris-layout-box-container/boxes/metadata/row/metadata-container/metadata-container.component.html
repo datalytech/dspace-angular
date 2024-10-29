@@ -7,6 +7,7 @@
         <ng-container *ngFor="let metadataValue of metadataValues ; trackBy: trackUpdate; let last = last">
           <ds-metadata-render
             *ngIf="field.metadata !== 'dc.identifier.doi'"
+            appAnchorTagConverter
             [field]="field"
             [item]="item"
             [box]="box"
