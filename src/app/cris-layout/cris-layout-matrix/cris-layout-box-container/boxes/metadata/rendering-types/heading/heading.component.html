@@ -2,7 +2,8 @@
   [name]="metadataValue.value">
 </ds-comcol-page-header>
 
-<div *ngIf="isOpenAccess || uhType" class="tags-container">
+<div *ngIf="isOpenAccess || isClosedAccess || uhType" class="tags-container">
   <div *ngIf="isOpenAccess" class="open-access">Open Access</div>
+  <div *ngIf="isClosedAccess" class="closed-access">Closed Access</div>
   <div *ngIf="uhType" class="article">{{ uhType }}</div>
 </div>

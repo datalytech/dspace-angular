@@ -15,6 +15,11 @@
     background: #A6CE39;
 }
 
+.closed-access {
+    @extend .pill;
+    background: red; 
+}
+
 .article {
     @extend .pill;
     background: #d0d2dc;

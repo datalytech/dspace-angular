@@ -5778,7 +5778,7 @@
 
   "submission.import-external.page.hint": "Enter a query above to find items from the web to import in to DSpace.",
 
-  "submission.import-external.page.noentity": "An entity type must be selected in order to use this page. Select it using the 'Import metadata from an external source' button in 'MyDspace' page.",
+  "submission.import-external.page.noentity": "An entity type must be selected in order to use this page. Select it using the 'Import metadata from an external source' button in 'MyGnosis' page.",
 
   "submission.import-external.back-to-my-dspace": "Back to MyDSpace",
 
@@ -6342,6 +6342,14 @@
 
   "submission.sections.submit.progressbar.describe.steptwo": "Describe",
 
+   "submission.sections.submit.progressbar.describe.academic_part1": "Publicaiton - Part1",
+  "submission.sections.submit.progressbar.describe.academic_part2": "Publication - Part2",
+
+  "submission.sections.submit.progressbar.describe.phd_part1": "PhD - Part1",
+  "submission.sections.submit.progressbar.describe.phd_part2": "PhD - Part2",
+
+  "submission.sections.submit.progressbar.describe.msc_part1": "Msc - Part1",
+  "submission.sections.submit.progressbar.describe.msc_part2": "Msc - Part2",
   "submission.sections.submit.progressbar.detect-duplicate": "Potential duplicates",
 
   "submission.sections.submit.progressbar.identifiers": "Identifiers",

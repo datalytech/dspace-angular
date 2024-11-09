@@ -2017,7 +2017,7 @@
   "collection.edit.item-mapper.collection": "Collection: \"<b>{{name}}</b>\"",
 
   // "collection.edit.item-mapper.confirm": "Map selected items",
-  "collection.edit.item-mapper.confirm": "αντιστοίχηση επιλεγμένων τεκμηρίων",
+  "collection.edit.item-mapper.confirm": "Αντιστοίχιση επιλεγμένων τεκμηρίων",
 
   // "collection.edit.item-mapper.description": "This is the item mapper tool that allows collection administrators to map items from other collections into this collection. You can search for items from other collections and map them, or browse the list of currently mapped items.",
   "collection.edit.item-mapper.description": "Αυτό είναι το εργαλείο αντιστοίχισης τεκμηρίων που επιτρέπει στους διαχειριστές της συλλογής να αντιστοιχίσουν τεκμήρια από άλλες συλλογές σε αυτήν τη συλλογή. Μπορείτε να αναζητήσετε τεκμήρια από άλλες συλλογές και να τα αντιστοιχίσετε ή να περιηγηθείτε στη λίστα των αντιστοιχισμένων αντικειμένων.",
@@ -2032,25 +2032,25 @@
   "collection.edit.item-mapper.notifications.map.error.content": "Παρουσιάστηκαν σφάλματα για την αντιστοίχιση {{amount}} τεκμηρίων.",
 
   // "collection.edit.item-mapper.notifications.map.error.head": "Mapping errors",
-  "collection.edit.item-mapper.notifications.map.error.head": "Σφάλματα αντιστοίχησης",
+  "collection.edit.item-mapper.notifications.map.error.head": "Σφάλματα αντιστοίχισης",
 
   // "collection.edit.item-mapper.notifications.map.success.content": "Successfully mapped {{amount}} items.",
   "collection.edit.item-mapper.notifications.map.success.content": "Έγινε επιτυχής αντιστοίχιση {{amount}} τεκμηρίων.",
 
   // "collection.edit.item-mapper.notifications.map.success.head": "Mapping completed",
-  "collection.edit.item-mapper.notifications.map.success.head": "Η αντιστοίχηση ολοκληρώθηκε",
+  "collection.edit.item-mapper.notifications.map.success.head": "Η αντιστοίχιση ολοκληρώθηκε",
 
   // "collection.edit.item-mapper.notifications.unmap.error.content": "Errors occurred for removing the mappings of {{amount}} items.",
   "collection.edit.item-mapper.notifications.unmap.error.content": "Παρουσιάστηκαν σφάλματα κατά την κατάργηση των αντιστοιχίσεων {{amount}} τεκμηρίων.",
 
   // "collection.edit.item-mapper.notifications.unmap.error.head": "Remove mapping errors",
-  "collection.edit.item-mapper.notifications.unmap.error.head": "Κατάργηση σφαλμάτων αντιστοίχησης",
+  "collection.edit.item-mapper.notifications.unmap.error.head": "Κατάργηση σφαλμάτων αντιστοίχισης",
 
   // "collection.edit.item-mapper.notifications.unmap.success.content": "Successfully removed the mappings of {{amount}} items.",
   "collection.edit.item-mapper.notifications.unmap.success.content": "Καταργήθηκαν με επιτυχία οι αντιστοιχίσεις {{amount}} τεκμηρίων.",
 
   // "collection.edit.item-mapper.notifications.unmap.success.head": "Remove mapping completed",
-  "collection.edit.item-mapper.notifications.unmap.success.head": "Η κατάργηση της αντιστοίχησης ολοκληρώθηκε",
+  "collection.edit.item-mapper.notifications.unmap.success.head": "Η κατάργηση της αντιστοίχισης ολοκληρώθηκε",
 
   // "collection.edit.item-mapper.remove": "Remove selected item mappings",
   "collection.edit.item-mapper.remove": "Αφαιρέστε τις αντιστοιχίσεις επιλεγμένων τεκμηρίων",
@@ -2062,7 +2062,7 @@
   "collection.edit.item-mapper.tabs.browse": "Περιηγηθείτε σε αντιστοιχισμένα τεκμήρια",
 
   // "collection.edit.item-mapper.tabs.map": "Map new items",
-  "collection.edit.item-mapper.tabs.map": "αντιστοίχηση νέων τεκμηρίων",
+  "collection.edit.item-mapper.tabs.map": "Αντιστοίχιση νέων τεκμηρίων",
 
   // "collection.edit.logo.delete.title": "Delete logo",
   "collection.edit.logo.delete.title": "Διαγραφή λογότυπου",
@@ -4758,10 +4758,10 @@
   "item.edit.tabs.disabled.tooltip": "Δεν έχετε εξουσιοδότηση πρόσβασης σε αυτήν την καρτέλα",
 
   // "item.edit.tabs.mapper.head": "Collection Mapper",
-  "item.edit.tabs.mapper.head": "αντιστοίχηση συλλογής",
+  "item.edit.tabs.mapper.head": "Αντιστοίχιση συλλογής",
 
   // "item.edit.tabs.item-mapper.title": "Item Edit - Collection Mapper",
-  "item.edit.tabs.item-mapper.title": "Επεξεργασία τεκμηρίου - αντιστοίχηση συλλογής",
+  "item.edit.tabs.item-mapper.title": "Επεξεργασία τεκμηρίου - αντιστοίχιση συλλογής",
 
   // "item.edit.identifiers.doi.status.UNKNOWN": "Unknown",
   // TODO New key - Add a translation
@@ -4873,25 +4873,25 @@
   "item.edit.item-mapper.notifications.add.error.content": "Παρουσιάστηκαν σφάλματα για την αντιστοίχιση του τεκμηρίου σε συλλογές {{amount}}.",
 
   // "item.edit.item-mapper.notifications.add.error.head": "Mapping errors",
-  "item.edit.item-mapper.notifications.add.error.head": "Σφάλματα αντιστοίχησης",
+  "item.edit.item-mapper.notifications.add.error.head": "Σφάλματα αντιστοίχισης",
 
   // "item.edit.item-mapper.notifications.add.success.content": "Successfully mapped item to {{amount}} collections.",
   "item.edit.item-mapper.notifications.add.success.content": "Αντιστοιχίστηκε με επιτυχία το τεκμήριο σε {{amount}} συλλογές.",
 
   // "item.edit.item-mapper.notifications.add.success.head": "Mapping completed",
-  "item.edit.item-mapper.notifications.add.success.head": "Η αντιστοίχηση ολοκληρώθηκε",
+  "item.edit.item-mapper.notifications.add.success.head": "Η αντιστοίχιση ολοκληρώθηκε",
 
   // "item.edit.item-mapper.notifications.remove.error.content": "Errors occurred for the removal of the mapping to {{amount}} collections.",
   "item.edit.item-mapper.notifications.remove.error.content": "Παρουσιάστηκαν σφάλματα κατά την κατάργηση της αντιστοίχισης σε {{amount}} συλλογές.",
 
   // "item.edit.item-mapper.notifications.remove.error.head": "Removal of mapping errors",
-  "item.edit.item-mapper.notifications.remove.error.head": "Αφαίρεση σφαλμάτων αντιστοίχησης",
+  "item.edit.item-mapper.notifications.remove.error.head": "Αφαίρεση σφαλμάτων αντιστοίχισης",
 
   // "item.edit.item-mapper.notifications.remove.success.content": "Successfully removed mapping of item to {{amount}} collections.",
   "item.edit.item-mapper.notifications.remove.success.content": "Καταργήθηκε με επιτυχία η αντιστοίχιση του τεκμηρίου σε συλλογές {{amount}}.",
 
   // "item.edit.item-mapper.notifications.remove.success.head": "Removal of mapping completed",
-  "item.edit.item-mapper.notifications.remove.success.head": "Ολοκληρώθηκε η αφαίρεση της αντιστοίχησης",
+  "item.edit.item-mapper.notifications.remove.success.head": "Ολοκληρώθηκε η αφαίρεση της αντιστοίχισης",
 
   // "item.edit.item-mapper.search-form.placeholder": "Search collections...",
   "item.edit.item-mapper.search-form.placeholder": "Αναζήτηση συλλογών...",
@@ -5158,10 +5158,10 @@
   "item.edit.return": "Επιστροφή",
 
   // "item.edit.tabs.bitstreams.head": "Bitstreams",
-  "item.edit.tabs.bitstreams.head": "`αρχεία",
+  "item.edit.tabs.bitstreams.head": "Αρχεία",
 
   // "item.edit.tabs.bitstreams.title": "Item Edit - Bitstreams",
-  "item.edit.tabs.bitstreams.title": "Επεξεργασία τεκμηρίου - Αρχε'ια",
+  "item.edit.tabs.bitstreams.title": "Επεξεργασία τεκμηρίου - Αρχεία",
 
   // "item.edit.tabs.curate.head": "Curate",
   "item.edit.tabs.curate.head": "Εργασίες Επιμέλειας",
@@ -5182,7 +5182,7 @@
   "item.edit.tabs.access-control.title": "Item Edit - Access Control",
 
   // "item.edit.tabs.metadata.head": "Metadata",
-  "item.edit.tabs.metadata.head": "Metadata",
+  "item.edit.tabs.metadata.head": "Μεταδεδομένα",
 
   // "item.edit.tabs.metadata.title": "Item Edit -  Metadata",
   "item.edit.tabs.metadata.title": "Επεξεργασία τεκμηρίου - Μεταδεδομένα",
@@ -5271,7 +5271,7 @@
   "item.edit.tabs.status.labels.lastModified": "Τελευταία τροποποίηση",
 
   // "item.edit.tabs.status.title": "Item Edit -  Status",
-  "item.edit.tabs.status.title": "τεκμήριο Επεξεργασία - Κατάσταση",
+  "item.edit.tabs.status.title": "Tεκμήριο Επεξεργασία - Κατάσταση",
 
   // "item.edit.tabs.versionhistory.head": "Version History",
   "item.edit.tabs.versionhistory.head": "Ιστορικό έκδοσης",
@@ -5286,7 +5286,7 @@
   "item.edit.tabs.view.head": "Προβολή αντικειμένου",
 
   // "item.edit.tabs.view.title": "Item Edit -  View",
-  "item.edit.tabs.view.title": "τεκμήριο Επεξεργασία - Προβολή",
+  "item.edit.tabs.view.title": "Τεκμήριο Επεξεργασία - Προβολή",
 
 
 
@@ -7069,7 +7069,7 @@
 
 
   // "nav.browse.header": "All of DSpace",
-  "nav.browse.header": "Όλο το DSpace",
+  "nav.browse.header": "Όλο το Γνώσις",
 
   // "nav.community-browse.header": "By Community",
   "nav.community-browse.header": "Ανά Κοινότητα",
@@ -9056,11 +9056,11 @@
   "search.form.search": "Αναζήτηση",
 
   // "search.form.search_dspace": "All repository",
-  "search.form.search_dspace": "Όλο το αποθετήριο",
+  "search.form.search_dspace": "Όλο το Γνώσις",
 
   // "search.form.scope.all": "All items",
   // TODO Source message changed - Revise the translation
-  "search.form.scope.all": "Όλο το DSpace",
+  "search.form.scope.all": "Όλο το Γνώσις",
 
   // "search.results.head": "Search Results",
   "search.results.head": "Αποτελέσματα αναζήτησης",
@@ -9937,7 +9937,7 @@
 
   // "submission.import-external.page.noentity": "An entity type must be selected in order to use this page. Select it using the 'Import metadata from an external source' button in 'MyDspace' page.",
   // TODO New key - Add a translation
-  "submission.import-external.page.noentity": "An entity type must be selected in order to use this page. Select it using the 'Import metadata from an external source' button in 'MyDspace' page.",
+  "submission.import-external.page.noentity": "An entity type must be selected in order to use this page. Select it using the 'Import metadata from an external source' button in 'MyGnosis' page.",
 
   // "submission.import-external.back-to-my-dspace": "Back to MyDSpace",
   "submission.import-external.back-to-my-dspace": "Επιστροφή στο χώρο μου",
@@ -10861,6 +10861,15 @@
 
   // "submission.sections.submit.progressbar.describe.steptwo": "Describe",
   "submission.sections.submit.progressbar.describe.steptwo": "Περιγράφω",
+
+  "submission.sections.submit.progressbar.describe.academic_part1": "Φόρμα υποβολής Δημοσίευσης - 1ο",
+  "submission.sections.submit.progressbar.describe.academic_part2": "Φόρμα υποβολής Δημοσίευσης - 2ο",
+
+  "submission.sections.submit.progressbar.describe.phd_part1": "Φόρμα υποβολής Διδακτορικού - 1ο",
+  "submission.sections.submit.progressbar.describe.phd_part2": "Φόρμα υποβολής Διδακτορικού - 2ο",
+
+  "submission.sections.submit.progressbar.describe.msc_part1": "Φόρμα υποβολής Μεταπτυχιακού - 1ο",
+  "submission.sections.submit.progressbar.describe.msc_part2": "Φόρμα υποβολής Μεταπτυχιακού - 2ο",
 
   // "submission.sections.submit.progressbar.detect-duplicate": "Potential duplicates",
   "submission.sections.submit.progressbar.detect-duplicate": "Πιθανά διπλότυπα",
