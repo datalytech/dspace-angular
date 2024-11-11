@@ -4,20 +4,35 @@
     <ds-themed-text-section *ngIf="hasSiteFooterSections" [sectionId]="'site'" [textRowSection]=section [site]="(site | async)"></ds-themed-text-section>
     <div *ngIf="!hasSiteFooterSections" class=" container p-4">
       <!--Grid row-->
-      <div class="row">
-
-        <div class="col-md-3"><a target="_blank" href="https://library.ucy.ac.cy/literature-support/open-access/oa-policies/">Πολιτικές Ανοικτής Επιστήμης</a></div>       
-        <div class="col-md-3"><ul style="list-style-type: none; padding: 0;  margin: 0;"><b>Χρήσιμοι συνδέσμοι:</b><br/>
-          <li><a target="_blank" href="https://library.ucy.ac.cy/literature-support/master-thesis-submission-guide/">Οδηγίες κατάθεσης μεταπτυχιακής εργασίας</a></li>
-          <li><a target="_blank" href="https://library.ucy.ac.cy/literature-support/phd-dissertations-submission-guide/">Οδηγίες κατάθεσης διδακτορικής διατριβής</a></li>
-          <li><a target="_blank" href="https://library.ucy.ac.cy/wp-content/uploads/2022/07/guide-ORCID.pdf">Οδηγός δημιουργίας ORCID</a></li>
-          <li><a target="_blank" href="https://websites.ucy.ac.cy/creativecommonscy/cc.html">Creative Commons</a></li>
-           
-         </ul></div>
-         <div class="col-md-3"><a routerLink="info/feedback">Contact</a></div>
-         <div class="col-md-3"><img [attr.src]="'footer.image.cert' | translate" [attr.alt]="'footer.image.cert' | translate" /></div>
-        </div>
-         <!--Grid row-->
+      <div class="row">       
+        <div class="col-md-4">
+	  <ul style="list-style-type: none; padding: 0;  margin: 0;text-align:left"><b>{{ 'footer.link.column1.header' | translate}}:</b><br/>
+	  <li><a target="_blank" href="https://library.ucy.ac.cy/literature-support/open-access/oa-policies/">{{ 'footer.link.column1.text1' | translate}}</a></li>
+	  <li><a target="_blank" href="https://library.ucy.ac.cy/literature-support/master-thesis-submission-guide/">{{ 'footer.link.column1.text2' | translate}}</a></li>
+          <li><a target="_blank" href="https://library.ucy.ac.cy/literature-support/phd-dissertations-submission-guide/">{{ 'footer.link.column1.text3' | translate}}</a></li>
+          <li><a target="_blank" href="https://library.ucy.ac.cy/wp-content/uploads/2022/07/guide-ORCID.pdf">{{ 'footer.link.column1.text4' | translate}}</a></li>             </ul>
+	</div>
+         <div class="col-md-4">
+	    <ul style="list-style-type: none ; padding: 0; text-align:left; margin: 0;">
+		    <li><a target="_blank" href="https://websites.ucy.ac.cy/creativecommonscy/cc.html">Creative Commons</a></li>
+		    <li><a target="_blank" href="https://journalcheckertool.org/https:/journalcheckertool.org/">Journal checker tool</a></li>
+		    <li><a target="_blank" href="https://argos.openaire.eu/home">Argos</a></li>
+		    <li><a target="_blank" href="https://amnesia.openaire.eu/">Amnesia</a></li>
+	    </ul>
+	 </div>
+         <div class="col-md-4">
+	     <ul style="list-style-type: none ; padding: 0; text-align:left; margin: 0;">
+		<li> 
+		     <a target="_blank" href="https://library.ucy.ac.cy/contact_main/contact/">
+			 <img width="50%" [attr.src]="'menu.header.image.logo.url' | translate" [attr.alt]="'menu.header.image.logo' | translate" />
+		     </a>
+		</li>
+		<li><img [attr.src]="'footer.image.cert' | translate" [attr.alt]="'footer.image.cert' | translate" /></li>
+		<li><a routerLink="info/feedback">Contact</a></li>
+	     </ul>
+	 </div>
+      </div>
+      <!--Grid row-->
     </div>
   </div>
   <!-- Grid container -->
@@ -28,9 +43,8 @@
         {{ 'footer.built-with' | translate }}
         <a class="text-white" href="https://wiki.lyrasis.org/display/DSPACECRIS/">{{ 'footer.link.dspace-cris' | translate}}</a>
         {{ 'footer.extension-by' | translate }}
-        <a class="text-white" href="https://www.4science.it/en/">
-          <img src="assets/images/logo-4science-small.png" alt="{{ 'footer.link.4science' | translate}}" />
-        </a>
+        <a class="text-white" href="https://www.4science.it/en/">{{ 'footer.link.4science' | translate}}</a> | 
+	<a class="text-white" href="https://dataly.gr">{{ 'footer.link.dataly' | translate}}</a>
       </p>
       <ul class="footer-info list-unstyled small d-flex justify-content-center mb-0">
         <li>

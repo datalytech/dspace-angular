@@ -4060,6 +4060,13 @@
   // "footer.link.feedback": "Send Feedback",
   // TODO Source message changed - Revise the translation
   "footer.link.feedback": "Στείλετε τα σχόλιά σας",
+  "footer.link.column1.header": "Χρήσιμοι σύνδεσμοι",
+  "footer.link.column1.text1": "Πολιτικές Ανοικτής Επιστήμης",
+  "footer.link.column1.text2": "Οδηγίες κατάθεσης μεταπτυχιακής εργασίας",
+  "footer.link.column1.text3": "Οδηγίες κατάθεσης διδακτορικής διατριβής",
+  "footer.link.column1.text4": "Οδηγός δημιουργίας ORCID",
+
+  "footer.link.dataly": "Powered by Dataly Tech",
 
   // "forgot-email.form.header": "Forgot Password",
   "forgot-email.form.header": "Ξεχάσατε τον κωδικό",

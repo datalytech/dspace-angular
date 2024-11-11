@@ -2365,6 +2365,14 @@
 
   "footer.link.feedback": "Send Feedback",
 
+  "footer.link.column1.header": "Useful Links",
+  "footer.link.column1.text1": "Open Science Policies",
+  "footer.link.column1.text2": "Graduate Thesis Submission Instructions",
+  "footer.link.column1.text3": "PhD Dissertation Submission Instructions",
+  "footer.link.column1.text4": "ORCID Creation Guide",
+  "footer.link.dataly": "Powered by Dataly Tech",
+
+
   "forgot-email.form.header": "Forgot Password",
 
   "forgot-email.form.info": "Enter the email address associated with the account.",

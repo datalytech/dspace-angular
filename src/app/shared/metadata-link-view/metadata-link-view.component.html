@@ -4,7 +4,7 @@
 </div>
 <ng-template class="d-flex" #linkToAuthority let-metadataView="metadataView">
   <div class="orcid-container">
-    <a *ngIf="getOrcidValue(relatedItem)" class="d-flex" [href]="'https://sandbox.orcid.org/' + getOrcidValue(relatedItem)">
+    <a *ngIf="getOrcidValue(relatedItem)" class="d-flex" [href]="'https://orcid.org/' + getOrcidValue(relatedItem)">
       <img class="orcid-link-icon" src="assets/images/orcid.svg" alt="ORCID link icon">
     </a>
     <span [ngbPopover]="popContent"
