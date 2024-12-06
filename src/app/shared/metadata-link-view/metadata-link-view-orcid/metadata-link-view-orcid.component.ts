@@ -16,6 +16,15 @@ export class MetadataLinkViewOrcidComponent implements OnInit {
    */
   @Input() itemValue: Item;
 
+  /**
+   * A flag for displaying the ORCID link as icon or as the actual number
+   */
+  @Input() showIconLink = true;
+
+  @Input() orcidContributors: Map<string, string>;
+
+  @Input() currentContributorName: string;
+
   metadataValue: string;
 
   orcidUrl$: Observable<string>;

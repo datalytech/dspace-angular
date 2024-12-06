@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, SimpleChanges } from '@angular/core';
 
 import { Observable, of as observableOf } from 'rxjs';
 import { map, switchMap, take } from 'rxjs/operators';
@@ -19,10 +19,9 @@ import { MetadataView } from './metadata-view.model';
 @Component({
   selector: 'ds-metadata-link-view',
   templateUrl: './metadata-link-view.component.html',
-  styleUrls: ['./metadata-link-view.component.scss']
+  styleUrls: ['./metadata-link-view.component.scss'],
 })
 export class MetadataLinkViewComponent implements OnInit {
-
   /**
    * Metadata value that we need to show in the template
    */
@@ -31,7 +30,7 @@ export class MetadataLinkViewComponent implements OnInit {
   /**
    * Metadata name that we need to show in the template
    */
-  @Input() metadataName: string|string[];
+  @Input() metadataName: string | string[];
 
   /**
    * Item of the metadata value
@@ -58,20 +57,37 @@ export class MetadataLinkViewComponent implements OnInit {
   relatedItem: Item;
 
   /**
+   * A Map that holds the names and their respective ORCID numbers
+   */
+  namesOrcidMap = new Map<string, string>();
+
+  /**
    * Map all entities with the icons specified in the environment configuration file
    */
-  constructor(private itemService: ItemDataService) { }
+  constructor(private itemService: ItemDataService) {}
+
+  ngOnChanges(changes: SimpleChanges) {
+    if (!changes['item'] || !this.item) return;
+
+    const orcidContributorsObjs = this.item.metadata?.['dc.contributor.orcid'];
+
+    if (!orcidContributorsObjs || orcidContributorsObjs.length === 0) return;
+
+    const orcidContributors = orcidContributorsObjs.map((item) => item.value);
+    this.mapNamesToOrcidNumbers(orcidContributors);
+  }
 
   /**
    * On init process metadata to get the information and form MetadataOrcid model
    */
   ngOnInit(): void {
     this.metadataView$ = observableOf(this.metadata).pipe(
-      switchMap((metadataValue: MetadataValue) => this.getMetadataView(metadataValue)),
+      switchMap((metadataValue: MetadataValue) =>
+        this.getMetadataView(metadataValue)
+      ),
       take(1)
     );
   }
-
 
   /**
    * Retrieves the metadata view for a given metadata value.
@@ -81,21 +97,27 @@ export class MetadataLinkViewComponent implements OnInit {
    * @param metadataValue The metadata value for which to retrieve the metadata view.
    * @returns An Observable that emits the metadata view.
    */
-  private getMetadataView(metadataValue: MetadataValue): Observable<MetadataView> {
+  private getMetadataView(
+    metadataValue: MetadataValue
+  ): Observable<MetadataView> {
     const linksToFollow = [followLink('thumbnail')];
 
     if (Metadata.hasValidAuthority(metadataValue.authority)) {
-      return this.itemService.findById(metadataValue.authority, true, false, ...linksToFollow).pipe(
-        getFirstCompletedRemoteData(),
-        map((itemRD: RemoteData<Item>) => this.createMetadataView(itemRD, metadataValue))
-      );
+      return this.itemService
+        .findById(metadataValue.authority, true, false, ...linksToFollow)
+        .pipe(
+          getFirstCompletedRemoteData(),
+          map((itemRD: RemoteData<Item>) =>
+            this.createMetadataView(itemRD, metadataValue)
+          )
+        );
     } else {
       return observableOf({
         authority: null,
         value: metadataValue.value,
         orcidAuthenticated: null,
         entityType: null,
-        entityStyle: null
+        entityStyle: null,
       });
     }
   }
@@ -106,16 +128,21 @@ export class MetadataLinkViewComponent implements OnInit {
    * @param metadataValue - The MetadataValue object containing the metadata information.
    * @returns The created MetadataView object.
    */
-  private createMetadataView(itemRD: RemoteData<Item>, metadataValue: MetadataValue): MetadataView {
+  private createMetadataView(
+    itemRD: RemoteData<Item>,
+    metadataValue: MetadataValue
+  ): MetadataView {
     if (itemRD.hasSucceeded) {
       this.relatedItem = itemRD.payload;
-      const entityStyleValue = this.getCrisRefMetadata(itemRD.payload?.entityType);
+      const entityStyleValue = this.getCrisRefMetadata(
+        itemRD.payload?.entityType
+      );
       return {
         authority: metadataValue.authority,
         value: metadataValue.value,
         orcidAuthenticated: this.getOrcid(itemRD.payload),
         entityType: itemRD.payload?.entityType,
-        entityStyle: itemRD.payload?.firstMetadataValue(entityStyleValue)
+        entityStyle: itemRD.payload?.firstMetadataValue(entityStyleValue),
       };
     } else {
       return {
@@ -123,7 +150,7 @@ export class MetadataLinkViewComponent implements OnInit {
         value: metadataValue.value,
         orcidAuthenticated: null,
         entityType: 'PRIVATE',
-        entityStyle: this.metadataName
+        entityStyle: this.metadataName,
       };
     }
   }
@@ -160,18 +187,20 @@ export class MetadataLinkViewComponent implements OnInit {
     let metadata;
     if (isNotEmpty(entity)) {
       const asLowercase = entity.toLowerCase();
-      metadata = this.crisRefMetadata[Object.keys(this.crisRefMetadata)
-        .find(k => k.toLowerCase() === asLowercase)
+      metadata =
+        this.crisRefMetadata[
+          Object.keys(this.crisRefMetadata).find(
+            (k) => k.toLowerCase() === asLowercase
+          )
         ];
     }
     return metadata ?? this.crisRefMetadata?.default;
   }
 
-  getOrcidValue(item: Item): string | null {
-    const orcid = item.metadata['person.identifier.orcid'];
-    if (orcid && orcid[0]) {
-      return orcid[0].value;
-    }
-    return null;
+  private mapNamesToOrcidNumbers(orcidContributors: string[]) {
+    orcidContributors.forEach((value) => {
+      const tmp = value.split('[');
+      this.namesOrcidMap.set(tmp[0].trim(), tmp[1].split(']')[0].trim());
+    });
   }
 }

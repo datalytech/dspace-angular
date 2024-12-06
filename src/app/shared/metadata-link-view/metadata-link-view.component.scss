@@ -1,15 +1,8 @@
-.orcid-container {
+.item-wrapper {
   display: flex;
   gap: 0.3rem;
   align-items: center;
 }
-
-.orcid-icon, .orcid-link-icon {
-  height: 1.2rem;
-  padding-left: 0.3rem;
-  cursor: pointer;
-}
-
 
 ::ng-deep .popover {
   max-width: 400px !important;
