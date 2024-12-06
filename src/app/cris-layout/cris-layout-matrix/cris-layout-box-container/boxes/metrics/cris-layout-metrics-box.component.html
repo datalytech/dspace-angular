@@ -1,10 +1,12 @@
-<div [class]="box.style" class="w-100">
+<div [class]="box.style" class="w-100" class="wrapper">
 	<div *ngIf="metricRows">
 		<!-- PRINT ROWS -->
 		<div ds-metric-row
-         *ngFor="let metricRow of (metricRows | async)"
-         [metricRow]="metricRow"
-         class="d-flex flex-row flex-wrap align-items-center gap-3">
-    </div>
+            *ngFor="let metricRow of (metricRows | async)"
+            [metricRow]="metricRow"
+            class="d-flex flex-row flex-wrap align-items-center gap-3">
+        </div>
 	</div>
+
+    <ds-sdg-icons class="margin-left"></ds-sdg-icons>
 </div>

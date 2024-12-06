@@ -32,17 +32,19 @@ export class MetadataLinkViewOrcidComponent implements OnInit {
   constructor(protected configurationService: ConfigurationDataService) {}
 
   ngOnInit(): void {
-    this.orcidUrl$ = this.configurationService
-      .findByPropertyName('orcid.domain-url')
-      .pipe(
-        getFirstSucceededRemoteDataPayload(),
-        map((property: ConfigurationProperty) =>
-          property?.values?.length > 0 ? property.values[0] : null
-        )
+    if (this.itemValue) {
+      this.orcidUrl$ = this.configurationService
+        .findByPropertyName('orcid.domain-url')
+        .pipe(
+          getFirstSucceededRemoteDataPayload(),
+          map((property: ConfigurationProperty) =>
+            property?.values?.length > 0 ? property.values[0] : null
+          )
+        );
+      this.metadataValue = this.itemValue.firstMetadataValue(
+        'person.identifier.orcid'
       );
-    this.metadataValue = this.itemValue.firstMetadataValue(
-      'person.identifier.orcid'
-    );
+    }
   }
 
   public hasOrcid(): boolean {
