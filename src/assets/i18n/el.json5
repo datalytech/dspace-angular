@@ -1637,18 +1637,18 @@
   "browse.back.all-results": "Όλα τα αποτελέσματα περιήγησης",
 
   // "browse.comcol.by.author": "By Author",
-  "browse.comcol.by.author": "Από Συγγραφέα",
+  "browse.comcol.by.author": "Κατά Συγγραφέα",
 
   // "browse.comcol.by.dateissued": "By Issue Date",
   "browse.comcol.by.dateissued": "Κατά Ημερομηνία Έκδοσης",
 
   // "browse.comcol.by.ouname": "By Name",
   // TODO New key - Add a translation
-  "browse.comcol.by.ouname": "By Name",
+  "browse.comcol.by.ouname": "Ανά Οργανισμό",
 
   // "browse.comcol.by.pjtitle": "By Title",
   // TODO New key - Add a translation
-  "browse.comcol.by.pjtitle": "By Title",
+  "browse.comcol.by.pjtitle": "Ανά Τίτλο",
 
   // "browse.comcol.by.rodept": "By Department",
   // TODO New key - Add a translation
@@ -1656,11 +1656,11 @@
 
   // "browse.comcol.by.rpdept": "By Department",
   // TODO New key - Add a translation
-  "browse.comcol.by.rpdept": "By Department",
+  "browse.comcol.by.rpdept": "Ανά Τμήμα",
 
   // "browse.comcol.by.rpname": "By Name",
   // TODO New key - Add a translation
-  "browse.comcol.by.rpname": "By Name",
+  "browse.comcol.by.rpname": "Ανά Όνομα",
 
   // "browse.comcol.by.subject": "By Subject",
   "browse.comcol.by.subject": "Κατά θέμα",
@@ -1678,8 +1678,10 @@
 
   // "browse.comcol.by.type": "By Type",
   // TODO New key - Add a translation
-  "browse.comcol.by.type": "By Type",
+  "browse.comcol.by.type": "Ανά Τύπο",
 
+  "browse.comcol.by.rpfacu: : "Ανά Σχολή",
+  "browse.comcol.by.rpsubj": "Ανά Ερευνητικό Ενδιαφέρον",
 
   // "browse.comcol.head": "Browse",
   "browse.comcol.head": "Περιηγούμαι",
@@ -3862,7 +3864,7 @@
 
   // "explore.index.jobTitle": "Job title",
   // TODO New key - Add a translation
-  "explore.index.jobTitle": "Job title",
+  "explore.index.jobTitle": "Θέση",
 
   // "explore.index.knowsLanguage": "Knows languages",
   // TODO New key - Add a translation
@@ -3902,15 +3904,15 @@
 
   // "explore.index.projectOrgUnits": "Organizations",
   // TODO New key - Add a translation
-  "explore.index.projectOrgUnits": "Organizations",
+  "explore.index.projectOrgUnits": "Οργανισμοί",
 
   // "explore.index.personOrgUnits": "Organizations",
   // TODO New key - Add a translation
-  "explore.index.personOrgUnits": "Organizations",
+  "explore.index.personOrgUnits": "Οργανισμοί",
 
   // "explore.index.pjtitle": "Title",
   // TODO New key - Add a translation
-  "explore.index.pjtitle": "Title",
+  "explore.index.pjtitle": "Τίτλος",
 
   // "explore.index.projectinvestigators": "Project investigators",
   // TODO New key - Add a translation
@@ -3922,23 +3924,31 @@
 
   // "explore.index.rpdept": "Department",
   // TODO New key - Add a translation
-  "explore.index.rpdept": "Department",
+  "explore.index.rpdept": "Τμήμα",
 
   // "explore.index.rpname": "Name",
   // TODO New key - Add a translation
-  "explore.index.rpname": "Name",
+  "explore.index.rpname": "Όνομα",
 
   // "explore.index.subject": "Subject",
   // TODO New key - Add a translation
-  "explore.index.subject": "Subject",
+  "explore.index.subject": "Θέμα",
 
   // "explore.index.title": "Title",
   // TODO New key - Add a translation
-  "explore.index.title": "Title",
+  "explore.index.title": "Τίτλος",
 
   // "explore.index.type": "Type",
   // TODO New key - Add a translation
-  "explore.index.type": "Type",
+  "explore.index.type": "Τύπος",
+
+  "explore.index.awardnumber" : "Grant No",
+  "explore.index.rpfacu" : "Σχολή",
+  "explore.index.rpsubj" : "Ερευνητικό Ενδιαφέρον",
+  "explore.index.projectType" : "Είδος Έργου",
+  "explore.index.personOrgUnitsDepartment" : "Τμήμα",
+  "explore.index.personOrgUnitsFaculty" : "Σχόλή",
+  "explore.index.namePerson" : "Όνομα",
 
   // "explore.search-section.infrastructure.title": "Infrastructure",
   // TODO New key - Add a translation
@@ -8544,15 +8554,15 @@
 
   // "search.filters.applied.f.personorgunits": "Organisation",
   // TODO New key - Add a translation
-  "search.filters.applied.f.personorgunits": "Organisation",
+  "search.filters.applied.f.personorgunits": "Οργανισμός",
 
   // "search.filters.applied.f.personOrgUnits": "Organisation",
   // TODO New key - Add a translation
-  "search.filters.applied.f.personOrgUnits": "Organisation",
+  "search.filters.applied.f.personOrgUnits": "Οργανισμός",
 
   // "search.filters.applied.f.projectorgunits": "Organisation",
   // TODO New key - Add a translation
-  "search.filters.applied.f.projectorgunits": "Organisation",
+  "search.filters.applied.f.projectorgunits": "Οργανισμός",
 
   // "search.filters.applied.f.subject": "Subject",
   "search.filters.applied.f.subject": "Θέμα",
