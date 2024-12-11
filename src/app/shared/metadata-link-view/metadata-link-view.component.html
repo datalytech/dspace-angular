@@ -3,10 +3,12 @@
                   [ngTemplateOutletContext]="{metadataView: metadataView}"></ng-container>
 </div>
 <ng-template class="d-flex" #linkToAuthority let-metadataView="metadataView">
-  <div class="orcid-container">
-    <a *ngIf="getOrcidValue(relatedItem)" class="d-flex" [href]="'https://orcid.org/' + getOrcidValue(relatedItem)">
-      <img class="orcid-link-icon" src="assets/images/orcid.svg" alt="ORCID link icon">
-    </a>
+  <div class="item-wrapper">
+    <ds-metadata-link-view-orcid
+      [orcidContributors]="namesOrcidMap"
+      [currentContributorName]="metadataView.value.trim()"
+      class="d-flex">
+    </ds-metadata-link-view-orcid>
     <span [ngbPopover]="popContent"
           [closeDelay]="500"
           [openDelay]="1000"
@@ -35,16 +37,32 @@
 </ng-template>
 
 <ng-template #textWithIcon let-metadataView="metadataView">
-  <span dsEntityIcon
-        data-test="textWithIcon"
-        [iconPosition]="iconPosition"
-        [entityType]="metadataView.entityType"
-        [entityStyle]="metadataView.entityStyle"
-        [fallbackOnDefault]="false">{{normalizeValue(metadataView.value)}}</span>
+  <div class="item-wrapper">
+    <ds-metadata-link-view-orcid
+      [orcidContributors]="namesOrcidMap"
+      [currentContributorName]="metadataView.value.trim()"
+      class="d-flex">
+    </ds-metadata-link-view-orcid>
+    <span dsEntityIcon
+          data-test="textWithIcon"
+          [iconPosition]="iconPosition"
+          [entityType]="metadataView.entityType"
+          [entityStyle]="metadataView.entityStyle"
+          [fallbackOnDefault]="false">
+          {{normalizeValue(metadataView.value)}}
+    </span>
+  </div>
 </ng-template>
 
 <ng-template #textWithoutIcon let-metadataView="metadataView">
-  <span data-test="textWithoutIcon">{{normalizeValue(metadataView.value)}}</span>
+  <div class="item-wrapper">
+    <ds-metadata-link-view-orcid
+      [orcidContributors]="namesOrcidMap"
+      [currentContributorName]="metadataView.value.trim()"
+      class="d-flex">
+    </ds-metadata-link-view-orcid>
+    <span data-test="textWithoutIcon">{{normalizeValue(metadataView.value)}}</span>
+  </div>
 </ng-template>
 
 <ng-template #popContent>

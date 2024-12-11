@@ -1,0 +1,8 @@
+<ng-container *ngIf="(sdgIconsService.sdgIcons$ | async) as sdgIcons">
+    <div class="positioning">
+        <img
+            *ngFor="let sdgIcon of sdgIcons"[src]="'assets/images/sdg_icons/' + sdgIcon + '.png'" 
+            [alt]="'sdgIcon: ' + sdgIcon"
+            class="icon">
+    </div>
+</ng-container>

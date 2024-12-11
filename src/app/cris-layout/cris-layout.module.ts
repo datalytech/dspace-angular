@@ -114,6 +114,7 @@ import { CrisLayoutCollectionBoxComponent } from './cris-layout-matrix/cris-layo
 import {
   LinkAuthorityComponent
 } from './cris-layout-matrix/cris-layout-box-container/boxes/metadata/rendering-types/link-authority/link-authority.component';
+import { SdgIconsComponent } from './cris-layout-matrix/cris-layout-box-container/boxes/metrics/sdg-icons/sdg-icons.component';
 
 const ENTRY_COMPONENTS = [
   // put only entry components that use custom decorator
@@ -139,7 +140,8 @@ const ENTRY_COMPONENTS = [
   ValuepairComponent,
   TagComponent,
   AdvancedAttachmentComponent,
-  LinkAuthorityComponent
+  LinkAuthorityComponent,
+  SdgIconsComponent,
 ];
 
 @NgModule({

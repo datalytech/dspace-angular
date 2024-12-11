@@ -1,15 +1,20 @@
 import { PaginatedList } from './../core/data/paginated-list.model';
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, inject, Input, OnInit, SimpleChanges } from '@angular/core';
 import { Item } from '../core/shared/item.model';
 import { TabDataService } from '../core/layout/tab-data.service';
 import { CrisLayoutTab } from '../core/layout/models/tab.model';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { filter, map, take } from 'rxjs/operators';
 
-import { getFirstSucceededRemoteData, getPaginatedListPayload, getRemoteDataPayload } from '../core/shared/operators';
+import {
+  getFirstSucceededRemoteData,
+  getPaginatedListPayload,
+  getRemoteDataPayload,
+} from '../core/shared/operators';
 import { isNotEmpty } from '../shared/empty.util';
 import { ActivatedRoute } from '@angular/router';
 import { RemoteData } from '../core/data/remote-data';
+import { SdgIconsService } from '../core/shared/sdg-icons.service';
 
 /**
  * Component for determining what component to use depending on the item's entity type (dspace.entity.type)
@@ -17,10 +22,9 @@ import { RemoteData } from '../core/data/remote-data';
 @Component({
   selector: 'ds-cris-layout',
   templateUrl: './cris-layout.component.html',
-  styleUrls: ['./cris-layout.component.scss']
+  styleUrls: ['./cris-layout.component.scss'],
 })
 export class CrisLayoutComponent implements OnInit {
-
   /**
    * DSpace Item to render
    */
@@ -54,16 +58,30 @@ export class CrisLayoutComponent implements OnInit {
   /**
    * Get if has leading tabs
    */
-  hasLeadingTab$: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
+  hasLeadingTab$: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(
+    false
+  );
 
-  constructor(private tabService: TabDataService, private router: ActivatedRoute) {
+  private sdgIconsService = inject(SdgIconsService);
+
+  constructor(
+    private tabService: TabDataService,
+    private router: ActivatedRoute
+  ) {}
+
+  ngOnChanges(changes: SimpleChanges) {
+    if (changes['item'] && this.item) {
+      const sdgIcons =
+        this.item.metadata?.['dc.subject.code']?.map((item) => item.value) ||
+        [];
+      this.sdgIconsService.setSdgIcons(sdgIcons);
+    }
   }
 
   /**
    * Get tabs for the specific item
    */
   ngOnInit(): void {
-
     if (!!this.dataTabs$) {
       this.tabs$ = this.dataTabs$.pipe(
         map((res: any) => {
@@ -80,12 +98,14 @@ export class CrisLayoutComponent implements OnInit {
     this.leadingTabs$ = this.getLeadingTabs();
     this.loaderTabs$ = this.getLoaderTabs();
 
-    this.hasLeadingTab().pipe(
-      filter((result) => isNotEmpty(result)),
-      take(1),
-    ).subscribe((result) => {
-      this.hasLeadingTab$.next(result);
-    });
+    this.hasLeadingTab()
+      .pipe(
+        filter((result) => isNotEmpty(result)),
+        take(1)
+      )
+      .subscribe((result) => {
+        this.hasLeadingTab$.next(result);
+      });
   }
 
   /**
@@ -93,11 +113,13 @@ export class CrisLayoutComponent implements OnInit {
    */
   getTabsByItem(): Observable<CrisLayoutTab[]> {
     // Since there is no API ready
-    return this.tabService.findByItem(this.item.uuid, true).pipe(
-      getFirstSucceededRemoteData(),
-      getRemoteDataPayload(),
-      getPaginatedListPayload()
-    );
+    return this.tabService
+      .findByItem(this.item.uuid, true)
+      .pipe(
+        getFirstSucceededRemoteData(),
+        getRemoteDataPayload(),
+        getPaginatedListPayload()
+      );
   }
 
   /**
@@ -105,7 +127,7 @@ export class CrisLayoutComponent implements OnInit {
    */
   getLeadingTabs(): Observable<CrisLayoutTab[]> {
     return this.tabs$.pipe(
-      map((tabs: CrisLayoutTab[]) => tabs.filter(tab => tab.leading)),
+      map((tabs: CrisLayoutTab[]) => tabs.filter((tab) => tab.leading))
     );
   }
 
@@ -114,7 +136,7 @@ export class CrisLayoutComponent implements OnInit {
    */
   getLoaderTabs(): Observable<CrisLayoutTab[]> {
     return this.tabs$.pipe(
-      map((tabs: CrisLayoutTab[]) => tabs.filter(tab => !tab.leading)),
+      map((tabs: CrisLayoutTab[]) => tabs.filter((tab) => !tab.leading))
     );
   }
 
@@ -126,5 +148,4 @@ export class CrisLayoutComponent implements OnInit {
       map((tabs: CrisLayoutTab[]) => tabs && tabs.length > 0)
     );
   }
-
 }

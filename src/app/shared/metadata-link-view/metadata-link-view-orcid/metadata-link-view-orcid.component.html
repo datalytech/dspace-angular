@@ -1,15 +1,23 @@
-<span class="d-flex align-items-center txt-value">
-  <a *ngIf="(orcidUrl$ | async); else noOrcidUrl" href="{{(orcidUrl$ | async)}}/{{metadataValue}}" target="_blank">
-    {{ metadataValue }}
+<ng-container *ngIf="showIconLink; else showOrcidNumberLink">
+  <a *ngIf="!!orcidContributors.get(currentContributorName)" class="d-flex" [href]="'https://sandbox.orcid.org/' + orcidContributors.get(currentContributorName)">
+    <img class="orcid-link-icon" src="assets/images/orcid.svg" alt="ORCID link icon">
   </a>
+</ng-container>
 
-  <ng-template #noOrcidUrl>{{ metadataValue }}</ng-template>
-
-  <img *ngIf="hasOrcidBadge()"
-        placement="top"
-        ngbTooltip="{{ 'orcid.badge.tooltip' | translate }}"
-        class="orcid-icon"
-        alt="orcid-logo"
-        src="assets/images/orcid.logo.icon.svg"/>
-
-</span>
+<ng-template #showOrcidNumberLink>
+  <span class="d-flex align-items-center txt-value">
+    <a *ngIf="(orcidUrl$ | async); else noOrcidUrl" href="{{(orcidUrl$ | async)}}/{{metadataValue}}" target="_blank">
+      {{ metadataValue }}
+    </a>
+  
+    <ng-template #noOrcidUrl>{{ metadataValue }}</ng-template>
+  
+    <img *ngIf="hasOrcidBadge()"
+          placement="top"
+          ngbTooltip="{{ 'orcid.badge.tooltip' | translate }}"
+          class="orcid-icon"
+          alt="orcid-logo"
+          src="assets/images/orcid.logo.icon.svg"/>
+  
+  </span>
+</ng-template>
