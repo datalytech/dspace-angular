@@ -30,22 +30,11 @@ import { map } from 'rxjs/operators';
  */
 export class ItemSearchResultListElementComponent extends SearchResultListElementComponent<ItemSearchResult, Item> implements OnInit, AfterViewInit {
 
-  /**
-   * Whether to show the metrics badges
-   */
   @Input() showMetrics = true;
-
-  /**
-   * Route to the item's page
-   */
   itemPageRoute: string;
-
-  authorMetadata = environment.searchResult.authorMetadata;
-
+  authorMetadata = environment.searchResult.authorMetadata.filter(item => item !== 'dc.creator');
   hasLoadedThirdPartyMetrics$: Observable<boolean>;
-
   private thirdPartyMetrics = environment.info.metricsConsents.filter(metric => metric.enabled).map(metric => metric.key);
-
 
   constructor(
     protected truncatableService: TruncatableService,
@@ -55,15 +44,11 @@ export class ItemSearchResultListElementComponent extends SearchResultListElemen
   ) {
     super(truncatableService, dsoNameService);
   }
-
   ngOnInit(): void {
     super.ngOnInit();
     this.itemPageRoute = getItemPageRoute(this.dso);
   }
 
-  /**
-   * Check if item has Third-party metrics blocked by consents
-   */
   ngAfterViewInit() {
     if (this.showMetrics && this.klaroService) {
       this.klaroService.watchConsentUpdates();
@@ -86,9 +71,6 @@ export class ItemSearchResultListElementComponent extends SearchResultListElemen
     }
   }
 
-  /**
-   * Prompt user for consents settings
-   */
   showSettings() {
     this.klaroService.showSettings();
   }

@@ -16,272 +16,272 @@ import { TranslateModule } from '@ngx-translate/core';
 let publicationListElementComponent: ItemSearchResultListElementComponent;
 let fixture: ComponentFixture<ItemSearchResultListElementComponent>;
 const dcTitle = 'This is just another <em>title</em>';
-const mockItemWithMetadata: ItemSearchResult = Object.assign(new ItemSearchResult(), {
-  hitHighlights: {
-    'dc.title': [{
-      value: dcTitle
-    }],
-  },
-  indexableObject:
-    Object.assign(new Item(), {
-      bundles: observableOf({}),
-      metadata: {
-        'dc.title': [
-          {
-            language: 'en_US',
-            value: dcTitle
-          }
-        ],
-        'dc.contributor.author': [
-          {
-            language: 'en_US',
-            value: 'Smith, Donald'
-          }
-        ],
-        'dc.publisher': [
-          {
-            language: 'en_US',
-            value: 'a publisher'
-          }
-        ],
-        'dc.date.issued': [
-          {
-            language: 'en_US',
-            value: '2015-06-26'
-          }
-        ],
-        'dc.description.abstract': [
-          {
-            language: 'en_US',
-            value: 'This is the abstract'
-          }
-        ]
-      }
-    })
-});
-const mockItemWithoutMetadata: ItemSearchResult = Object.assign(new ItemSearchResult(), {
-  indexableObject:
-    Object.assign(new Item(), {
-      bundles: observableOf({}),
-      metadata: {}
-    })
-});
-const mockPerson: ItemSearchResult = Object.assign(new ItemSearchResult(), {
-  hitHighlights: {
-    'person.familyName': [{
-      value: '<em>Michel</em>'
-    }],
-  },
-  indexableObject:
-    Object.assign(new Item(), {
-      bundles: observableOf({}),
-      entityType: 'Person',
-      metadata: {
-        'dc.title': [
-          {
-            language: 'en_US',
-            value: 'This is just another title'
-          }
-        ],
-        'dc.contributor.author': [
-          {
-            language: 'en_US',
-            value: 'Smith, Donald'
-          }
-        ],
-        'dc.publisher': [
-          {
-            language: 'en_US',
-            value: 'a publisher'
-          }
-        ],
-        'dc.date.issued': [
-          {
-            language: 'en_US',
-            value: '2015-06-26'
-          }
-        ],
-        'dc.description.abstract': [
-          {
-            language: 'en_US',
-            value: 'This is the abstract'
-          }
-        ],
-        'person.familyName': [
-          {
-            value: 'Michel'
-          }
-        ],
-        'dspace.entity.type': [
-          {
-            value: 'Person'
-          }
-        ]
-      }
-    })
-});
-const mockOrgUnit: ItemSearchResult = Object.assign(new ItemSearchResult(), {
-  hitHighlights: {
-    'organization.legalName': [{
-      value: '<em>Science</em>'
-    }],
-  },
-  indexableObject:
-    Object.assign(new Item(), {
-      bundles: observableOf({}),
-      entityType: 'OrgUnit',
-      metadata: {
-        'dc.title': [
-          {
-            language: 'en_US',
-            value: 'This is just another title'
-          }
-        ],
-        'dc.contributor.author': [
-          {
-            language: 'en_US',
-            value: 'Smith, Donald'
-          }
-        ],
-        'dc.publisher': [
-          {
-            language: 'en_US',
-            value: 'a publisher'
-          }
-        ],
-        'dc.date.issued': [
-          {
-            language: 'en_US',
-            value: '2015-06-26'
-          }
-        ],
-        'dc.description.abstract': [
-          {
-            language: 'en_US',
-            value: 'This is the abstract'
-          }
-        ],
-        'organization.legalName': [
-          {
-            value: 'Science'
-          }
-        ],
-        'dspace.entity.type': [
-          {
-            value: 'OrgUnit'
-          }
-        ]
-      }
-    })
-});
-const environmentUseThumbs = {
-  browseBy: {
-    showThumbnails: true
-  }
-};
-
-const enviromentNoThumbs = {
-  browseBy: {
-    showThumbnails: false
-  }
-};
-
-describe('ItemSearchResultListElementComponent', () => {
-  beforeEach(waitForAsync(() => {
-    TestBed.configureTestingModule({
-      imports: [TranslateModule.forRoot()],
-      declarations: [ItemSearchResultListElementComponent, TruncatePipe, VarDirective],
-      providers: [
-        { provide: TruncatableService, useValue: {} },
-        { provide: DSONameService, useClass: DSONameServiceMock },
-        { provide: APP_CONFIG, useValue: environmentUseThumbs }
-      ],
-      schemas: [NO_ERRORS_SCHEMA]
-    }).overrideComponent(ItemSearchResultListElementComponent, {
-      set: { changeDetection: ChangeDetectionStrategy.Default }
-    }).compileComponents();
-  }));
-
-  beforeEach(waitForAsync(() => {
-    fixture = TestBed.createComponent(ItemSearchResultListElementComponent);
-    publicationListElementComponent = fixture.componentInstance;
-
-  }));
-
-  describe('with environment.browseBy.showThumbnails set to true', () => {
-    beforeEach(() => {
-      publicationListElementComponent.object = mockItemWithMetadata;
-      fixture.detectChanges();
-    });
-    it('should set showThumbnails to true', () => {
-      expect(publicationListElementComponent.showThumbnails).toBeTrue();
-    });
-
-    it('should add ds-thumbnail element', () => {
-      const thumbnailElement = fixture.debugElement.query(By.css('ds-thumbnail'));
-      expect(thumbnailElement).toBeTruthy();
-    });
+  const mockItemWithMetadata: ItemSearchResult = Object.assign(new ItemSearchResult(), {
+    hitHighlights: {
+      'dc.title': [{
+        value: dcTitle
+      }],
+    },
+    indexableObject:
+      Object.assign(new Item(), {
+        bundles: observableOf({}),
+        metadata: {
+          'dc.title': [
+            {
+              language: 'en_US',
+              value: dcTitle
+            }
+          ],
+          'dc.contributor.author': [
+            {
+              language: 'en_US',
+              value: 'Smith, Donald'
+            }
+          ],
+          'dc.publisher': [
+            {
+              language: 'en_US',
+              value: 'a publisher'
+            }
+          ],
+          'dc.date.issued': [
+            {
+              language: 'en_US',
+              value: '2015-06-26'
+            }
+          ],
+          'dc.description.abstract': [
+            {
+              language: 'en_US',
+              value: 'This is the abstract'
+            }
+          ]
+        }
+      })
   });
-
-  describe('When the item has an author', () => {
-    beforeEach(() => {
-      publicationListElementComponent.object = mockItemWithMetadata;
-      fixture.detectChanges();
-    });
-
-    it('should show the author paragraph', () => {
-      const itemAuthorField = fixture.debugElement.query(By.css('span.item-list-authors'));
-      expect(itemAuthorField).not.toBeNull();
-    });
+  const mockItemWithoutMetadata: ItemSearchResult = Object.assign(new ItemSearchResult(), {
+    indexableObject:
+      Object.assign(new Item(), {
+        bundles: observableOf({}),
+        metadata: {}
+      })
   });
-
-  describe('When the item has no author', () => {
-    beforeEach(() => {
-      publicationListElementComponent.object = mockItemWithoutMetadata;
-      fixture.detectChanges();
-    });
-
-    it('should not show the author paragraph', () => {
-      const itemAuthorField = fixture.debugElement.query(By.css('span.item-list-authors'));
-      expect(itemAuthorField).toBeNull();
-    });
+  const mockPerson: ItemSearchResult = Object.assign(new ItemSearchResult(), {
+    hitHighlights: {
+      'person.familyName': [{
+        value: '<em>Michel</em>'
+      }],
+    },
+    indexableObject:
+      Object.assign(new Item(), {
+        bundles: observableOf({}),
+        entityType: 'Person',
+        metadata: {
+          'dc.title': [
+            {
+              language: 'en_US',
+              value: 'This is just another title'
+            }
+          ],
+          'dc.contributor.author': [
+            {
+              language: 'en_US',
+              value: 'Smith, Donald'
+            }
+          ],
+          'dc.publisher': [
+            {
+              language: 'en_US',
+              value: 'a publisher'
+            }
+          ],
+          'dc.date.issued': [
+            {
+              language: 'en_US',
+              value: '2015-06-26'
+            }
+          ],
+          'dc.description.abstract': [
+            {
+              language: 'en_US',
+              value: 'This is the abstract'
+            }
+          ],
+          'person.familyName': [
+            {
+              value: 'Michel'
+            }
+          ],
+          'dspace.entity.type': [
+            {
+              value: 'Person'
+            }
+          ]
+        }
+      })
   });
-
-  describe('When the item has a publisher', () => {
-    beforeEach(() => {
-      publicationListElementComponent.object = mockItemWithMetadata;
-      fixture.detectChanges();
-    });
-
-    it('should show the publisher span', () => {
-      const publisherField = fixture.debugElement.query(By.css('span.item-list-publisher'));
-      expect(publisherField).not.toBeNull();
-    });
+  const mockOrgUnit: ItemSearchResult = Object.assign(new ItemSearchResult(), {
+    hitHighlights: {
+      'organization.legalName': [{
+        value: '<em>Science</em>'
+      }],
+    },
+    indexableObject:
+      Object.assign(new Item(), {
+        bundles: observableOf({}),
+        entityType: 'OrgUnit',
+        metadata: {
+          'dc.title': [
+            {
+              language: 'en_US',
+              value: 'This is just another title'
+            }
+          ],
+          'dc.contributor.author': [
+            {
+              language: 'en_US',
+              value: 'Smith, Donald'
+            }
+          ],
+          'dc.publisher': [
+            {
+              language: 'en_US',
+              value: 'a publisher'
+            }
+          ],
+          'dc.date.issued': [
+            {
+              language: 'en_US',
+              value: '2015-06-26'
+            }
+          ],
+          'dc.description.abstract': [
+            {
+              language: 'en_US',
+              value: 'This is the abstract'
+            }
+          ],
+          'organization.legalName': [
+            {
+              value: 'Science'
+            }
+          ],
+          'dspace.entity.type': [
+            {
+              value: 'OrgUnit'
+            }
+          ]
+        }
+      })
   });
+  const environmentUseThumbs = {
+    browseBy: {
+      showThumbnails: true
+    }
+  };
 
-  describe('When the item has no publisher', () => {
-    beforeEach(() => {
-      publicationListElementComponent.object = mockItemWithoutMetadata;
-      fixture.detectChanges();
+  const enviromentNoThumbs = {
+    browseBy: {
+      showThumbnails: false
+    }
+  };
+
+  describe('ItemSearchResultListElementComponent', () => {
+    beforeEach(waitForAsync(() => {
+      TestBed.configureTestingModule({
+        imports: [TranslateModule.forRoot()],
+        declarations: [ItemSearchResultListElementComponent, TruncatePipe, VarDirective],
+        providers: [
+          { provide: TruncatableService, useValue: {} },
+          { provide: DSONameService, useClass: DSONameServiceMock },
+          { provide: APP_CONFIG, useValue: environmentUseThumbs }
+        ],
+        schemas: [NO_ERRORS_SCHEMA]
+      }).overrideComponent(ItemSearchResultListElementComponent, {
+        set: { changeDetection: ChangeDetectionStrategy.Default }
+      }).compileComponents();
+    }));
+
+    beforeEach(waitForAsync(() => {
+      fixture = TestBed.createComponent(ItemSearchResultListElementComponent);
+      publicationListElementComponent = fixture.componentInstance;
+
+    }));
+
+    describe('with environment.browseBy.showThumbnails set to true', () => {
+      beforeEach(() => {
+        publicationListElementComponent.object = mockItemWithMetadata;
+        fixture.detectChanges();
+      });
+      it('should set showThumbnails to true', () => {
+        expect(publicationListElementComponent.showThumbnails).toBeTrue();
+      });
+
+      it('should add ds-thumbnail element', () => {
+        const thumbnailElement = fixture.debugElement.query(By.css('ds-thumbnail'));
+        expect(thumbnailElement).toBeTruthy();
+      });
     });
 
-    it('should not show the publisher span', () => {
-      const publisherField = fixture.debugElement.query(By.css('span.item-list-publisher'));
-      expect(publisherField).toBeNull();
-    });
-  });
+    describe('When the item has an author', () => {
+      beforeEach(() => {
+        publicationListElementComponent.object = mockItemWithMetadata;
+        fixture.detectChanges();
+      });
 
-  describe('When the item has an issuedate', () => {
-    beforeEach(() => {
-      publicationListElementComponent.object = mockItemWithMetadata;
-      fixture.detectChanges();
+      it('should show the author paragraph', () => {
+        const itemAuthorField = fixture.debugElement.query(By.css('span.item-list-authors'));
+        expect(itemAuthorField).not.toBeNull();
+      });
     });
 
-    it('should show the issuedate span', () => {
-      const dateField = fixture.debugElement.query(By.css('span.item-list-date'));
-      expect(dateField).not.toBeNull();
+    describe('When the item has no author', () => {
+      beforeEach(() => {
+        publicationListElementComponent.object = mockItemWithoutMetadata;
+        fixture.detectChanges();
+      });
+
+      it('should not show the author paragraph', () => {
+        const itemAuthorField = fixture.debugElement.query(By.css('span.item-list-authors'));
+        expect(itemAuthorField).toBeNull();
+      });
     });
-  });
+
+    describe('When the item has a publisher', () => {
+      beforeEach(() => {
+        publicationListElementComponent.object = mockItemWithMetadata;
+        fixture.detectChanges();
+      });
+
+      it('should show the publisher span', () => {
+        const publisherField = fixture.debugElement.query(By.css('span.item-list-publisher'));
+        expect(publisherField).not.toBeNull();
+      });
+    });
+
+    describe('When the item has no publisher', () => {
+      beforeEach(() => {
+        publicationListElementComponent.object = mockItemWithoutMetadata;
+        fixture.detectChanges();
+      });
+
+      it('should not show the publisher span', () => {
+        const publisherField = fixture.debugElement.query(By.css('span.item-list-publisher'));
+        expect(publisherField).toBeNull();
+      });
+    });
+
+    describe('When the item has an issuedate', () => {
+      beforeEach(() => {
+        publicationListElementComponent.object = mockItemWithMetadata;
+        fixture.detectChanges();
+      });
+
+      it('should show the issuedate span', () => {
+        const dateField = fixture.debugElement.query(By.css('span.item-list-date'));
+        expect(dateField).not.toBeNull();
+      });
+    });
 
   describe('When the item has no issuedate', () => {
     beforeEach(() => {

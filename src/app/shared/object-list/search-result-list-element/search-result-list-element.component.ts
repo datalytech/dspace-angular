@@ -17,21 +17,13 @@ import { APP_CONFIG, AppConfig } from '../../../../config/app-config.interface';
   template: ``
 })
 export class SearchResultListElementComponent<T extends SearchResult<K>, K extends DSpaceObject> extends AbstractListableElementComponent<T> implements OnInit {
-  /**
-   * The DSpaceObject of the search result
-   */
   dso: K;
   dsoTitle: string;
-
   public constructor(protected truncatableService: TruncatableService,
                      public dsoNameService: DSONameService,
                      @Inject(APP_CONFIG) protected appConfig?: AppConfig) {
     super(dsoNameService);
   }
-
-  /**
-   * Retrieve the dso from the search result
-   */
   ngOnInit(): void {
     this.showThumbnails = this.showThumbnails ?? this.appConfig.browseBy.showThumbnails;
     if (hasValue(this.object)) {
@@ -39,31 +31,13 @@ export class SearchResultListElementComponent<T extends SearchResult<K>, K exten
       this.dsoTitle = this.dsoNameService.getHitHighlights(this.object, this.dso);
     }
   }
-
-  /**
-   * Gets all matching metadata string values from hitHighlights or dso metadata, preferring hitHighlights.
-   *
-   * @param {string|string[]} keyOrKeys The metadata key(s) in scope. Wildcards are supported; see [[Metadata]].
-   * @returns {string[]} the matching string values or an empty array.
-   */
   allMetadataValues(keyOrKeys: string | string[]): string[] {
     return Metadata.allValues([this.object.hitHighlights, this.dso.metadata], keyOrKeys);
   }
-
-  /**
-   * Gets the first matching metadata string value from hitHighlights or dso metadata, preferring hitHighlights.
-   *
-   * @param {string|string[]} keyOrKeys The metadata key(s) in scope. Wildcards are supported; see [[Metadata]].
-   * @returns {string} the first matching string value, or `undefined`.
-   */
   firstMetadataValue(keyOrKeys: string | string[]): string {
     return Metadata.firstValue([this.object.hitHighlights, this.dso.metadata], keyOrKeys);
   }
-
-  /**
-   * Emits if the list element is currently collapsed or not
-   */
-  isCollapsed(): Observable<boolean> {
+isCollapsed(): Observable<boolean> {
     return this.truncatableService.isCollapsed(this.dso.id);
   }
 
