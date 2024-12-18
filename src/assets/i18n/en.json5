@@ -5289,6 +5289,20 @@
 
   "search.filters.filter.types.placeholder": "Type",
 
+ "browse.metadata.rpsubj.breadcrumbs" : "Interest",
+ "browse.metadata.rpsubj" : "Interest",
+
+ "search.filters.filter.projectType.head" : "Project Type",
+ "search.filters.filter.projectType.label" : "Project Type",
+ "search.filters.filter.projectType.placeholder" : "Project Type",
+
+ "search.filters.filter.personOrgUnitsDepartment.head" : "Department",
+ "search.filters.filter.personOrgUnitsDepartment.label" : "Department",
+ "search.filters.filter.personOrgUnitsDepartment.placeholder" : "Department",
+
+ "search.filters.filter.personOrgUnitsFaculty.head" : "Faculty", 
+ "search.filters.filter.personOrgUnitsFaculty.label" : "Faculty",
+ "search.filters.filter.personOrgUnitsFaculty.placeholder" : "Faculty",
 
   "search.filters.entityType.JournalIssue": "Journal Issue",
 
@@ -7645,15 +7659,15 @@
   "layout.field.label.Person.[dc.subject]": "Research Interests",
   "layout.field.label.Person.[person.knowsLanguage]": "Knows Language",
   "layout.field.label.Person.[crisrp.qualification]": "Qualification",
-  "layout.field.label.Person.[dc.title]": "Preferred name",
-  "layout.field.label.Person.[crisrp.name]": "Official Name",
-  "layout.field.label.Person.[crisrp.name.translated]": "Translated Name",
-  "layout.field.label.Person.[crisrp.name.variant]": "Alternative Name",
-  "layout.field.label.Person.[person.affiliation.name]": "Main Affiliation",
+  "layout.field.label.Person.[dc.title]": "Preferred",
+  "layout.field.label.Person.[crisrp.name]": "Official",
+  "layout.field.label.Person.[crisrp.name.translated]": "Translated",
+  "layout.field.label.Person.[crisrp.name.variant]": "Alternative",
+  "layout.field.label.Person.[person.affiliation.name]": "Affiliation",
   "layout.field.label.Person.[oairecerif.identifier.url]": "Web Site",
   "layout.field.label.Person.[person.email]": "Email",
   "layout.field.label.Person.[person.identifier.orcid]": "ORCID",
-  "layout.field.label.Person.[person.identifier.scopus-author-id]": "Scopus Author ID",
+  "layout.field.label.Person.[person.identifier.scopus-author-id]": "Scopus ID",
   "layout.field.label.Person.[person.identifier.rid]": "Researcher ID",
   "layout.field.label.Person.[dc.description.abstract]": "Biography",
   "layout.field.label.Person.[oairecerif.person.affiliation]": "Affiliation",

@@ -9012,6 +9012,20 @@
   // TODO New key - Add a translation
   "search.filters.filter.types.placeholder": "Type",
 
+ "browse.metadata.rpsubj.breadcrumbs" : "Ερευνητικό Ενδιαφέρον",
+ "browse.metadata.rpsubj" : "Ερευνητικό Ενδιαφέρον",
+
+ "search.filters.filter.projectType.head" : "Τύπος Έργου",
+ "search.filters.filter.projectType.label" : "Τύπος Έργου",
+ "search.filters.filter.projectType.placeholder" : "Τύπος Έργου",
+
+ "search.filters.filter.personOrgUnitsDepartment.head" : "Τμήμα",
+ "search.filters.filter.personOrgUnitsDepartment.label" : "Τμήμα",
+ "search.filters.filter.personOrgUnitsDepartment.placeholder" : "Τμήμα",
+
+ "search.filters.filter.personOrgUnitsFaculty.head" : "Σχολή", 
+ "search.filters.filter.personOrgUnitsFaculty.label" : "Σχολή",
+ "search.filters.filter.personOrgUnitsFaculty.placeholder" : "Σχολη",
 
   // "search.filters.entityType.JournalIssue": "Journal Issue",
   "search.filters.entityType.JournalIssue": "Τεύχος περιοδικού",
@@ -13243,19 +13257,19 @@
   "layout.field.label.Person.[crisrp.qualification]": "Qualification",
   // "layout.field.label.Person.[dc.title]": "Preferred name",
   // TODO New key - Add a translation
-  "layout.field.label.Person.[dc.title]": "Preferred name",
+  "layout.field.label.Person.[dc.title]": "Preferred",
   // "layout.field.label.Person.[crisrp.name]": "Official Name",
   // TODO New key - Add a translation
   "layout.field.label.Person.[crisrp.name]": "Official Name",
   // "layout.field.label.Person.[crisrp.name.translated]": "Translated Name",
   // TODO New key - Add a translation
-  "layout.field.label.Person.[crisrp.name.translated]": "Translated Name",
+  "layout.field.label.Person.[crisrp.name.translated]": "Translated",
   // "layout.field.label.Person.[crisrp.name.variant]": "Alternative Name",
   // TODO New key - Add a translation
-  "layout.field.label.Person.[crisrp.name.variant]": "Alternative Name",
-  // "layout.field.label.Person.[person.affiliation.name]": "Main Affiliation",
+  "layout.field.label.Person.[crisrp.name.variant]": "Alternative",
+  // "layout.field.label.Person.[person.affiliation.name]": "Affiliation",
   // TODO New key - Add a translation
-  "layout.field.label.Person.[person.affiliation.name]": "Main Affiliation",
+  "layout.field.label.Person.[person.affiliation.name]": "Affiliation",
   // "layout.field.label.Person.[oairecerif.identifier.url]": "Web Site",
   // TODO New key - Add a translation
   "layout.field.label.Person.[oairecerif.identifier.url]": "Web Site",
@@ -13267,7 +13281,7 @@
   "layout.field.label.Person.[person.identifier.orcid]": "ORCID",
   // "layout.field.label.Person.[person.identifier.scopus-author-id]": "Scopus Author ID",
   // TODO New key - Add a translation
-  "layout.field.label.Person.[person.identifier.scopus-author-id]": "Scopus Author ID",
+  "layout.field.label.Person.[person.identifier.scopus-author-id]": "Scopus ID",
   // "layout.field.label.Person.[person.identifier.rid]": "Researcher ID",
   // TODO New key - Add a translation
   "layout.field.label.Person.[person.identifier.rid]": "Researcher ID",
