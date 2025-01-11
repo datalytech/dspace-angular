@@ -4,7 +4,48 @@ html {
 }
 
 body {
-    overflow-x: hidden;
+  font-family: 'Roboto', sans-serif;
+  overflow-x: hidden;
+  font-weight: 400; // Regular
+      font-size: 14pt;
+
+  h1 {
+      font-weight: 400; // Regular
+      font-size: 22pt;
+  }
+
+  h2 {
+      font-weight: 300; // Light
+      font-size: 20pt;
+  }
+
+  h3 {
+      font-weight: 300; // Light
+      font-size: 18pt;
+  }
+
+  h4 {
+      font-weight: 700; // Bold
+      font-size: 16pt;
+  }
+
+  h5 {
+      font-weight: 300; // Light version
+      font-size: 14pt;
+      &.regular {
+          font-weight: 400; // Regular version
+      }
+  }
+
+  h6 {
+      font-weight: 300; // Light
+      font-size: 12pt;
+  }
+
+  p {
+      font-weight: 400; // Regular
+      font-size: 14pt;
+  }
 }
 
 // Sticky Footer

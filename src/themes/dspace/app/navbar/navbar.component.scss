@@ -64,3 +64,21 @@ a.navbar-brand img {
     }
   }
 }
+
+.navbar-nav, .navbar-buttons {
+  ::ng-deep a:not(.login-link), 
+  ::ng-deep button,
+  ::ng-deep span {
+    text-transform: uppercase;
+  }
+
+  ::ng-deep ds-themed-auth-nav-menu {
+    a.login-link {
+      text-transform: none;
+    }
+  }
+}
+
+ds-themed-lang-switch {
+  display: none;
+}
