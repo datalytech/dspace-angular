@@ -411,3 +411,9 @@ ul.dso-edit-menu-dropdown > li .nav-item.nav-link {
     @include ellipsis-y($i);
   }
 }
+
+@media (min-width: 1200px) {
+  .container-xl, .container-lg, .container-md, .container-sm, .container {
+      max-width: 1600px;
+  }
+}
