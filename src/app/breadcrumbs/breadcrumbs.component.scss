@@ -14,11 +14,13 @@ li.breadcrumb-item {
 }
 
 .breadcrumb-item-limiter {
+  color: white !important;
   display: inline-block;
   max-width: var(--ds-breadcrumb-max-length);
   > * {
     max-width: 100%;
     display: block;
+    color: white;
   }
 }
 
@@ -29,7 +31,7 @@ li.breadcrumb-item {
 }
 
 li.breadcrumb-item.active {
-  color: var(--ds-breadcrumb-link-active-color);
+  color: white;
 }
 
 .breadcrumb-item+ .breadcrumb-item::before {
