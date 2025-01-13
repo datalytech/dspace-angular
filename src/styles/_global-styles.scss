@@ -3,6 +3,37 @@ html {
     min-height: 100%;
 }
 
+.search-button{
+  color: black !important;
+  background: unset !important;
+  border: unset !important;
+  box-shadow: unset !important;
+}
+.card{
+  background-color: #fff !important;
+  border: unset !important;
+}
+.card-header {
+  padding: 0.75rem 1.25rem;
+  margin-bottom: 0;
+  background-color: white;
+  border: unset !important;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.125);
+  font-weight: bold;
+}
+
+#query{
+  border: unset !important;
+  border-bottom: 1px solid #232323   !important;
+  box-shadow: unset !important;
+}
+
+a {
+  color: #f0ae72;
+  text-decoration: none;
+  background-color: transparent;
+}
+
 body {
   font-family: 'Roboto', sans-serif;
   overflow-x: hidden;

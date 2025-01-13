@@ -5,34 +5,36 @@
     <div *ngIf="!hasSiteFooterSections" class=" container p-4">
       <!--Grid row-->
       <div class="row">       
-        <div class="col-md-4">
-	  <ul style="list-style-type: none; padding: 0;  margin: 0;text-align:left"><b>{{ 'footer.link.column1.header' | translate}}:</b><br/>
-	  <li><a target="_blank" href="https://library.ucy.ac.cy/literature-support/open-access/oa-policies/">{{ 'footer.link.column1.text1' | translate}}</a></li>
-	  <li><a target="_blank" href="https://library.ucy.ac.cy/literature-support/master-thesis-submission-guide/">{{ 'footer.link.column1.text2' | translate}}</a></li>
-          <li><a target="_blank" href="https://library.ucy.ac.cy/literature-support/phd-dissertations-submission-guide/">{{ 'footer.link.column1.text3' | translate}}</a></li>
-          <li><a target="_blank" href="https://library.ucy.ac.cy/wp-content/uploads/2022/07/guide-ORCID.pdf">{{ 'footer.link.column1.text4' | translate}}</a></li>             </ul>
-	</div>
-         <div class="col-md-4">
-	    <ul style="list-style-type: none ; padding: 0; text-align:left; margin: 0;">
-		    <li><br></li>
-		    <li><a target="_blank" href="https://websites.ucy.ac.cy/creativecommonscy/cc.html">Creative Commons</a></li>
-		    <li><a target="_blank" href="https://journalcheckertool.org/https:/journalcheckertool.org/">Journal checker tool</a></li>
-		    <li><a target="_blank" href="https://argos.openaire.eu/home">Argos</a></li>
-		    <li><a target="_blank" href="https://amnesia.openaire.eu/">Amnesia</a></li>
-	    </ul>
+        <div class="col-md-3">
+      <img style="    width: 30%;
+    height: auto;" src="assets/images/logo_footer.png" [attr.alt]="'menu.header.image.logo' | translate" />
+
+        </div> 
+
+        <div class="col-md-3">
+          <b> Greece</b>
+    <br>
+    6 Gravias Street <br/>GR-153 42 <br/>Aghia Paraskevi Athens, <br/>Phone: +30 210 600 9800
+  </div> 
+
+  <div class="col-md-3">
+
+    <b> USA</b>
+    <br>
+    31 State Street <br/>Boston, MA 02109 <br/>USA <br/>
+  </div> 
+
+   <div class="col-md-3">
+    <b> Useful</b>
+    <br>
+    - Postgraduate thesis submission guidelines <br/>
+    - Instructions for submitting a PhD thesis <br/>
+    - ORCID Creation Wizard <br/>
+    - Creative Commons <br/>
+  </div> 
+
+      
 	 </div>
-         <div class="col-md-4">
-	     <ul style="list-style-type: none ; padding: 0; text-align:left; margin: 0;">
-		<li> 
-		     <a target="_blank" href="https://library.ucy.ac.cy/contact_main/contact/">
-			 <img width="50%" [attr.src]="'menu.header.image.logo.url' | translate" [attr.alt]="'menu.header.image.logo' | translate" />
-		     </a>
-		</li>
-		<li><img width="50%" [attr.src]="'footer.image.cert' | translate" [attr.alt]="'footer.image.cert' | translate" /></li>
-		<li><a routerLink="info/feedback">Contact</a></li>
-	     </ul>
-	 </div>
-      </div>
       <!--Grid row-->
     </div>
   </div>
