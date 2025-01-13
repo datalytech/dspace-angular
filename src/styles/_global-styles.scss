@@ -21,6 +21,14 @@ html {
   border-bottom: 1px solid rgba(0, 0, 0, 0.125);
   font-weight: bold;
 }
+.badge-info{
+  color: #f0ae72  !important;
+  background-color: white  !important;
+}
+
+.badge{
+  padding: 0  !important;
+}
 
 #query{
   border: unset !important;
@@ -29,7 +37,7 @@ html {
 }
 
 a {
-  color: #f0ae72;
+  color: #252159;
   text-decoration: none;
   background-color: transparent;
 }
