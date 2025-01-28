@@ -1267,7 +1267,7 @@
 
   // "advanced-workflow-action-select-reviewer.groups.form.reviewers-list.button.see-all": "Browse All",
   // TODO New key - Add a translation
-  "advanced-workflow-action-select-reviewer.groups.form.reviewers-list.button.see-all": "Browse All",
+  "advanced-workflow-action-select-reviewer.groups.form.reviewers-list.button.see-all": "Περιήγηση Όλα",
 
   // "advanced-workflow-action-select-reviewer.groups.form.reviewers-list.headMembers": "Current Members",
   // TODO New key - Add a translation
@@ -1757,26 +1757,26 @@
 
   // "browse.metadata.ouname.breadcrumbs": "Browse by Name",
   // TODO New key - Add a translation
-  "browse.metadata.ouname.breadcrumbs": "Browse by Name",
+  "browse.metadata.ouname.breadcrumbs": "Περιήγηση ανά Τίτλο",
 
   // "browse.metadata.pjtitle.breadcrumbs": "Browse by Title",
   // TODO New key - Add a translation
-  "browse.metadata.pjtitle.breadcrumbs": "Browse by Title",
+  "browse.metadata.pjtitle.breadcrumbs": "Περιήγηση ανά Τίτλο",
 
   // "browse.metadata.rodept.breadcrumbs": "Browse by Department",
   // TODO New key - Add a translation
-  "browse.metadata.rodept.breadcrumbs": "Browse by Department",
+  "browse.metadata.rodept.breadcrumbs": "Περιήγηση ανά Τμήμα",
 
   // "browse.metadata.rpdept.breadcrumbs": "Browse by Department",
   // TODO New key - Add a translation
-  "browse.metadata.rpdept.breadcrumbs": "Browse by Department",
+  "browse.metadata.rpdept.breadcrumbs": "Περιήγηση ανά Τμήμα",
 
   // "browse.metadata.rpname.breadcrumbs": "Browse by Name",
   // TODO New key - Add a translation
-  "browse.metadata.rpname.breadcrumbs": "Browse by Name",
+  "browse.metadata.rpname.breadcrumbs": "Περιήγηση ανά Όνομα",
 
   // "browse.metadata.subject.breadcrumbs": "Browse by Subject",
-  "browse.metadata.subject.breadcrumbs": "Πλοήγηση ανά θέμα",
+  "browse.metadata.subject.breadcrumbs": "Πλοήγηση ανά Θέμα",
 
   // "browse.metadata.srsc.breadcrumbs": "Browse by Subject Category",
   // TODO New key - Add a translation
@@ -1796,10 +1796,10 @@
 
   // "browse.metadata.type.breadcrumbs": "Browse by Type",
   // TODO New key - Add a translation
-  "browse.metadata.type.breadcrumbs": "Browse by Type",
+  "browse.metadata.type.breadcrumbs": "Περιήγηση ανά Τύπο",
 
   // "browse.metadata.title.breadcrumbs": "Browse by Title",
-  "browse.metadata.title.breadcrumbs": "Πλοήγηση ανά τίτλο",
+  "browse.metadata.title.breadcrumbs": "Πλοήγηση ανά Τίτλο",
 
   // "pagination.next.button": "Next",
   "pagination.next.button": "Επόμενο",
@@ -1885,7 +1885,7 @@
 
   // "browse.taxonomy.button": "Browse",
   // TODO New key - Add a translation
-  "browse.taxonomy.button": "Browse",
+  "browse.taxonomy.button": "Περιήγηση",
 
   // "browse.title": "Browsing {{ collection }} by {{ field }}{{ startsWith }} {{ value }}",
   "browse.title": "Πλοήγηση στη {{ collection }} ανά {{ field }}{{ startsWith }} {{ value }}",
@@ -1900,7 +1900,7 @@
 
   // "bulk-import.back": "Back",
   // TODO New key - Add a translation
-  "bulk-import.back": "Back",
+  "bulk-import.back": "Επιστροφή",
 
   // "bulk-import.breadcrumbs": "Bulk import",
   // TODO New key - Add a translation
@@ -1908,7 +1908,7 @@
 
   // "bulk-import.collection-name": "Collection",
   // TODO New key - Add a translation
-  "bulk-import.collection-name": "Collection",
+  "bulk-import.collection-name": "Συλλογή",
 
   // "bulk-import.error": "An error occurred while creating the import process",
   // TODO New key - Add a translation
@@ -3727,7 +3727,7 @@
 
   // "explore.index.metric.view": "Most viewed",
   // TODO New key - Add a translation
-  "explore.index.metric.view": "Most viewed",
+  "explore.index.metric.view": "Πιο δημοφιλή",
 
   // "explore.index.metric.download": "Most downloaded",
   // TODO New key - Add a translation
@@ -3756,27 +3756,27 @@
 
   // "explore.index.dc.date.accessioned": "Recent Additions",
   // TODO New key - Add a translation
-  "explore.index.dc.date.accessioned": "Recent Additions",
+  "explore.index.dc.date.accessioned": "Πρόσφατες Προσθήκες",
 
   // "explore.index.dc.title": "Title",
   // TODO New key - Add a translation
-  "explore.index.dc.title": "Title",
+  "explore.index.dc.title": "Τίτλος",
 
   // "explore.index.editor": "Editor",
   // TODO New key - Add a translation
-  "explore.index.editor": "Editor",
+  "explore.index.editor": "Επιμελητής",
 
   // "explore.index.eqtitle": "Title",
   // TODO New key - Add a translation
-  "explore.index.eqtitle": "Title",
+  "explore.index.eqtitle": "Τίτλος",
 
   // "explore.index.eqowner": "Researcher",
   // TODO New key - Add a translation
-  "explore.index.eqowner": "Researcher",
+  "explore.index.eqowner": "Ερευνητής",
 
   // "explore.index.eqorgunit": "Organization",
   // TODO New key - Add a translation
-  "explore.index.eqorgunit": "Organization",
+  "explore.index.eqorgunit": "Οργανισμός",
 
   // "explore.index.entityType": "Entity type",
   // TODO New key - Add a translation
@@ -3784,7 +3784,7 @@
 
   // "explore.index.familyName": "Family name",
   // TODO New key - Add a translation
-  "explore.index.familyName": "Family name",
+  "explore.index.familyName": "Όνομα",
 
   // "explore.index.funding": "Funding",
   // TODO New key - Add a translation
@@ -3800,7 +3800,7 @@
 
   // "explore.index.investigators": "Researchers",
   // TODO New key - Add a translation
-  "explore.index.investigators": "Researchers",
+  "explore.index.investigators": "Ερευνητές",
 
   // "explore.index.isAuthorOfPublication": "Publication's author",
   // TODO New key - Add a translation
@@ -8547,7 +8547,7 @@
 
   // "search.filters.applied.f.language": "Language",
   // TODO New key - Add a translation
-  "search.filters.applied.f.language": "Language",
+  "search.filters.applied.f.language": "Γλώσσα",
 
   // "search.filters.applied.f.namedresourcetype": "Status",
   "search.filters.applied.f.namedresourcetype": "Κατάσταση",
@@ -8588,11 +8588,11 @@
 
   // "search.filters.applied.f.graphitemtype": "Item type",
   // TODO New key - Add a translation
-  "search.filters.applied.f.graphitemtype": "Item type",
+  "search.filters.applied.f.graphitemtype": "Τύπος υλικού",
 
   // "search.filters.applied.f.graphpubldate": "Public date",
   // TODO New key - Add a translation
-  "search.filters.applied.f.graphpubldate": "Public date",
+  "search.filters.applied.f.graphpubldate": "Ημερομηνία Δημοσίευσης",
 
   // "search.filters.applied.f.graphpubldateltr": "Public date LTR",
   // TODO New key - Add a translation
@@ -8616,7 +8616,7 @@
 
   // "search.filters.applied.charts.chart.pie.more-value": "More",
   // TODO New key - Add a translation
-  "search.filters.applied.charts.chart.pie.more-value": "More",
+  "search.filters.applied.charts.chart.pie.more-value": "Περισσότερα",
 
   // "search.filters.applied.charts.chart.pie.itemtype_filter.tab": "Item Type",
   // TODO New key - Add a translation
@@ -8648,7 +8648,7 @@
 
   // "search.filters.applied.charts.RELATION.Person.researchoutputs.title": "Research Output",
   // TODO New key - Add a translation
-  "search.filters.applied.charts.RELATION.Person.researchoutputs.title": "Research Output",
+  "search.filters.applied.charts.RELATION.Person.researchoutputs.title": "Αποτελέσματα Έρευνας",
 
   // "search.filters.applied.charts.RELATION.Project.fundings.title": "Fundings",
   // TODO New key - Add a translation
@@ -8656,7 +8656,7 @@
 
   // "search.filters.applied.charts.RELATION.Project.researchoutputs.title": "Research Output",
   // TODO New key - Add a translation
-  "search.filters.applied.charts.RELATION.Project.researchoutputs.title": "Research Output",
+  "search.filters.applied.charts.RELATION.Project.researchoutputs.title": "Αποτελέσματα Έρευνας",
 
   // "search.filters.applied.charts.no.data.found": "No data found",
   // TODO New key - Add a translation
@@ -13285,9 +13285,9 @@
   // "layout.field.label.Person.[person.identifier.rid]": "Researcher ID",
   // TODO New key - Add a translation
   "layout.field.label.Person.[person.identifier.rid]": "Researcher ID",
-  // "layout.field.label.Person.[dc.description.abstract]": "Biography",
+  // "layout.field.label.Person.[dc.description.abstract]": "Narrative CV / Open Science impact",
   // TODO New key - Add a translation
-  "layout.field.label.Person.[dc.description.abstract]": "Biography",
+  "layout.field.label.Person.[dc.description.abstract]": "Narrative CV / Open Science impact",
   // "layout.field.label.Person.[oairecerif.person.affiliation]": "Affiliation",
   // TODO New key - Add a translation
   "layout.field.label.Person.[oairecerif.person.affiliation]": "Affiliation",

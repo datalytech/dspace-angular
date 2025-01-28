@@ -7669,7 +7669,7 @@
   "layout.field.label.Person.[person.identifier.orcid]": "ORCID",
   "layout.field.label.Person.[person.identifier.scopus-author-id]": "Scopus ID",
   "layout.field.label.Person.[person.identifier.rid]": "Researcher ID",
-  "layout.field.label.Person.[dc.description.abstract]": "Biography",
+  "layout.field.label.Person.[dc.description.abstract]": "Narrative CV / Open Science impact",
   "layout.field.label.Person.[oairecerif.person.affiliation]": "Affiliation",
   "layout.field.label.Person.[crisrp.education]": "Education",
   "layout.field.label.Person.[crisrp.country]": "Country",
