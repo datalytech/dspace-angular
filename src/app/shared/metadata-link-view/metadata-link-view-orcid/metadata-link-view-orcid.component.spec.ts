@@ -14,7 +14,7 @@ describe('MetadataLinkViewOrcidComponent', () => {
   let fixture: ComponentFixture<MetadataLinkViewOrcidComponent>;
 
   const configurationDataService = jasmine.createSpyObj('configurationDataService', {
-    findByPropertyName: createSuccessfulRemoteDataObject$({ values: ['https://sandbox.orcid.org'] })
+    findByPropertyName: createSuccessfulRemoteDataObject$({ values: ['https://orcid.org'] })
   });
 
 

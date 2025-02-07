@@ -1,5 +1,5 @@
 <ng-container *ngIf="showIconLink; else showOrcidNumberLink">
-  <a *ngIf="!!orcidContributors.get(currentContributorName)" class="d-flex" [href]="'https://sandbox.orcid.org/' + orcidContributors.get(currentContributorName)">
+  <a *ngIf="!!orcidContributors.get(currentContributorName)" class="d-flex" [href]="'https://orcid.org/' + orcidContributors.get(currentContributorName)">
     <img class="orcid-link-icon" src="assets/images/orcid.svg" alt="ORCID link icon">
   </a>
 </ng-container>

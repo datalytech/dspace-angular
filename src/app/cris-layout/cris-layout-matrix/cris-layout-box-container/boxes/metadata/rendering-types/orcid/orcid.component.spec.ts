@@ -133,7 +133,7 @@ describe('OrcidComponent', () => {
   let fixture: ComponentFixture<OrcidComponent>;
 
   const configurationDataService = jasmine.createSpyObj('configurationDataService', {
-    findByPropertyName: createSuccessfulRemoteDataObject$({ values: ['https://sandbox.orcid.org'] })
+    findByPropertyName: createSuccessfulRemoteDataObject$({ values: ['https://orcid.org'] })
   });
 
   const metadataValue = Object.assign(new MetadataValue(), {
@@ -213,7 +213,7 @@ describe('OrcidComponent', () => {
 
       const orcidLinkFound = fixture.debugElement.queryAll(By.css('a'));
       expect(orcidLinkFound.length).toBe(1);
-      expect(orcidLinkFound[0].nativeElement.href).toBe('https://sandbox.orcid.org/0000-0001-8918-3592');
+      expect(orcidLinkFound[0].nativeElement.href).toBe('https://orcid.org/0000-0001-8918-3592');
 
       const orcidIconFound = fixture.debugElement.queryAll(By.css('.orcid-icon'));
       expect(orcidIconFound.length).toBe(1);
