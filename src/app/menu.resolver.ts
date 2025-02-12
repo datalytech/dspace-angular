@@ -112,7 +112,7 @@
         model: {
           type: MenuItemType.LINK,
           text: `menu.section.communities_and_collections`,
-          link: `/communities/fd94ab7a-9897-4a08-8723-a35e2e4211b9`
+          link: `/community-list`
         } as LinkMenuItemModel
       };
 
