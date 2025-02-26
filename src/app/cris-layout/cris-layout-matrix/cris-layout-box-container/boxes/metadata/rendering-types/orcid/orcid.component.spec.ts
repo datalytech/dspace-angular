@@ -62,7 +62,7 @@ describe('OrcidComponent', () => {
   beforeEach(fakeAsync(() => {
 
     configurationDataService = jasmine.createSpyObj('configurationDataService', {
-      findByPropertyName: createSuccessfulRemoteDataObject$({ values: ['https://sandbox.orcid.org'] })
+      findByPropertyName: createSuccessfulRemoteDataObject$({ values: ['https://orcid.org'] })
     });
 
     TestBed.configureTestingModule({
@@ -97,7 +97,7 @@ describe('OrcidComponent', () => {
 
       const orcidLinkFound = fixture.debugElement.queryAll(By.css('a'));
       expect(orcidLinkFound.length).toBe(1);
-      expect(orcidLinkFound[0].nativeElement.href).toBe('https://sandbox.orcid.org/0000-0001-8918-3592');
+      expect(orcidLinkFound[0].nativeElement.href).toBe('https://orcid.org/0000-0001-8918-3592');
 
       const orcidIconFound = fixture.debugElement.queryAll(By.css('.orcid-icon'));
       expect(orcidIconFound.length).toBe(1);
