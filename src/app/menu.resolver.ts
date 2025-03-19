@@ -163,9 +163,40 @@
                 } as LinkMenuItemModel
               };
             }
+            
+		if (section.id !== 'researcherprofiles' && section.id !== 'fundings_and_projects'){
             menuList.push(parentMenu);
-          });
+		}          
+
+});
         }
+
+const GrantMenuItem = {
+          id: `browse_global_fundings_and_projects`,
+          active: false,
+          visible: true,
+          model: {
+            type: MenuItemType.LINK,
+            text: `menu.section.explore_fundings_and_projects`,
+            link: `/browse/pjtitle`
+          } as LinkMenuItemModel
+        };
+
+        const PersonMenuItem = {
+          id: `browse_global_researcherprofiles`,
+          active: false,
+          visible: true,
+          model: {
+            type: MenuItemType.LINK,
+            text: `menu.section.explore_researcherprofiles`,
+            link: `/browse/rpname`
+          } as LinkMenuItemModel
+        };
+  
+        menuList.push(GrantMenuItem);
+        menuList.push(PersonMenuItem);
+
+
         menuList.forEach((menuSection) => this.menuService.addSection(MenuID.PUBLIC, Object.assign(menuSection, {
           shouldPersistOnRouteChange: true
         })));
