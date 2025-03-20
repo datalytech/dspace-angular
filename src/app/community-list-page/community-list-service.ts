@@ -251,21 +251,24 @@ export class CommunityListService {
           elementsPerPage: this.pageSize,
           currentPage: i
         })
-          .pipe(
-            getFirstCompletedRemoteData(),
-            map((rd: RemoteData<PaginatedList<Collection>>) => {
-              if (hasValue(rd) && hasValue(rd.payload)) {
-                let nodes = rd.payload.page
-                  .map((collection: Collection) => toFlatNode(collection, observableOf(false), level + 1, false, communityFlatNode));
-                if (currentCollectionPage < rd.payload.totalPages && currentCollectionPage === rd.payload.currentPage) {
-                  nodes = [...nodes, showMoreFlatNode(`collection-${uuidv4()}`, level + 1, communityFlatNode)];
-                }
-                return nodes;
-              } else {
-                return [];
+        .pipe(
+          getFirstCompletedRemoteData(),
+          map((rd: RemoteData<PaginatedList<Collection>>) => {
+            if (hasValue(rd) && hasValue(rd.payload)) {
+              const filteredCollections = rd.payload.page.filter(
+                (collection: Collection) => !collection.id.includes('b97f5196-63dc-4e41-b3b3-d5e2918f57ef')
+              );
+              let nodes = filteredCollections
+                .map((collection: Collection) => toFlatNode(collection, observableOf(false), level + 1, false, communityFlatNode));
+              if (currentCollectionPage < rd.payload.totalPages && currentCollectionPage === rd.payload.currentPage) {
+                nodes = [...nodes, showMoreFlatNode(`collection-${uuidv4()}`, level + 1, communityFlatNode)];
               }
-            }),
-          );
+              return nodes;
+            } else {
+              return [];
+            }
+          }),
+        );
         collections = [...collections, nextSetOfCollectionsPage];
       }
       obsList = [...obsList, combineAndFlatten(collections)];

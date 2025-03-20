@@ -1,0 +1,23 @@
+:host {
+  ::ng-deep {
+
+
+a[href="/collections/b97f5196-63dc-4e41-b3b3-d5e2918f57ef"] {
+    visibility: hidden;
+}
+
+li:has(a[href="/collections/b97f5196-63dc-4e41-b3b3-d5e2918f57ef"]) {
+    display: none;
+}
+
+@supports selector(:has(a)) {
+    li:has(a[href="/collections/b97f5196-63dc-4e41-b3b3-d5e2918f57ef"]) {
+        display: none;
+    }
+}
+
+
+
+}
+}
+
