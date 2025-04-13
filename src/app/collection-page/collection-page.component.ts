@@ -90,8 +90,7 @@ export class CollectionPageComponent implements OnInit {
 
     this.collectionRD$ = this.route.data.pipe(
       map((data) => data.dso as RemoteData<Collection>),
-      redirectOn4xx(this.router, this.authService),
-      take(1)
+      redirectOn4xx(this.router, this.authService)
     );
     this.logoRD$ = this.collectionRD$.pipe(
       map((rd: RemoteData<Collection>) => rd.payload),
