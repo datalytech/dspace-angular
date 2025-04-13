@@ -171,14 +171,14 @@
 });
         }
 
-const GrantMenuItem = {
+        const GrantMenuItem = {
           id: `browse_global_fundings_and_projects`,
           active: false,
           visible: true,
           model: {
             type: MenuItemType.LINK,
             text: `menu.section.explore_fundings_and_projects`,
-            link: `/browse/pjtitle`
+            link: `/collections/c75e6888-3061-44b4-bc13-f024f1703b09`
           } as LinkMenuItemModel
         };
 
@@ -189,7 +189,7 @@ const GrantMenuItem = {
           model: {
             type: MenuItemType.LINK,
             text: `menu.section.explore_researcherprofiles`,
-            link: `/browse/rpname`
+            link: `/collections/b97f5196-63dc-4e41-b3b3-d5e2918f57ef` 
           } as LinkMenuItemModel
         };
   
