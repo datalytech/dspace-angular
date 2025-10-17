@@ -210,6 +210,9 @@ export class CommunityListService {
     let isExpanded = false;
     if (isNotEmpty(expandedNodes)) {
       isExpanded = hasValue(expandedNodes.find((node) => (node.id === community.id)));
+    } else {
+      // Default: open top-level communities when there is no stored expansion state
+      isExpanded = level === 0;
     }
 
     const isExpandable$ = this.getIsExpandable(community);
@@ -219,7 +222,10 @@ export class CommunityListService {
     let obsList = [observableOf([communityFlatNode])];
 
     if (isExpanded) {
-      const currentCommunityPage = expandedNodes.find((node: FlatNode) => node.id === community.id).currentCommunityPage;
+      const expandedNodeEntry = isNotEmpty(expandedNodes)
+        ? expandedNodes.find((node: FlatNode) => node.id === community.id)
+        : undefined;
+      const currentCommunityPage = expandedNodeEntry && expandedNodeEntry.currentCommunityPage ? expandedNodeEntry.currentCommunityPage : 1;
       let subcoms = [];
       for (let i = 1; i <= currentCommunityPage; i++) {
         const nextSetOfSubcommunitiesPage = this.communityDataService.findByParent(community.uuid, {
@@ -244,7 +250,7 @@ export class CommunityListService {
 
       obsList = [...obsList, combineAndFlatten(subcoms)];
 
-      const currentCollectionPage = expandedNodes.find((node: FlatNode) => node.id === community.id).currentCollectionPage;
+      const currentCollectionPage = expandedNodeEntry && expandedNodeEntry.currentCollectionPage ? expandedNodeEntry.currentCollectionPage : 1;
       let collections = [];
       for (let i = 1; i <= currentCollectionPage; i++) {
         const nextSetOfCollectionsPage = this.collectionDataService.findByParent(community.uuid, {
