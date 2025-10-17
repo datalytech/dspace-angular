@@ -3,7 +3,7 @@ import { Inject, Injectable } from '@angular/core';
 import { createSelector, Store } from '@ngrx/store';
 
 import { combineLatest as observableCombineLatest, Observable, of as observableOf } from 'rxjs';
-import { filter, map, switchMap } from 'rxjs/operators';
+import { filter, map, switchMap, startWith, catchError } from 'rxjs/operators';
 
 import { AppState } from '../app.reducer';
 import { CommunityDataService } from '../core/data/community-data.service';
@@ -30,7 +30,7 @@ import { v4 as uuidv4 } from 'uuid';
 export const combineAndFlatten = (obsList: Observable<FlatNode[]>[]): Observable<FlatNode[]> =>
   observableCombineLatest([...obsList]).pipe(
     map((matrix: any[][]) => [].concat(...matrix)),
-    filter((arr: any[]) => arr.every((e) => hasValue(e))),
+    filter((arr: any[]) => arr.every((e) => e !== null && e !== undefined)),
   );
 
 /**
@@ -90,6 +90,7 @@ const loadingNodeSelector = createSelector(communityListStateSelector, (communit
 export class CommunityListService {
 
   private pageSize: number;
+  private initialAutoExpandDone = false;
 
   constructor(
     @Inject(APP_CONFIG) protected appConfig: AppConfig,
@@ -180,7 +181,11 @@ export class CommunityListService {
     if (isNotEmpty(listOfPaginatedCommunities.page)) {
       let currentPage = listOfPaginatedCommunities.currentPage;
       if (isNotEmpty(parent)) {
-        currentPage = expandedNodes.find((node: FlatNode) => node.id === parent.id).currentCommunityPage;
+        const parentEntry = isNotEmpty(expandedNodes)
+          ? expandedNodes.find((node: FlatNode) => node.id === parent.id)
+          : undefined;
+        const parentCurrentPage = parentEntry && parentEntry.currentCommunityPage ? parentEntry.currentCommunityPage : 1;
+        currentPage = parentCurrentPage;
       }
       let obsList = listOfPaginatedCommunities.page
         .map((community: Community) => {
@@ -208,10 +213,18 @@ export class CommunityListService {
    */
   public transformCommunity(community: Community, level: number, parent: FlatNode, expandedNodes: FlatNode[]): Observable<FlatNode[]> {
     let isExpanded = false;
-    if (isNotEmpty(expandedNodes)) {
-      isExpanded = hasValue(expandedNodes.find((node) => (node.id === community.id)));
+    const expandedNodesProvided = typeof expandedNodes !== 'undefined' && expandedNodes !== null;
+    if (expandedNodesProvided) {
+      // If store provided but empty on first render, auto-expand top level once
+      if (!this.initialAutoExpandDone && expandedNodes.length === 0 && level === 0) {
+        isExpanded = true;
+        this.initialAutoExpandDone = true;
+      } else {
+        // Respect explicit expansion only; if array is empty after first render, nothing is expanded
+        isExpanded = hasValue(expandedNodes.find((node) => node.id === community.id));
+      }
     } else {
-      // Default: open top-level communities when there is no stored expansion state
+      // No store state provided yet: auto-expand top-level
       isExpanded = level === 0;
     }
 
@@ -235,20 +248,21 @@ export class CommunityListService {
           followLink('subcommunities', { findListOptions: this.configOnePage }),
           followLink('collections', { findListOptions: this.configOnePage }))
           .pipe(
-            getFirstCompletedRemoteData(),
+            getFirstSucceededRemoteData(),
             switchMap((rd: RemoteData<PaginatedList<Community>>) => {
               if (hasValue(rd) && hasValue(rd.payload)) {
                 return this.transformListOfCommunities(rd.payload, level + 1, communityFlatNode, expandedNodes);
               } else {
                 return observableOf([]);
               }
-            })
+            }),
+            catchError(() => observableOf<FlatNode[]>([]))
           );
 
         subcoms = [...subcoms, nextSetOfSubcommunitiesPage];
       }
 
-      obsList = [...obsList, combineAndFlatten(subcoms)];
+      obsList = [...obsList, combineAndFlatten(subcoms).pipe(startWith([]))];
 
       const currentCollectionPage = expandedNodeEntry && expandedNodeEntry.currentCollectionPage ? expandedNodeEntry.currentCollectionPage : 1;
       let collections = [];
@@ -258,7 +272,7 @@ export class CommunityListService {
           currentPage: i
         })
         .pipe(
-          getFirstCompletedRemoteData(),
+          getFirstSucceededRemoteData(),
           map((rd: RemoteData<PaginatedList<Collection>>) => {
             if (hasValue(rd) && hasValue(rd.payload)) {
               const filteredCollections = rd.payload.page.filter(
@@ -274,10 +288,11 @@ export class CommunityListService {
               return [];
             }
           }),
+          catchError(() => observableOf<FlatNode[]>([]))
         );
         collections = [...collections, nextSetOfCollectionsPage];
       }
-      obsList = [...obsList, combineAndFlatten(collections)];
+      obsList = [...obsList, combineAndFlatten(collections).pipe(startWith([]))];
     }
 
     return combineAndFlatten(obsList);
