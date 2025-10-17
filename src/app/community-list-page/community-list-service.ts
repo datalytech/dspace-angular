@@ -214,14 +214,22 @@ export class CommunityListService {
   public transformCommunity(community: Community, level: number, parent: FlatNode, expandedNodes: FlatNode[]): Observable<FlatNode[]> {
     let isExpanded = false;
     const expandedNodesProvided = typeof expandedNodes !== 'undefined' && expandedNodes !== null;
+    const hasExplicitExpansion = isNotEmpty(expandedNodes) && hasValue(expandedNodes.find((node) => node.id === community.id));
+    const hasExplicitTopLevel = isNotEmpty(expandedNodes) && expandedNodes.some((node) => node.level === 0);
+    const hasExpandedDirectChild = isNotEmpty(expandedNodes) && expandedNodes.some((node) => node.parent && node.parent.id === community.id);
     if (expandedNodesProvided) {
-      // If store provided but empty on first render, auto-expand top level once
-      if (!this.initialAutoExpandDone && expandedNodes.length === 0 && level === 0) {
+      // Auto-expand top-level once on fresh navigation when store is empty
+      if (!this.initialAutoExpandDone && expandedNodes.length === 0 && level === 0 && !parent) {
         isExpanded = true;
         this.initialAutoExpandDone = true;
       } else {
-        // Respect explicit expansion only; if array is empty after first render, nothing is expanded
-        isExpanded = hasValue(expandedNodes.find((node) => node.id === community.id));
+        // Respect explicit expansion; additionally, to avoid tree disappearing when expanding a child,
+        // keep top-level open if a direct child is expanded and there is no other explicit top-level state yet
+        if (level === 0 && !hasExplicitExpansion && !hasExplicitTopLevel && hasExpandedDirectChild) {
+          isExpanded = true;
+        } else {
+          isExpanded = hasExplicitExpansion;
+        }
       }
     } else {
       // No store state provided yet: auto-expand top-level
