@@ -13,6 +13,7 @@
   import { filter, find, map, switchMap, take } from 'rxjs/operators';
   import { hasValue } from './shared/empty.util';
   import { FeatureID } from './core/data/feature-authorization/feature-id';
+  import { AuthService } from './core/auth/auth.service';
   import {
     ThemedCreateCommunityParentSelectorComponent
   } from './shared/dso-selector/modal-wrappers/create-community-parent-selector/themed-create-community-parent-selector.component';
@@ -69,13 +70,14 @@
       protected authorizationService: AuthorizationDataService,
       protected modalService: NgbModal,
       protected scriptDataService: ScriptDataService,
+      protected authService: AuthService,
       protected sectionDataService: SectionDataService,
     ) {
     }
 
-    /**
-     * Initialize all menus
-     */
+  /**
+   * Initialize all menus
+   */
     resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean> {
       return observableCombineLatest([
         this.createPublicMenu$(),
@@ -209,12 +211,13 @@
     createStatisticsMenu() {
       this.activatedRouteLastChild = this.getActivatedRoute(this.route);
       observableCombineLatest([
+        this.authService.isAuthenticated(),
         this.getAuthorizedUsageStatistics(),
         this.getAuthorizedLoginStatistics(),
         this.getAuthorizedWorkflowStatistics()
-      ]).pipe(take(1)).subscribe(([canViewUsage, canViewLogin, canViewWorkflow]) => {
+      ]).pipe(take(1)).subscribe(([authenticated, canViewUsage, canViewLogin, canViewWorkflow]) => {
         const menuList = [];
-        if (canViewUsage || canViewLogin || canViewWorkflow) {
+        if (authenticated && (canViewUsage || canViewLogin || canViewWorkflow)) {
           if (canViewUsage) {
             menuList.push({
               id: 'statistics_site',
