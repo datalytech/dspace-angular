@@ -47,7 +47,7 @@ export class AdminBibliometrisComponent implements OnInit, OnDestroy {
 
   myForm = this.fb.group({
     exportApi: ["/api/authors/rp00036/export", Validators.required],
-    email: ["kostisalex@gmail.com", [Validators.required, Validators.email]],
+    email: ["acg@dataly.gr", [Validators.required, Validators.email]],
     publish: [false, Validators.required],
   });
 
