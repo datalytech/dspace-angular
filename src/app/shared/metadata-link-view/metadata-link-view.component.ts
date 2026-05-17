@@ -117,8 +117,7 @@ export class MetadataLinkViewComponent implements OnInit {
   metadataValue: MetadataValue
 ): Observable<MetadataView> {
   const linksToFollow = [followLink('thumbnail')];
-/*
-  console.log('[MLV DEBUG getMetadataView input]', {
+/*  console.log('[MLV DEBUG getMetadataView input]', {
     metadataName: this.metadataName,
     metadataValue,
     value: metadataValue?.value,
