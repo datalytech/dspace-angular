@@ -1,7 +1,11 @@
-  <div class="d-inline-block" *ngVar="(metadataView$ | async) as metadataView">
-    <ng-container *ngIf="metadataView" [ngTemplateOutlet]="metadataView?.authority ? linkToAuthority : (metadataView?.entityType ? textWithIcon : textWithoutIcon)"
-                    [ngTemplateOutletContext]="{metadataView: metadataView}"></ng-container>
-  </div>
+<div class="d-inline-block">
+  <ng-container *ngIf="metadataView$ | async as metadataView">
+    <ng-container
+      [ngTemplateOutlet]="metadataView?.authority ? linkToAuthority : (metadataView?.entityType ? textWithIcon : textWithoutIcon)"
+      [ngTemplateOutletContext]="{ metadataView: metadataView }">
+    </ng-container>
+  </ng-container>
+</div>
   <ng-template class="d-flex" #linkToAuthority let-metadataView="metadataView">
     <div class="item-wrapper">
       <ds-metadata-link-view-orcid
@@ -16,15 +20,32 @@
             [autoClose]="'outside'"
             container="body"
             triggers="mouseenter:mouseleave">
-        <a rel="noopener noreferrer" data-test="linkToAuthority"
+<!--        <a rel="noopener noreferrer" data-test="linkToAuthority"
           [routerLink]="['/items/' + metadataView.authority]">
-          <span dsEntityIcon
+	   <span dsEntityIcon
                 [iconPosition]="iconPosition"
                 [entityType]="metadataView.entityType"
                 [entityStyle]="metadataView.entityStyle">
-                    {{metadataView.value}}
-            </span>
-        </a>
+		   {{metadataView.value}}
+	  </span>
+</a>-->
+	<a rel="noopener noreferrer"
+   		data-test="linkToAuthority"
+		[routerLink]="['/items', metadataView.authority]">
+
+	  <ng-container *ngIf="metadataView.entityType; else plainLinkedText">
+    		<span dsEntityIcon
+          	[iconPosition]="iconPosition"
+          	[entityType]="metadataView.entityType"
+          	[entityStyle]="metadataView.entityStyle">
+      		{{ metadataView.value }}
+    		</span>
+  	  </ng-container>
+
+  	  <ng-template #plainLinkedText>
+    		{{ metadataView.value }}
+  	  </ng-template>
+	</a>
       </span>
       <img *ngIf="metadataView.orcidAuthenticated"
           placement="top"
@@ -64,8 +85,9 @@
       <span data-test="textWithoutIcon">{{normalizeValue(metadataView.value)}}</span>
     </div>
   </ng-template>
-
   <ng-template #popContent>
-    <ds-metadata-link-view-popover [item]="relatedItem"></ds-metadata-link-view-popover>
-  </ng-template>
-
+  <ds-metadata-link-view-popover
+    *ngIf="relatedItem"
+    [item]="relatedItem">
+  </ds-metadata-link-view-popover>
+  </ng-template> 

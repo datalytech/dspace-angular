@@ -3,12 +3,6 @@ html {
     min-height: 100%;
 }
 
-.search-button{
-  color: black !important;
-  background: unset !important;
-  border: unset !important;
-  box-shadow: unset !important;
-}
 .card{
   background-color: #fff !important;
   border: unset !important;
@@ -24,16 +18,14 @@ html {
 .badge-info{
   color: #f0ae72  !important;
   background-color: white  !important;
-}
-
-.badge{
-  padding: 0  !important;
+  padding: 0 !important;
 }
 
 #query{
   border: unset !important;
   border-bottom: 1px solid #232323   !important;
   box-shadow: unset !important;
+  border-radius:0px;
 }
 
 a {
@@ -46,31 +38,31 @@ body {
   font-family: 'Roboto', sans-serif;
   overflow-x: hidden;
   font-weight: 400; // Regular
-      font-size: 14pt;
+      font-size: 12pt; //14
 
   h1 {
       font-weight: 400; // Regular
-      font-size: 22pt;
+      font-size: 18pt; //22
   }
 
   h2 {
       font-weight: 300; // Light
-      font-size: 20pt;
+      font-size: 16pt; //20
   }
 
   h3 {
       font-weight: 300; // Light
-      font-size: 18pt;
+      font-size: 14pt; //18
   }
 
   h4 {
       font-weight: 700; // Bold
-      font-size: 16pt;
+      font-size: 12pt; //16
   }
 
   h5 {
       font-weight: 300; // Light version
-      font-size: 14pt;
+      font-size: 12pt; //14
       &.regular {
           font-weight: 400; // Regular version
       }
@@ -78,12 +70,12 @@ body {
 
   h6 {
       font-weight: 300; // Light
-      font-size: 12pt;
+      font-size: 11pt; //12
   }
 
   p {
       font-weight: 400; // Regular
-      font-size: 14pt;
+      font-size: 12pt; //14
   }
 }
 
@@ -375,7 +367,7 @@ ul.dso-edit-menu-dropdown > li .nav-item.nav-link {
 .gap-0 { gap: 0; }
 .gap-1 { gap: calc(#{$spacer} * .25); }
 .gap-2 { gap: calc(#{$spacer} * .5); }
-.gap-3 { gap: #{$spacer}; }
+.gap-3 { gap: calc(#{$spacer} * .5); margin-top: calc(#{$spacer} * .5); margin-bottom: calc(#{$spacer} * .5);}
 .gap-4 { gap: calc(#{$spacer} * 1.5); }
 .gap-5 { gap: calc(#{$spacer} * 3); }
 
@@ -453,6 +445,6 @@ ul.dso-edit-menu-dropdown > li .nav-item.nav-link {
 
 @media (min-width: 1200px) {
   .container-xl, .container-lg, .container-md, .container-sm, .container {
-      max-width: 1600px;
+      max-width: 1400px; /* normal 1140 was 1600 */
   }
 }

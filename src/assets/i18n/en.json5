@@ -36,7 +36,7 @@
 
   "error-page.description.404": "page not found",
 
-  "error-page.orcid.generic-error": "An error occurred during login via ORCID. Make sure you have shared your ORCID account email address with DSpace. If the error persists, contact the administrator",
+  "error-page.orcid.generic-error": "An error occurred during login via ORCID. Make sure you have shared your ORCID account email address with Sphere. If the error persists, contact the administrator",
 
   "access-status.embargo.listelement.badge": "Embargo",
 
@@ -998,8 +998,20 @@
 
   "browse.comcol.by.type": "By Type",
   
-  "browse.comcol.by.rpfacu": "By Faculty",
+  "browse.comcol.by.rpfacu": "By School",
   "browse.comcol.by.rpsubj": "By Interest",
+
+  "browse.comcol.by.rpprog": "By Program",
+ 
+  "browse.comcol.by.rprinst": "By Research Unit",
+
+  "browse.comcol.by.roschool": "By School",
+  "browse.comcol.by.psupervisor": "By Supervisor",
+  "browse.comcol.by.prprogram": "By Program",
+  "browse.comcol.by.oudept": "By Department",
+  "browse.comcol.by.outype": "By Type",
+  "browse.comcol.by.pinvest": "By Principal Investigator",
+  "browse.comcol.by.pstatus": "By Status",
 
   "browse.comcol.head": "Browse",
 
@@ -1030,6 +1042,15 @@
   "browse.metadata.type": "Type",
 
   "browse.metadata.title": "Title",
+
+  "browse.metadata.roschool": "School",
+  "browse.metadata.psupervisor": "Supervisor",
+  "browse.metadata.prprogram": "Program",
+  "browse.metadata.oudept": "Department",
+  "browse.metadata.outype": "Type",
+  "browse.metadata.pinvest": "Principal Investigator",
+  "browse.metadata.pstatus": "Status",
+
 
   "browse.metadata.author.breadcrumbs": "Browse by Author",
 
@@ -1064,6 +1085,15 @@
   "browse.metadata.type.breadcrumbs": "Browse by Type",
 
   "browse.metadata.title.breadcrumbs": "Browse by Title",
+
+  "browse.metadata.roschool.breadcrumbs": "Browse by School",
+  "browse.metadata.psupervisor.breadcrumbs": "Browse by Supervisor",
+  "browse.metadata.prprogram.breadcrumbs": "Browse by Program",
+  "browse.metadata.oudept.breadcrumbs": "Browse by Department",
+  "browse.metadata.outype.breadcrumbs": "Browse by Type",
+  "browse.metadata.pinvest.breadcrumbs": "Browse by Principal Investigator",
+  "browse.metadata.pstatus.breadcrumbs": "Browse by Status",
+
 
   "pagination.next.button": "Next",
 
@@ -1977,7 +2007,7 @@
 
   "dso-selector.set-scope.community.head": "Select a search scope",
 
-  "dso-selector.set-scope.community.button": "Search all of DSpace",
+  "dso-selector.set-scope.community.button": "Search all of Sphere",
 
   "dso-selector.set-scope.community.or-divider": "or",
 
@@ -2174,7 +2204,7 @@
   "event.listelement.badge": "Event",
 
 
-  "explore.browse-section.title": "Browse",
+  "explore.browse-section.title": "Browse By",
 
   "explore.counters-section.rprofiles": "People",
 
@@ -2193,6 +2223,7 @@
   "explore.index.graphpubldate": "Graph by date",
 
   "explore.index.birthDate": "Birthday",
+  "explore.index.roschool": "School",
 
   "explore.index.metric.view": "Most viewed",
 
@@ -2263,7 +2294,7 @@
 
   "explore.index.itemidentifier": "Item identifier",
 
-  "explore.index.jobTitle": "Job title",
+  "explore.index.jobTitle": "Rank title",
 
   "explore.index.knowsLanguage": "Knows languages",
 
@@ -2303,15 +2334,24 @@
 
   "explore.index.type": "Type",
 
-  "explore.index.awardnumber" : "Grant No",
-  "explore.index.title" : "Title",
-  "explore.index.rpfacu" : "Faculty",
-  "explore.index.rpsubj" : "Interests",
-  "explore.index.projectType" : "Project Type",
-  "explore.index.personOrgUnitsDepartment" : "Department",
-  "explore.index.personOrgUnitsFaculty" : "Faculty",
-  "explore.index.namePerson" : "Name",
-
+  "explore.index.awardnumber": "Grant No",
+  "explore.index.title": "Title",
+  "explore.index.rpfacu": "School",
+  "explore.index.rpsubj": "Interests",
+  "explore.index.projectType": "Project Type",
+  "explore.index.personOrgUnitsDepartment": "Department",
+  "explore.index.personOrgUnitsFaculty": "School",
+  "explore.index.namePerson": "Name",
+  "explore.index.program": "Program",
+  "explore.index.department": "Department",
+  "explore.index.itemtype": "Type",
+  "explore.index.projectResearcherFaculty": "School",
+  "explore.index.projectResearcherProgram": "Program",
+  "explore.index.projectResearcherFundingprogram": "Funding Program",
+  "explore.index.faculty": "School",
+  "explore.index.personOrgUnitsInstitute": "Research Unit",
+  "explore.index.rpprog": "Program",
+ 
   "explore.search-section.infrastructure.title": "Infrastructure",
 
   "explore.search-section.fundings.title": "Search Projects",
@@ -2631,17 +2671,14 @@
   "health-page.section.no-issues": "No issues detected",
 
   "home.description": "",
-  "home.text1":"The University of Cyprus pursues the continuous advancement of science and the wide dissemination of knowledge for the benefit of society through the adoption of good practices of open, reproducible and responsible research. In the context of supporting the National and Institutional Open Science policy, the University of Cyprus simultaneously encourages and supports the implementation of Open Science and open access to the research results of the affiliated researchers and supports the implementation of the necessary infrastructure for the implementation of Open Science practices.",
-  "home.text2": "The Institutional Repository GNOSIS is the digital infrastructure of the University of Cyprus that aspires to gather the intellectual output of the Institution. Through the Institutional repository, research results, scientific publications of the academic and researcher community of the University of Cyprus, doctoral and postgraduate theses, as well as other material from the collection of the Library of the University of Cyprus, which is also responsible for the repository, are presented.",
-  "home.text3": "The Institutional repository GNOSIS operates according to international standards of Institutional repositories and is compatible with European infrastructures (e.g. OPENAIRE).",
-
+  
   "home.breadcrumbs": "Home",
 
   "home.search-form.placeholder": "Search the repository ...",
 
   "home.title": "Home",
 
-  "home.top-level-communities.head": "Communities in DSpace Cris",
+  "home.top-level-communities.head": "Communities in Sphere",
 
   "home.top-level-communities.help": "Search for a collection",
 
@@ -2679,7 +2716,7 @@
 
   "info.feedback.title": "Feedback",
 
-  "info.feedback.info": "Thanks for sharing your feedback about the DSpace system. Your comments are appreciated!",
+  "info.feedback.info": "Thanks for sharing your feedback about the Sphere system. Your comments are appreciated!",
 
   "info.feedback.email_help": "This address will be used to follow up on your feedback.",
 
@@ -3248,7 +3285,7 @@
 
   "item.page.orcid.tooltip": "Open ORCID setting page",
 
-  "item.page.metric.acquisition-date": "Acquisition Date",
+  "item.page.metric.acquisition-date": "Last Update",
 
   "item.page.metric.deltaPeriod1": "Last Week",
 
@@ -3475,7 +3512,7 @@
 
   "item.preview.organization.legalName": "Legal Name",
 
-  "item.preview.person.identifier.rid": "Researcher ID:",
+  "item.preview.person.identifier.rid": "WoS ID:",
 
   "item.preview.person.identifier.scopus-author-id": "Scopus Author Id",
 
@@ -3785,7 +3822,7 @@
 
   "login.form.forgot-password": "Have you forgotten your password?",
 
-  "login.form.header": "Please log in to DSpace",
+  "login.form.header": "Please log in to Sphere",
 
   "login.form.new-user": "New user? Click here to register.",
 
@@ -3795,7 +3832,7 @@
 
   "login.form.password": "Password",
 
-  "login.form.shibboleth": "Log in with Shibboleth",
+  "login.form.shibboleth": "Log in with Institutional Account",
 
   "login.form.submit": "Log in",
 
@@ -3803,7 +3840,7 @@
 
   "login.breadcrumbs": "Login",
 
-  "logout.form.header": "Log out from DSpace",
+  "logout.form.header": "Log out from Sphere",
 
   "logout.form.submit": "Log out",
 
@@ -3895,7 +3932,7 @@
 
   "menu.section.explore_projects": "Projects",
 
-  "menu.section.explore_fundings_and_projects": "Fundings & Projects",
+  "menu.section.explore_fundings_and_projects": "Research Grants",
 
   "menu.section.communities_and_collections": "Communities & Collections",
 
@@ -4068,7 +4105,7 @@
   "metric-badges.download": "<span class=\"fa fa-download\" title=\"Downloads\">&nbsp;</span>",
 
 
-  "mydspace.breadcrumbs": "MyDSpace",
+  "mydspace.breadcrumbs": "My Sphere",
 
   "mydspace.description": "",
 
@@ -4146,7 +4183,7 @@
 
   "mydspace.status.mydspaceWorkspace": "Workspace",
 
-  "mydspace.title": "MyDSpace",
+  "mydspace.title": "My Sphere",
 
   "mydspace.upload.upload-failed": "Error creating new workspace. Please verify the content uploaded before retry.",
 
@@ -4165,7 +4202,7 @@
   "mydspace.notification.suggestion.page": "We found <b>{{count}} {{type}}</b> in the {{source}} that seems to be related to your profile. Please <a href='/suggestions/{{suggestionId}}'>review the suggestions.</a>",
 
 
-  "nav.browse.header": "All of DSpace",
+  "nav.browse.header": "All of Sphere",
 
   "nav.community-browse.header": "By Community",
 
@@ -4181,7 +4218,7 @@
 
   "nav.main.description": "Main navigation bar",
 
-  "nav.mydspace": "MyDSpace",
+  "nav.mydspace": "My Sphere",
 
   "nav.profile": "Profile",
 
@@ -4285,7 +4322,7 @@
 
   "openaire.broker.event.reject.description": "This operation can't be undone. Reject this suggestion?",
 
-  "openaire.broker.event.accept.description": "No DSpace project selected. A new project will be created based on the suggestion data.",
+  "openaire.broker.event.accept.description": "No project selected. A new project will be created based on the suggestion data.",
 
   "openaire.broker.event.action.cancel": "Cancel",
 
@@ -4428,7 +4465,7 @@
 
   "person.page.firstname": "First Name",
 
-  "person.page.jobtitle": "Job Title",
+  "person.page.jobtitle": "Rank Title",
 
   "person.page.lastname": "Last Name",
 
@@ -4784,7 +4821,7 @@
 
   "register-page.registration.header": "New user registration",
 
-  "register-page.registration.info": "Register an account to subscribe to collections for email updates, and submit new items to DSpace.",
+  "register-page.registration.info": "Register an account to subscribe to collections for email updates, and submit new items to Sphere.",
 
   "register-page.registration.email": "Email Address *",
 
@@ -4868,7 +4905,7 @@
 
   "repository.title": "{{ repositoryName }}",
 
-  "repository.title.prefix": "{{ repositoryName }} Angular :: ",
+  "repository.title.prefix": "{{ repositoryName }} :: ",
 
   "resource-policies.add.button": "Add",
 
@@ -5030,7 +5067,7 @@
 
   "search.filters.applied.f.submitter": "Submitter",
 
-  "search.filters.applied.f.jobTitle": "Job Title",
+  "search.filters.applied.f.jobTitle": "Rank Title",
 
   "search.filters.applied.f.birthDate.max": "End birth date",
 
@@ -5049,7 +5086,11 @@
   "search.filters.applied.f.graphpubldatetrl": "Public date RTL",
 
   "search.filters.applied.f.organization": "Organisation",
-
+ 
+  "search.filters.applied.f.personOrgUnitsFaculty": "School",
+  
+  "search.filters.applied.f.program": "Program",
+  
   "search.filters.applied.charts.defaultConfiguration.title": "Search Output",
 
   "search.filters.applied.charts.chart.bar.dateIssued.year.tab": "Date Issued",
@@ -5082,6 +5123,15 @@
 
 
 
+  "search.filters.filter.faculty.head": "School",
+  "search.filters.filter.faculty.label": "School",
+  "search.filters.filter.faculty.placeholder": "School",
+  "search.filters.filter.projectResearcherFaculty.head": "School",
+  "search.filters.filter.projectResearcherFaculty.label": "School",
+  "search.filters.filter.projectResearcherFaculty.placeholder": "School",
+  "search.filters.filter.projectResearcherFundingprogram.head": "Funding Program",
+  "search.filters.filter.projectResearcherFundingprogram.label": "Funding Program",
+  "search.filters.filter.projectResearcherFundingprogram.placeholder": "Funding Program",
 
   "search.filters.filter.author.head": "Author",
 
@@ -5187,11 +5237,11 @@
 
   "search.filters.filter.investigators.placeholder": "Researcher",
 
-  "search.filters.filter.jobTitle.head": "Job Title",
+  "search.filters.filter.jobTitle.head": "Rank Title",
 
-  "search.filters.filter.jobTitle.placeholder": "Job Title",
+  "search.filters.filter.jobTitle.placeholder": "Rank Title",
 
-  "search.filters.filter.jobTitle.label": "Search job title",
+  "search.filters.filter.jobTitle.label": "Search rank title",
 
   "search.filters.filter.knowsLanguage.head": "Known language",
 
@@ -5289,6 +5339,15 @@
 
   "search.filters.filter.types.placeholder": "Type",
 
+  "search.filters.filter.program.head": "Program",
+
+  "search.filters.filter.program.label": "Search Program",
+
+  "search.filters.filter.program.placeholder": "Program",
+
+  "search.filters.filter.personOrgUnitsInstitute.head": "Search Institute",
+  "search.filters.filter.personOrgUnitsInstitute.label": "Institute",
+
  "browse.metadata.rpsubj.breadcrumbs" : "Interest",
  "browse.metadata.rpsubj" : "Interest",
 
@@ -5300,9 +5359,9 @@
  "search.filters.filter.personOrgUnitsDepartment.label" : "Department",
  "search.filters.filter.personOrgUnitsDepartment.placeholder" : "Department",
 
- "search.filters.filter.personOrgUnitsFaculty.head" : "Faculty", 
- "search.filters.filter.personOrgUnitsFaculty.label" : "Faculty",
- "search.filters.filter.personOrgUnitsFaculty.placeholder" : "Faculty",
+ "search.filters.filter.personOrgUnitsFaculty.head" : "School", 
+ "search.filters.filter.personOrgUnitsFaculty.label" : "School",
+ "search.filters.filter.personOrgUnitsFaculty.placeholder" : "School",
 
   "search.filters.entityType.JournalIssue": "Journal Issue",
 
@@ -5809,11 +5868,11 @@
 
   "submission.import-external.title.Product": "Import a product from an external source",
 
-  "submission.import-external.page.hint": "Enter a query above to find items from the web to import in to DSpace.",
+  "submission.import-external.page.hint": "Enter a query above to find items from the web to import in to Sphere.",
 
-  "submission.import-external.page.noentity": "An entity type must be selected in order to use this page. Select it using the 'Import metadata from an external source' button in 'MyGnosis' page.",
+  "submission.import-external.page.noentity": "An entity type must be selected in order to use this page. Select it using the 'Import metadata from an external source' button in 'My Sphere' page.",
 
-  "submission.import-external.back-to-my-dspace": "Back to MyDSpace",
+  "submission.import-external.back-to-my-dspace": "Back to My Sphere",
 
   "submission.import-external.search.placeholder": "Search the external source",
 
@@ -6378,8 +6437,8 @@
    "submission.sections.submit.progressbar.describe.academic_part1": "Publication - Part1",
   "submission.sections.submit.progressbar.describe.academic_part2": "Publication - Part2",
 
-  "submission.sections.submit.progressbar.describe.phd_part1": "PhD - Part1",
-  "submission.sections.submit.progressbar.describe.phd_part2": "PhD - Part2",
+  "submission.sections.submit.progressbar.describe.phd_part1": "Part1",
+  "submission.sections.submit.progressbar.describe.phd_part2": "Part2",
 
   "submission.sections.submit.progressbar.describe.msc_part1": "Msc - Part1",
   "submission.sections.submit.progressbar.describe.msc_part2": "Msc - Part2",
@@ -6749,7 +6808,7 @@
 
   "thumbnail.person.placeholder": "No Profile Picture Available",
 
-  "title": "DSpace Cris",
+  "title": "Sphere",
 
 
 
@@ -7668,7 +7727,10 @@
   "layout.field.label.Person.[person.email]": "Email",
   "layout.field.label.Person.[person.identifier.orcid]": "ORCID",
   "layout.field.label.Person.[person.identifier.scopus-author-id]": "Scopus ID",
-  "layout.field.label.Person.[person.identifier.rid]": "Researcher ID",
+  "layout.field.label.Person.[person.identifier.rid]": "WoS ID",
+  "layout.field.label.Person.[person.identifier.gsid]": "Google Scholar",
+  "layout.field.label.Person.[person.identifier.linkedin-id]": "LinkedIn",
+  "layout.field.label.Person.[person.identifier.research-gate-id]": "Research Gate",
   "layout.field.label.Person.[dc.description.abstract]": "Biography",
   "layout.field.label.Person.[oairecerif.person.affiliation]": "Affiliation",
   "layout.field.label.Person.[crisrp.education]": "Education",
@@ -7763,6 +7825,26 @@
   "layout.field.label.Patent.NESTED[dc.contributor.author]": "Inventor",
   "layout.field.label.Patent.NESTED[oairecerif.author.affiliation]": "Affiliation",
 
+  //Add Dataly
+  "submission.sections.submit.progressbar.describe.article": "Primary Bibliographic Details",
+  "submission.sections.submit.progressbar.describe.article_indexing": "Secondary Bibliographic Details",
+  "submission.sections.submit.progressbar.describe.article_bibliographic_details": "Journal Rankings",
+
+  "submission.sections.submit.progressbar.describe.book": "Primary Bibliographic Details",
+  "submission.sections.submit.progressbar.describe.book_indexing": "Secondary Bibliographic Details",
+
+  "submission.sections.submit.progressbar.describe.conference": "Primary Bibliographic Details",
+  "submission.sections.submit.progressbar.describe.conference_indexing": "Secondary Bibliographic Details",
+
+  "submission.sections.submit.progressbar.describe.dataset": "Primary Bibliographic Details",
+  "submission.sections.submit.progressbar.describe.dataset_indexing": "Secondary Bibliographic Details",
+
+  "submission.sections.submit.progressbar.describe.report": "Primary Bibliographic Details",
+  "submission.sections.submit.progressbar.describe.report_indexing": "Secondary Bibliographic Details",
+ 
+  "submission.sections.submit.progressbar.describe.workingpaper": "Primary Bibliographic Details",
+  "submission.sections.submit.progressbar.describe.workingpaper_indexing": "Secondary Bibliographic Details",
+  
 
   // Do not add new labels below layout ones
   // All new labels should be placed together with similar ones, or in alphabetical orders

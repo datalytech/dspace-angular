@@ -1,7 +1,7 @@
 import { Component, Input, OnInit, SimpleChanges } from '@angular/core';
 
 import { Observable, of as observableOf } from 'rxjs';
-import { map, switchMap, take } from 'rxjs/operators';
+import { map, switchMap, take, startWith } from 'rxjs/operators';
 
 import { isEmpty, isNotEmpty } from '../empty.util';
 import { Item } from '../../core/shared/item.model';
@@ -80,6 +80,7 @@ export class MetadataLinkViewComponent implements OnInit {
   /**
    * On init process metadata to get the information and form MetadataOrcid model
    */
+  /*
   ngOnInit(): void {
     this.metadataView$ = observableOf(this.metadata).pipe(
       switchMap((metadataValue: MetadataValue) =>
@@ -88,7 +89,22 @@ export class MetadataLinkViewComponent implements OnInit {
       take(1)
     );
   }
-
+  */
+  ngOnInit(): void {
+  this.metadataView$ = observableOf(this.metadata).pipe(
+    switchMap((metadataValue: MetadataValue) =>
+      this.getMetadataView(metadataValue).pipe(
+        startWith({
+          authority: metadataValue?.authority,
+          value: metadataValue?.value,
+          orcidAuthenticated: null,
+          entityType: null,
+          entityStyle: null,
+        })
+      )
+    )
+  );
+}
   /**
    * Retrieves the metadata view for a given metadata value.
    * If the metadata value has a valid authority, it retrieves the item using the authority and creates a metadata view.
@@ -97,32 +113,63 @@ export class MetadataLinkViewComponent implements OnInit {
    * @param metadataValue The metadata value for which to retrieve the metadata view.
    * @returns An Observable that emits the metadata view.
    */
-  private getMetadataView(
-    metadataValue: MetadataValue
-  ): Observable<MetadataView> {
-    const linksToFollow = [followLink('thumbnail')];
+   private getMetadataView(
+  metadataValue: MetadataValue
+): Observable<MetadataView> {
+  const linksToFollow = [followLink('thumbnail')];
+/*
+  console.log('[MLV DEBUG getMetadataView input]', {
+    metadataName: this.metadataName,
+    metadataValue,
+    value: metadataValue?.value,
+    authority: metadataValue?.authority,
+    hasValidAuthority: Metadata.hasValidAuthority(metadataValue?.authority),
+    sourceItem: this.item,
+  });
+*/
 
-    if (Metadata.hasValidAuthority(metadataValue.authority)) {
-      return this.itemService
-        .findById(metadataValue.authority, true, false, ...linksToFollow)
-        .pipe(
-          getFirstCompletedRemoteData(),
-          map((itemRD: RemoteData<Item>) =>
-            this.createMetadataView(itemRD, metadataValue)
-          )
-        );
-    } else {
-      return observableOf({
-        authority: null,
-        value: metadataValue.value,
-        orcidAuthenticated: null,
-        entityType: null,
-        entityStyle: null,
-      });
-    }
+  if (Metadata.hasValidAuthority(metadataValue.authority)) {
+    return this.itemService
+      .findById(metadataValue.authority, true, false, ...linksToFollow)
+      .pipe(
+        getFirstCompletedRemoteData(),
+        map((itemRD: RemoteData<Item>) => {
+         /* console.log('[MLV DEBUG itemRD completed]', {
+            metadataName: this.metadataName,
+            value: metadataValue?.value,
+            authority: metadataValue?.authority,
+            hasSucceeded: itemRD?.hasSucceeded,
+            hasFailed: itemRD?.hasFailed,
+            statusCode: (itemRD as any)?.statusCode,
+            errorMessage: (itemRD as any)?.errorMessage,
+            payload: itemRD?.payload,
+            payloadUuid: itemRD?.payload?.uuid,
+            payloadName: itemRD?.payload?.name,
+            payloadEntityType: itemRD?.payload?.entityType,
+          }); */
+
+          return this.createMetadataView(itemRD, metadataValue);
+        })
+      );
+  } else {
+   /* console.warn('[MLV DEBUG invalid/no authority]', {
+      metadataName: this.metadataName,
+      metadataValue,
+      value: metadataValue?.value,
+      authority: metadataValue?.authority,
+    }); */
+
+    return observableOf({
+      authority: null,
+      value: metadataValue.value,
+      orcidAuthenticated: null,
+      entityType: null,
+      entityStyle: null,
+    });
   }
+}
 
-  /**
+/**
    * Creates a MetadataView object based on the provided itemRD and metadataValue.
    * @param itemRD - The RemoteData object containing the item information.
    * @param metadataValue - The MetadataValue object containing the metadata information.
@@ -142,11 +189,11 @@ export class MetadataLinkViewComponent implements OnInit {
         value: metadataValue.value,
         orcidAuthenticated: this.getOrcid(itemRD.payload),
         entityType: itemRD.payload?.entityType,
-        entityStyle: itemRD.payload?.firstMetadataValue(entityStyleValue),
+        entityStyle: itemRD.payload?.firstMetadataValue(entityStyleValue) ?? 'default',
       };
     } else {
       return {
-        authority: null,
+        authority: metadataValue.authority,
         value: metadataValue.value,
         orcidAuthenticated: null,
         entityType: 'PRIVATE',

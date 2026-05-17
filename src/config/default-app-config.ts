@@ -298,9 +298,9 @@ export class DefaultAppConfig implements AppConfig {
   // Languages. DSpace Angular holds a message catalog for each of the following languages.
   // When set to active, users will be able to switch to the use of this language in the user interface.
   languages: LangConfig[] = [
-    { code: 'en', label: 'English', active: true },
-    { code: 'el', label: 'Ελληνικά', active: true },
-    { code: 'fr', label: 'Français', active: true }
+    { code: 'en', label: 'English', active: true }
+ //   { code: 'el', label: 'Ελληνικά', active: true },
+ //   { code: 'fr', label: 'Français', active: true }
       ];
 
   // Browse-By Pages
@@ -669,11 +669,11 @@ export class DefaultAppConfig implements AppConfig {
 
   addToAnyPlugin: AddToAnyPluginConfig = {
     scriptUrl: 'https://static.addtoany.com/menu/page.js',
-    socialNetworksEnabled: true,
-    buttons: ['facebook', 'x', 'linkedin', 'email', 'copy_link'],
-    showPlusButton: true,
-    showCounters: true,
-    title: 'DSpace CRIS 7 demo',
+    socialNetworksEnabled: false,
+    buttons: [], //['facebook', 'x', 'linkedin', 'email', 'copy_link'],
+    showPlusButton: false,
+    showCounters: false,
+    title: 'ACG CRIS',
   };
 
   metricVisualizationConfig: MetricVisualizationConfig[] = [

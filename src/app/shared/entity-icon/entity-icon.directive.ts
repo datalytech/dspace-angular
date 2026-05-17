@@ -1,16 +1,24 @@
-import { Directive, ElementRef, Input, OnInit } from '@angular/core';
+import {
+  Directive,
+  ElementRef,
+  Input,
+  OnChanges,
+  OnInit,
+  Renderer2,
+  SimpleChanges
+} from '@angular/core';
 
 import { environment } from '../../../environments/environment';
 import { CrisRefConfig, CrisRefEntityStyleConfig } from '../../../config/layout-config.interfaces';
 import { isEmpty, isNotEmpty } from '../empty.util';
 
 /**
- * Directive to add to the element a entity icon based on metadata entity type and entity style
+ * Directive to add to the element an entity icon based on metadata entity type and entity style
  */
 @Directive({
   selector: '[dsEntityIcon]'
 })
-export class EntityIconDirective implements OnInit {
+export class EntityIconDirective implements OnInit, OnChanges {
 
   /**
    * The metadata entity type
@@ -20,7 +28,7 @@ export class EntityIconDirective implements OnInit {
   /**
    * The metadata entity style
    */
-  @Input() entityStyle: string|string[] = 'default';
+  @Input() entityStyle: string | string[] = 'default';
 
   /**
    * A boolean representing if to fallback on default style if the given one is not found
@@ -38,36 +46,66 @@ export class EntityIconDirective implements OnInit {
   confValue = environment.crisLayout.crisRef;
 
   /**
-   * Initialize instance variables
-   *
-   * @param {ElementRef} elem
+   * Keep reference to the inserted icon so we can remove/update it on input changes
    */
-  constructor(private elem: ElementRef) {
+  private iconNode: HTMLElement = null;
+
+  constructor(
+    private elem: ElementRef,
+    private renderer: Renderer2
+  ) {
   }
 
-  /**
-   * Adding icon to element oninit
-   */
-  ngOnInit() {
-    const crisRefConfig: CrisRefConfig = this.getCrisRefConfigByType(this.entityType);
-    if (isNotEmpty(crisRefConfig)) {
-      const crisStyle: CrisRefEntityStyleConfig = this.getCrisRefEntityStyleConfig(crisRefConfig, this.entityStyle);
-      if (isNotEmpty(crisStyle)) {
-        this.addIcon(crisStyle);
-      }
+  ngOnInit(): void {
+    this.renderIcon();
+  }
+
+  ngOnChanges(changes: SimpleChanges): void {
+    if (
+      changes.entityType ||
+      changes.entityStyle ||
+      changes.fallbackOnDefault ||
+      changes.iconPosition
+    ) {
+      this.renderIcon();
     }
   }
 
+  private renderIcon(): void {
+  this.removeExistingIcon();
+
+  const crisRefConfig: CrisRefConfig = this.getCrisRefConfigByType(this.entityType);
+
+  if (isNotEmpty(crisRefConfig)) {
+    const crisStyle: CrisRefEntityStyleConfig = this.getCrisRefEntityStyleConfig(
+      crisRefConfig,
+      this.entityStyle
+    );
+
+    if (isNotEmpty(crisStyle)) {
+      this.addIcon(crisStyle);
+    }
+  }
+}
+
   /**
    * Return the CrisRefConfig by the given type
-   *
-   * @param type
-   * @private
    */
   private getCrisRefConfigByType(type: string): CrisRefConfig {
-    let filteredConf: CrisRefConfig = this.confValue.find((config) => config.entityType.toUpperCase() === type.toUpperCase());
+    if (isEmpty(type)) {
+      return this.fallbackOnDefault
+        ? this.confValue.find((config) => config.entityType?.toUpperCase() === 'DEFAULT')
+        : null;
+    }
+
+    let filteredConf: CrisRefConfig = this.confValue.find(
+      (config) => config.entityType?.toUpperCase() === type.toUpperCase()
+    );
+
     if (isEmpty(filteredConf) && this.fallbackOnDefault) {
-      filteredConf = this.confValue.find((config) => config.entityType.toUpperCase() === 'DEFAULT');
+      filteredConf = this.confValue.find(
+        (config) => config.entityType?.toUpperCase() === 'DEFAULT'
+      );
     }
 
     return filteredConf;
@@ -75,20 +113,20 @@ export class EntityIconDirective implements OnInit {
 
   /**
    * Return the CrisRefEntityStyleConfig by the given style
-   *
-   * @param crisConfig
-   * @param styles
-   * @private
    */
-  private getCrisRefEntityStyleConfig(crisConfig: CrisRefConfig, styles: string|string[]): CrisRefEntityStyleConfig {
+  private getCrisRefEntityStyleConfig(
+    crisConfig: CrisRefConfig,
+    styles: string | string[]
+  ): CrisRefEntityStyleConfig {
     let filteredConf: CrisRefEntityStyleConfig;
+
     if (Array.isArray(styles)) {
       styles.forEach((style) => {
-        if (Object.keys(crisConfig.entityStyle).includes(style)) {
+        if (style && Object.keys(crisConfig.entityStyle).includes(style)) {
           filteredConf = crisConfig.entityStyle[style];
         }
       });
-    } else {
+    } else if (styles) {
       filteredConf = crisConfig.entityStyle[styles];
     }
 
@@ -101,17 +139,43 @@ export class EntityIconDirective implements OnInit {
 
   /**
    * Attach icon to HTML element
-   *
-   * @param crisStyle
-   * @private
    */
+
   private addIcon(crisStyle: CrisRefEntityStyleConfig): void {
-    const iconElement = `<i class="${crisStyle.icon} ${crisStyle.style}"></i>`;
-    if (this.iconPosition === 'after') {
-      this.elem.nativeElement.insertAdjacentHTML('afterend', '&nbsp;' + iconElement);
-    } else {
-      this.elem.nativeElement.insertAdjacentHTML('beforebegin', iconElement + '&nbsp;');
-    }
+  const nativeElement = this.elem.nativeElement as HTMLElement;
+
+  const iconElement = this.renderer.createElement('i');
+
+  const classes = `${crisStyle.icon} ${crisStyle.style}`
+    .split(' ')
+    .filter((cssClass) => !!cssClass);
+
+  classes.forEach((cssClass) => {
+    this.renderer.addClass(iconElement, cssClass);
+  });
+
+  this.renderer.setAttribute(iconElement, 'aria-hidden', 'true');
+  this.renderer.addClass(iconElement, 'ds-entity-icon');
+
+  const space = this.renderer.createText(' ');
+
+  if (this.iconPosition === 'after') {
+    this.renderer.appendChild(nativeElement, space);
+    this.renderer.appendChild(nativeElement, iconElement);
+  } else {
+    this.renderer.insertBefore(nativeElement, iconElement, nativeElement.firstChild);
+    this.renderer.insertBefore(nativeElement, space, nativeElement.firstChild);
   }
+
+  this.iconNode = iconElement;
+}
+
+private removeExistingIcon(): void {
+  if (this.iconNode && this.iconNode.parentNode) {
+    this.iconNode.parentNode.removeChild(this.iconNode);
+  }
+
+  this.iconNode = null;
+}
 
 }

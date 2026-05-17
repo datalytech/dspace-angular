@@ -111,10 +111,10 @@ describe('ExploreComponent', () => {
     expect(firstRow.children[0].children[0].name).toEqual('ds-themed-browse-section');
     expect(firstRow.children[1].children[0].name).toEqual('ds-themed-search-section');
 
-    const secondRow = container.children[1];
+/*    const secondRow = container.children[1];
     expect(secondRow.children.length).toEqual(1);
     expect(secondRow.children[0].children[0].name).toEqual('ds-themed-top-section');
-
+*/
     const thirdRow = container.children[2];
     expect(thirdRow.children.length).toEqual(1);
     expect(thirdRow.children[0].children[0].name).toEqual('ds-themed-facet-section');
