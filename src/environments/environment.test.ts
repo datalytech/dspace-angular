@@ -8,6 +8,9 @@ import { IdentifierSubtypesIconPositionEnum } from 'src/config/identifier-subtyp
 export const environment: BuildConfig = {
   production: false,
 
+  bibliometrisImportUrl: 'http://dspace.com/server/api/core/bibliometris',
+  pollingProgressUrl: 'http://dspace.com/server/api/core/bibliometris-properties',
+
   // Angular Universal settings
   universal: {
     preboot: true,
