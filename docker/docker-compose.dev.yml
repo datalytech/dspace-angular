@@ -10,13 +10,13 @@
 # inside it recompiles on change. Without it the source is only copied into the image by `ADD . /app/`
 # at build time, and every change needs the image rebuilt before it can be seen.
 #
-# Compose merges this file automatically when you run it from this directory without -f:
+# Pass it explicitly, on top of the base file:
 #
-#   cd docker && docker compose up -d
+#   cd docker && docker compose -f docker-compose.yml -f docker-compose.dev.yml up -d
 #
-# If you pass -f explicitly, pass this file too:
-#
-#   docker compose -f docker-compose.yml -f docker-compose.override.yml up -d
+# Deliberately NOT named docker-compose.override.yml: Compose would then merge it into every run,
+# including a production one, and bind mount the working tree over the image a deployment is meant
+# to be serving.
 #
 # Only for the development image (Dockerfile / `yarn serve`). The dist image serves a build made at
 # image build time and has no compiler, so mounting sources into it does nothing.
