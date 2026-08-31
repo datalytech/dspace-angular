@@ -1,0 +1,32 @@
+#
+# The contents of this file are subject to the license and copyright
+# detailed in the LICENSE and NOTICE files at the root of the source
+# tree and available online at
+#
+# http://www.dspace.org/license/
+#
+
+# Mounts the source tree from the host into the running container, so that the `ng serve` watcher
+# inside it recompiles on change. Without it the source is only copied into the image by `ADD . /app/`
+# at build time, and every change needs the image rebuilt before it can be seen.
+#
+# Compose merges this file automatically when you run it from this directory without -f:
+#
+#   cd docker && docker compose up -d
+#
+# If you pass -f explicitly, pass this file too:
+#
+#   docker compose -f docker-compose.yml -f docker-compose.override.yml up -d
+#
+# Only for the development image (Dockerfile / `yarn serve`). The dist image serves a build made at
+# image build time and has no compiler, so mounting sources into it does nothing.
+services:
+  dspace-angular:
+    volumes:
+    # Not the whole repository: mounting over /app would hide the node_modules installed in the image.
+    - ../src:/app/src
+    - ../config:/app/config
+    # The watcher relies on inotify events crossing the bind mount, which works on Linux hosts. On a
+    # host where they do not (Docker Desktop on macOS or Windows, some network filesystems), tell the
+    # dev server to poll instead by uncommenting the line below.
+    # command: yarn serve --host 0.0.0.0 --poll 2000
