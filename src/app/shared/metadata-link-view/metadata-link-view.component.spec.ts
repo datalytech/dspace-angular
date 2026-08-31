@@ -1,4 +1,4 @@
-import { ComponentFixture, fakeAsync, TestBed, tick, waitForAsync } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { RouterTestingModule } from '@angular/router/testing';
 
@@ -209,56 +209,25 @@ describe('MetadataLinkViewComponent', () => {
       });
     });
 
-    describe('when the referenced entity cannot be resolved from the cache', () => {
-      // The cached lookup can stay pending forever when the NgRx cache was rehydrated from the SSR
-      // transfer state in an unusable state. The component has to recover on its own instead of
-      // leaving the field empty until the user navigates away and back.
-
+    describe('while the referenced entity has not been retrieved yet', () => {
       beforeEach(() => {
         fixture = TestBed.createComponent(MetadataLinkViewComponent);
-        itemService.findById.calls.reset();
+        itemService.findById.and.returnValue(NEVER);
         component = fixture.componentInstance;
         component.item = testPerson;
         component.metadata = testMetadataValueWithAuthority;
+        fixture.detectChanges();
       });
 
-      it('should render the value and its link straight away, without an icon', fakeAsync(() => {
-        itemService.findById.and.returnValues(NEVER, createSuccessfulRemoteDataObject$(testOrgunit));
-        fixture.detectChanges();
-
+      it('should render the value and its link, without an icon', () => {
         const link = fixture.debugElement.query(By.css('[data-test="linkToAuthority"]'));
+
         expect(link).toBeTruthy();
         expect(link.nativeElement.textContent.trim()).toEqual(testMetadataValueWithAuthority.value);
         expect(link.query(By.css('i'))).toBeNull();
-
-        tick(MetadataLinkViewComponent.CACHED_LOOKUP_TIMEOUT);
-      }));
-
-      it('should retry with the cache bypassed and render the icon', fakeAsync(() => {
-        itemService.findById.and.returnValues(NEVER, createSuccessfulRemoteDataObject$(testOrgunit));
-        fixture.detectChanges();
-
-        tick(MetadataLinkViewComponent.CACHED_LOOKUP_TIMEOUT);
-        fixture.detectChanges();
-
-        expect(itemService.findById.calls.count()).toEqual(2);
-        expect(itemService.findById.calls.argsFor(1)[1]).toBeFalse();
-        expect(fixture.debugElement.query(By.css('[data-test="linkToAuthority"] i'))).toBeTruthy();
-      }));
-
-      it('should keep the value and its link when the retry does not resolve either', fakeAsync(() => {
-        itemService.findById.and.returnValues(NEVER, NEVER);
-        fixture.detectChanges();
-
-        tick(MetadataLinkViewComponent.CACHED_LOOKUP_TIMEOUT + MetadataLinkViewComponent.UNCACHED_LOOKUP_TIMEOUT);
-        fixture.detectChanges();
-
-        const link = fixture.debugElement.query(By.css('[data-test="linkToAuthority"]'));
-        expect(link).toBeTruthy();
-        expect(link.nativeElement.textContent.trim()).toEqual(testMetadataValueWithAuthority.value);
-        expect(link.query(By.css('i'))).toBeNull();
-      }));
+      });
     });
+
   });
 
 });

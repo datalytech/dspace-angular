@@ -1,6 +1,9 @@
-import { Directive, ElementRef, AfterViewInit } from '@angular/core';
-import { convertAnchorTags } from '../convert-anchor-tags.util';
+import { AfterViewInit, Directive, ElementRef } from '@angular/core';
+import { convertAnchorTagsInTextNodes } from '../convert-anchor-tags.util';
 
+/**
+ * Turns anchor tags that were stored as plain text in a metadata value into real links.
+ */
 @Directive({
   selector: '[appAnchorTagConverter]'
 })
@@ -9,9 +12,10 @@ export class AnchorTagConverterDirective implements AfterViewInit {
   constructor(private el: ElementRef) {}
 
   ngAfterViewInit(): void {
-    const element = this.el.nativeElement;
-    if (element && !element.querySelector('ds-truncatable')) {
-      element.innerHTML = convertAnchorTags(element.innerHTML);
+    const element: HTMLElement = this.el.nativeElement;
+    if (!element || element.querySelector('ds-truncatable')) {
+      return;
     }
+    convertAnchorTagsInTextNodes(element);
   }
 }

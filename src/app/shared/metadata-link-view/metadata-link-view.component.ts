@@ -1,8 +1,7 @@
-import { Component, Inject, Input, OnChanges, OnInit, PLATFORM_ID, SimpleChanges } from '@angular/core';
-import { isPlatformBrowser } from '@angular/common';
+import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 
 import { Observable, of as observableOf } from 'rxjs';
-import { map, startWith, switchMap, timeout } from 'rxjs/operators';
+import { map, startWith, switchMap } from 'rxjs/operators';
 
 import { isEmpty, isNotEmpty } from '../empty.util';
 import { Item } from '../../core/shared/item.model';
@@ -23,26 +22,6 @@ import { MetadataView } from './metadata-view.model';
   styleUrls: ['./metadata-link-view.component.scss'],
 })
 export class MetadataLinkViewComponent implements OnInit, OnChanges {
-
-  /**
-   * Time (in ms) we wait for the *cached* lookup of the referenced entity before retrying with a
-   * request that bypasses the request/object cache.
-   *
-   * The lookup reads from the NgRx cache first, and that cache can end up in a state where it never
-   * produces a value at all: a request rehydrated from the SSR transfer state that is still marked
-   * as pending is never re-sent, because RequestService.shouldDispatchRequest considers loading
-   * entries valid; and a request marked as succeeded whose payload is no longer in the object cache
-   * makes RemoteDataBuildService.buildPayload wait forever on ObjectCacheService.getByHref, which
-   * filters out empty entries. In both cases the field would stay empty until a client side
-   * navigation happens to create a fresh request. Retrying uncached recovers from both.
-   */
-  static readonly CACHED_LOOKUP_TIMEOUT = 3000;
-
-  /**
-   * Time (in ms) we wait for the uncached retry before giving up on the entity type, so that an
-   * entity that cannot be retrieved at all still leaves the value and its link in place.
-   */
-  static readonly UNCACHED_LOOKUP_TIMEOUT = 15000;
 
   /**
    * Metadata value that we need to show in the template
@@ -86,10 +65,7 @@ export class MetadataLinkViewComponent implements OnInit, OnChanges {
   /**
    * Map all entities with the icons specified in the environment configuration file
    */
-  constructor(
-    private itemService: ItemDataService,
-    @Inject(PLATFORM_ID) private platformId: any,
-  ) {}
+  constructor(private itemService: ItemDataService) {}
 
   ngOnChanges(changes: SimpleChanges) {
     if (!changes.item || !this.item) {
@@ -142,23 +118,7 @@ export class MetadataLinkViewComponent implements OnInit, OnChanges {
       });
     }
 
-    let resolved$ = this.lookupMetadataView(metadataValue, true);
-
-    if (isPlatformBrowser(this.platformId)) {
-      resolved$ = resolved$.pipe(
-        timeout({
-          first: MetadataLinkViewComponent.CACHED_LOOKUP_TIMEOUT,
-          with: () => this.lookupMetadataView(metadataValue, false).pipe(
-            timeout({
-              first: MetadataLinkViewComponent.UNCACHED_LOOKUP_TIMEOUT,
-              with: () => observableOf(this.createUnresolvedMetadataView(metadataValue)),
-            })
-          ),
-        })
-      );
-    }
-
-    return resolved$.pipe(
+    return this.lookupMetadataView(metadataValue).pipe(
       startWith(this.createUnresolvedMetadataView(metadataValue))
     );
   }
@@ -166,21 +126,16 @@ export class MetadataLinkViewComponent implements OnInit, OnChanges {
   /**
    * Retrieve the referenced entity and turn it into a {@link MetadataView}.
    *
-   * @param metadataValue                 The metadata value holding the authority to resolve
-   * @param useCachedVersionIfAvailable   Whether a cached version of the referenced entity may be
-   *                                      reused, or the request has to be sent again
+   * @param metadataValue The metadata value holding the authority to resolve
    */
-  private lookupMetadataView(
-    metadataValue: MetadataValue,
-    useCachedVersionIfAvailable: boolean
-  ): Observable<MetadataView> {
+  private lookupMetadataView(metadataValue: MetadataValue): Observable<MetadataView> {
     const linksToFollow = [followLink('thumbnail')];
 
     // reRequestOnStale has to be true: BaseDataService.findByHref skips stale RemoteData objects,
     // so with it disabled a stale cache entry is skipped without ever being requested again and the
     // returned observable never completes.
     return this.itemService
-      .findById(metadataValue.authority, useCachedVersionIfAvailable, true, ...linksToFollow)
+      .findById(metadataValue.authority, true, true, ...linksToFollow)
       .pipe(
         getFirstCompletedRemoteData(),
         map((itemRD: RemoteData<Item>) =>
@@ -223,9 +178,9 @@ export class MetadataLinkViewComponent implements OnInit, OnChanges {
   }
 
   /**
-   * Creates the MetadataView used while the referenced entity has not been retrieved yet, and as a
-   * last resort when it cannot be retrieved at all. The value and the link to the entity are
-   * already known, its type and style are not, so no icon is rendered.
+   * Creates the MetadataView used while the referenced entity has not been retrieved yet. The value
+   * and the link to the entity are already known, its type and style are not, so no icon is
+   * rendered until the entity arrives.
    *
    * @param metadataValue - The MetadataValue object containing the metadata information.
    */
