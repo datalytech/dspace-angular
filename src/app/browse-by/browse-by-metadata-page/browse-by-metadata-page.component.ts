@@ -23,6 +23,7 @@ import { Community } from '../../core/shared/community.model';
 import { APP_CONFIG, AppConfig } from '../../../config/app-config.interface';
 import { DSONameService } from '../../core/breadcrumbs/dso-name.service';
 import { SearchManager } from '../../core/browse/search-manager';
+import { NonHierarchicalBrowseDefinition } from '../../core/shared/non-hierarchical-browse-definition';
 
 export const BBM_PAGINATION_ID = 'bbm';
 
@@ -142,9 +143,19 @@ export class BrowseByMetadataPageComponent implements OnInit, OnDestroy {
     }
 
 
+  /**
+   * The direction the entries are listed in until the user picks another one:
+   * the one configured for the browse index (webui.browse.index.n), so that a
+   * browse by year can start with the most recent one.
+   */
+  getDefaultSortDirection(): SortDirection {
+    const browseDefinition = this.route.snapshot.data?.browseDefinition as NonHierarchicalBrowseDefinition;
+    return browseDefinition?.defaultSortOrder?.toUpperCase() === 'DESC' ? SortDirection.DESC : SortDirection.ASC;
+  }
+
   ngOnInit(): void {
 
-    const sortConfig = new SortOptions('default', SortDirection.ASC);
+    const sortConfig = new SortOptions('default', this.getDefaultSortDirection());
     this.updatePage(getBrowseSearchOptions(this.defaultBrowseId, this.paginationConfig, sortConfig));
     this.currentPagination$ = this.paginationService.getCurrentPagination(this.paginationConfig.id, this.paginationConfig);
     this.currentSort$ = this.paginationService.getCurrentSort(this.paginationConfig.id, sortConfig);

@@ -1662,6 +1662,9 @@
   // TODO New key - Add a translation
   "browse.comcol.by.rpname": "Ανά Όνομα",
 
+  // "browse.comcol.by.dateissuedyear": "By Year",
+  "browse.comcol.by.dateissuedyear": "Ανά Έτος",
+
   // "browse.comcol.by.subject": "By Subject",
   "browse.comcol.by.subject": "Κατά θέμα",
 
@@ -1694,6 +1697,9 @@
 
   // "browse.metadata.dateissued": "Issue Date",
   "browse.metadata.dateissued": "Ημερομηνία έκδοσης",
+
+  // "browse.metadata.dateissuedyear": "Year",
+  "browse.metadata.dateissuedyear": "Έτος",
 
   // "browse.metadata.eqdatecreated": "Date Created",
   // TODO New key - Add a translation
@@ -1774,6 +1780,9 @@
   // "browse.metadata.rpname.breadcrumbs": "Browse by Name",
   // TODO New key - Add a translation
   "browse.metadata.rpname.breadcrumbs": "Πλοήγηση ανά Όνομα",
+
+  // "browse.metadata.dateissuedyear.breadcrumbs": "Browse by Year",
+  "browse.metadata.dateissuedyear.breadcrumbs": "Πλοήγηση ανά Έτος",
 
   // "browse.metadata.subject.breadcrumbs": "Browse by Subject",
   "browse.metadata.subject.breadcrumbs": "Πλοήγηση ανά Θέμα",
@@ -3753,6 +3762,9 @@
   // "explore.index.dateissued": "Date issued",
   // TODO New key - Add a translation
   "explore.index.dateissued": "Date issued",
+
+  // "explore.index.dateissuedyear": "Year",
+  "explore.index.dateissuedyear": "Έτος",
 
   // "explore.index.dc.date.accessioned": "Recent Additions",
   // TODO New key - Add a translation
