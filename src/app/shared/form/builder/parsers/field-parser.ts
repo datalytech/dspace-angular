@@ -404,6 +404,9 @@ export abstract class FieldParser {
    * Adds pattern validation to `controlModel`, it uses the encapsulated `configData` to test the regex,
    * contained in the input config, against the common `ECMAScript` standard validator {@link REGEX_FIELD_VALIDATOR},
    * and creates an equivalent `RegExp` object that will be used during form-validation against the user-input.
+   *
+   * The message shown when the value does not match is the one the field configures, so that a field can
+   * explain what it expects instead of showing the raw pattern, and the generic one otherwise.
    * @param controlModel
    * @protected
    */
@@ -419,7 +422,7 @@ export abstract class FieldParser {
     controlModel.errorMessages = Object.assign(
       {},
       controlModel.errorMessages,
-      { pattern: 'error.validation.pattern' });
+      { pattern: this.configData.input.regexErrorMessage || 'error.validation.pattern' });
   }
 
   protected markAsRequired(controlModel) {
