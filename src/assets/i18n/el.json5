@@ -1721,6 +1721,15 @@
   // TODO New key - Add a translation
   "browse.metadata.pjtitle": "Τίτλος",
 
+  // "browse.metadata.pjinvestigator": "Name",
+  "browse.metadata.pjinvestigator": "Όνομα",
+
+  // "browse.metadata.pjsubject": "Subject",
+  "browse.metadata.pjsubject": "Θέμα",
+
+  // "browse.metadata.pjdept": "Department",
+  "browse.metadata.pjdept": "Τμήμα",
+
   // "browse.metadata.rodept": "Department",
   // TODO New key - Add a translation
   "browse.metadata.rodept": "Τμήμα",
@@ -1768,6 +1777,15 @@
   // "browse.metadata.pjtitle.breadcrumbs": "Browse by Title",
   // TODO New key - Add a translation
   "browse.metadata.pjtitle.breadcrumbs": "Πλοήγηση ανά Τίτλο",
+
+  // "browse.metadata.pjinvestigator.breadcrumbs": "Browse by Name",
+  "browse.metadata.pjinvestigator.breadcrumbs": "Πλοήγηση ανά Όνομα",
+
+  // "browse.metadata.pjsubject.breadcrumbs": "Browse by Subject",
+  "browse.metadata.pjsubject.breadcrumbs": "Πλοήγηση ανά Θέμα",
+
+  // "browse.metadata.pjdept.breadcrumbs": "Browse by Department",
+  "browse.metadata.pjdept.breadcrumbs": "Πλοήγηση ανά Τμήμα",
 
   // "browse.metadata.rodept.breadcrumbs": "Browse by Department",
   // TODO New key - Add a translation
@@ -3931,6 +3949,15 @@
   // "explore.index.pjtitle": "Title",
   // TODO New key - Add a translation
   "explore.index.pjtitle": "Τίτλος",
+
+  // "explore.index.pjinvestigator": "Name",
+  "explore.index.pjinvestigator": "Όνομα",
+
+  // "explore.index.pjsubject": "Subject",
+  "explore.index.pjsubject": "Θέμα",
+
+  // "explore.index.pjdept": "Department",
+  "explore.index.pjdept": "Τμήμα",
 
   // "explore.index.projectinvestigators": "Project investigators",
   // TODO New key - Add a translation
@@ -8884,6 +8911,24 @@
   // "search.filters.filter.language.placeholder": "Language",
   // TODO New key - Add a translation
   "search.filters.filter.language.placeholder": "Language",
+
+  // "search.filters.filter.pjsubject.head": "Subject",
+  "search.filters.filter.pjsubject.head": "Θέμα",
+
+  // "search.filters.filter.pjsubject.label": "Search subject",
+  "search.filters.filter.pjsubject.label": "Αναζήτηση θέματος",
+
+  // "search.filters.filter.pjsubject.placeholder": "Subject",
+  "search.filters.filter.pjsubject.placeholder": "Θέμα",
+
+  // "search.filters.filter.pjdept.head": "Department",
+  "search.filters.filter.pjdept.head": "Τμήμα",
+
+  // "search.filters.filter.pjdept.label": "Search department",
+  "search.filters.filter.pjdept.label": "Αναζήτηση τμήματος",
+
+  // "search.filters.filter.pjdept.placeholder": "Department",
+  "search.filters.filter.pjdept.placeholder": "Τμήμα",
 
   // "search.filters.filter.projectOrgUnits.head": "Organizations",
   // TODO New key - Add a translation

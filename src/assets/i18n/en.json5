@@ -1023,6 +1023,12 @@
 
   "browse.metadata.pjtitle": "Title",
 
+  "browse.metadata.pjinvestigator": "Name",
+
+  "browse.metadata.pjsubject": "Subject",
+
+  "browse.metadata.pjdept": "Department",
+
   "browse.metadata.rodept": "Department",
 
   "browse.metadata.rpdept": "Department",
@@ -1050,6 +1056,12 @@
   "browse.metadata.ouname.breadcrumbs": "Browse by Name",
 
   "browse.metadata.pjtitle.breadcrumbs": "Browse by Title",
+
+  "browse.metadata.pjinvestigator.breadcrumbs": "Browse by Name",
+
+  "browse.metadata.pjsubject.breadcrumbs": "Browse by Subject",
+
+  "browse.metadata.pjdept.breadcrumbs": "Browse by Department",
 
   "browse.metadata.rodept.breadcrumbs": "Browse by Department",
 
@@ -2300,6 +2312,12 @@
   "explore.index.personOrgUnits": "Organizations",
 
   "explore.index.pjtitle": "Title",
+
+  "explore.index.pjinvestigator": "Name",
+
+  "explore.index.pjsubject": "Subject",
+
+  "explore.index.pjdept": "Department",
 
   "explore.index.projectinvestigators": "Project investigators",
 
@@ -5216,6 +5234,18 @@
   "search.filters.filter.language.label": "Language",
 
   "search.filters.filter.language.placeholder": "Language",
+
+  "search.filters.filter.pjsubject.head": "Subject",
+
+  "search.filters.filter.pjsubject.label": "Search subject",
+
+  "search.filters.filter.pjsubject.placeholder": "Subject",
+
+  "search.filters.filter.pjdept.head": "Department",
+
+  "search.filters.filter.pjdept.label": "Search department",
+
+  "search.filters.filter.pjdept.placeholder": "Department",
 
   "search.filters.filter.projectOrgUnits.head": "Organizations",
 
