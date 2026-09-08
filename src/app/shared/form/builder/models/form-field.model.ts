@@ -84,6 +84,12 @@ export class FormFieldModel {
      * Containing regex to use for field validation
      */
     regex?: string;
+
+    /**
+     * The i18n key of the message to show when a value does not match the regex,
+     * absent to use the generic one
+     */
+    regexErrorMessage?: string;
   };
 
   /**

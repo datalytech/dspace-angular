@@ -3630,6 +3630,9 @@
   // TODO New key - Add a translation
   "error.validation.pattern": "This input is restricted by the current pattern: {{ pattern }}.",
 
+  // "error.validation.keywords.separator": "Please enter one keyword at a time. Commas (,) and semicolons (;) are not allowed: use the + button to add another keyword.",
+  "error.validation.keywords.separator": "Εισάγετε μία λέξη-κλειδί κάθε φορά. Το κόμμα (,) και το ερωτηματικό (;) δεν επιτρέπονται: χρησιμοποιήστε το κουμπί + για να προσθέσετε επόμενη λέξη-κλειδί.",
+
   // "error.validation.filerequired": "The file upload is mandatory",
   "error.validation.filerequired": "Η αποστολή του αρχείου είναι υποχρεωτική",
 
@@ -3684,6 +3687,9 @@
   // "error.validation.notRepeatable": "This field is not repeatable, please choose only one value and discard the others.",
   // TODO New key - Add a translation
   "error.validation.notRepeatable": "This field is not repeatable, please choose only one value and discard the others.",
+
+  // "error.validation.regex": "The value entered is not accepted for this field, please check the instructions below it.",
+  "error.validation.regex": "Η τιμή που εισαγάγατε δεν γίνεται δεκτή σε αυτό το πεδίο, δείτε τις οδηγίες από κάτω.",
 
   // "error.validation.detect-duplicate": "The handling of the detected duplicates is mandatory",
   // TODO New key - Add a translation

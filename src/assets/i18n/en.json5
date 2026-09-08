@@ -2145,6 +2145,8 @@
 
   "error.validation.pattern": "This input is restricted by the current pattern: {{ pattern }}.",
 
+  "error.validation.keywords.separator": "Please enter one keyword at a time. Commas (,) and semicolons (;) are not allowed: use the + button to add another keyword.",
+
   "error.validation.filerequired": "The file upload is mandatory",
 
   "error.validation.required": "This field is required",
@@ -2174,6 +2176,8 @@
   "error.validation.fundingInvestigatorOrLeadOrganizationRequired": "At least one investigator or one lead organization is required",
 
   "error.validation.notRepeatable": "This field is not repeatable, please choose only one value and discard the others.",
+
+  "error.validation.regex": "The value entered is not accepted for this field, please check the instructions below it.",
 
   "error.validation.detect-duplicate": "The handling of the detected duplicates is mandatory",
 
