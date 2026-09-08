@@ -13214,7 +13214,7 @@
   "layout.field.label.OrgUnit.[crisou.director]": "Διευθυντής",
   // "layout.field.label.OrgUnit.[organization.parentOrganization]": "Parent Organisation",
   // TODO New key - Add a translation
-  "layout.field.label.OrgUnit.[organization.parentOrganization]": "Parent Organisation",
+  "layout.field.label.OrgUnit.[organization.parentOrganization]": "Μητρικός Οργανισμός",
   // "layout.field.label.OrgUnit.[organization.foundingDate]": "Founding Date",
   // TODO New key - Add a translation
   "layout.field.label.OrgUnit.[organization.foundingDate]": "Ημερομηνία Ίδρυσης",
@@ -13228,54 +13228,25 @@
   // TODO New key - Add a translation
   "layout.field.label.OrgUnit.[dc.title]": "Τίτλος Οργανισμού",
   
-  // "layout.field.label.Project.[dc.description.abstract]": "Description",
-  // TODO New key - Add a translation
   "layout.field.label.Project.[dc.description.abstract]": "Περιγραφή",
-  // "layout.field.label.Project.[dc.subject]": "Keywords",
-  // TODO New key - Add a translation
-  "layout.field.label.Project.[dc.subject]": "Λέξεις-κλειδιά",
-  // "layout.field.label.Project.[oairecerif.acronym]": "Acronym",
-  // TODO New key - Add a translation
+   "layout.field.label.Project.[dc.subject]": "Λέξεις-κλειδιά",
   "layout.field.label.Project.[oairecerif.acronym]": "Ακρωνύμιο",
-  // "layout.field.label.Project.[dc.title]": "Project Title",
-  // TODO New key - Add a translation
-  "layout.field.label.Project.[dc.title]": "Project Title",
-  // "layout.field.label.Project.[crispj.coordinator]": "Consortium Coordinator",
-  // TODO New key - Add a translation
+  "layout.field.label.Project.[dc.title]": "Τίτλος Έργου",
   "layout.field.label.Project.[crispj.coordinator]": "Consortium Coordinator",
-  // "layout.field.label.Project.[crispj.partnerou]": "Partner Organisations",
-  // TODO New key - Add a translation
   "layout.field.label.Project.[crispj.partnerou]": "Partner Organisations",
-  // "layout.field.label.Project.[oairecerif.internalid]": "Internal ID",
-  // TODO New key - Add a translation
   "layout.field.label.Project.[oairecerif.internalid]": "Εσωτερικό αναγνωριστικό",
-  // "layout.field.label.Project.[crispj.investigator]": "Principal Investigator",
-  // TODO New key - Add a translation
-  "layout.field.label.Project.[crispj.investigator]": "Principal Investigator",
-  // "layout.field.label.Project.[oairecerif.project.status]": "Status",
-  // TODO New key - Add a translation
+  "layout.field.label.Project.[crispj.investigator]": "Κύριος Ερευνητής",
   "layout.field.label.Project.[oairecerif.project.status]": "Κατάσταση",
-  // "layout.field.label.Project.[oairecerif.project.startDate]": "Start Date",
-  // TODO New key - Add a translation
   "layout.field.label.Project.[oairecerif.project.startDate]": "Ημερομηνία έναρξης",
-  // "layout.field.label.Project.[oairecerif.project.endDate]": "End Date",
-  // TODO New key - Add a translation
   "layout.field.label.Project.[oairecerif.project.endDate]": "Ημερομηνία λήξης",
-  // "layout.field.label.Project.[crispj.coinvestigators]": "Investigators",
-  // TODO New key - Add a translation
   "layout.field.label.Project.[crispj.coinvestigators]": "Investigators",
-  // "layout.field.label.Project.[crispj.organization]": "Organisations",
-  // TODO New key - Add a translation
-  "layout.field.label.Project.[crispj.organization]": "Organisations",
-  // "layout.field.label.Project.[dc.relation.equipment]": "Uses",
-  // TODO New key - Add a translation
-  "layout.field.label.Project.[dc.relation.equipment]": "Uses",
-  // "layout.field.label.Project.[oairecerif.identifier.url]": "Project Web Site",
-  // TODO New key - Add a translation
-  "layout.field.label.Project.[oairecerif.identifier.url]": "Project Web Site",
-  // "layout.field.label.Project.[crispj.openaireid]": "OpenAIRE ID",
-  // TODO New key - Add a translation
+  "layout.field.label.Project.[crispj.organization]": "Οργανισμοί",
+  "layout.field.label.Project.[dc.relation.equipment]": "Εξοπλισμός",
+  "layout.field.label.Project.[oairecerif.identifier.url]": "URL",
   "layout.field.label.Project.[crispj.openaireid]": "OpenAIRE ID",
+  "layout.field.label.Project.[crispj.investigator.department]": "Τμήμα",
+  "layout.field.label.Project.[crispj.investigator.faculty]": "Σχολή",
+  "layout.field.label.Project.[crispj.type]": "Είδος",
 
   // "layout.field.label.Funding.[dc.relation.project]": "Project",
   // TODO New key - Add a translation
@@ -13359,7 +13330,12 @@
   // "layout.field.label.Person.[person.birthDate]": "Birth Date",
   // TODO New key - Add a translation
   "layout.field.label.Person.[person.birthDate]": "Ημερομηνία γέννησης",
-
+  
+  "layout.field.label.Person.[person.affiliation.faculty]": "Σχολή",
+  "layout.field.label.Person.[person.affiliation.department]": "Τμήμα",
+  "layout.field.label.Person.[person.telephone]": "Τηλέφωνο",
+  "layout.field.label.Person.[oairecerif.identifier.url]": "URL",
+   
   // "layout.field.label.Journal.[dc.title]": "Journal Title",
   // TODO New key - Add a translation
   "layout.field.label.Journal.[dc.title]": "Τίτλος Εφημερίδας",
