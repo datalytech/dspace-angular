@@ -1685,6 +1685,9 @@
 
   "browse.comcol.by.rpfacu" : "Ανά Σχολή",
   "browse.comcol.by.rpsubj": "Ανά Ερευνητικό Ενδιαφέρον",
+  "browse.comcol.by.pjinvestigator": "Ανά Ερευνητή",
+  "browse.comcol.by.pjsubject": "Ανά Θέμα",
+  "browse.comcol.by.pjdept": "Ανά Τμήμα",
 
   // "browse.comcol.head": "Browse",
   "browse.comcol.head": "Πλοήγηση",
