@@ -13432,6 +13432,15 @@
   // TODO New key - Add a translation
   "layout.field.label.Equipment.[crisequipment.ownerou]": "Owner Organisation",
 
+  // Entity-independent metadata labels used when a CRIS layout entity type does not match a locale-specific key.
+  "layout.field.label.[dc.identifier.uri]": "URL",
+  "layout.field.label.[oairecerif.identifier.url]": "URL",
+  "layout.field.label.[oaire.citation.volume]": "Τόμος",
+  "layout.field.label.[oaire.citation.startPage]": "Αρχική σελίδα",
+  "layout.field.label.[oaire.citation.endPage]": "Τελική σελίδα",
+  "layout.field.label.[dc.contributor.department]": "Τμήμα",
+  "layout.field.label.[dc.contributor.faculty]": "Σχολή",
+
   // Publication metadata fields configured by submission-forms.xml.
   "layout.field.label.Publication.[dc.title]": "Τίτλος",
   "layout.field.label.Publication.[dc.title.alternative]": "Εναλλακτικός τίτλος",
