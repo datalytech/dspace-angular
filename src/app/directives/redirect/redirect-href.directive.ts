@@ -12,8 +12,9 @@ export class RedirectWithHrefDirective extends RedirectDirective {
     super(redirect);
   }
 
-  // Binds the requested url to the href property
+  // Binds the requested url to the href property, resolved to an actually navigable url
+  // (a raw 'local://...' scheme is not valid as an href on its own)
   @HostBinding('href') get href() {
-    return this.url;
+    return this.redirect.resolveHref(this.url);
   }
 }

@@ -84,6 +84,25 @@ export class RedirectService implements CanActivate {
   }
 
   /**
+   * Resolves the actual, navigable href to expose in the DOM for a given `dsRedirect` url.
+   * A raw 'local://...' (or other non-http(s)) url is not a valid href on its own: browsers
+   * can't resolve it, so links using it break on middle-click/"open in new tab", right-click
+   * "copy link", and on any click that happens before Angular's click listener has bound
+   * (e.g. during server-side-rendered hydration).
+   * @param url The url passed to the `dsRedirect` input
+   */
+  public resolveHref(url: string): string {
+    if (!url) {
+      return url;
+    }
+    if (this.external(url)) {
+      return url;
+    }
+    const sanitized = this.sanitizeLocalUrl(url);
+    return sanitized.startsWith('/') ? sanitized : `/${sanitized}`;
+  }
+
+  /**
    * Activates the route as a 404 - NOT FOUND Page if this function call
    * evaluates to true, otherwise redirects to the `redirect` url.
    * @param route
