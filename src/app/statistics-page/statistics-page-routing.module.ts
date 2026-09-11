@@ -120,7 +120,13 @@ import { StatisticsWorkflowGuard } from '../core/data/feature-authorization/feat
     I18nBreadcrumbsService,
     CollectionPageResolver,
     CommunityPageResolver,
-    StatisticsItemPageResolver
+    StatisticsItemPageResolver,
+    // Re-declared here (even though it's `providedIn: 'root'`) so it gets instantiated using
+    // this module's injector: it depends on StatisticsItemPageResolver, which is only provided
+    // here, not in the root injector. Without this, injecting the guard fails with
+    // "NullInjectorError: No provider for StatisticsItemPageResolver!" (see the same pattern
+    // for ItemPageAdministratorGuard/ItemPageResolver in item-page-routing.module.ts).
+    ItemStatisticsPageGuard
   ]
 })
 export class StatisticsPageRoutingModule {
