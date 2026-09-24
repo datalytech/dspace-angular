@@ -833,28 +833,16 @@ export class MenuResolver implements Resolve<boolean> {
           index: 14
         },
         {
-          id: 'bibliometris',
+          id: 'audit',
           active: false,
           visible: authorized,
           model: {
             type: MenuItemType.LINK,
-            text: 'menu.section.bibliometris',
-            link: '/admin/admin-bibliometris'
+            text: 'menu.section.audit',
+            link: '/auditlogs'
           } as LinkMenuItemModel,
-          icon: 'exclamation-circle',
+          icon: 'list-alt',
           index: 15
-        },
-        {
-          id: 'report',
-          active: false,
-          visible: authorized,
-          model: {
-            type: MenuItemType.LINK,
-            text: 'Track Report',
-            link: '/admin/admin-report'
-          } as LinkMenuItemModel,
-          icon: 'user-check',
-          index: 16
         }
       ];
 

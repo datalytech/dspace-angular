@@ -12530,7 +12530,7 @@
   // TODO New key - Add a translation
   "menu.section.system-wide-alert": "Ειδοποίηση συστήματος",
 
-    "menu.section.bibliometris": "Bibliometris",
+  "menu.section.audit": "Αρχεία καταγραφής ελέγχου",
 
   "bibliometris.form.header": "Bibliometris",
 
