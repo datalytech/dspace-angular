@@ -6,6 +6,8 @@
           <div class="cell" [class]="cell.style" [class.col]="!hasColClass(cell.style)" [class.px-0]="!showCellPadding">
             <ng-container *ngFor="let box of cell.boxes">
               <ds-cris-layout-box-container [box]="box" [item]="item" [tabName]="tab.shortname"></ds-cris-layout-box-container>
+              <!-- SDG icons go right under the last Metrics box of the tab (once per item page) -->
+              <ds-sdg-icons *ngIf="box === lastMetricsBox" class="d-block mb-3"></ds-sdg-icons>
             </ng-container>
           </div>
         </ng-container>
