@@ -1,5 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { DebugElement } from '@angular/core';
+import { DebugElement, SimpleChange } from '@angular/core';
 import { By } from '@angular/platform-browser';
 
 import { CrisLayoutMatrixComponent } from './cris-layout-matrix.component';
@@ -63,6 +63,13 @@ describe('CrisLayoutMatrixComponent', () => {
 
     it('should have 4 boxes', () => {
       expect(de.queryAll(By.css('ds-cris-layout-box-container')).length).toEqual(4);
+    });
+
+    it('should render the SDG icons once, after the last Metrics box', () => {
+      component.ngOnChanges({ tab: new SimpleChange(undefined, tab, true) });
+      fixture.detectChanges();
+      expect(component.lastMetricsBox?.boxType).toEqual('METRICS');
+      expect(de.queryAll(By.css('ds-sdg-icons')).length).toEqual(1);
     });
 
   });

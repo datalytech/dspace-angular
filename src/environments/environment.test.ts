@@ -627,4 +627,7 @@ export const environment: BuildConfig = {
       },
     ]
   },
+
+  bibliometrisImportUrl: 'https://rest.com/api/core/bibliometris',
+  pollingProgressUrl: 'https://rest.com/api/core/bibliometris-properties',
 };
