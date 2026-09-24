@@ -854,6 +854,42 @@
 
   "audit.detail.back.subject": "Subject Audit Logs",
 
+  "audit.overview.no-results": "No audit events found.",
+
+  "audit.overview.access-denied": "You need to be a repository administrator to view this page.",
+
+  "audit.overview.filter.objectId": "Object ID",
+
+  "audit.overview.filter.objectId.placeholder": "e.g. item or eperson UUID",
+
+  "audit.overview.filter.epersonId": "User (EPerson ID)",
+
+  "audit.overview.filter.epersonId.placeholder": "e.g. eperson UUID",
+
+  "audit.overview.filter.eventType": "Event type",
+
+  "audit.overview.filter.eventType.any": "Any",
+
+  "audit.overview.filter.startDate": "From",
+
+  "audit.overview.filter.endDate": "Until",
+
+  "audit.overview.filter.search": "Search",
+
+  "audit.overview.filter.clear": "Clear filters",
+
+  "audit.overview.export.all": "Export all to CSV",
+
+  "audit.overview.export.filtered": "Export search results to CSV",
+
+  "audit.overview.export.success.title": "Export started",
+
+  "audit.overview.export.success.content": "The audit export has been queued as a background process. You can download the resulting CSV file from the process page once it completes.",
+
+  "audit.overview.export.error.title": "Export failed",
+
+  "audit.overview.export.error.content": "Could not start the audit export process.",
+
 
   "auth.errors.invalid-user": "Invalid email address or password.",
 

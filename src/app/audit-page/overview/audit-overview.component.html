@@ -3,9 +3,53 @@
         <h2 class="flex-grow-1">{{'audit.overview.title' | translate}}</h2>
     </div>
 
-    <ng-container *ngIf="(isCurrentUserAdmin() | async)">
+    <ng-container *ngIf="(isCurrentUserAdmin() | async); else noAccess">
+        <form [formGroup]="filterForm" (ngSubmit)="search()" class="audit-filter-form border rounded p-3 mb-3">
+            <div class="form-row">
+                <div class="form-group col-md-3">
+                    <label for="auditFilterObjectId">{{ 'audit.overview.filter.objectId' | translate }}</label>
+                    <input type="text" id="auditFilterObjectId" class="form-control" formControlName="objectId"
+                           placeholder="{{ 'audit.overview.filter.objectId.placeholder' | translate }}">
+                </div>
+                <div class="form-group col-md-3">
+                    <label for="auditFilterEpersonId">{{ 'audit.overview.filter.epersonId' | translate }}</label>
+                    <input type="text" id="auditFilterEpersonId" class="form-control" formControlName="epersonId"
+                           placeholder="{{ 'audit.overview.filter.epersonId.placeholder' | translate }}">
+                </div>
+                <div class="form-group col-md-2">
+                    <label for="auditFilterEventType">{{ 'audit.overview.filter.eventType' | translate }}</label>
+                    <select id="auditFilterEventType" class="form-control" formControlName="eventType">
+                        <option value="">{{ 'audit.overview.filter.eventType.any' | translate }}</option>
+                        <option *ngFor="let type of eventTypes" [value]="type">{{ type }}</option>
+                    </select>
+                </div>
+                <div class="form-group col-md-2">
+                    <label for="auditFilterStartDate">{{ 'audit.overview.filter.startDate' | translate }}</label>
+                    <input type="date" id="auditFilterStartDate" class="form-control" formControlName="startDate">
+                </div>
+                <div class="form-group col-md-2">
+                    <label for="auditFilterEndDate">{{ 'audit.overview.filter.endDate' | translate }}</label>
+                    <input type="date" id="auditFilterEndDate" class="form-control" formControlName="endDate">
+                </div>
+            </div>
+            <div class="d-flex justify-content-between">
+                <div>
+                    <button type="submit" class="btn btn-primary">
+                        <i class="fas fa-search"></i> {{ 'audit.overview.filter.search' | translate }}
+                    </button>
+                    <button type="button" class="btn btn-outline-secondary ml-2" (click)="clearFilters()">
+                        {{ 'audit.overview.filter.clear' | translate }}
+                    </button>
+                </div>
+                <button type="button" class="btn btn-outline-primary" (click)="exportCsv()">
+                    <i class="fas fa-file-csv"></i>
+                    {{ (hasAppliedFilters() ? 'audit.overview.export.filtered' : 'audit.overview.export.all') | translate }}
+                </button>
+            </div>
+        </form>
+
         <div *ngIf="(auditsRD$ | async)?.payload?.totalElements === 0">
-            No audits found.
+            {{ 'audit.overview.no-results' | translate }}
         </div>
 
         <ds-pagination *ngIf="(auditsRD$ | async)?.payload?.totalElements > 0"
@@ -44,5 +88,9 @@
             </div>
         </ds-pagination>
     </ng-container>
+
+    <ng-template #noAccess>
+        <div class="alert alert-danger">{{ 'audit.overview.access-denied' | translate }}</div>
+    </ng-template>
 
 </div>
