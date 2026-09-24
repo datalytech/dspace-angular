@@ -241,7 +241,7 @@ import { RedirectService } from './redirect/redirect.service';
           { path: 'auditlogs',
             loadChildren: () => import('./audit-page/audit-page.module')
               .then((m) => m.AuditPageModule),
-            canActivate: [AuthenticatedGuard, EndUserAgreementCurrentUserGuard]
+            canActivate: [SiteAdministratorGuard, EndUserAgreementCurrentUserGuard]
           },
           {
             path: BULK_IMPORT_PATH,

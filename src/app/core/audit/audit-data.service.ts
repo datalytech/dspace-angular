@@ -32,6 +32,27 @@ export const AUDIT_PERSON_NOT_AVAILABLE = 'n/a';
 
 export const AUDIT_FIND_BY_OBJECT_SEARCH_METHOD = 'findByObject';
 
+export const AUDIT_FIND_BY_FILTERS_SEARCH_METHOD = 'byFilters';
+
+/**
+ * The filters supported by {@link AuditDataService#findByFilters}, matching the query params
+ * accepted by the REST search method of the same name. Every field is optional; a field left out
+ * is not applied as a filter.
+ */
+export interface AuditFilters {
+  objectId?: string;
+  epersonId?: string;
+  eventType?: string;
+  /**
+   * yyyy-MM-dd, inclusive
+   */
+  startDate?: string;
+  /**
+   * yyyy-MM-dd, inclusive of the whole day
+   */
+  endDate?: string;
+}
+
 @Injectable()
 @dataService(AUDIT)
 export class AuditDataService extends IdentifiableDataService<Audit>{
@@ -68,6 +89,37 @@ export class AuditDataService extends IdentifiableDataService<Audit>{
       searchParams: [new RequestParam('object', objectId)]
     });
     return this.searchData.searchBy(searchMethod, optionsWithObject, true, true, followLink('eperson'));
+  }
+
+  /**
+   * Get all audit events matching any combination of the given filters. A filter left out of
+   * {@link filters} (or the whole argument left out) is not applied, so calling this with no
+   * filters returns the same result as {@link findAll}.
+   *
+   * @param filters The filters to apply, see {@link AuditFilters}
+   * @param options The [[FindListOptions]] object
+   * @return Observable<RemoteData<PaginatedList<Audit>>>
+   */
+  findByFilters(filters: AuditFilters = {}, options: FindListOptions = {}): Observable<RemoteData<PaginatedList<Audit>>> {
+    const searchParams: RequestParam[] = [];
+    if (filters.objectId) {
+      searchParams.push(new RequestParam('object', filters.objectId));
+    }
+    if (filters.epersonId) {
+      searchParams.push(new RequestParam('eperson', filters.epersonId));
+    }
+    if (filters.eventType) {
+      searchParams.push(new RequestParam('eventType', filters.eventType));
+    }
+    if (filters.startDate) {
+      searchParams.push(new RequestParam('startDate', filters.startDate));
+    }
+    if (filters.endDate) {
+      searchParams.push(new RequestParam('endDate', filters.endDate));
+    }
+    const optionsWithFilters = Object.assign(new FindListOptions(), options, { searchParams });
+    return this.searchData.searchBy(AUDIT_FIND_BY_FILTERS_SEARCH_METHOD, optionsWithFilters, true, true,
+      followLink('eperson'));
   }
 
   /**
