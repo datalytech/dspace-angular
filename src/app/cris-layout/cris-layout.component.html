@@ -1,9 +1,4 @@
 <div class="cris-layout">
-	<!-- Rendered once here rather than inside ds-cris-layout-metrics-box: the SDG icon list is a
-	     single value for the whole item (set by ngOnChanges below), not per-box, so it must not be
-	     duplicated when an entity type's layout configures more than one Metrics box on the page. -->
-	<ds-sdg-icons></ds-sdg-icons>
-
 	<ng-container *ngIf="!!tabs$">
 		<ng-container *ngVar="(leadingTabs$ | async) as leadingTabs">
 			<ds-cris-layout-leading *ngIf="(hasLeadingTab$ | async) && !!leadingTabs && leadingTabs.length > 0"
@@ -12,6 +7,13 @@
                               [tab]="leadingTabs[0]"></ds-cris-layout-leading>
 		</ng-container>
 	</ng-container>
+
+	<!-- Rendered once here rather than inside ds-cris-layout-metrics-box: the SDG icon list is a
+	     single value for the whole item (set by ngOnChanges below), not per-box, so it must not be
+	     duplicated when an entity type's layout configures more than one Metrics box on the page.
+	     Placed after the leading tab (title/metrics boxes) so it sits below the metrics instead of
+	     above the whole item layout. -->
+	<ds-sdg-icons></ds-sdg-icons>
 
 	<ng-container *ngIf="!!tabs$">
 		<ng-container *ngVar="(loaderTabs$ | async) as loaderTabs">
